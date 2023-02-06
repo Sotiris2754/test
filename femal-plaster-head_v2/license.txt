@@ -1,0 +1,11 @@
+Model Information:
+* title:	Femal-plaster-head v2
+* source:	https://sketchfab.com/3d-models/femal-plaster-head-v2-8da05cf72c3f41ea85be0e2bbbd427ce
+* author:	mjk123 (https://sketchfab.com/mjk123)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Femal-plaster-head v2" (https://sketchfab.com/3d-models/femal-plaster-head-v2-8da05cf72c3f41ea85be0e2bbbd427ce) by mjk123 (https://sketchfab.com/mjk123) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
