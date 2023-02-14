@@ -190,7 +190,7 @@ function loadExhibit()
 	else
 	{
 		console.log("Data loaded! ") 
-		console.log(data);
+		//console.log(data);
 	}
 	
 	

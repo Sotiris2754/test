@@ -15,19 +15,31 @@
 	var myVideo = document.querySelector("#video01");
 	var videoController = document.querySelector("#videoController");
 		 this.el.addEventListener('click',function(){
+
+		 	let counter = 0;
+		 	myVideo.setAttribute("src",data.exhibits[0].pathfile);
 		 	if(myVideo.paused){
+
 		 		myVideo.play();
 		 		videoController.setAttribute("color","red");
+		 		counter++;
 		 		}
 		 	else{
 				myVideo.pause();
 				videoController.setAttribute("color","green");
 		 		}
+
+		 		if(counter%2==0){
+		 			myVideo.setAttribute("src",data.exhibits[1].pathfile);
+		 		}
+
+
 		 })
 	},
 });
 
 	fetchContent(); // LOAD JSON FILE !!
+
 
 </script>
 
@@ -50,7 +62,7 @@
 	<a-box id="videoController" position="0 -3 0" ></a-box>
 
 
-</a-video> -->
+</a-video>
 
 		<!-- <a-box onclick class="clickable" color="red" position="0 0 -5"></a-box> -->
 
