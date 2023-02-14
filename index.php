@@ -20,6 +20,8 @@
 
 	<body>
 
+
+
 		<a-scene id="scene" physics="debug:true">
 
 			<a-assets>
@@ -32,18 +34,19 @@
 			</a-assets>
 		<a-sky color="lightblue"></a-sky>
 
-<!-- ΕΔΩ ΕΙΝΑΙ ΤΟ DIV ΜΕ ΤΗΝ ΦΟΡΜΑ ΑΠΟ ΤΟ ΕΓΓΡΑΦΟ ΠΟΥ ΜΟΥ ΣΤΕΙΛΑΤΕ
+ΕΔΩ ΕΙΝΑΙ ΤΟ DIV ΜΕ ΤΗΝ ΦΟΡΜΑ ΑΠΟ ΤΟ ΕΓΓΡΑΦΟ ΠΟΥ ΜΟΥ ΣΤΕΙΛΑΤΕ
 
 		<div id="myDiv" style="display:none; width:400px ;height:600px; position:absolute; top:10%; left:10%; z-index:10; border-style:solid;">
 			Upload Form
-			<button style="position:absolute; right:0%;" onclick="showHideForm();">X</button>
-			<form id="form" method="post" enctype="multipart/form-data" class="w-50">
-					
-					
-					
-					<button id="btnn" class="btn btn-dark" type="submit" name="submit">Submit</button>
-				</form>
-		</div> -->
+			<button style="position:absolute; right:0%;" onclick="">X</button>
+
+
+<!-- Δοκιμή με τα ταγκς για το αν διαβάζει το json file. Ύστερα δημιουργία των ταγκ και λούπ μέσω js  -->
+			<p></p>
+			<img>
+
+		
+		</div>
 
 
 <!-- <a-plane static-body width="20" height="20" rotation="-90 0 0" color="gray"></a-plane> -->
@@ -95,6 +98,7 @@
 		<a-image id="cube1" test class="clickable" src="#cube1" width="1" height="1" position="-.7 .9 0.05"></a-image>
 		<a-image id="cube2" test class="clickable" src="#cube2" width="1" height="1" position=".5 .9 0.05"></a-image>
 	</a-plane>
+
 		
 	<a-entity gltf-model="#building" scale="2 2 2" position="-15 -1 17" rotation="0 90 0"></a-entity>
 

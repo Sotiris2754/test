@@ -3,42 +3,9 @@
 <head>
 	<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 	<title>test json</title>
+	<script src="behavior.js"></script>
 </head>	
 <script>
-
-
-	// fetch("details.json").then(response => response.json()).then(json => {
-	// 	json.map(item => {
-
-	// 		let entity = document.createElement('a-asset-item');
-	// 		entity.setAttribute('id',item.id);
-	// 		entity.setAttribute('position',item.position);
-	// 		// entity.setAttribute('src',item.pathfile);
-	// 		const scene  = document.getElementById('scene');
-	// 		scene.appendChild(entity);
-
-	// 	})
-
-	// });
-// let employees;
-
-// 		fetch('details.json')
-// 	  	.then(response => response.json())
-// 	  	.then(data => {
-// 	   	 	employees = data.employees;  	 	
-// 	 	 });
-// let employees;
-
-// fetch('details.json')
-//   .then(response => response.json())
-//   .then(data => {
-//     employees = data.employees;
-
-//   })
-//   .catch(error => {
-//     console.error('Failed to retrieve employees data: ', error);
-//   });
-
 
 
 	AFRAME.registerComponent("a", {
@@ -50,7 +17,6 @@
 		 this.el.addEventListener('click',function(){
 		 	if(myVideo.paused){
 		 		myVideo.play();
-		 		//console.log(employees);
 		 		videoController.setAttribute("color","red");
 		 		}
 		 	else{
@@ -60,18 +26,19 @@
 		 })
 	},
 });
-	
+
+	fetchContent(); // LOAD JSON FILE !!
 
 </script>
 
-<body>
+<body onload="loadExhibit()">
 <a-scene id="scene">
 
 
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
-					<video id="video01" src="videos/MarAlone.mp4" loop="true" ></video>
+					<!-- <video id="video01" src="videos/MarAlone.mp4" loop="true" ></video> -->
 
 				</a-assets>
 
@@ -79,11 +46,11 @@
 
 <a-sky color="lightblue"></a-sky>
 
-<a-video a class="clickable" loop src="#video01" position="0 0 -5" width="8" height="4.5">
+<!-- <a-video a class="clickable" loop src="#video01" position="0 0 -5" width="8" height="4.5">
 	<a-box id="videoController" position="0 -3 0" ></a-box>
 
 
-</a-video>
+</a-video> -->
 
 		<!-- <a-box onclick class="clickable" color="red" position="0 0 -5"></a-box> -->
 
