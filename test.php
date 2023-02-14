@@ -4,8 +4,21 @@
 	<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 	<title>test json</title>
 	<script src="behavior.js"></script>
-</head>	
+</head>
+
+<style>
+	#myDiv{
+  position: relative;
+  background-color: black;
+  top:100px;
+  z-index: 5;
+  color: white;
+  text-align: center;
+	}
+
+</style>
 <script>
+	fetchContent(); // LOAD JSON FILE !!
 
 
 	AFRAME.registerComponent("a", {
@@ -30,27 +43,38 @@
 	AFRAME.registerComponent("b", {
 
 	init: function(){
-	var a = document.querySelector("#video01");
-	var b = document.querySelector("#videoController");
+	var myDiv = document.querySelector("#myDiv");
 
 		 this.el.addEventListener('click',function(){
- 	
-		 	if{
-		 		
-		 	}
+		 	myDiv.innerHTML = displayData();
 
 		 })
 	},
 });
 
+	function displayData(){
+		
+		var text="";
 
+		for(var i=0; i<data.exhibits.length; i++){
+			text+= data.exhibits[i].description+ " ";
+		}
+		return text;
 
-	fetchContent(); // LOAD JSON FILE !!
+	}
+
 
 
 </script>
 
-<body onload="loadExhibit()">
+<body onload="loadExhibit()"></body>
+
+	
+		  <div id="myDiv">
+
+
+		  </div> 
+	
 <a-scene id="scene">
 
 
@@ -71,7 +95,7 @@
 
 </a-video>-->
 
-		 <a-box class="clickable" color="red" position="0 0 -5"></a-box> 
+		 <a-box b class="clickable" color="red" position="0 0 -5"></a-box> 
 
 			<a-camera id="camera">
 		
