@@ -9,11 +9,11 @@
 <style>
 	#myDiv{
   position: relative;
-  background-color: black;
+/*  background-color: black;*/
   top:100px;
   z-index: 5;
-  color: white;
-  text-align: center;
+  color: black;
+/*  text-align: center;*/
 	}
 
 </style>
@@ -45,32 +45,88 @@
 	init: function(){
 	var myDiv = document.querySelector("#myDiv");
 
-		 this.el.addEventListener('click',function(){
-		 	myDiv.innerHTML = displayData();
 
+		 this.el.addEventListener('click',function(){
+		 	myDiv.innerHTML = displayDescription();
+
+		 	if(myDiv.style.visibility==="hidden"){
+		 		myDiv.style.visibility = "visible";
+		 	}
+		 	else{
+		 		myDiv.style.visibility= "hidden";
+		 	}
 		 })
 	},
 });
 
-	function displayData(){
+
+	
+
+	function displayDescription(){
 		
 		var text="";
+		text+= "<ul>";
 
 		for(var i=0; i<data.exhibits.length; i++){
-			text+= data.exhibits[i].description+ " ";
+			
+			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit()'> "+data.exhibits[i].title+ "</i>" + ": ";
+			text+= data.exhibits[i].description+ " <br></li>";
+			
+
 		}
+		text+= "</ul>";
+		//console.log(text);
 		return text;
 
 	}
 
 
 
+	function storeId(){
+
+			
+			document.addEventListener('click',function(e)
+			{
+				let elementId = e.target.id;
+				if(elementId !== ''){
+					console.log(elementId);
+					id = elementId;	
+					return id;
+				}
+				else{
+					console.log("There is no id");
+				}
+			});
+		}
+
+
+
+function placeExhibit(){
+
+	// storeId();
+		
+		var exhibit = document.createElement('a-entity');
+		// exhibit.setAttribute('geometry',{
+		// 		primitive: 'box'
+		// 	});
+		//exhibit.setAttribute('id',id+"."+id);
+		exhibit.setAttribute('src',data.exhibits[0].pathfile);
+		// exhibit.setAttribute('scale', '0.5 0.5 0.5');	
+		exhibit.setAttribute('position','0 0.6 0');
+		scene.appendChild(exhibit);
+
+}	
+
+
+
+
+
 </script>
 
-<body onload="loadExhibit()"></body>
+<body onload="loadExhibit()" ></body>
 
 	
-		  <div id="myDiv">
+		  <div id="myDiv" style="visibility: hidden;" >
 
 
 		  </div> 
