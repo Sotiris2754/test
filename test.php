@@ -108,7 +108,6 @@ function placeExhibit(entity){
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
-					<!-- <video id="video01" src="videos/MarAlone.mp4" loop="true" ></video> -->
 
 				</a-assets>
 
