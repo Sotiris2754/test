@@ -15,8 +15,8 @@
   color: black;
 /*  text-align: center;*/
 	}
-
 </style>
+
 <script>
 	fetchContent(); // LOAD JSON FILE !!
 
@@ -42,8 +42,6 @@
 	},
 });
 
-
-	
 
 	function displayDescription(){
 		
