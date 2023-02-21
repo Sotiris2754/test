@@ -44,13 +44,10 @@
 
 
 	function displayDescription(){
-		
 		var text="";
 		text+= "<ul>";
-
-		for(var i=0; i<data.exhibits.length; i++){
-			
-			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> "+data.exhibits[i].title+ "</i>" + ": ";
+		for(var i=0; i<data.exhibits.length; i++){			
+			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> "+data.exhibits[i].title+ "</i>" + ": "; //Με το "this" παίρνω τα στοιχεία του κειμένου που επιλέχθηκε από τον χρήστη, συνεπώς και το έκθεμα που επέλεξε.
 			text+= data.exhibits[i].description+ " <br></li>";
 		}
 		text+= "</ul>";
