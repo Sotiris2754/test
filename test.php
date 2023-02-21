@@ -20,25 +20,6 @@
 <script>
 	fetchContent(); // LOAD JSON FILE !!
 
-
-	AFRAME.registerComponent("a", {
-
-	init: function(){
-	var myVideo = document.querySelector("#video01");
-	var videoController = document.querySelector("#videoController");
-		 this.el.addEventListener('click',function(){
- 	
-		 	if(myVideo.paused){
-		 		myVideo.play();
-		 		videoController.setAttribute("color","red");
-		 		}
-		 	else{
-				myVideo.pause();
-				videoController.setAttribute("color","green");
-		 		}
-		 })
-	},
-});
 	let basePos;
 
 	AFRAME.registerComponent("b", {
