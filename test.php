@@ -29,7 +29,7 @@
 
 		 this.el.addEventListener('click',function(){
 		 	myDiv.innerHTML = displayDescription();
-		 	basePos=this.object3D.position;
+		 	basePos=this.object3D.position; // Αποθήκευση id βάσης που επιλέχθηκε από τον χρήστη
 
 		 	
 		 	if(myDiv.style.visibility==="hidden"){
@@ -65,9 +65,8 @@ function placeExhibit(entity){
 
 		exhibit.setAttribute('position',basePos.x +" " + basePos.y+1 +" " + basePos.z); // exhibit.setAttribute('position', { x: basePos.x, y: basePos.y + 1, z: basePos.z });
 		exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
-		exhibit.setAttribute('scale',data.exhibits[id].scale);
+		exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο
 		scene.appendChild(exhibit);
-
 }	
 
 </script>
