@@ -73,7 +73,6 @@
 			
 			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> "+data.exhibits[i].title+ "</i>" + ": ";
 			text+= data.exhibits[i].description+ " <br></li>";
-			
 		}
 		text+= "</ul>";
 		//console.log(text);
@@ -87,11 +86,8 @@ function placeExhibit(entity){
 		
 		var exhibit = document.createElement('a-entity');
 		//console.log(id);
-		
-		//console.log(data.exhibits[0].pathfile);
-		// exhibit.setAttribute('id', id+"."+id);
-		//exhibit.setAttribute('src',data.exhibits[id].pathfile);
-		exhibit.setAttribute('position',basePos.x +" " + basePos.y+1 +" " + basePos.z);
+
+		exhibit.setAttribute('position',basePos.x +" " + basePos.y+1 +" " + basePos.z); // exhibit.setAttribute('position', { x: basePos.x, y: basePos.y + 1, z: basePos.z });
 		exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 		exhibit.setAttribute('scale',data.exhibits[id].scale);
 		scene.appendChild(exhibit);
@@ -119,11 +115,7 @@ function placeExhibit(entity){
 
 <a-sky color="lightblue"></a-sky>
 
-<!-- <a-video a class="clickable" loop src="#video01" position="0 0 -5" width="8" height="4.5">
-	<a-box id="videoController" position="0 -3 0" ></a-box>
 
-
-</a-video>-->
 
 		 <a-box id="base1" b class="clickable" color="red" position="-3 0 -5"></a-box> 
 
