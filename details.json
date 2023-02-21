@@ -3,22 +3,23 @@
 	"exhibits":[
 
 	{
-		"id":1,
-		"title":"Epese to reuma",
-		"pathfile":"videos/video01.mp4",
-		"description":"1-2 test description",
-		"type":"video",
-		"position":"0 0 -5"
+		"id":0,
+		"title":"Female head",
+		"pathfile":"female_head/scene.gltf",
+		"description":"Dokimi 3d modelou",
+		"type":"3d model"
+		
 
 	},
 
 		{
-		"id":2,
+		"id":1,
 		"title":"Irthe to reuma",
-		"pathfile":"videos/video02.mp4",
+		"pathfile":"human_scan/model.gltf",
 		"description":"report",
-		"type":"video",
-		"position":"3 0 -5"
+		"type":"3d model",
+		"scale":"0.01 0.01 0.01"
+		
 	}
 
 	]

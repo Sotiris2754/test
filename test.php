@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+	<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 	<title>test json</title>
 	<script src="behavior.js"></script>
 </head>
@@ -39,16 +39,18 @@
 		 })
 	},
 });
+	let basePos;
 
 	AFRAME.registerComponent("b", {
 
 	init: function(){
 	var myDiv = document.querySelector("#myDiv");
 
-
 		 this.el.addEventListener('click',function(){
 		 	myDiv.innerHTML = displayDescription();
+		 	basePos=this.object3D.position;
 
+		 	
 		 	if(myDiv.style.visibility==="hidden"){
 		 		myDiv.style.visibility = "visible";
 		 	}
@@ -69,57 +71,32 @@
 
 		for(var i=0; i<data.exhibits.length; i++){
 			
-			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit()'> "+data.exhibits[i].title+ "</i>" + ": ";
+			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> "+data.exhibits[i].title+ "</i>" + ": ";
 			text+= data.exhibits[i].description+ " <br></li>";
 			
-
 		}
 		text+= "</ul>";
 		//console.log(text);
 		return text;
-
 	}
 
 
+function placeExhibit(entity){
 
-	function storeId(){
-
-			
-			document.addEventListener('click',function(e)
-			{
-				let elementId = e.target.id;
-				if(elementId !== ''){
-					console.log(elementId);
-					id = elementId;	
-					return id;
-				}
-				else{
-					console.log("There is no id");
-				}
-			});
-		}
-
-
-
-function placeExhibit(){
-
-	// storeId();
+		var id = entity.getAttribute('id');
 		
 		var exhibit = document.createElement('a-entity');
-		// exhibit.setAttribute('geometry',{
-		// 		primitive: 'box'
-		// 	});
-		//exhibit.setAttribute('id',id+"."+id);
-		exhibit.setAttribute('src',data.exhibits[0].pathfile);
-		// exhibit.setAttribute('scale', '0.5 0.5 0.5');	
-		exhibit.setAttribute('position','0 0.6 0');
+		//console.log(id);
+		
+		//console.log(data.exhibits[0].pathfile);
+		// exhibit.setAttribute('id', id+"."+id);
+		//exhibit.setAttribute('src',data.exhibits[id].pathfile);
+		exhibit.setAttribute('position',basePos.x +" " + basePos.y+1 +" " + basePos.z);
+		exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+		exhibit.setAttribute('scale',data.exhibits[id].scale);
 		scene.appendChild(exhibit);
 
 }	
-
-
-
-
 
 </script>
 
@@ -128,11 +105,9 @@ function placeExhibit(){
 	
 		  <div id="myDiv" style="visibility: hidden;" >
 
-
 		  </div> 
 	
 <a-scene id="scene">
-
 
 				<a-assets>
 
@@ -140,7 +115,6 @@ function placeExhibit(){
 					<!-- <video id="video01" src="videos/MarAlone.mp4" loop="true" ></video> -->
 
 				</a-assets>
-
 
 
 <a-sky color="lightblue"></a-sky>
@@ -151,7 +125,9 @@ function placeExhibit(){
 
 </a-video>-->
 
-		 <a-box b class="clickable" color="red" position="0 0 -5"></a-box> 
+		 <a-box id="base1" b class="clickable" color="red" position="-3 0 -5"></a-box> 
+
+		 <a-box id="base2" b class="clickable" color="green" position="1 0 -5"></a-box>
 
 			<a-camera id="camera">
 		
