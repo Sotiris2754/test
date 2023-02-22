@@ -21,6 +21,7 @@
 	fetchContent(); // LOAD JSON FILE !!
 
 	let base;
+	let previousBase;
 
 	AFRAME.registerComponent("b", {
 
@@ -33,13 +34,16 @@
 		 	
 		 	//console.log(base); // Αποθήκευση id βάσης που επιλέχθηκε από τον χρήστη
 
-		 	
-		 	if(myDiv.style.visibility==="hidden"){
-		 		myDiv.style.visibility = "visible";
-		 	}
-		 	else{
-		 		myDiv.style.visibility= "hidden";
-		 	}
+
+			 	if(myDiv.style.visibility==="hidden"){
+			 		myDiv.style.visibility = "visible";
+			 		previousBase = base;
+			 	}
+			 	else{
+			 		myDiv.style.visibility= "hidden";
+			 	}
+		 
+
 		 })
 	},
 });
