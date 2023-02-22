@@ -20,6 +20,24 @@
 		"type":"3d model",
 		"scale":"0.01 0.01 0.01"
 		
+	},
+		{
+		"id":2,
+		"title":"Prwto potiri",
+		"pathfile":"chalice/scene.gltf",
+		"description":"Anatolitiko potiri, vazo",
+		"type":"3d model"
+		
+
+	},
+
+		{
+		"id":3,
+		"title":"Deutero vazaki",
+		"pathfile":"chalice2/scene.gltf",
+		"description":"To vazaki auto einai oti einai kai kai kai kai kai.",
+		"type":"3d model"
+		
 	}
 
 	]
