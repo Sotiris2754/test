@@ -94,9 +94,9 @@ function placeExhibit(entity){
 
 
 
-		 <a-box id="Κόκκινη βάση" b class="clickable" color="red" position="-3 0 -5"></a-box> 
+		 <a-box id="Κόκκινη βάση" b class="clickable" color="red" position="-3 0 -5"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->
 
-		 <a-box id="Πράσινη βάση" b class="clickable" color="green" position="1 0 -5"></a-box>
+		 <a-box id="Πράσινη βάση" b class="clickable" color="green" position="1 0 -5"></a-box> <!-- Έχω βάλει ελληνικά id και με κενό!!! -->
 
 			<a-camera id="camera">
 		
