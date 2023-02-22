@@ -20,7 +20,7 @@
 <script>
 	fetchContent(); // LOAD JSON FILE !!
 
-	let basePos;
+	let base;
 
 	AFRAME.registerComponent("b", {
 
@@ -28,8 +28,10 @@
 	var myDiv = document.querySelector("#myDiv");
 
 		 this.el.addEventListener('click',function(){
+		 	base=this;
 		 	myDiv.innerHTML = displayDescription();
-		 	basePos=this.object3D.position; // Αποθήκευση id βάσης που επιλέχθηκε από τον χρήστη
+		 	
+		 	//console.log(base); // Αποθήκευση id βάσης που επιλέχθηκε από τον χρήστη
 
 		 	
 		 	if(myDiv.style.visibility==="hidden"){
@@ -46,6 +48,7 @@
 	function displayDescription(){
 		var text="";
 		text+= "<ul>";
+		text+= "<h4><i>Διάλεξε ποιο έκθεμα θέλεις να τοποθετηθεί στην βάση</i>: " + base.id + "</h4>";
 		for(var i=0; i<data.exhibits.length; i++){			
 			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> "+data.exhibits[i].title+ "</i>" + ": "; //Με το "this" παίρνω τα στοιχεία του κειμένου που επιλέχθηκε από τον χρήστη, συνεπώς και το έκθεμα που επέλεξε.
 			text+= data.exhibits[i].description+ " <br></li>";
@@ -63,9 +66,9 @@ function placeExhibit(entity){
 		var exhibit = document.createElement('a-entity');
 		//console.log(id);
 
-		exhibit.setAttribute('position',basePos.x +" " + basePos.y+1 +" " + basePos.z); // exhibit.setAttribute('position', { x: basePos.x, y: basePos.y + 1, z: basePos.z });
+		exhibit.setAttribute('position',base.object3D.position.x +" " + base.object3D.position.y+1 +" " + base.object3D.position.z); // exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 		exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
-		exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο
+		exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 		scene.appendChild(exhibit);
 }	
 
@@ -91,9 +94,9 @@ function placeExhibit(entity){
 
 
 
-		 <a-box id="base1" b class="clickable" color="red" position="-3 0 -5"></a-box> 
+		 <a-box id="Κόκκινη βάση" b class="clickable" color="red" position="-3 0 -5"></a-box> 
 
-		 <a-box id="base2" b class="clickable" color="green" position="1 0 -5"></a-box>
+		 <a-box id="Πράσινη βάση" b class="clickable" color="green" position="1 0 -5"></a-box>
 
 			<a-camera id="camera">
 		
