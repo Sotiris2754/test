@@ -22,30 +22,49 @@
 
 	let base;
 	let previousBase;
+	let sameBase;
 
 	AFRAME.registerComponent("b", {
 
 	init: function(){
 	var myDiv = document.querySelector("#myDiv");
 
+
 		 this.el.addEventListener('click',function(){
-		 	base=this;
-		 	myDiv.innerHTML = displayDescription();
-		 	//console.log(base); // Αποθήκευση βάσης που επιλέχθηκε από τον χρήστη
+		 		base=this; // Αποθήκευση βάσης που επιλέχθηκε από τον χρήστη
+				myDiv.innerHTML = displayDescription();
 
-			 	if(myDiv.style.visibility==="hidden"){
+				checkBase();
+			 	//console.log(base); 
+			 	if(sameBase==true){
+			 		if(myDiv.style.visibility==="hidden"){
+			 			myDiv.style.visibility = "visible";
+			 		}
+			 		else{
+			 			myDiv.style.visibility= "hidden";
+			 		}
+				 }
+			 	if(sameBase==false){
 			 		myDiv.style.visibility = "visible";
-			 		previousBase = base;
-			 		console.log(previousBase);
-
-
 			 	}
-			 	else{
-			 		myDiv.style.visibility= "hidden";
-			 	}
+
 		 })
 	},
 });
+
+	function checkBase(){
+		if (base==previousBase){
+			previousBase = base;
+			sameBase=true;
+			console.log("einai idies");
+		}
+		
+		if(base!=previousBase){
+			previousBase = base;
+			sameBase = false;
+			console.log("DEN einai idies");
+		}
+	}
 
 
 	function displayDescription(){
