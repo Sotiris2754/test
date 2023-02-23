@@ -24,7 +24,7 @@
 	let previousBase;
 	let sameBase;
 
-	AFRAME.registerComponent("b", {
+	AFRAME.registerComponent("show-list", {
 
 	init: function(){
 	var myDiv = document.querySelector("#myDiv");
@@ -35,7 +35,7 @@
 				myDiv.innerHTML = displayDescription();
 
 				checkBase();
-			 	//console.log(base); 
+			 	console.log(base.id); 
 			 	if(sameBase==true){
 			 		if(myDiv.style.visibility==="hidden"){
 			 			myDiv.style.visibility = "visible";
@@ -53,17 +53,15 @@
 });
 
 	function checkBase(){
-		if (base==previousBase){
-			previousBase = base;
+		if (base==previousBase){		
 			sameBase=true;
-			console.log("einai idies");
-		}
-		
-		if(base!=previousBase){
-			previousBase = base;
+			//console.log("einai idies");
+		}	
+		if(base!=previousBase){	
 			sameBase = false;
-			console.log("DEN einai idies");
+			//console.log("DEN einai idies");
 		}
+		previousBase = base;
 	}
 
 
@@ -116,9 +114,9 @@ function placeExhibit(entity){
 
 
 
-		 <a-box id="Κόκκινη βάση" b class="clickable" color="red" position="-3 0 -5"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->
+		 <a-box id="Κόκκινη βάση" show-list class="clickable" color="red" position="-3 0 -5"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->
 
-		 <a-box id="Πράσινη βάση" b class="clickable" color="green" position="1 0 -5"></a-box> <!-- Έχω βάλει ελληνικά id και με κενό!!! -->
+		 <a-box id="Πράσινη βάση" show-list class="clickable" color="green" position="1 0 -5"></a-box> <!-- Έχω βάλει ελληνικά id και με κενό!!! -->
 
 			<a-camera id="camera">
 		

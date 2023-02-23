@@ -103,4 +103,40 @@ JS FUNCTIONS=========================
 
 --------------------------------
 
+
+SHOW AND HIDE LIST FIRST ------------
+
+// AFRAME.registerComponent("showlist", {
+
+// 	init: function(){
+// 		let list = document.querySelector('#list');
+
+
+// 		 this.el.addEventListener('click',function(obj){ //obj == To clickable object
+// 			let p = obj.srcElement.object3D.position; // p I thesi tou antikeimenou pou egine clicked
+// 			list.setAttribute('visible','true'); // Emfanisi listas
+// 		 })
+// 	},
+// });
+
+ - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// AFRAME.registerComponent("hidelist", {
+
+// 	init: function(){
+// 		let list = document.querySelector('#list');
+
+// 		this.el.addEventListener('click',function(obj) {
+
+// 			list.setAttribute('position','0 200 0'); // Allazw position giati me to "visible=flase" sinexizei na allilepidra o cursor 
+// 			console.log('asdasd');
+// 		})
+
+// 	},
+
+// });
+
+ ------------------------------------------
+
 ========================================
