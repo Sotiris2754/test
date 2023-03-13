@@ -84,12 +84,12 @@ function placeExhibit(entity){
 
 		var id = entity.getAttribute('id');
 
-		console.log(id);
+		// console.log(id);
 		
 
 			if(this.exhibit){
 					var exhibitId = this.exhibit.getAttribute('id');
-					console.log(base.childNodes);
+					console.log(base.childNodes.length);
 					
 
 				if(this.exhibit.parentNode==base){
@@ -147,8 +147,15 @@ function placeExhibit(entity){
 
 					}
 					else{
-						this.exhibit.parentNode.removeChild(this.exhibit);
-	    			this.exhibit = null;
+						// this.exhibit.parentNode.removeChild(this.exhibit);
+	    			// this.exhibit = null;
+						if(base.childNodes){
+							for (var i = base.childNodes.length - 1; i >= 0; i--) {
+   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
+      						base.removeChild(base.childNodes[i]);
+    						}
+  						}
+						}
 
 	    			var exhibit = document.createElement('a-entity');
 		
