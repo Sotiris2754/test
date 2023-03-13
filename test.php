@@ -89,12 +89,22 @@ function placeExhibit(entity){
 
 			if(this.exhibit){
 					var exhibitId = this.exhibit.getAttribute('id');
+					console.log(base.childNodes);
+					
 
 				if(this.exhibit.parentNode==base){
 
+
 					if(exhibitId!= id + "." + id){
-						this.exhibit.parentNode.removeChild(this.exhibit);
-	    			this.exhibit = null;
+
+						if(base.childNodes){
+							for (var i = base.childNodes.length - 1; i >= 0; i--) {
+   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
+      						base.removeChild(base.childNodes[i]);
+    						}
+  						}
+						}
+
 
 	    			var exhibit = document.createElement('a-entity');
 		
@@ -112,7 +122,16 @@ function placeExhibit(entity){
 
 				}
 				if(this.exhibit.parentNode!=base){
+
 					if(exhibitId!=id + "." + id){
+
+						if(base.childNodes){
+							for (var i = base.childNodes.length - 1; i >= 0; i--) {
+   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
+      						base.removeChild(base.childNodes[i]);
+    						}
+  						}
+						}						
 
 						var exhibit = document.createElement('a-entity');
 		
@@ -125,6 +144,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('stored',true);
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
+
 					}
 					else{
 						this.exhibit.parentNode.removeChild(this.exhibit);
@@ -142,7 +162,7 @@ function placeExhibit(entity){
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 					}
-				}				
+				}						
 			}
 			else{
 					var exhibit = document.createElement('a-entity');
@@ -155,7 +175,6 @@ function placeExhibit(entity){
 					exhibit.setAttribute('id',id+"."+id);
 					exhibit.setAttribute('stored',true);
 					base.appendChild(exhibit);
-
 					this.exhibit = exhibit;
 			}
 
