@@ -84,12 +84,13 @@ function placeExhibit(entity){
 		var id = entity.getAttribute('id');
 		
 		var exhibit = document.createElement('a-entity');
-		//console.log(id);
+		// console.log(entity);
 		exhibit.setAttribute('position',base.object3D.position.x +" " + base.object3D.position.y+1 +" " + base.object3D.position.z); 
 		// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 		exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 		exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 		scene.appendChild(exhibit);
+		console.log(entity.id);
 }	
 
 </script>
