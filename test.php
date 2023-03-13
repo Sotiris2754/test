@@ -80,17 +80,87 @@
 
 
 function placeExhibit(entity){
+		//console.log(exhibit);
 
 		var id = entity.getAttribute('id');
+
+		console.log(id);
 		
-		var exhibit = document.createElement('a-entity');
-		// console.log(entity);
-		exhibit.setAttribute('position',base.object3D.position.x +" " + base.object3D.position.y+1 +" " + base.object3D.position.z); 
-		// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
-		exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
-		exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
-		scene.appendChild(exhibit);
-		console.log(entity.id);
+
+			if(this.exhibit){
+					var exhibitId = this.exhibit.getAttribute('id');
+
+				if(this.exhibit.parentNode==base){
+
+					if(exhibitId!= id + "." + id){
+						this.exhibit.parentNode.removeChild(this.exhibit);
+	    			this.exhibit = null;
+
+	    			var exhibit = document.createElement('a-entity');
+		
+						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
+						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('stored',true);
+						base.appendChild(exhibit);
+						this.exhibit = exhibit;
+
+					}
+
+				}
+				if(this.exhibit.parentNode!=base){
+					if(exhibitId!=id + "." + id){
+
+						var exhibit = document.createElement('a-entity');
+		
+						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
+						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('stored',true);
+						base.appendChild(exhibit);
+						this.exhibit = exhibit;
+					}
+					else{
+						this.exhibit.parentNode.removeChild(this.exhibit);
+	    			this.exhibit = null;
+
+	    			var exhibit = document.createElement('a-entity');
+		
+						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
+						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('stored',true);
+						base.appendChild(exhibit);
+						this.exhibit = exhibit;
+					}
+				}				
+			}
+			else{
+					var exhibit = document.createElement('a-entity');
+		
+					exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
+					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+					exhibit.setAttribute('id',id+"."+id);
+					exhibit.setAttribute('stored',true);
+					base.appendChild(exhibit);
+
+					this.exhibit = exhibit;
+			}
+
+
+
 }	
 
 </script>
