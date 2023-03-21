@@ -211,9 +211,13 @@ function placeExhibit(entity){
 
 
 
-		 <a-box id="Κόκκινη βάση" show-list class="clickable" color="red" position="-3 0 -5"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->
+		 <a-box id="Κόκκινη βάση" show-list class="clickable" color="red" position="-2 0 -5"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->
 
-		 <a-box id="Πράσινη βάση" show-list class="clickable" color="green" position="1 0 -5"></a-box> <!-- Έχω βάλει ελληνικά id και με κενό!!! -->
+		 <a-box id="Πράσινη βάση" show-list class="clickable" color="green" position="1.5 0 -5"></a-box>
+
+		 <a-box id="Κίτρινη βάση" show-list class="clickable" color="yellow" position="-6 0 -5"></a-box> 
+
+		 <a-box id="Μπλε βάση" show-list class="clickable" color="blue" position="5 0 -5"></a-box>
 
 			<a-camera id="camera">
 		
