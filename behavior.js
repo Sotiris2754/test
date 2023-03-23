@@ -1,3 +1,10 @@
+fetch('database.php')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+
+
+
 
 //import data from '/WebCatalog/content.json' assert { type: 'JSON' };
 //const exhibits = require("./WebCatalog/content.json");

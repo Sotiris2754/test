@@ -2,8 +2,9 @@
 <html>
 <head>
 	<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-	<title>test json</title>
+	<title>Test 0.1V</title>
 	<script src="behavior.js"></script>
+
 </head>
 
 <style>
