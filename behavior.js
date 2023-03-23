@@ -1,16 +1,3 @@
-AFRAME.registerComponent("showlist", {
-
-	init: function(){
-		let list = document.querySelector('#list');
-
-
-		 this.el.addEventListener('click',function(obj){ //obj == To clickable object
-			let p = obj.srcElement.object3D.position; // p I thesi tou antikeimenou pou egine clicked
-			list.setAttribute('visible','true'); // Emfanisi listas
-		 })
-	},
-});
-
 AFRAME.registerComponent("hidelist", {
 
 	init: function(){
