@@ -22,7 +22,7 @@ $db->exec("INSERT INTO bases (colorBase) VALUES ('Blue')");
 // Retrieve data from the table and output it
 $results = $db->query('SELECT * FROM bases');
 while ($row = $results->fetchArray()) {
-    echo $row['id'] . ': ' . $row['colorBase']. ', ' . $row['placed'] . ', ' . ' (' . $row['exhibit'] . ')<br>';
+    echo $row['id'] . ': ' . $row['colorBase']. ', ' . $row['placed'] . ', (' . $row['exhibit'] . ')<br>';
 }
 
 // Close the database connection
