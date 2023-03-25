@@ -1,9 +1,8 @@
-fetch('database.php')
-  .then(response => response.json())
-  .then(data => console.log(data));
+//Εμφάνιση db στο console, ασύγχρονα. Δεν λειτουργεί!!
 
-
-
+// fetch('test.php')
+//   .then(response => response.json())
+//   .then(data => console.log(data));
 
 
 //import data from '/WebCatalog/content.json' assert { type: 'JSON' };
@@ -17,6 +16,8 @@ async function fetchContent()
 	//response = await fetch("http://localhost:8000/WebCatalog/content.json"); // works - needs data = await response.json(); 
 	response = await fetch("details.json"); // works - needs data = await response.json(); 
 	data = await response.json();
+
+
 	
 	//const response = await fetch("http://localhost:8000/WebCatalog/content.json").then( response =>{console.log(response);}); // works and gets response
 	//const response = await fetch("http://localhost:8000/WebCatalog/content.json").then(response => {data = response.json(); loadExhibit();});
@@ -38,6 +39,8 @@ function loadExhibit()
 	{
 		console.log("Data loaded! ") 
 		//console.log(data);
+
+
 	}
 	
 	
