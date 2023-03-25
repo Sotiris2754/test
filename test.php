@@ -4,6 +4,7 @@
 	<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 	<title>Test 0.1V</title>
 	<script src="behavior.js"></script>
+	<?php require "sqlite.php" ?>
 
 </head>
 
