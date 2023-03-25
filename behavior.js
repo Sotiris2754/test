@@ -1,161 +1,8 @@
-AFRAME.registerComponent("showlist", {
-
-	init: function(){
-		let list = document.querySelector('#list');
-
-
-		 this.el.addEventListener('click',function(obj){ //obj == To clickable object
-			let p = obj.srcElement.object3D.position; // p I thesi tou antikeimenou pou egine clicked
-			list.setAttribute('visible','true'); // Emfanisi listas
-		 })
-	},
-});
-
-AFRAME.registerComponent("hidelist", {
-
-	init: function(){
-		let list = document.querySelector('#list');
-
-		this.el.addEventListener('click',function(obj) {
-
-			list.setAttribute('position','0 200 0'); // Allazw position giati me to "visible=flase" sinexizei na allilepidra o cursor 
-			console.log('asdasd');
-		})
-
-	},
-
-});
+fetch('database.php')
+  .then(response => response.json())
+  .then(data => console.log(data));
 
 
-AFRAME.registerComponent("south", {
-
-	init: function(){
-		let list = document.querySelector('#list');
-
-		this.el.addEventListener('click',function(obj) {
-			let p = obj.srcElement.object3D.position;
-
-			list.setAttribute('rotation','0 180 0');
-
-			let newpX = p.x -2.5;
-			let newpY = p.y + 1;
-			let newpz = p.z;
-			list.setAttribute('position',newpX + " " + newpY + " "+ p.z );
-		})
-
-	},
-
-});
-
-AFRAME.registerComponent("north", {
-
-	init: function(){
-		let list = document.querySelector('#list');
-
-		this.el.addEventListener('click',function(obj) {
-			let p = obj.srcElement.object3D.position;
-
-			list.setAttribute('rotation','0 0 0');
-
-			let newpX = p.x -2.5;
-			let newpY = p.y + 1;
-			let newpz = p.z;
-			list.setAttribute('position',newpX + " " + newpY + " "+ p.z );
-		})
-
-	},
-
-});
-
-AFRAME.registerComponent("east", {
-
-	init: function(){
-		let list = document.querySelector('#list');
-
-		this.el.addEventListener('click',function(obj) {
-			let p = obj.srcElement.object3D.position;
-
-			list.setAttribute('rotation','0 -90 0');
-
-			let newpX = p.x -1;
-			let newpY = p.y + 1;
-			let newpz = p.z;
-			list.setAttribute('position',newpX + " " + newpY + " "+ p.z );
-		})
-
-	},
-
-});
-
-AFRAME.registerComponent("west", {
-
-	init: function(){
-		let list = document.querySelector('#list');
-
-		this.el.addEventListener('click',function(obj) {
-			let p = obj.srcElement.object3D.position;
-
-			list.setAttribute('rotation','0 90 0');
-
-			let newpX = p.x +2.5;
-			let newpY = p.y + 1;
-			let newpz = p.z;
-			list.setAttribute('position',newpX + " " + newpY + " "+ p.z );
-		})
-
-	},
-
-});
-
-AFRAME.registerComponent("test", {
-
-	init: function(){
-	let base = document.querySelector('#modelbase');
-	let p = base.getAttribute('position');
-	let scene = document.querySelector('a-scene');
-
-
-	this.el.addEventListener('mouseenter',function(obj){
-		
-		//let id = obj.path[0].id;
-		 let id =obj.srcElement.id;
-
-		if(id=='cube1'){
-			//console.log(p);
-			let cube = document.createElement('a-entity');
-			cube.setAttribute('geometry',{
-				primitive: 'box'
-			});
-			cube.setAttribute('material', 'color:red');
-			cube.setAttribute('scale', '0.5 0.5 0.5');	
-			cube.setAttribute('position','0 0.6 0');
-			//cube.setAttribute('preview');  Thelw na dosei component gia na kanei rotation
-			base.appendChild(cube);
-			//console.log(cube);
-		}
-
-
-			if(id=='cube2'){
-			//console.log(p);
-			let cube = document.createElement('a-entity');
-			cube.setAttribute('geometry',{
-				primitive: 'box'
-			});
-			cube.setAttribute('material', 'color:green');
-			cube.setAttribute('scale', '0.5 0.5 0.5');			
-			cube.setAttribute('position','0 0.6 0');
-			base.appendChild(cube);
-			//console.log(cube);
-		}
-
-
-		});
-
-
-	},
-
-
-});
 
 
 
@@ -225,6 +72,175 @@ function loadExhibit()
 	// 			showExhibitOnTheMap(data.exhibits[0].gpsCoordinates.lat, data.exhibits[0].gpsCoordinates.long);
 	// 		break;
 	// 	}
-	// }
-	
+	// }	
 }
+
+	let base;
+	let previousBase;
+	let sameBase;
+
+	AFRAME.registerComponent("show-list", {
+
+	init: function(){
+	var myDiv = document.querySelector("#myDiv");
+
+
+		 this.el.addEventListener('click',function(){
+		 		base=this; // Αποθήκευση βάσης που επιλέχθηκε από τον χρήστη
+				myDiv.innerHTML = displayDescription();
+
+				checkBase();
+			 	console.log(base.id); 
+			 	if(sameBase==true){
+			 		if(myDiv.style.visibility==="hidden"){
+			 			myDiv.style.visibility = "visible";
+			 		}
+			 		else{
+			 			myDiv.style.visibility= "hidden";
+			 		}
+				 }
+			 	if(sameBase==false){
+			 		myDiv.style.visibility = "visible";
+			 	}
+
+		 })
+	},
+});
+
+	function checkBase(){
+		if (base==previousBase){		
+			sameBase=true;
+			//console.log("einai idies");
+		}	
+		if(base!=previousBase){	
+			sameBase = false;
+			//console.log("DEN einai idies");
+		}
+		previousBase = base;
+	}
+
+
+	function displayDescription(){
+		var text="";
+		text+= "<ul>";
+		text+= "<h4><i>Διάλεξε ποιο έκθεμα θέλεις να τοποθετηθεί στην βάση</i>: " + base.id + "</h4>";
+		for(var i=0; i<data.exhibits.length; i++){			
+			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> "+data.exhibits[i].title+ "</i>" + ": "; //Με το "this" παίρνω τα στοιχεία του κειμένου που επιλέχθηκε από τον χρήστη, συνεπώς και το έκθεμα που επέλεξε.
+			text+= data.exhibits[i].description+ " <br></li>";
+		}
+		text+= "</ul>";
+		//console.log(text);
+		return text;
+	}
+
+
+function placeExhibit(entity){
+		//console.log(exhibit);
+
+		var id = entity.getAttribute('id');
+
+		// console.log(id);
+		
+
+			if(this.exhibit){
+					var exhibitId = this.exhibit.getAttribute('id');
+					console.log(base.childNodes.length);
+					
+
+				if(this.exhibit.parentNode==base){
+
+
+					if(exhibitId!= id + "." + id){
+
+						if(base.childNodes){
+							for (var i = base.childNodes.length - 1; i >= 0; i--) {
+   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
+      						base.removeChild(base.childNodes[i]);
+    						}
+  						}
+						}
+
+
+	    			var exhibit = document.createElement('a-entity');
+		
+						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
+						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('stored',true);
+						base.appendChild(exhibit);
+						this.exhibit = exhibit;
+
+					}
+
+				}
+				if(this.exhibit.parentNode!=base){
+
+					if(exhibitId!=id + "." + id){
+
+						if(base.childNodes){
+							for (var i = base.childNodes.length - 1; i >= 0; i--) {
+   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
+      						base.removeChild(base.childNodes[i]);
+    						}
+  						}
+						}						
+
+						var exhibit = document.createElement('a-entity');
+		
+						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
+						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('stored',true);
+						base.appendChild(exhibit);
+						this.exhibit = exhibit;
+
+					}
+					else{
+						// this.exhibit.parentNode.removeChild(this.exhibit);
+	    			// this.exhibit = null;
+						if(base.childNodes){
+							for (var i = base.childNodes.length - 1; i >= 0; i--) {
+   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
+      						base.removeChild(base.childNodes[i]);
+    						}
+  						}
+						}
+
+	    			var exhibit = document.createElement('a-entity');
+		
+						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
+						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('stored',true);
+						base.appendChild(exhibit);
+						this.exhibit = exhibit;
+					}
+				}						
+			}
+			else{
+					var exhibit = document.createElement('a-entity');
+		
+					exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
+					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+					exhibit.setAttribute('id',id+"."+id);
+					exhibit.setAttribute('stored',true);
+					base.appendChild(exhibit);
+					this.exhibit = exhibit;
+			}
+
+
+
+}
+
