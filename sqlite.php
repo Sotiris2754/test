@@ -19,7 +19,7 @@ $db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, colorBase TEXT, placed BO
 // $db->exec("INSERT INTO bases (colorBase) VALUES ('Blue')");
  }
 
-// if(ISSET($_POST['action'])&& $_POST['action']=="store"){
+ if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 
 $colorBase = $_POST['colorBase'];
 $exhibit = $_POST['exhibit'];
@@ -35,7 +35,7 @@ $stmt->execute();
 // echo $colorBase;
 // echo $exhibit;
 
-
+}
 
 
 // Retrieve data from the table and output it
