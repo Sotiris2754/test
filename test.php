@@ -2,6 +2,7 @@
 <html>
 <head>
 	<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<title>Test 0.1V</title>
 	<script src="behavior.js"></script>
 	<?php require "sqlite.php" ?>
@@ -60,6 +61,11 @@
 	</a-camera>
 
 </a-scene>
+
+<script>
+
+
+</script>
 </body>
 </html>
 

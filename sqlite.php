@@ -13,11 +13,30 @@ $db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, colorBase TEXT, placed BO
 
 
 //Insert data into the table
-$db->exec("INSERT INTO bases (colorBase) VALUES ('Yellow')");
-$db->exec("INSERT INTO bases (colorBase) VALUES ('Red')");
-$db->exec("INSERT INTO bases (colorBase) VALUES ('Green')");
-$db->exec("INSERT INTO bases (colorBase) VALUES ('Blue')");
-}
+// $db->exec("INSERT INTO bases (colorBase) VALUES ('Yellow')");
+// $db->exec("INSERT INTO bases (colorBase) VALUES ('Red')");
+// $db->exec("INSERT INTO bases (colorBase) VALUES ('Green')");
+// $db->exec("INSERT INTO bases (colorBase) VALUES ('Blue')");
+ }
+
+// if(ISSET($_POST['action'])&& $_POST['action']=="store"){
+
+$colorBase = $_POST['colorBase'];
+$exhibit = $_POST['exhibit'];
+
+$stmt = $db->prepare("INSERT INTO bases (colorBase, exhibit) VALUES (:colorBase, :exhibit)");
+
+$stmt->bindParam(':colorBase', $colorBase);
+$stmt->bindParam(':exhibit', $exhibit);
+
+$stmt->execute();
+
+
+// echo $colorBase;
+// echo $exhibit;
+
+
+
 
 // Retrieve data from the table and output it
 $results = $db->query('SELECT * FROM bases');
@@ -28,3 +47,4 @@ while ($row = $results->fetchArray()) {
 // Close the database connection
 $db->close();
 ?>
+

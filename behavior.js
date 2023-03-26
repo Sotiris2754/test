@@ -8,6 +8,7 @@
 //import data from '/WebCatalog/content.json' assert { type: 'JSON' };
 //const exhibits = require("./WebCatalog/content.json");
 
+
 let data;
 let response;
 
@@ -141,6 +142,8 @@ function placeExhibit(entity){
 		//console.log(exhibit);
 
 		var id = entity.getAttribute('id');
+
+
 		console.log(id);
 
 		// console.log(id);
@@ -177,6 +180,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('stored',true);
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
+						storeData();
 
 					}
 
@@ -204,6 +208,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('stored',true);
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
+						storeData();
 
 					}
 					else{
@@ -228,6 +233,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('stored',true);
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
+						storeData();
 					}
 				}						
 			}
@@ -243,9 +249,27 @@ function placeExhibit(entity){
 					exhibit.setAttribute('stored',true);
 					base.appendChild(exhibit);
 					this.exhibit = exhibit;
+					storeData();
 			}
 
 
+	function storeData(){
+	  $.ajax({
+	  url: "sqlite.php",
+	  method: "POST",
+	  data: { colorBase:base.id, exhibit:data.exhibits[id].title , action:"store"},
+	  success: function(response) {
+	    console.log("Selection stored successfully.");
+	   	console.log(response);
+	  },
+	  error: function(xhr, status, error) {
+	    console.log("An error occurred: " + error);
+	  }
+	});
+}		
 
 }
+
+
+
 
