@@ -9,7 +9,7 @@ $tableExists = $db->querySingle("SELECT name FROM sqlite_master WHERE type='tabl
 
 // Create a table called "mytable" with 3 columns
 if(!$tableExists){
-$db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, colorBase TEXT, placed BOOLEAN DEFAULT 0, exhibit TEXT)');
+$db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, colorBase TEXT, exhibit TEXT)');
 
 
 //Insert data into the table
@@ -41,7 +41,7 @@ $stmt->execute();
 // Retrieve data from the table and output it
 $results = $db->query('SELECT * FROM bases');
 while ($row = $results->fetchArray()) {
-    echo $row['id'] . ': ' . $row['colorBase']. ', ' . $row['placed'] . ', (' . $row['exhibit'] . ')<br>';
+    echo $row['id'] . ': ' . $row['colorBase'] . ', Έκθεμα:(' . $row['exhibit'] . ') ';
 }
 
 // Close the database connection
