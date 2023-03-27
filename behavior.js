@@ -91,6 +91,12 @@ function loadExhibit()
 
 		 this.el.addEventListener('click',function(){
 		 		base=this; // Αποθήκευση βάσης που επιλέχθηκε από τον χρήστη
+		 		
+				//<!-- ...............  -->
+
+				// Εδώ θα τρέχει μια function για να τσεκάρει αν υπάρχει αυτή η βάση στην βάση δεδομένων. Αν όχι, τότε θα κάνει INSERT!
+
+				//<!-- ...............  -->
 				myDiv.innerHTML = displayDescription();
 
 				checkBase();

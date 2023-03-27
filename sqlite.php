@@ -26,32 +26,24 @@ if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 $colorBase = $_POST['colorBase'];
 $exhibit = $_POST['exhibit'];
 
-
-
-
- $stmt = $db->prepare("UPDATE bases SET exhibit = :exhibit WHERE id = $colorBase");
-
-
- $stmt->bindParam(':exhibit', $exhibit);
- $stmt->execute();
-
-
-
-// echo $colorBase;
+$stmt = $db->prepare("UPDATE bases SET exhibit = :exhibit WHERE id = $colorBase");
+$stmt->bindParam(':exhibit', $exhibit);
+$stmt->execute();
 
 }
 
-
-
-// Retrieve data from the table and output it
+// Εμφάνιση του database
 $results = $db->query('SELECT * FROM bases');
 while ($row = $results->fetchArray()) {
     echo $row['id'] . ': ' . $row['colorBase'] . ', Έκθεμα:(' . $row['exhibit'] . ') ';
 
 }
 
-// Close the database connection ΔΕΝ ΞΕΡΩ ΑΝ ΧΡΕΙΑΖΕΤΑΙ ΑΥΤΟ.
+//ΔΕΝ ΞΕΡΩ ΑΝ ΧΡΕΙΑΖΕΤΑΙ ΑΥΤΟ.
 $db->close();
+
+
+//ΠΡΟΗΓΟΥΜΕΝΗ ΜΟΡΦΗ ΚΩΔΙΚΑ ΓΙΑ ΕΙΣΑΓΩΓΗ ROW ΣΤΗΝ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ
 
 //  if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 
