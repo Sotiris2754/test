@@ -44,14 +44,13 @@
 <a-sky color="lightblue"></a-sky>
 
 
+		<a-box id="1" show-list class="clickable" color="yellow" position="-6 0 -5"></a-box> 
 
-		 <a-box id="Κόκκινη βάση" show-list class="clickable" color="red" position="-2 0 -5"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->
+		<a-box id="2" show-list class="clickable" color="red" position="-2 0 -5"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->
 
-		 <a-box id="Πράσινη βάση" show-list class="clickable" color="green" position="1.5 0 -5"></a-box>
-
-		 <a-box id="Κίτρινη βάση" show-list class="clickable" color="yellow" position="-6 0 -5"></a-box> 
-
-		 <a-box id="Μπλε βάση" show-list class="clickable" color="blue" position="5 0 -5"></a-box>
+		<a-box id="3" show-list class="clickable" color="green" position="1.5 0 -5"></a-box>
+		 
+		<a-box id="4" show-list class="clickable" color="blue" position="5 0 -5"></a-box>
 
 			<a-camera id="camera">
 		

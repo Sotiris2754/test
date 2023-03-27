@@ -127,7 +127,7 @@ function loadExhibit()
 	function displayDescription(){
 		var text="";
 		text+= "<ul>";
-		text+= "<h4><i>Διάλεξε ποιο έκθεμα θέλεις να τοποθετηθεί στην βάση</i>: " + base.id + "</h4>";
+		text+= "<h4><i>Διάλεξε ποιο έκθεμα θέλεις να τοποθετηθεί στην βάση</i>: (" + base.id + ")</h4>";
 		for(var i=0; i<data.exhibits.length; i++){			
 			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> "+data.exhibits[i].title+ "</i>" + ": "; //Με το "this" παίρνω τα στοιχεία του κειμένου που επιλέχθηκε από τον χρήστη, συνεπώς και το έκθεμα που επέλεξε.
 			text+= data.exhibits[i].description+ " <br></li>";
@@ -260,7 +260,7 @@ function placeExhibit(entity){
 	  data: { colorBase:base.id, exhibit:data.exhibits[id].title , action:"store"},
 	  success: function(response) {
 	    console.log("Selection stored successfully.");
-	   	console.log(response);
+	   	//console.log(response);
 	  },
 	  error: function(xhr, status, error) {
 	    console.log("An error occurred: " + error);
