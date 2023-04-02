@@ -22,6 +22,7 @@
 
 <script>
 	fetchContent(); // LOAD JSON FILE !!
+	retrieveData();
 
 </script>
 

@@ -1,4 +1,5 @@
 <?php
+
 // Open a new SQLite database file or connect to an existing one
 $db = new SQLite3('test.db');
 
@@ -32,12 +33,31 @@ $stmt->execute();
 
 }
 
-// Εμφάνιση του database
-$results = $db->query('SELECT * FROM bases');
-while ($row = $results->fetchArray()) {
-    echo $row['id'] . ': ' . $row['colorBase'] . ', Έκθεμα:(' . $row['exhibit'] . ') ';
+if(ISSET($_POST['action'])&&$_POST['action']=="load"){
+        
+    $data = array();
+    $sql = "SELECT exhibit FROM bases";
+    $stmt = $db->prepare($sql);
+    $result = $stmt->execute();
+    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+        $data[] = $row['exhibit'];
+    }
 
-}
+    echo $data= json_encode($data);
+
+    $a="asdas1";
+    
+    return $a;
+ }   
+
+
+
+
+//Εμφάνιση του database
+// $results = $db->query('SELECT * FROM bases');
+// while ($row = $results->fetchArray()) {
+//     echo $row['id'] . ': ' . $row['colorBase'] . ', Έκθεμα:(' . $row['exhibit'] . ') ';
+// }
 
 //ΔΕΝ ΞΕΡΩ ΑΝ ΧΡΕΙΑΖΕΤΑΙ ΑΥΤΟ.
 $db->close();

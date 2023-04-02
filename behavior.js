@@ -268,14 +268,28 @@ function placeExhibit(entity){
 	    console.log("Selection stored successfully.");
 	   	//console.log(response);
 	  },
-	  error: function(xhr, status, error) {
-	    console.log("An error occurred: " + error);
-	  }
-	});
-}		
+	  		error: function(xhr, status, error) {
+	    	console.log("An error occurred: " + error);
+	  		}
+		});
+	}
 
 }
 
 
+	function retrieveData(){
+		$.ajax({
+			url:"sqlite.php",
+			mehtod:"POST",
+			data: {action:"load"},
+			success: function(response) {
+	    		console.log("Success Response");
+	    		// response = JSON.parse(response);
+	    		console.log(response);
 
-
+	  		},
+	 		error: function(xhr, status, error) {
+	   		console.log("An error occurred: " + error);
+	  		}		
+		});
+	}
