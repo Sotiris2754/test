@@ -35,20 +35,21 @@ $stmt->execute();
 
 }
 
-if(isset($_POST['action']) && $_POST['action'] == "view"){
+if(ISSET($_POST['action']) && $_POST['action'] == "view"){
         
     $data = array();
-    $sql = "SELECT exhibit,colorBase FROM bases";
+    $sql = "SELECT exhibit FROM bases";
     $stmt = $db->prepare($sql);
     $result = $stmt->execute();
     while ($row = $result->fetchAll(PDO::FETCH_ASSOC)){
         //echo $row['exhibit'] . "<br>";
-        $data[] = $row['exhibit'] . " + " . $row['colorBase'];
+        $data[] = $row['exhibit'];
     }
 
   
     $data= json_encode($data);
     var_dump($data); 
+    return $data;
  } 
 
 
