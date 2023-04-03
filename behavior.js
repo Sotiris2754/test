@@ -284,8 +284,9 @@ function placeExhibit(entity){
 			data: {action:"view"},
 			success: function(response) {
 	    		console.log("Success Response");
-	    		//var responseParse = JSON.parse(response);
-	    		console.log(response);
+	    		//console.log(response);
+	    		var responseParse = JSON.parse(response);
+	    		console.log(responseParse);
 
 	  		},
 	 		error: function(xhr, status, error) {
