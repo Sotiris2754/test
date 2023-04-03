@@ -31,24 +31,26 @@ $stmt = $db->prepare("UPDATE bases SET exhibit = :exhibit WHERE id = $colorBase"
 $stmt->bindParam(':exhibit', $exhibit);
 $stmt->execute();
 
+
+
 }
 
-if(ISSET($_POST['action'])&&$_POST['action']=="load"){
+if(isset($_POST['action']) && $_POST['action'] == "view"){
         
     $data = array();
-    $sql = "SELECT exhibit FROM bases";
+    $sql = "SELECT exhibit,colorBase FROM bases";
     $stmt = $db->prepare($sql);
     $result = $stmt->execute();
-    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-        $data[] = $row['exhibit'];
+    while ($row = $result->fetchAll(PDO::FETCH_ASSOC)){
+        //echo $row['exhibit'] . "<br>";
+        $data[] = $row['exhibit'] . " + " . $row['colorBase'];
     }
 
-    echo $data= json_encode($data);
+  
+    $data= json_encode($data);
+    var_dump($data); 
+ } 
 
-    $a="asdas1";
-    
-    return $a;
- }   
 
 
 

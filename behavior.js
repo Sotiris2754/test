@@ -41,7 +41,6 @@ function loadExhibit()
 		console.log("Data loaded! ") 
 		//console.log(data);
 
-
 	}
 	
 	
@@ -82,6 +81,7 @@ function loadExhibit()
 	let base;
 	let previousBase;
 	let sameBase;
+
 
 	AFRAME.registerComponent("show-list", {
 
@@ -281,10 +281,10 @@ function placeExhibit(entity){
 		$.ajax({
 			url:"sqlite.php",
 			mehtod:"POST",
-			data: {action:"load"},
+			data: {action:"view"},
 			success: function(response) {
 	    		console.log("Success Response");
-	    		// response = JSON.parse(response);
+	    		//var responseParse = JSON.parse(response);
 	    		console.log(response);
 
 	  		},
