@@ -288,9 +288,9 @@ function placeExhibit(entity){
 	    		console.log(json);
 	    		for (var i=0; i<4; i++){
 	    			base = document.getElementById(i);
-	    			console.log(base);
+	    			//console.log(base);
 	    			for(var y=0; y<json.length; y++){
-	    				
+	    				//create elements from the json data
 	    			}
 
 	    		}
