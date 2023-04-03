@@ -286,6 +286,14 @@ function placeExhibit(entity){
 	    		console.log("Success Response");
 	    		var json = JSON.parse(json);
 	    		console.log(json);
+	    		for (var i=0; i<4; i++){
+	    			base = document.getElementById(i);
+	    			console.log(base);
+	    			for(var y=0; y<json.length; y++){
+	    				
+	    			}
+
+	    		}
 
 	  		},
 	 		error: function(xhr, status, error) {
