@@ -35,7 +35,7 @@ $stmt->execute();
 
 }
 
-//if(ISSET($_POST['action']) && $_POST['action'] == "view"){
+if(ISSET($_POST['action']) && $_POST['action'] == "view"){
         
     $data = array();
     $sql = "SELECT exhibit FROM bases";
@@ -50,7 +50,7 @@ $stmt->execute();
     $json = json_encode($data);
     //var_dump($json);
     echo $json; 
-   //}
+   }
 
 
 

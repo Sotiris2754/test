@@ -280,13 +280,12 @@ function placeExhibit(entity){
 	function retrieveData(){
 		$.ajax({
 			url:"sqlite.php",
-			mehtod:"POST",
+			method:"POST",
 			data: {action:"view"},
-			success: function(response) {
+			success: function(json) {
 	    		console.log("Success Response");
-	    		//console.log(response);
-	    		var responseParse = JSON.parse(response);
-	    		console.log(responseParse);
+	    		var json = JSON.parse(json);
+	    		console.log(json);
 
 	  		},
 	 		error: function(xhr, status, error) {
