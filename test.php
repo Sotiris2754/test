@@ -59,6 +59,7 @@
 			</a-entity>
 		
 	</a-camera>
+<!-- <a-entity gltf-model="#building" scale="2 2 2" position="-15 -1 17" rotation="0 90 0"></a-entity> -->
 
 </a-scene>
 

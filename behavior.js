@@ -139,7 +139,7 @@ function loadExhibit()
 			text+= data.exhibits[i].description+ " <br></li>";
 		}
 		text+= "</ul>";
-		console.log(text);
+		//console.log(text);
 		return text;
 	}
 
@@ -244,6 +244,16 @@ function placeExhibit(entity){
 				}						
 			}
 			else{
+					
+						if(base.childNodes){
+							for (var i = base.childNodes.length - 1; i >= 0; i--) {
+   				 				if (base.childNodes[i].tagName === 'A-ENTITY') {
+      							base.removeChild(base.childNodes[i]);
+    							}
+  							}
+						}					
+
+
 					var exhibit = document.createElement('a-entity');
 		
 					exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
@@ -292,26 +302,34 @@ function placeExhibit(entity){
 				}
 				else{
 
-		    		for (var i=0; i<4; i++){
+		    		for (var i=1; i<=4; i++){
 		    			base = document.getElementById(i);
-		    			console.log(data.exhibits[i]);
 
-		    				// var exhibit = document.createElement('a-entity');
-							
-							// exhibit.setAttribute('position',0 +" " + 1 +" " + 0);
-							// exhibit.setAttribute('gltf-model',url'(data.exhibits[json[i]].pathfile)');
-							// exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
-							// exhibit.setAttribute('id',json[i]+"."+json[i]);
-							// exhibit.setAttribute('stored',true);
-							// base.appendChild(exhibit);
-							// storeData();
+							if(base.childNodes){
+							for (var k = base.childNodes.length -1; k >= 0; k--) {
+								console.log(base.childNodes.length);
+   				 			if (base.childNodes[k].tagName === 'A-ENTITY') {
+      						base.removeChild(base.childNodes[k]);
+    						}
+  						}
+						}
+		    			
 
-		    			//for(var k=0; k<json.length; k++){
-		    				//create elements from the json data
+		    				var exhibit = document.createElement('a-entity');
+							exhibit.setAttribute('position',0 +" " + 1 +" " + 0);
+							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i-1]].pathfile})`);
+							exhibit.setAttribute('scale',data.exhibits[json[i-1]].scale);
+							exhibit.setAttribute('id',json[i-1]+"."+json[i-1]);
+							//exhibit.setAttribute('stored',true);
+							base.appendChild(exhibit);
 
-		    			//}	    			
-					}  		
+
+   			
+					}
+					
+
 	    		}
+
 	  		},
 	 		error: function(xhr, status, error) {
 	   		console.log("An error occurred: " + error);
