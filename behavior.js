@@ -273,7 +273,7 @@ function placeExhibit(entity){
 	  $.ajax({
 	  url: "sqlite.php",
 	  method: "POST",
-	  data: { colorBase:base.id, exhibit:data.exhibits[id].id , action:"store"},
+	  data: { id:base.id, exhibit:data.exhibits[id].id , action:"store"},
 	  success: function(response) {
 	    console.log("Selection stored successfully.");
 	   	//console.log(response);
