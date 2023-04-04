@@ -60,13 +60,13 @@ if(ISSET($_POST['action']) && $_POST['action'] == "view"){
     echo $json; 
 }
 
-//if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
+if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
     $result = $db->query('SELECT COUNT(*) AS numInserts FROM bases');
     $row = $result->fetchArray(SQLITE3_ASSOC);
     $inserts = $row['numInserts'];
 
     echo $inserts;
-//}
+}
 
 
 
