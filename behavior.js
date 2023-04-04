@@ -44,7 +44,6 @@ function loadExhibit()
 	let base;
 	let previousBase;
 	let sameBase;
-	let selection;
 
 
 	AFRAME.registerComponent("show-list", {
@@ -203,9 +202,6 @@ function placeExhibit(entity){
 					this.exhibit = exhibit;
 					storeData();
 			}
-
-}
-
 	function storeData(){
 	  $.ajax({
 	  url: "sqlite.php",
@@ -220,6 +216,9 @@ function placeExhibit(entity){
 	  		}
 		});
 	}
+}
+
+
 
 	function retrieveData(){
 		$.ajax({
