@@ -10,20 +10,23 @@ $tableExists = $db->querySingle("SELECT name FROM sqlite_master WHERE type='tabl
 
 // Create a table called "bases" with 3 columns
 if(!$tableExists){
-$db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, colorBase TEXT, exhibit NUMBER)');
+$db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, exhibit NUMBER)');
 
 
 //Insert data into the table
-$db->exec("INSERT INTO bases (colorBase) VALUES ('Yellow')");
-$db->exec("INSERT INTO bases (colorBase) VALUES ('Red')");
-$db->exec("INSERT INTO bases (colorBase) VALUES ('Green')");
-$db->exec("INSERT INTO bases (colorBase) VALUES ('Blue')");
+
+//Δεν χρειάζεται άυτή η στήλη. Χρησιμοποιώ το id ως insert για κάθε βάση και την στήλη "exhibit" για το έκθεμα του
+// $db->exec("INSERT INTO bases (base) VALUES ('Yellow')");
+// $db->exec("INSERT INTO bases (base) VALUES ('Red')");
+// $db->exec("INSERT INTO bases (base) VALUES ('Green')");
+// $db->exec("INSERT INTO bases (base) VALUES ('Blue')");
+
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 
- }
+}
 
 
 if(ISSET($_POST['action'])&& $_POST['action']=="store"){
@@ -55,7 +58,15 @@ if(ISSET($_POST['action']) && $_POST['action'] == "view"){
     $json = json_encode($data);
     //var_dump($json);
     echo $json; 
-   }
+}
+
+//if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
+    $result = $db->query('SELECT COUNT(*) AS numInserts FROM bases');
+    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $inserts = $row['numInserts'];
+
+    echo $inserts;
+//}
 
 
 
@@ -64,7 +75,7 @@ if(ISSET($_POST['action']) && $_POST['action'] == "view"){
 //Εμφάνιση του database
 // $results = $db->query('SELECT * FROM bases');
 // while ($row = $results->fetchArray()) {
-//     echo $row['id'] . ': ' . $row['colorBase'] . ', Έκθεμα:(' . $row['exhibit'] . ') ';
+//     echo $row['id'] . ': ' . $row['base'] . ', Έκθεμα:(' . $row['exhibit'] . ') ';
 // }
 
 //ΔΕΝ ΞΕΡΩ ΑΝ ΧΡΕΙΑΖΕΤΑΙ ΑΥΤΟ.
@@ -78,7 +89,7 @@ $db->close();
 // $colorBase = $_POST['colorBase'];
 // $exhibit = $_POST['exhibit'];
 
-// $stmt = $db->prepare("INSERT INTO bases (colorBase, exhibit) VALUES (:colorBase, :exhibit)");
+// $stmt = $db->prepare("INSERT INTO bases (base, exhibit) VALUES (:colorBase, :exhibit)");
 // $stmt->bindParam(':colorBase', $colorBase);
 // $stmt->bindParam(':exhibit', $exhibit);
 // $stmt->execute();
