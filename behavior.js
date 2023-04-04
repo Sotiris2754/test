@@ -138,7 +138,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
-						exhibit.setAttribute('stored',true);
+
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
@@ -159,7 +159,6 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
-						exhibit.setAttribute('stored',true);
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
@@ -178,7 +177,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
-						exhibit.setAttribute('stored',true);
+
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
@@ -197,7 +196,6 @@ function placeExhibit(entity){
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',id+"."+id);
-					exhibit.setAttribute('stored',true);
 					base.appendChild(exhibit);
 					this.exhibit = exhibit;
 					storeData();
