@@ -29,8 +29,6 @@ function loadExhibit()
 {
 	//console.log(response);
 	//console.log(data);
-	
-	
 	if (response == null)
 	{
 		console.log("Not ready yet!");
@@ -40,42 +38,7 @@ function loadExhibit()
 	{
 		console.log("Data loaded! ") 
 		//console.log(data);
-
 	}
-	
-	
-	
-	// let fields = document.getElementsByClassName("vcorfu-content");
-	
-	// for (let i = 0; i < fields.length; i++)
-	// {
-	// 	console.log(fields[i].getAttribute('data-field'));
-		
-	// 	switch (fields[i].getAttribute('data-field'))
-	// 	{
-	// 		case "title":
-	// 			fields[i].innerHTML = data.exhibits[0].title[parameters.language];
-	// 		break;
-			
-	// 		case "text":
-	// 			fields[i].innerHTML = data.exhibits[0].text[parameters.language];
-	// 		break;
-			
-	// 		case "3d-model":
-			
-	// 		break;
-			
-	// 		case "images":
-			
-	// 		break;
-			
-	// 		case "map-field":
-	// 			//fields[i].innerHTML += data.exhibits[0].gpsCoordinates.lat + ", " + data.exhibits[0].gpsCoordinates.long;
-	// 			fields[i].innerHTML = "";
-	// 			showExhibitOnTheMap(data.exhibits[0].gpsCoordinates.lat, data.exhibits[0].gpsCoordinates.long);
-	// 		break;
-	// 	}
-	// }	
 }
 
 	let base;
@@ -165,15 +128,7 @@ function placeExhibit(entity){
 
 
 					if(exhibitId!= id + "." + id){
-
-						if(base.childNodes){
-							for (var i = base.childNodes.length - 1; i >= 0; i--) {
-   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
-      						base.removeChild(base.childNodes[i]);
-    						}
-  						}
-						}
-
+						removeChild(base);
 
 	    			var exhibit = document.createElement('a-entity');
 		
@@ -194,14 +149,7 @@ function placeExhibit(entity){
 				if(this.exhibit.parentNode!=base){
 
 					if(exhibitId!=id + "." + id){
-
-						if(base.childNodes){
-							for (var i = base.childNodes.length - 1; i >= 0; i--) {
-   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
-      						base.removeChild(base.childNodes[i]);
-    						}
-  						}
-						}						
+						removeChild(base);						
 
 						var exhibit = document.createElement('a-entity');
 		
@@ -219,14 +167,8 @@ function placeExhibit(entity){
 					}
 					else{
 						// this.exhibit.parentNode.removeChild(this.exhibit);
-	    			// this.exhibit = null;
-						if(base.childNodes){
-							for (var i = base.childNodes.length - 1; i >= 0; i--) {
-   				 			if (base.childNodes[i].tagName === 'A-ENTITY') {
-      						base.removeChild(base.childNodes[i]);
-    						}
-  						}
-						}
+	    				// this.exhibit = null;
+						removeChild(base);
 
 	    				var exhibit = document.createElement('a-entity');
 		
@@ -244,14 +186,7 @@ function placeExhibit(entity){
 				}						
 			}
 			else{
-					
-						if(base.childNodes){
-							for (var i = base.childNodes.length - 1; i >= 0; i--) {
-   				 				if (base.childNodes[i].tagName === 'A-ENTITY') {
-      							base.removeChild(base.childNodes[i]);
-    							}
-  							}
-						}					
+						removeChild(base);				
 
 
 					var exhibit = document.createElement('a-entity');
@@ -297,21 +232,13 @@ function placeExhibit(entity){
 				if (data == null)
 				{
 					console.log("2nd Not ready yet!");
-					setTimeout(retrieveData(),1000);
+					setTimeout(retrieveData(),1);
 				}
 				else{
 
 		    		for (var i=1; i<=4; i++){
 		    			base = document.getElementById(i);
-
-							if(base.childNodes){
-							for (var k = base.childNodes.length -1; k >= 0; k--) {
-								console.log(base.childNodes.length);
-   				 			if (base.childNodes[k].tagName === 'A-ENTITY') {
-      						base.removeChild(base.childNodes[k]);
-    						}
-  						}
-						}
+		    			removeChild();
 						//console.log(json[i]);
 						if(json[i-1]!=null){
 
@@ -336,4 +263,17 @@ function placeExhibit(entity){
 	   		console.log("An error occurred: " + error);
 	  		}		
 		});
+		
 	}
+
+function removeChild(){
+		//console.log(base);	
+		if(base.childNodes){
+			for (var k = base.childNodes.length -1; k >= 0; k--) {
+				console.log(base.childNodes.length);
+   				if (base.childNodes[k].tagName === 'A-ENTITY') {
+      				base.removeChild(base.childNodes[k]);
+    			}	
+			}
+		}
+}
