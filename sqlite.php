@@ -18,6 +18,11 @@ $db->exec("INSERT INTO bases (colorBase) VALUES ('Yellow')");
 $db->exec("INSERT INTO bases (colorBase) VALUES ('Red')");
 $db->exec("INSERT INTO bases (colorBase) VALUES ('Green')");
 $db->exec("INSERT INTO bases (colorBase) VALUES ('Blue')");
+$db->exec("INSERT INTO bases (exhibit) VALUES (null)");
+$db->exec("INSERT INTO bases (exhibit) VALUES (null)");
+$db->exec("INSERT INTO bases (exhibit) VALUES (null)");
+$db->exec("INSERT INTO bases (exhibit) VALUES (null)");
+
  }
 
 

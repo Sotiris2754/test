@@ -283,7 +283,6 @@ function placeExhibit(entity){
 	  		}
 		});
 	}
-
 }
 
 	function retrieveData(){
@@ -313,15 +312,17 @@ function placeExhibit(entity){
     						}
   						}
 						}
-		    			
+						//console.log(json[i]);
+						if(json[i-1]!=null){
 
 		    				var exhibit = document.createElement('a-entity');
 							exhibit.setAttribute('position',0 +" " + 1 +" " + 0);
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i-1]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i-1]].scale);
 							exhibit.setAttribute('id',json[i-1]+"."+json[i-1]);
-							//exhibit.setAttribute('stored',true);
-							base.appendChild(exhibit);
+							base.appendChild(exhibit);							
+						}
+
 
 
    			
