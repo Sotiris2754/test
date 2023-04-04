@@ -44,6 +44,7 @@ function loadExhibit()
 	let base;
 	let previousBase;
 	let sameBase;
+	let selection;
 
 
 	AFRAME.registerComponent("show-list", {
@@ -203,6 +204,7 @@ function placeExhibit(entity){
 					storeData();
 			}
 
+}
 
 	function storeData(){
 	  $.ajax({
@@ -218,7 +220,6 @@ function placeExhibit(entity){
 	  		}
 		});
 	}
-}
 
 	function retrieveData(){
 		$.ajax({
@@ -249,15 +250,8 @@ function placeExhibit(entity){
 							exhibit.setAttribute('id',json[i-1]+"."+json[i-1]);
 							base.appendChild(exhibit);							
 						}
-
-
-
-   			
-					}
-					
-
+					}					
 	    		}
-
 	  		},
 	 		error: function(xhr, status, error) {
 	   		console.log("An error occurred: " + error);
@@ -270,7 +264,6 @@ function removeChild(){
 		//console.log(base);	
 		if(base.childNodes){
 			for (var k = base.childNodes.length -1; k >= 0; k--) {
-				console.log(base.childNodes.length);
    				if (base.childNodes[k].tagName === 'A-ENTITY') {
       				base.removeChild(base.childNodes[k]);
     			}	
