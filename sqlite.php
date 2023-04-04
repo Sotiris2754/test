@@ -10,7 +10,7 @@ $tableExists = $db->querySingle("SELECT name FROM sqlite_master WHERE type='tabl
 
 // Create a table called "mytable" with 3 columns
 if(!$tableExists){
-$db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, colorBase TEXT, exhibit TEXT)');
+$db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, colorBase TEXT, exhibit NUMBER)');
 
 
 //Insert data into the table

@@ -139,7 +139,7 @@ function loadExhibit()
 			text+= data.exhibits[i].description+ " <br></li>";
 		}
 		text+= "</ul>";
-		//console.log(text);
+		console.log(text);
 		return text;
 	}
 
@@ -228,7 +228,7 @@ function placeExhibit(entity){
   						}
 						}
 
-	    			var exhibit = document.createElement('a-entity');
+	    				var exhibit = document.createElement('a-entity');
 		
 						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
 						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
@@ -263,7 +263,7 @@ function placeExhibit(entity){
 	  $.ajax({
 	  url: "sqlite.php",
 	  method: "POST",
-	  data: { colorBase:base.id, exhibit:data.exhibits[id].title , action:"store"},
+	  data: { colorBase:base.id, exhibit:data.exhibits[id].id , action:"store"},
 	  success: function(response) {
 	    console.log("Selection stored successfully.");
 	   	//console.log(response);
@@ -276,7 +276,6 @@ function placeExhibit(entity){
 
 }
 
-
 	function retrieveData(){
 		$.ajax({
 			url:"sqlite.php",
@@ -285,16 +284,34 @@ function placeExhibit(entity){
 			success: function(json) {
 	    		console.log("Success Response");
 	    		var json = JSON.parse(json);
-	    		console.log(json);
-	    		for (var i=0; i<4; i++){
-	    			base = document.getElementById(i);
-	    			//console.log(base);
-	    			for(var y=0; y<json.length; y++){
-	    				//create elements from the json data
-	    			}
+	    		//console.log(json);
+				if (data == null)
+				{
+					console.log("2nd Not ready yet!");
+					setTimeout(retrieveData(),1000);
+				}
+				else{
 
+		    		for (var i=0; i<4; i++){
+		    			base = document.getElementById(i);
+		    			console.log(data.exhibits[i]);
+
+		    				// var exhibit = document.createElement('a-entity');
+							
+							// exhibit.setAttribute('position',0 +" " + 1 +" " + 0);
+							// exhibit.setAttribute('gltf-model',url'(data.exhibits[json[i]].pathfile)');
+							// exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
+							// exhibit.setAttribute('id',json[i]+"."+json[i]);
+							// exhibit.setAttribute('stored',true);
+							// base.appendChild(exhibit);
+							// storeData();
+
+		    			//for(var k=0; k<json.length; k++){
+		    				//create elements from the json data
+
+		    			//}	    			
+					}  		
 	    		}
-
 	  		},
 	 		error: function(xhr, status, error) {
 	   		console.log("An error occurred: " + error);
