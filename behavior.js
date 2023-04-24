@@ -111,21 +111,14 @@ function placeExhibit(entity){
 		//console.log(exhibit);
 
 		var id = entity.getAttribute('id');
-
-
 		console.log(id);
-
-		// console.log(id);
-		
+		// console.log(id);		
 
 			if(this.exhibit){
 					var exhibitId = this.exhibit.getAttribute('id');
 					//console.log(base.childNodes.length);
-					
-					
 
 				if(this.exhibit.parentNode==base){
-
 
 					if(exhibitId!= id + "." + id){
 						removeChild(base);
