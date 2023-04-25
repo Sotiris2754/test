@@ -246,7 +246,7 @@ function placeExhibit(entity){
 	}
 
 function removeChild(){
-		//console.log(base);	
+		if(base!=null){
 		if(base.childNodes){
 			for (var k = base.childNodes.length -1; k >= 0; k--) {
    				if (base.childNodes[k].tagName === 'A-ENTITY') {
@@ -254,6 +254,7 @@ function removeChild(){
     			}	
 			}
 		}
+	}
 }
 
 // function countBases(){
@@ -270,3 +271,5 @@ function removeChild(){
 // 	  	}
 // 	});
 // }
+
+

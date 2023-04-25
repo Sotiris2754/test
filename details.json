@@ -198,11 +198,38 @@
 
 	],
 
-	"stand":
+	"stand":[
 		{
-			"id":0,
+			"id":1,
 			"pathfile":"museum_case/scene.gltf",
-			"":""
+			"position":"-16 -.5 -2.5"
+		},
+		{
+			"id":2,
+			"pathfile":"museum_case/scene.gltf",
+			"position":"-2 -.5 -7"
+		},
+		{
+			"id":3,
+			"pathfile":"museum_case/scene.gltf",
+			"position":"1.2 -.5 -7"
+		},
+		{
+			"id":4,
+			"pathfile":"museum_case/scene.gltf",
+			"position":"14.5 -.5 -2.5"
+		},
+		{
+			"id":5,
+			"pathfile":"museum_case/scene.gltf",
+			"position":"-2 -.5 -10"
+		},
+		{
+			"id":6,
+			"pathfile":"museum_case/scene.gltf",
+			"position":"1.2 -.5 -10"
 		}
+
+	]
 
 }
