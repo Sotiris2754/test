@@ -52,9 +52,7 @@
 <body onload="loadExhibit()" ></body>
 
 	
-		  <div id="myDiv" style="visibility: hidden;" >
-
-		  </div> 
+	<div id="myDiv" style="visibility: hidden;"></div> <!--ΑΝ ΜΕΤΑΚΙΝΗΣΩ ΤΟ DIV ΔΕΝ ΘΑ ΛΕΙΤΟΥΡΓΕΙ ΣΩΣΤΑ Η ΕΜΦΑΝΙΣΗ ΤΗΣ ΛΙΣΤΑΣ -->
 	
 
  <a-scene id="scene">
@@ -69,9 +67,9 @@
 
 <a-sky color="lightblue"></a-sky>
 
-<a-box class="clickable" show-list onclick="" color="green" position="1 0 -2"></a-box>
+<a-box class="clickable" onclick="addBases()" color="green" position="1 0 -2"></a-box>
 
-<a-box class="clickable" color="red" position="-1 0 -2"></a-box>
+<a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
 
 	<a-entity id="1" show-list gltf-model="#stand" class="clickable" position="-16 -.5 -2.5" rotation="0 -90 0"></a-entity>
 
