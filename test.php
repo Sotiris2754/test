@@ -73,7 +73,7 @@
 
 	<a-entity id="2" show-list gltf-model="#stand" class="clickable" position="-2 -.5 -7" rotation="0 -90 0"></a-entity>
 
-	<a-entity id="3" show-list gltf-model="#stand" class="clickable" position="1 -.5 -7" rotation="0 90 0"></a-entity>
+	<a-entity id="3" show-list gltf-model="#stand" class="clickable" position="1.2 -.5 -7" rotation="0 90 0"></a-entity>
 
 	<a-entity id="4" show-list gltf-model="#stand" class="clickable" position="14.5 -.5 -2.5" rotation="0 90 0"></a-entity>
 
