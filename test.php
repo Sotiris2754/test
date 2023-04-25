@@ -45,6 +45,7 @@
 <a-sky color="lightblue"></a-sky>
 
 
+
 		<a-box id="1" show-list class="clickable" color="yellow" position="-6 0 -5"></a-box> 
 
 		<a-box id="2" show-list class="clickable" color="red" position="-2 0 -5"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->

@@ -50,8 +50,6 @@ function loadExhibit()
 
 	init: function(){
 	var myDiv = document.querySelector("#myDiv");
-
-
 		 this.el.addEventListener('click',function(){
 		 		base=this; // Αποθήκευση βάσης που επιλέχθηκε από τον χρήστη
 		 		
@@ -80,19 +78,6 @@ function loadExhibit()
 	},
 });
 
-	function checkBase(){
-		if (base==previousBase){		
-			sameBase=true;
-			//console.log("einai idies");
-		}	
-		if(base!=previousBase){	
-			sameBase = false;
-			//console.log("DEN einai idies");
-		}
-		previousBase = base;
-	}
-
-
 	function displayDescription(){
 		var text="";
 		text+= "<ul>";
@@ -104,6 +89,18 @@ function loadExhibit()
 		text+= "</ul>";
 		//console.log(text);
 		return text;
+	}
+
+	function checkBase(){
+		if (base==previousBase){		
+			sameBase=true;
+			//console.log("einai idies");
+		}	
+		if(base!=previousBase){	
+			sameBase = false;
+			//console.log("DEN einai idies");
+		}
+		previousBase = base;
 	}
 
 
