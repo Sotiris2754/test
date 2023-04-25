@@ -231,11 +231,11 @@ function placeExhibit(entity){
 						if(json[i-1]!=null){
 
 		    				var exhibit = document.createElement('a-entity');
-							exhibit.setAttribute('position',0 +" " + 1 +" " + 0);
+							exhibit.setAttribute('position',0 +" " + 1.5 +" " + 0);
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i-1]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i-1]].scale);
 							exhibit.setAttribute('id',json[i-1]+"."+json[i-1]);
-							base.appendChild(exhibit);							
+							base.appendChild(exhibit);
 						}
 					}					
 	    		}

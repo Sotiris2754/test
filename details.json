@@ -18,7 +18,7 @@
 		"pathfile":"human_scan/model.gltf",
 		"description":"report",
 		"type":"3d model",
-		"scale":"0.01 0.01 0.01"
+		"scale":"0.005 0.005 0.005"
 		
 	},
 		{
@@ -42,6 +42,13 @@
 		
 	}
 
-	]
+	],
+
+	"stand":
+		{
+			"id":0,
+			"pathfile":"museum_case/scene.gltf",
+			"":""
+		}
 
 }

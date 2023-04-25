@@ -40,20 +40,28 @@
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
+					<a-asset-itme id="stand" src="museum_case/scene.gltf"></a-asset-itme>
 
 				</a-assets>
 
 
 <a-sky color="lightblue"></a-sky>
 
+	<a-entity id="1" show-list gltf-model="#stand" class="clickable" position="-16 -.5 -2.5" rotation="0 -90 0"></a-entity>
 
-		<a-box id="1" show-list class="clickable" color="yellow" position="-16 0 -2.5" rotation="0 -90 0"></a-box> 
+	<a-entity id="2" show-list gltf-model="#stand" class="clickable" position="-2 -.5 -7" rotation="0 -90 0"></a-entity>
 
-		<a-box id="2" show-list class="clickable" color="red" position="-2 0 -7" rotation="0 -90 0"></a-box> <!--Έχω βάλει ελληνικά id και με κενό!!! -->
+	<a-entity id="3" show-list gltf-model="#stand" class="clickable" position="1 -.5 -7" rotation="0 90 0"></a-entity>
 
-		<a-box id="3" show-list class="clickable" color="green" position="1 0 -7" rotation="0 90 0"></a-box>
+	<a-entity id="4" show-list gltf-model="#stand" class="clickable" position="14.5 -.5 -2.5" rotation="0 90 0"></a-entity>
+
+		<!-- <a-box id="1" show-list class="clickable" color="yellow" position="-16 0 -2.5" rotation="0 -90 0"></a-box> 
+
+		<a-box id="2" show-list onclick="myFunction()" class="clickable" color="red" position="-2 0 -7" rotation="0 -90 0"></a-box> Έχω βάλει ελληνικά id και με κενό!!! 
+
+		 <a-box id="3" show-list class="clickable" color="green" position="1 0 -7" rotation="0 90 0"></a-box> 
 		 
-		<a-box id="4" show-list class="clickable" color="blue" position="14.5 0 -2.5" rotation="0 90 0"></a-box>
+		 <a-box id="4" show-list class="clickable" color="blue" position="14.5 0 -2.5" rotation="0 90 0"></a-box> -->
 
 	<a-camera id="camera">
 		
@@ -66,6 +74,9 @@
 </a-scene> 
 
 <script>
+	function myFunction(){
+		console.log(data.stand.pathfile);
+	}
 
 </script>
 </body>
