@@ -9,7 +9,6 @@
 		"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
 		"type":"3d model"
 		
-
 	},
 
 		{
@@ -198,7 +197,7 @@
 
 	],
 
-	"stand":[
+	"stands":[
 		{
 			"id":1,
 			"pathfile":"museum_case/scene.gltf",
@@ -222,12 +221,14 @@
 		{
 			"id":5,
 			"pathfile":"museum_case/scene.gltf",
-			"position":"-2 -.5 -10"
+			"position":"-2 -.5 -10",
+			"rotation":"0 -90 0"
 		},
 		{
 			"id":6,
 			"pathfile":"museum_case/scene.gltf",
-			"position":"1.2 -.5 -10"
+			"position":"1.2 -.5 -10",
+			"rotation":"0 90 0"
 		}
 
 	]
