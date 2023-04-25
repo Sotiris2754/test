@@ -201,22 +201,26 @@
 		{
 			"id":1,
 			"pathfile":"museum_case/scene.gltf",
-			"position":"-16 -.5 -2.5"
+			"position":"-16 -.5 -2.5",
+			"rotation":"0 -90 0"
 		},
 		{
 			"id":2,
 			"pathfile":"museum_case/scene.gltf",
-			"position":"-2 -.5 -7"
+			"position":"-2 -.5 -7",
+			"rotation":"0 -90 0"
 		},
 		{
 			"id":3,
 			"pathfile":"museum_case/scene.gltf",
-			"position":"1.2 -.5 -7"
+			"position":"1.2 -.5 -7",
+			"rotation":"0 90 0"
 		},
 		{
 			"id":4,
 			"pathfile":"museum_case/scene.gltf",
-			"position":"14.5 -.5 -2.5"
+			"position":"14.5 -.5 -2.5",
+			"rotation":"0 90 0"
 		},
 		{
 			"id":5,

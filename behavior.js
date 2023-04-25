@@ -44,6 +44,7 @@ function loadExhibit()
 	let base;
 	let previousBase;
 	let sameBase;
+	let count =4;
 
 
 	AFRAME.registerComponent("show-list", {
@@ -257,6 +258,32 @@ function removeChild(){
 	}
 }
 
+function addBases(){
+	if(data.stands.length>count){
+		var stand = document.createElement('a-entity');
+		stand.setAttribute('id',data.stands[count].id);
+		stand.setAttribute('show-list','show-list');
+		stand.setAttribute('position',data.stands[count].position);
+		stand.setAttribute('gltf-model',`url(${data.stands[count].pathfile})`);
+		stand.setAttribute('rotation',data.stands[count].rotation);
+		stand.setAttribute('class','clickable');
+		scene.appendChild(stand);
+		count++;
+	}
+	else
+		return;
+}
+
+function removeBases(){
+	if(count>0){
+		var stand = document.getElementById(count);
+		scene.removeChild(stand);
+		count--;
+	}
+	
+}
+
+
 // function countBases(){
 // 	$.ajax({
 // 		url:"sqlite.php",
@@ -271,5 +298,3 @@ function removeChild(){
 // 	  	}
 // 	});
 // }
-
-
