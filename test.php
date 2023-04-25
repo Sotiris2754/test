@@ -11,12 +11,34 @@
 
 <style>
 	#myDiv{
-  position: relative;
+
+  position: absolute;
 /*  background-color: black;*/
-  top:100px;
+  top:50px;
   z-index: 5;
   color: black;
 /*  text-align: center;*/
+	}
+	ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+	}
+	h4{
+	display:table;
+	padding: 5px;
+  margin: 5px 0;
+  background-color: #FA6B4F;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .7);
+	}
+	li{
+	display:list-item;
+	padding: 2px;
+  margin: 2px 0;
+  background-color: #F3C5BC60;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .7);
 	}
 </style>
 

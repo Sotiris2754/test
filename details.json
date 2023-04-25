@@ -6,7 +6,7 @@
 		"id":0,
 		"title":"Female head",
 		"pathfile":"female_head/scene.gltf",
-		"description":"Dokimi 3d modelou",
+		"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
 		"type":"3d model"
 		
 
@@ -16,7 +16,7 @@
 		"id":1,
 		"title":"Irthe to reuma",
 		"pathfile":"human_scan/model.gltf",
-		"description":"report",
+		"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
 		"type":"3d model",
 		"scale":"0.005 0.005 0.005"
 		
@@ -25,7 +25,7 @@
 		"id":2,
 		"title":"Prwto potiri",
 		"pathfile":"chalice/scene.gltf",
-		"description":"Anatolitiko potiri, vazo",
+		"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
 		"type":"3d model",
 		"scale":"4 4 4"
 		
@@ -36,11 +36,165 @@
 		"id":3,
 		"title":"Deutero vazaki",
 		"pathfile":"chalice2/scene.gltf",
-		"description":"To vazaki auto einai oti einai kai kai kai kai kai.",
+		"description":"Ένα βάζω από τα βάθυ της Ρωσίας",
 		"type":"3d model",
 		"scale":"4 4 4"
 		
+	},
+
+	{
+		"id":4,
+		"title":"Trito vazaki",
+		"pathfile":"chalice3/scene.gltf",
+		"description":"Ένα βάζω από τα βάθυ της Ινδίας.",
+		"type":"3d model",
+		"scale":"0.005 0.005 0.005"
+	},
+	{
+		"id":5,
+		"title":"Female head",
+		"pathfile":"female_head/scene.gltf",
+		"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
+		"type":"3d model"
+		
+
+	},
+
+		{
+		"id":6,
+		"title":"Irthe to reuma",
+		"pathfile":"human_scan/model.gltf",
+		"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
+		"type":"3d model",
+		"scale":"0.005 0.005 0.005"
+		
+	},
+		{
+		"id":7,
+		"title":"Prwto potiri",
+		"pathfile":"chalice/scene.gltf",
+		"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
+		"type":"3d model",
+		"scale":"4 4 4"
+		
+
+	},
+
+		{
+		"id":8,
+		"title":"Deutero vazaki",
+		"pathfile":"chalice2/scene.gltf",
+		"description":"Ένα βάζω από τα βάθυ της Ρωσίας",
+		"type":"3d model",
+		"scale":"4 4 4"
+		
+	},
+
+	{
+		"id":9,
+		"title":"Trito vazaki",
+		"pathfile":"chalice3/scene.gltf",
+		"description":"Ένα βάζω από τα βάθυ της Ινδίας.",
+		"type":"3d model",
+		"scale":"0.005 0.005 0.005"
+	},
+	{
+		"id":10,
+		"title":"Female head",
+		"pathfile":"female_head/scene.gltf",
+		"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
+		"type":"3d model"
+		
+
+	},
+
+		{
+		"id":11,
+		"title":"Irthe to reuma",
+		"pathfile":"human_scan/model.gltf",
+		"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
+		"type":"3d model",
+		"scale":"0.005 0.005 0.005"
+		
+	},
+		{
+		"id":12,
+		"title":"Prwto potiri",
+		"pathfile":"chalice/scene.gltf",
+		"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
+		"type":"3d model",
+		"scale":"4 4 4"
+		
+
+	},
+
+		{
+		"id":13,
+		"title":"Deutero vazaki",
+		"pathfile":"chalice2/scene.gltf",
+		"description":"Ένα βάζω από τα βάθυ της Ρωσίας",
+		"type":"3d model",
+		"scale":"4 4 4"
+		
+	},
+
+	{
+		"id":14,
+		"title":"Trito vazaki",
+		"pathfile":"chalice3/scene.gltf",
+		"description":"Ένα βάζω από τα βάθυ της Ινδίας.",
+		"type":"3d model",
+		"scale":"0.005 0.005 0.005"
+	},
+	{
+		"id":15,
+		"title":"Female head",
+		"pathfile":"female_head/scene.gltf",
+		"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
+		"type":"3d model"
+		
+
+	},
+
+		{
+		"id":16,
+		"title":"Irthe to reuma",
+		"pathfile":"human_scan/model.gltf",
+		"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
+		"type":"3d model",
+		"scale":"0.005 0.005 0.005"
+		
+	},
+		{
+		"id":17,
+		"title":"Prwto potiri",
+		"pathfile":"chalice/scene.gltf",
+		"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
+		"type":"3d model",
+		"scale":"4 4 4"
+		
+
+	},
+
+		{
+		"id":18,
+		"title":"Deutero vazaki",
+		"pathfile":"chalice2/scene.gltf",
+		"description":"Ένα βάζω από τα βάθυ της Ρωσίας",
+		"type":"3d model",
+		"scale":"4 4 4"
+		
+	},
+
+	{
+		"id":19,
+		"title":"Trito vazaki",
+		"pathfile":"chalice3/scene.gltf",
+		"description":"Ένα βάζω από τα βάθυ της Ινδίας.",
+		"type":"3d model",
+		"scale":"0.005 0.005 0.005"
 	}
+
 
 	],
 

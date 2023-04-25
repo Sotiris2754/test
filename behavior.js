@@ -83,7 +83,7 @@ function loadExhibit()
 		text+= "<ul>";
 		text+= "<h4><i>Διάλεξε ποιο έκθεμα θέλεις να τοποθετηθεί στην βάση</i>: (" + base.id + ")</h4>";
 		for(var i=0; i<data.exhibits.length; i++){			
-			text+= "<li> <i id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> "+data.exhibits[i].title+ "</i>" + ": "; //Με το "this" παίρνω τα στοιχεία του κειμένου που επιλέχθηκε από τον χρήστη, συνεπώς και το έκθεμα που επέλεξε.
+			text+= "<li id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> <b>"+data.exhibits[i].title+ "</b>" + ": "; //Με το "this" παίρνω τα στοιχεία του κειμένου που επιλέχθηκε από τον χρήστη, συνεπώς και το έκθεμα που επέλεξε.
 			text+= data.exhibits[i].description+ " <br></li>";
 		}
 		text+= "</ul>";
@@ -122,7 +122,7 @@ function placeExhibit(entity){
 
 	    			var exhibit = document.createElement('a-entity');
 		
-						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
@@ -143,7 +143,7 @@ function placeExhibit(entity){
 
 						var exhibit = document.createElement('a-entity');
 		
-						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
@@ -161,7 +161,7 @@ function placeExhibit(entity){
 
 	    				var exhibit = document.createElement('a-entity');
 		
-						exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+						exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
@@ -180,7 +180,7 @@ function placeExhibit(entity){
 
 					var exhibit = document.createElement('a-entity');
 		
-					exhibit.setAttribute('position',0 +" " + 1 +" " + 0); 
+					exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
@@ -231,7 +231,7 @@ function placeExhibit(entity){
 						if(json[i-1]!=null){
 
 		    				var exhibit = document.createElement('a-entity');
-							exhibit.setAttribute('position',0 +" " + 1.5 +" " + 0);
+							exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0);
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i-1]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i-1]].scale);
 							exhibit.setAttribute('id',json[i-1]+"."+json[i-1]);
