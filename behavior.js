@@ -44,7 +44,7 @@ function loadExhibit()
 	let base;
 	let previousBase;
 	let sameBase;
-	let count =4;
+	let count;
 
 
 	AFRAME.registerComponent("show-list", {
@@ -224,6 +224,7 @@ function placeExhibit(entity){
 				}
 				else{
 		    		for (var i=0; i<json.length; i++){
+		    		count = json.length;
 
 					var stand = document.createElement('a-entity');
 					stand.setAttribute('id',data.stands[i].id);
@@ -237,12 +238,12 @@ function placeExhibit(entity){
 		    			// base = document.getElementById(i); THA XRISIMOPOIISW TIN METAVLITI "STAND"
 		    			removeChild();
 						console.log(json);
-						if(json[i-1]!=null){
+						if(json[i]!=null){
 		    				var exhibit = document.createElement('a-entity');
 							exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0);
-							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i-1]].pathfile})`);
-							exhibit.setAttribute('scale',data.exhibits[json[i-1]].scale);
-							exhibit.setAttribute('id',json[i-1]+"."+json[i-1]);
+							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
+							exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
+							exhibit.setAttribute('id',json[i]+"."+json[i]);
 							stand.appendChild(exhibit);
 						}
 					}					
@@ -301,7 +302,6 @@ function removeBases(){
 			data: {action:"add"},
 			success: function(response) {
 		    console.log("Base added successfully.");
-		   	console.log(json);
 		  	}
 		});
 	}
