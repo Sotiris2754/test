@@ -8,6 +8,7 @@ $db = new SQLite3('test.db');
 $tableExists = $db->querySingle("SELECT name FROM sqlite_master WHERE type='table' AND name='bases'");
 
 
+
 // Create a table called "bases" with 3 columns
 if(!$tableExists){
 $db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, exhibit NUMBER)');
@@ -26,11 +27,13 @@ $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 
+
+
 }
 
 
-if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 
+if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 
 $id = $_POST['id'];
 $exhibit = $_POST['exhibit'];
@@ -38,9 +41,11 @@ $exhibit = $_POST['exhibit'];
 $stmt = $db->prepare("UPDATE bases SET exhibit = :exhibit WHERE id = $id");
 $stmt->bindParam(':exhibit', $exhibit);
 $stmt->execute();
+}
 
+if(ISSET($_POST['action']) && $_POST['action']=="add"){
 
-
+ $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 }
 
 if(ISSET($_POST['action']) && $_POST['action'] == "view"){
@@ -67,7 +72,6 @@ if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
 
     echo $inserts;
 }
-
 
 
 

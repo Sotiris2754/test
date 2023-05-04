@@ -71,13 +71,13 @@
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
 
-	<a-entity id="1" show-list gltf-model="#stand" class="clickable" position="-16 -.5 -2.5" rotation="0 -90 0"></a-entity>
+<!-- 	<a-entity id="1" show-list gltf-model="#stand" class="clickable" position="-16 -.5 -2.5" rotation="0 -90 0"></a-entity>
 
 	<a-entity id="2" show-list gltf-model="#stand" class="clickable" position="-2 -.5 -7" rotation="0 -90 0"></a-entity>
 
 	<a-entity id="3" show-list gltf-model="#stand" class="clickable" position="1.2 -.5 -7" rotation="0 90 0"></a-entity>
 
-	<a-entity id="4" show-list gltf-model="#stand" class="clickable" position="14.5 -.5 -2.5" rotation="0 90 0"></a-entity>
+	<a-entity id="4" show-list gltf-model="#stand" class="clickable" position="14.5 -.5 -2.5" rotation="0 90 0"></a-entity> -->
 
 <!-- 	<a-entity id="5" show-list gltf-model="#stand" class="clickable" position="-2 -.5 -10" rotation="0 -90 0"></a-entity>
 

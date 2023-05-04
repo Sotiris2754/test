@@ -208,7 +208,6 @@ function placeExhibit(entity){
 }
 
 
-
 	function retrieveData(){
 		$.ajax({
 			url:"sqlite.php",
@@ -224,26 +223,33 @@ function placeExhibit(entity){
 					setTimeout(retrieveData(),1);
 				}
 				else{
+		    		for (var i=0; i<json.length; i++){
 
-		    		for (var i=1; i<=4; i++){
-		    			base = document.getElementById(i);
+					var stand = document.createElement('a-entity');
+					stand.setAttribute('id',data.stands[i].id);
+					stand.setAttribute('show-list','show-list');
+					stand.setAttribute('position',data.stands[i].position);
+					stand.setAttribute('gltf-model',`url(${data.stands[i].pathfile})`);
+					stand.setAttribute('rotation',data.stands[i].rotation);
+					stand.setAttribute('class','clickable');
+					scene.appendChild(stand);
+
+		    			// base = document.getElementById(i); THA XRISIMOPOIISW TIN METAVLITI "STAND"
 		    			removeChild();
-						//console.log(json[i]);
+						console.log(json);
 						if(json[i-1]!=null){
-
 		    				var exhibit = document.createElement('a-entity');
 							exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0);
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i-1]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i-1]].scale);
 							exhibit.setAttribute('id',json[i-1]+"."+json[i-1]);
-							base.appendChild(exhibit);
+							stand.appendChild(exhibit);
 						}
 					}					
 	    		}
 	  		},
 		
 		});
-		
 	}
 
 function removeChild(){
@@ -269,6 +275,9 @@ function addBases(){
 		stand.setAttribute('class','clickable');
 		scene.appendChild(stand);
 		count++;
+		base = stand;
+		addBaseToServer();
+		console.log(base);
 	}
 	else
 		return;
@@ -282,6 +291,20 @@ function removeBases(){
 	}
 	
 }
+
+
+	function addBaseToServer(){
+		console.log('Prosthese vasi');
+		$.ajax({
+			url: "sqlite.php",
+			method:"POST",
+			data: {action:"add"},
+			success: function(response) {
+		    console.log("Base added successfully.");
+		   	console.log(json);
+		  	}
+		});
+	}
 
 
 // function countBases(){
