@@ -275,7 +275,7 @@ function addBases(){
 }
 
 function removeBases(){
-	if(count>0){
+	if(count>4){
 		var stand = document.getElementById(count);
 		scene.removeChild(stand);
 		count--;
