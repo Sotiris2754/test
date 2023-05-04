@@ -286,6 +286,7 @@ function addBases(){
 
 function removeBases(){
 	if(count>4){
+		removeBaseFromServer();
 		var stand = document.getElementById(count);
 		scene.removeChild(stand);
 		count--;
@@ -305,6 +306,17 @@ function removeBases(){
 		  	}
 		});
 	}
+
+	function removeBaseFromServer(){
+		$.ajax({
+			url: "sqlite.php",
+			method:"POST",
+			data: {action:"remove"},
+			success: function(response) {
+		    console.log("Base removed successfully.");
+		  	}
+		});
+	}	
 
 
 // function countBases(){

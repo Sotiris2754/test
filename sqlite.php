@@ -48,6 +48,26 @@ if(ISSET($_POST['action']) && $_POST['action']=="add"){
  $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 }
 
+if(ISSET($_POST['action']) && $_POST['action']=="remove"){
+
+// $db->exec("DELETE FROM bases WHERE MAX(id)");
+$query = "SELECT id FROM bases ORDER BY id DESC LIMIT 1";
+
+// Execute the query and get the ID of the last row
+$result = $db->querySingle($query);
+if (!$result) {
+    // Handle the case where the table is empty
+    die("Table is empty");
+}
+
+// Define the SQL query to delete the last row from the table
+$query = "DELETE FROM bases WHERE id = $result";
+
+// Execute the query
+$db->exec($query);
+
+}
+
 if(ISSET($_POST['action']) && $_POST['action'] == "view"){
         
     $data = array();
