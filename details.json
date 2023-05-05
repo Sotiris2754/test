@@ -4,10 +4,10 @@
 
 	{
 		"id":0,
-		"title":"Female head",
-		"pathfile":"female_head/scene.gltf",
-		"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
-		"type":"3d model"
+		"title":"Κενό έκθεμα",
+		"pathfile":"",
+		"description":"Άδειασε την βάση",
+		"type":""
 		
 	},
 

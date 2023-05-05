@@ -44,7 +44,9 @@ function loadExhibit()
 	let base;
 	let previousBase;
 	let sameBase;
-	let count;
+	let count=4;
+	let tempStand;
+	let text="";
 
 
 	AFRAME.registerComponent("show-list", {
@@ -80,16 +82,23 @@ function loadExhibit()
 });
 
 	function displayDescription(){
-		var text="";
-		text+= "<ul>";
-		text+= "<h4><i>Διάλεξε ποιο έκθεμα θέλεις να τοποθετηθεί στην βάση</i>: (" + base.id + ")</h4>";
-		for(var i=0; i<data.exhibits.length; i++){			
-			text+= "<li id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> <b>"+data.exhibits[i].title+ "</b>" + ": "; //Με το "this" παίρνω τα στοιχεία του κειμένου που επιλέχθηκε από τον χρήστη, συνεπώς και το έκθεμα που επέλεξε.
-			text+= data.exhibits[i].description+ " <br></li>";
-		}
-		text+= "</ul>";
-		//console.log(text);
-		return text;
+		if(text==="")
+		{		
+				text+= "<ul>";
+				text+= "<h4><i>Διάλεξε ποιο έκθεμα θέλεις να τοποθετηθεί στην βάση</i>: (" + base.id + ")</h4>";
+				for(var i=0; i<data.exhibits.length; i++){			
+					text+= "<li id="+data.exhibits[i].id+" onclick='placeExhibit(this)'> <b>"+data.exhibits[i].title+ "</b>" + ": "; //Με το "this" παίρνω τα στοιχεία του κειμένου που επιλέχθηκε από τον χρήστη, συνεπώς και το έκθεμα που επέλεξε.
+					text+= data.exhibits[i].description+ " <br></li>";
+				}
+				text+= "</ul>";
+				//console.log(text);
+				return text;
+			}
+			else{
+				text="";
+				// console.log(myDiv.innerHTML);
+			}
+
 	}
 
 	function checkBase(){
@@ -109,7 +118,8 @@ function placeExhibit(entity){
 		//console.log(exhibit);
 
 		var id = entity.getAttribute('id');
-		console.log(id);
+		// tempStand = entity;
+		//console.log(id);
 		// console.log(id);		
 
 			if(this.exhibit){
@@ -125,7 +135,7 @@ function placeExhibit(entity){
 		
 						exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
-
+						if(id!=0)
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
@@ -146,7 +156,7 @@ function placeExhibit(entity){
 		
 						exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
-
+						if(id!=0)
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
@@ -164,7 +174,7 @@ function placeExhibit(entity){
 		
 						exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
-
+						if(id!=0)
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
@@ -183,7 +193,7 @@ function placeExhibit(entity){
 		
 					exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
-
+					if(id!=0)
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',id+"."+id);
@@ -232,7 +242,7 @@ function placeExhibit(entity){
 					stand.setAttribute('position',data.stands[i].position);
 					stand.setAttribute('gltf-model',`url(${data.stands[i].pathfile})`);
 					stand.setAttribute('rotation',data.stands[i].rotation);
-					stand.setAttribute('class','clickable');
+					stand.setAttribute('class','clickable stand');
 					scene.appendChild(stand);
 
 		    			// base = document.getElementById(i); THA XRISIMOPOIISW TIN METAVLITI "STAND"
@@ -241,6 +251,7 @@ function placeExhibit(entity){
 						if(json[i]!=null){
 		    				var exhibit = document.createElement('a-entity');
 							exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0);
+							if(json[i]!=0)
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
 							exhibit.setAttribute('id',json[i]+"."+json[i]);
@@ -273,12 +284,12 @@ function addBases(){
 		stand.setAttribute('position',data.stands[count].position);
 		stand.setAttribute('gltf-model',`url(${data.stands[count].pathfile})`);
 		stand.setAttribute('rotation',data.stands[count].rotation);
-		stand.setAttribute('class','clickable');
+		stand.setAttribute('class','clickable stand');
 		scene.appendChild(stand);
 		count++;
 		base = stand;
 		addBaseToServer();
-		console.log(base);
+		//console.log(base);
 	}
 	else
 		return;
@@ -287,10 +298,13 @@ function addBases(){
 function removeBases(){
 	if(count>4){
 		removeBaseFromServer();
+		
 		var stand = document.getElementById(count);
+		console.log(stand);
 		scene.removeChild(stand);
 		count--;
 	}
+
 	
 }
 

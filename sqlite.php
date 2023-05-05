@@ -21,17 +21,11 @@ $db->exec('CREATE TABLE bases (id INTEGER PRIMARY KEY, exhibit NUMBER)');
 // $db->exec("INSERT INTO bases (base) VALUES ('Red')");
 // $db->exec("INSERT INTO bases (base) VALUES ('Green')");
 // $db->exec("INSERT INTO bases (base) VALUES ('Blue')");
-
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
-
-
-
 }
-
-
 
 if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 
@@ -78,7 +72,6 @@ if(ISSET($_POST['action']) && $_POST['action'] == "view"){
         //echo $row['exhibit'] . "<br>";
         $data[] = $row['exhibit'];
     }
-
   
     $json = json_encode($data);
     //var_dump($json);
