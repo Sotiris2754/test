@@ -45,7 +45,6 @@ function loadExhibit()
 	let previousBase;
 	let sameBase;
 	let count=4;
-	let tempStand;
 	let text="";
 
 
@@ -118,8 +117,6 @@ function placeExhibit(entity){
 		//console.log(exhibit);
 
 		var id = entity.getAttribute('id');
-		// tempStand = entity;
-		//console.log(id);
 		// console.log(id);		
 
 			if(this.exhibit){
