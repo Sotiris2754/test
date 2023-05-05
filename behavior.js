@@ -60,21 +60,22 @@ function loadExhibit()
 				// Εδώ θα τρέχει μια function για να τσεκάρει αν υπάρχει αυτή η βάση στην βάση δεδομένων. Αν όχι, τότε θα κάνει INSERT!
 
 				//<!-- ...............  -->
+				myDiv.style.visibility = "visible"
 				myDiv.innerHTML = displayDescription();
 
 				checkBase();
 			 	console.log(base.id); 
-			 	if(sameBase==true){
-			 		if(myDiv.style.visibility==="hidden"){
-			 			myDiv.style.visibility = "visible";
-			 		}
-			 		else{
-			 			myDiv.style.visibility= "hidden";
-			 		}
-				 }
-			 	if(sameBase==false){
-			 		myDiv.style.visibility = "visible";
-			 	}
+			 	// if(sameBase==true){
+			 	// 	if(myDiv.style.visibility==="hidden"){
+			 	// 		myDiv.style.visibility = "visible";
+			 	// 	}
+			 	// 	else{
+			 	// 		myDiv.style.visibility= "hidden";
+			 	// 	}
+				//  }
+			 	// if(sameBase==false){
+			 	// 	myDiv.style.visibility = "visible";
+			 	// }
 
 		 })
 	},
@@ -95,6 +96,7 @@ function loadExhibit()
 			}
 			else{
 				text="";
+				return text;
 				// console.log(myDiv.innerHTML);
 			}
 
