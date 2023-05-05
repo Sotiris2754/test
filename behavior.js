@@ -60,7 +60,7 @@ function loadExhibit()
 				// Εδώ θα τρέχει μια function για να τσεκάρει αν υπάρχει αυτή η βάση στην βάση δεδομένων. Αν όχι, τότε θα κάνει INSERT!
 
 				//<!-- ...............  -->
-				myDiv.style.visibility = "visible"
+				// myDiv.style.visibility = "visible"
 				myDiv.innerHTML = displayDescription();
 
 				checkBase();
