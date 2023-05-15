@@ -38,7 +38,7 @@
 	li{
 	display:list-item;
 	padding: 2px;
-  margin: 2px 0;
+  margin: 5px 0;
   background-color: #F3C5BC60;
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, .7);

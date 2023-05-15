@@ -76,7 +76,6 @@ function loadExhibit()
 			 	// if(sameBase==false){
 			 	// 	myDiv.style.visibility = "visible";
 			 	// }
-
 		 })
 	},
 });
@@ -128,7 +127,7 @@ function placeExhibit(entity){
 				if(this.exhibit.parentNode==base){
 
 					if(exhibitId!= id + "." + id){
-						removeChild(base);
+					removeChild(base);
 
 	    			var exhibit = document.createElement('a-entity');
 		
@@ -186,7 +185,6 @@ function placeExhibit(entity){
 			}
 			else{
 						removeChild(base);				
-
 
 					var exhibit = document.createElement('a-entity');
 		
