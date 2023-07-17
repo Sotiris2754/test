@@ -112,7 +112,6 @@ function loadExhibit()
 		previousBase = base;
 	}
 
-
 function placeExhibit(entity){
 		//console.log(exhibit);
 
