@@ -98,7 +98,6 @@ function loadExhibit()
 				return text;
 				// console.log(myDiv.innerHTML);
 			}
-
 	}
 
 	function checkBase(){
@@ -119,12 +118,13 @@ function placeExhibit(entity){
 
 		var id = entity.getAttribute('id');
 		// console.log(id);		
-
+		console.log(this.exhibit);
 			if(this.exhibit){
 					var exhibitId = this.exhibit.getAttribute('id');
-					//console.log(base.childNodes.length);
+					console.log(exhibitId);
 
 				if(this.exhibit.parentNode==base){
+					// console.log(this.exhibit.parentNode);
 
 					if(exhibitId!= id + "." + id){
 					removeChild(base);
@@ -141,7 +141,6 @@ function placeExhibit(entity){
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
-
 					}
 
 				}
@@ -149,9 +148,7 @@ function placeExhibit(entity){
 
 					if(exhibitId!=id + "." + id){
 						removeChild(base);						
-
 						var exhibit = document.createElement('a-entity');
-		
 						exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0); 
 						// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 						if(id!=0)
@@ -184,7 +181,7 @@ function placeExhibit(entity){
 				}						
 			}
 			else{
-						removeChild(base);				
+					removeChild(base);				
 
 					var exhibit = document.createElement('a-entity');
 		
@@ -195,6 +192,7 @@ function placeExhibit(entity){
 					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',id+"."+id);
 					base.appendChild(exhibit);
+					console.log(exhibit);
 					this.exhibit = exhibit;
 					storeData();
 			}
@@ -253,6 +251,7 @@ function placeExhibit(entity){
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
 							exhibit.setAttribute('id',json[i]+"."+json[i]);
+							exhibit.setAttribute('class','clickable');
 							stand.appendChild(exhibit);
 						}
 					}					
