@@ -239,12 +239,13 @@ function placeExhibit(entity){
 					stand.setAttribute('position',data.stands[i].position);
 					stand.setAttribute('gltf-model',`url(${data.stands[i].pathfile})`);
 					stand.setAttribute('rotation',data.stands[i].rotation);
+					// stand.setAttribute('scale',data.stands[i].scale);
 					stand.setAttribute('class','clickable stand');
 					scene.appendChild(stand);
 
 		    			// base = document.getElementById(i); THA XRISIMOPOIISW TIN METAVLITI "STAND"
 		    			removeChild();
-						console.log(json);
+						//console.log(json);
 						if(json[i]!=null){
 		    				var exhibit = document.createElement('a-entity');
 							exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0);
