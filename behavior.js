@@ -327,19 +327,3 @@ function removeBases(){
 		  	}
 		});
 	}	
-
-
-// function countBases(){
-// 	$.ajax({
-// 		url:"sqlite.php",
-// 		method:"POST",
-// 		data:{action:"count"},
-// 		success:function(response){
-// 		console.log("Count successfully.");
-// 		console.log(response);			
-// 		},
-// 	 	error: function(xhr, status, error) {
-// 	   	console.log("An error occurred: " + error);
-// 	  	}
-// 	});
-// }
