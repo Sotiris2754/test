@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar-nft.js"></script> -->
   <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
+  <script src="js/aframe-gui.js"></script>
 
 	<title>Test 0.1V</title>
 	<script src="behavior.js"></script>
@@ -64,6 +65,9 @@
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
 					<a-asset-itme id="stand" src="museum_case/scene.gltf"></a-asset-itme>
+					<a-asset-item id="iconfontsolid" src="assets/fonts/fa-solid-900.ttf"></a-asset-item>
+					<a-asset-item id="textfont1" src="assets/fonts/PermanentMarker-Regular.ttf"></a-asset-item>
+					<a-asset-item id="textfont2" src="assets/fonts/Plaster-Regular.ttf"></a-asset-item>
 
 				</a-assets>
 
@@ -73,6 +77,66 @@
 <a-box class="clickable" onclick="addBases()" color="green" position="1 0 -2"></a-box>
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
+
+		<a-gui-flex-container flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="5" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" >
+
+
+						<a-gui-input 
+						class="rename"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="212 432 1234_"
+			>
+			</a-gui-input>
+									<a-gui-input 
+						class="rename"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="212 432 1234_"
+			>
+			</a-gui-input>
+									<a-gui-input 
+						class="rename"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="212 432 1234_"
+			>
+			</a-gui-input>
+									<a-gui-input 
+						class="rename"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="212 432 1234_"
+			>
+			</a-gui-input>
+									<a-gui-input 
+						class="rename"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="212 432 1234_"
+			>
+			</a-gui-input>
+									<a-gui-input 
+						class="rename"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="212 432 1234_"
+			>
+			</a-gui-input>
+
+		</a-gui-flex-container>
 
 
 
@@ -98,9 +162,9 @@
 		 
 		 <a-box id="4" show-list class="clickable" color="blue" position="14.5 0 -2.5" rotation="0 90 0"></a-box> -->
 
-	<a-camera wasd-controls="acceleration:40" id="camera">
+	<a-camera wasd-controls="acceleration:500" id="camera">
 		
-			<a-entity  raycaster="objects:.clickable" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
+			<a-entity id="cursor" raycaster="objects:.interactables, [gui-interactable]" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
 		
 	</a-camera>
@@ -108,8 +172,22 @@
 
 </a-scene> 
 
-<script>
 
+
+<script>
+	
+
+	function testVarFunction() {
+			var elements = document.querySelectorAll(".rename");
+			var labelValue = "Empty stand";
+
+		elements.forEach(function(element) {
+    element.setAttribute("value", labelValue);
+  });
+		
+	}
+
+	testVarFunction();
 
 </script>
 </body>
