@@ -81,7 +81,7 @@
 		<a-gui-flex-container flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="5" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" >
 
 
-						<a-gui-input 
+			<a-gui-input 
 						class="rename"
 						width="2" 
 						height=".75"
@@ -90,7 +90,8 @@
 						value="212 432 1234_"
 			>
 			</a-gui-input>
-									<a-gui-input 
+
+			<a-gui-input 
 						class="rename"
 						width="2" 
 						height=".75"
@@ -99,7 +100,8 @@
 						value="212 432 1234_"
 			>
 			</a-gui-input>
-									<a-gui-input 
+
+			<a-gui-input 
 						class="rename"
 						width="2" 
 						height=".75"
@@ -108,7 +110,8 @@
 						value="212 432 1234_"
 			>
 			</a-gui-input>
-									<a-gui-input 
+
+			<a-gui-input 
 						class="rename"
 						width="2" 
 						height=".75"
@@ -117,7 +120,8 @@
 						value="212 432 1234_"
 			>
 			</a-gui-input>
-									<a-gui-input 
+
+			<a-gui-input 
 						class="rename"
 						width="2" 
 						height=".75"
@@ -126,7 +130,8 @@
 						value="212 432 1234_"
 			>
 			</a-gui-input>
-									<a-gui-input 
+
+			<a-gui-input 
 						class="rename"
 						width="2" 
 						height=".75"
