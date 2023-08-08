@@ -78,58 +78,73 @@
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
 
-		<a-gui-flex-container flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="4" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
+		<a-gui-flex-container flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="5" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
 
 
-			<a-gui-input
+			<a-gui-button
+						onclick="test(this)" 
+						id="label1"
 						class="rename"
+						margin="0 0 .2 0"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="212"
+			>
+			</a-gui-button>
+
+			<a-gui-button 
+						onclick="test(this)"
+						class="rename"
+						margin="0 0 .2 0"						
+						id="label2"
 						width="2" 
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="212 432 1234_"
 			>
-			</a-gui-input>
+			</a-gui-button>
 
-			<a-gui-input 
+			<a-gui-button
+						onclick="test(this)"
 						class="rename"
+						margin="0 0 .2 0"
+						id="label3"
 						width="2" 
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="212 432 1234_"
 			>
-			</a-gui-input>
+			</a-gui-button>
 
-			<a-gui-input 
+			<a-gui-button
+						onclick="test(this)"
 						class="rename"
+						margin="0 0 .2 0"
+						id="label4"
 						width="2" 
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="212 432 1234_"
 			>
-			</a-gui-input>
+			</a-gui-button>
 
-			<a-gui-input 
+			<a-gui-button
+						onclick="test(this)"
 						class="rename"
+						margin="0 0 .2 0"
+						id="label5"
 						width="2" 
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="212 432 1234_"
 			>
-			</a-gui-input>
-
-			<a-gui-input 
-						class="rename"
-						width="2" 
-						height=".75"
-						font-family="assets/fonts/Plaster-Regular.ttf"
-						font-size="0.2"
-						value="212 432 1234_"
-			>
-			</a-gui-input>
+			</a-gui-button>
 
 		</a-gui-flex-container>
 
@@ -172,19 +187,23 @@
 <script>
 
 
-	function testVarFunction() {
-		var elements = document.querySelectorAll(".rename");
+	// function testVarFunction() {
+	// 	var elements = document.querySelectorAll(".rename");
 
-		var labelValue ="";
+	// 	var labelValue ="";
 
-		elements.forEach(function(element) {
-    	element.setAttribute("value", labelValue);
-  		});
+	// 	elements.forEach(function(element) {
+  //   	element.setAttribute("value", labelValue);
+  // 		});
 		
-	}	
+	// }	
+		window.test = function(e) {
+			// var knot = document.getElementById("knot");
+			// knot.setAttribute('material', 'color', '#DC2531');
+			console.log(e.id);
+		}
 
-
-	testVarFunction();
+	// testVarFunction();
 
 </script>
 </body>
