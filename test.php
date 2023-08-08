@@ -78,20 +78,10 @@
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
 
-		<a-gui-flex-container flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="5" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" >
+		<a-gui-flex-container flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="4" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
 
 
-			<a-gui-input 
-						class="rename"
-						width="2" 
-						height=".75"
-						font-family="assets/fonts/Plaster-Regular.ttf"
-						font-size="0.2"
-						value="212 432 1234_"
-			>
-			</a-gui-input>
-
-			<a-gui-input 
+			<a-gui-input
 						class="rename"
 						width="2" 
 						height=".75"
