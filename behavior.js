@@ -100,6 +100,17 @@ function loadExhibit()
 			}
 	}
 
+	// function testVarFunction() {
+	// 	var elements = document.querySelectorAll(".rename");
+
+	// 	var labelValue = displayDescription();
+
+	// 	elements.forEach(function(element) {
+    // 	element.setAttribute("value", labelValue);
+  	// 	});
+		
+	// }
+
 	function checkBase(){
 		if (base==previousBase){		
 			sameBase=true;

@@ -182,16 +182,6 @@
 <script>
 	
 
-	function testVarFunction() {
-			var elements = document.querySelectorAll(".rename");
-			var labelValue = "Empty stand";
-
-		elements.forEach(function(element) {
-    element.setAttribute("value", labelValue);
-  });
-		
-	}
-
 	testVarFunction();
 
 </script>
