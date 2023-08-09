@@ -174,7 +174,7 @@
 
 	<a-camera wasd-controls="acceleration:500" id="camera">
 		
-			<a-entity id="cursor" raycaster="objects:.clickable, [gui-interactable]" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
+			<a-entity id="cursor" raycaster="objects:.clickable, [gui-interactable]" cursor="fuse:true; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
 		
 	</a-camera>
@@ -186,7 +186,6 @@
 
 <script>
 
-
 	// function testVarFunction() {
 	// 	var elements = document.querySelectorAll(".rename");
 
@@ -197,10 +196,11 @@
   // 		});
 		
 	// }	
-		window.test = function(e) {
-			// var knot = document.getElementById("knot");
+		window.test = function(label) {
+			 // var knot = document.getElementById("knot");
 			// knot.setAttribute('material', 'color', '#DC2531');
-			console.log(e.id);
+			label.setAttribute("value", label.id);
+			console.log(label.id);
 		}
 
 	// testVarFunction();
