@@ -78,19 +78,22 @@
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2" fuse="fuseTimeout: 2000"></a-box>
 
-		<a-gui-flex-container flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="5" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
+		<a-gui-flex-container scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="5" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
 
 
-			<a-gui-button
+			<a-gui-button bevel="true"
 						onclick="test(this)" 
 						id="label1"
 						class="rename"
 						margin="0 0 .2 0"
 						width="2" 
-						height=".75"
+						height="2"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
-						value="212"
+						value="Today is a good day"
+						bevel-size="0.08"
+						bevel-thickness="0.02"
+
 			>
 			</a-gui-button>
 
@@ -200,7 +203,7 @@
 		window.test = function(label) {
 			 // var knot = document.getElementById("knot");
 			// knot.setAttribute('material', 'color', '#DC2531');
-			label.setAttribute("value", label.id);
+			label.setAttribute("value", "asjh dajshd asjda hsjkda shkdja shjkd hdajskh dasjk");
 			console.log(label.id);
 		}
 
