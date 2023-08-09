@@ -315,7 +315,6 @@ function removeBases(){
 	
 }
 
-
 	function addBaseToServer(){
 		console.log('Prosthese vasi');
 		$.ajax({

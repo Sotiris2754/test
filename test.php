@@ -76,7 +76,7 @@
 
 <a-box class="clickable" onclick="addBases()" color="green" position="1 0 -2"></a-box>
 
-<a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
+<a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2" fuse="fuseTimeout: 2000"></a-box>
 
 		<a-gui-flex-container flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="5" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
 
@@ -176,6 +176,7 @@
 		
 			<a-entity id="cursor" raycaster="objects:.clickable, [gui-interactable]" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
+
 		
 	</a-camera>
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
