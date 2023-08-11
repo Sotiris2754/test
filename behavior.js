@@ -46,7 +46,17 @@ function loadExhibit()
 	let sameBase;
 	let count=4;
 	let text="";
+AFRAME.registerComponent("show-gui",{
+	init:function(){
+		var guiPanel = document.querySelector("#mypanel");
+		var el = this.el;
+		el.addEventListener('click',function(){
+			console.log("patisa Kitrini vasi");
+			guiPanel.setAttribute("panel-color","red");
+		})
 
+	},
+});
 
 	AFRAME.registerComponent("show-list", {
 

@@ -77,9 +77,11 @@
 
 <a-box class="clickable" onclick="addBases()" color="green" position="1 0 -2"></a-box>
 
-<a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2" fuse="fuseTimeout: 2000"></a-box>
+<a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
 
-		<a-gui-flex-container scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
+<a-box class="clickable" show-gui color="yellow" position="0 0 -5"></a-box>
+
+		<a-gui-flex-container id="mypanel" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
 
 
 			<a-gui-button bevel="true"
@@ -182,7 +184,6 @@
 
 
 		</a-gui-flex-container>
-
 
 
 <!-- 	<a-entity id="1" show-list gltf-model="#stand" class="clickable" position="-16 -.5 -2.5" rotation="0 -90 0"></a-entity>
