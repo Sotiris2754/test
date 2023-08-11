@@ -68,6 +68,7 @@
 					<a-asset-item id="iconfontsolid" src="assets/fonts/fa-solid-900.ttf"></a-asset-item>
 					<a-asset-item id="textfont1" src="assets/fonts/PermanentMarker-Regular.ttf"></a-asset-item>
 					<a-asset-item id="textfont2" src="assets/fonts/Plaster-Regular.ttf"></a-asset-item>
+					<a-asset-item id="nextArrow" src="assets/nextArrow.png"></a-asset-item>
 
 				</a-assets>
 
@@ -78,7 +79,7 @@
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2" fuse="fuseTimeout: 2000"></a-box>
 
-		<a-gui-flex-container scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="5" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
+		<a-gui-flex-container scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" component-padding="0" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8">
 
 
 			<a-gui-button bevel="true"
@@ -87,7 +88,7 @@
 						class="rename"
 						margin="0 0 .2 0"
 						width="2" 
-						height="2"
+						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="Today is a good day"
@@ -149,6 +150,36 @@
 			>
 			</a-gui-button>
 
+
+				<a-gui-flex-container scale="1 1 1" flex-direction="row" justify-content="center" align-items="center" component-padding="0" width="2" height="1" position="0 0 0" rotation="0 0 0" panel-color="#072B73" opacity="0.8" margin="0 0 -.20 0">  
+					<!-- #072B73 -->
+								<a-gui-icon-label-button
+								width=".5" height="0.5"
+								onclick=""
+								icon="F2F5"
+								icon-font="assets/fonts/fa-solid-900.ttf"
+								font-family="assets/fonts/PressStart2P-Regular.ttf"
+								font-size="0.3"
+								margin="0 0 0 0"
+								rotation="0 0 0"
+							>
+							</a-gui-icon-label-button>
+
+
+							<a-gui-icon-label-button
+								width=".5" height="0.5"
+								onclick=""
+								icon="F2F5"
+								icon-font="assets/fonts/fa-solid-900.ttf"
+								font-family="assets/fonts/PressStart2P-Regular.ttf"
+								font-size="0.3"
+								margin="0 0 0 0"
+								rotation="0 0 180"
+							>
+							</a-gui-icon-label-button>
+				</a-gui-flex-container>
+
+
 		</a-gui-flex-container>
 
 
@@ -203,7 +234,7 @@
 		window.test = function(label) {
 			 // var knot = document.getElementById("knot");
 			// knot.setAttribute('material', 'color', '#DC2531');
-			label.setAttribute("value", "asjh dajshd asjda hsjkda shkdja shjkd hdajskh dasjk");
+			label.setAttribute("value", label.id);
 			console.log(label.id);
 		}
 
