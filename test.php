@@ -151,20 +151,8 @@
 			</a-gui-button>
 
 
-				<a-gui-flex-container scale="1 1 1" flex-direction="row" justify-content="center" align-items="center" component-padding="0" width="2" height="1" position="0 0 0" rotation="0 0 0" panel-color="#072B73" opacity="0.8" margin="0 0 -.20 0">  
+				<a-gui-flex-container scale="1 1 1" flex-direction="row" justify-content="center" align-items="center" component-padding="0" width="2.20" height="1" position="0 0 0" rotation="0 0 0" panel-color="#072B73" opacity="0.8" margin="0 0 -.20 0">  
 					<!-- #072B73 -->
-								<a-gui-icon-label-button
-								width=".5" height="0.5"
-								onclick=""
-								icon="F2F5"
-								icon-font="assets/fonts/fa-solid-900.ttf"
-								font-family="assets/fonts/PressStart2P-Regular.ttf"
-								font-size="0.3"
-								margin="0 0 0 0"
-								rotation="0 0 0"
-							>
-							</a-gui-icon-label-button>
-
 
 							<a-gui-icon-label-button
 								width=".5" height="0.5"
@@ -177,6 +165,19 @@
 								rotation="0 0 180"
 							>
 							</a-gui-icon-label-button>
+
+							<a-gui-icon-label-button
+								width=".5" height="0.5"
+								onclick=""
+								icon="F2F5"
+								icon-font="assets/fonts/fa-solid-900.ttf"
+								font-family="assets/fonts/PressStart2P-Regular.ttf"
+								font-size="0.3"
+								margin="0 0 0 0"
+								rotation="0 0 0"
+							>
+							</a-gui-icon-label-button>
+
 				</a-gui-flex-container>
 
 
