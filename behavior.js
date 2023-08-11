@@ -243,7 +243,7 @@ function placeExhibit(entity){
 
 					var stand = document.createElement('a-entity');
 					stand.setAttribute('id',data.stands[i].id);
-					stand.setAttribute('show-list','show-list');
+					stand.setAttribute('show-list',"");
 					stand.setAttribute('position',data.stands[i].position);
 					stand.setAttribute('gltf-model',`url(${data.stands[i].pathfile})`);
 					stand.setAttribute('rotation',data.stands[i].rotation);
@@ -257,11 +257,12 @@ function placeExhibit(entity){
 						if(json[i]!=null){
 		    				var exhibit = document.createElement('a-entity');
 							exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0);
+							// console.log(data.stands[i].position);
 							if(json[i]!=0)
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
 							exhibit.setAttribute('id',json[i]+"."+json[i]);
-							exhibit.setAttribute('class','clickable');
+							exhibit.setAttribute('class','');
 							stand.appendChild(exhibit);
 						}
 					}					
