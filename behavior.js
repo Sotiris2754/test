@@ -46,17 +46,36 @@ function loadExhibit()
 	let sameBase;
 	let count=4;
 	let text="";
+
 AFRAME.registerComponent("show-gui",{
 	init:function(){
 		var guiPanel = document.querySelector("#mypanel");
 		var el = this.el;
+		var standPos = el.getAttribute("position");
+		var standRot = el.getAttribute("rotation");
+		// console.log(standPos.x); standPos.x + standPos.y + standPos.z
+		
+		// guiPanel.setAttribute("opacity",".5");
 		el.addEventListener('click',function(){
+			guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
+			guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
 			console.log("patisa Kitrini vasi");
-			guiPanel.setAttribute("panel-color","red");
-		})
+			isVisible = guiPanel.getAttribute("visible");
+
+			if(isVisible){
+				guiPanel.setAttribute("visible",false);
+			}
+			else{
+				guiPanel.setAttribute("visible",true);
+			}
+			
+			var color = guiPanel.getAttribute("panel-color");
+			// console.log(guiPanel);
+		});
 
 	},
 });
+
 
 	AFRAME.registerComponent("show-list", {
 
@@ -253,7 +272,8 @@ function placeExhibit(entity){
 
 					var stand = document.createElement('a-entity');
 					stand.setAttribute('id',data.stands[i].id);
-					stand.setAttribute('show-list',"");
+					// stand.setAttribute('show-list',"");
+					stand.setAttribute('show-gui',"");
 					stand.setAttribute('position',data.stands[i].position);
 					stand.setAttribute('gltf-model',`url(${data.stands[i].pathfile})`);
 					stand.setAttribute('rotation',data.stands[i].rotation);
