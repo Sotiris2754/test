@@ -79,7 +79,7 @@ AFRAME.registerComponent("show-gui",{
 });
 
 
-	AFRAME.registerComponent("show-list", {
+	AFRAME.registerComponent("show-list", { // Edw einai i palia  function gia HTML elements. Koita to "show-gui" component!!
 
 	init: function(){
 	var myDiv = document.querySelector("#myDiv");
