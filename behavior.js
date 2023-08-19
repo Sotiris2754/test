@@ -114,12 +114,30 @@ AFRAME.registerComponent("show-gui",{
 });
 
 	function nextPage(){
+		if(page==2)
+			return;
 		page=2;
-			displayDescriptionUpdated();
+
+		for(i=0; i<5; i++){
+			button  = document.getElementById(i);
+			button.setAttribute("id",i+5);
+		}
+
+		displayDescriptionUpdated();
+
 	}
 	function previousPage(){
+			if(page==1)
+			return;
 		page=1;
+
+		for(i=5; i<10; i++){
+			button  = document.getElementById(i);
+			button.setAttribute("id",i-5);
+		}
+
 		displayDescriptionUpdated();
+
 	}
 
 
@@ -138,9 +156,9 @@ AFRAME.registerComponent("show-gui",{
 			}
 			if(page==2){
 				console.log("page 2");
-				for (i=0; i<5; i++){
+				for (i=5; i<10; i++){
 					var text = document.getElementById(i);
-					text.setAttribute("value",data.exhibits[i+5].title);
+					text.setAttribute("value",data.exhibits[i].title); // +5 sto i gia na parei to 5o ekthema prwta
 					// console.log(text);
 				}
 			}

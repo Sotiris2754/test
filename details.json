@@ -63,7 +63,7 @@
 
 		{
 		"id":6,
-		"title":"Irthe to reuma",
+		"title":"Megalo agalma",
 		"pathfile":"human_scan/model.gltf",
 		"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
 		"type":"3d model",
@@ -72,7 +72,7 @@
 	},
 		{
 		"id":7,
-		"title":"Prwto potiri",
+		"title":"JAR 1",
 		"pathfile":"chalice/scene.gltf",
 		"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
 		"type":"3d model",
@@ -83,7 +83,7 @@
 
 		{
 		"id":8,
-		"title":"Deutero vazaki",
+		"title":"JAR 2",
 		"pathfile":"chalice2/scene.gltf",
 		"description":"Ένα βάζω από τα βάθυ της Ρωσίας",
 		"type":"3d model",
@@ -93,7 +93,7 @@
 
 	{
 		"id":9,
-		"title":"Trito vazaki",
+		"title":"JAR 3",
 		"pathfile":"chalice3/scene.gltf",
 		"description":"Ένα βάζω από τα βάθυ της Ινδίας.",
 		"type":"3d model",
