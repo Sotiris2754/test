@@ -51,12 +51,14 @@ AFRAME.registerComponent("show-gui",{
 	init:function(){
 		var guiPanel = document.querySelector("#mypanel");
 		var el = this.el;
+
 		var standPos = el.getAttribute("position");
 		var standRot = el.getAttribute("rotation");
 		// console.log(standPos.x); standPos.x + standPos.y + standPos.z
 		
 		// guiPanel.setAttribute("opacity",".5");
 		el.addEventListener('click',function(){
+			base=this;
 			guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
 			guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
 			console.log("patisa Kitrini vasi");
@@ -230,6 +232,7 @@ function placeExhibit(entity){
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',id+"."+id);
+					console.log(exhibit);
 					base.appendChild(exhibit);
 					console.log(exhibit);
 					this.exhibit = exhibit;

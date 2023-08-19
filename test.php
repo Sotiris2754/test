@@ -85,8 +85,8 @@
 
 
 			<a-gui-button bevel="true"
-						onclick="test(this)" 
-						id="label1"
+						onclick="placeExhibit(this)" 
+						id="0"
 						class="rename"
 						margin="0 0 .2 0"
 						width="2" 
@@ -101,10 +101,10 @@
 			</a-gui-button>
 
 			<a-gui-button 
-						onclick="test(this)"
+						onclick="placeExhibit(this)"
 						class="rename"
 						margin="0 0 .2 0"						
-						id="label2"
+						id="1"
 						width="2" 
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
@@ -114,10 +114,10 @@
 			</a-gui-button>
 
 			<a-gui-button
-						onclick="test(this)"
+						onclick="placeExhibit(this)"
 						class="rename"
 						margin="0 0 .2 0"
-						id="label3"
+						id="2"
 						width="2" 
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
@@ -127,10 +127,10 @@
 			</a-gui-button>
 
 			<a-gui-button
-						onclick="test(this)"
+						onclick="placeExhibit(this)"
 						class="rename"
 						margin="0 0 .2 0"
-						id="label4"
+						id="3"
 						width="2" 
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
@@ -140,10 +140,10 @@
 			</a-gui-button>
 
 			<a-gui-button
-						onclick="test(this)"
+						onclick="placeExhibit(this)"
 						class="rename"
 						margin="0 0 .2 0"
-						id="label5"
+						id="4"
 						width="2" 
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
