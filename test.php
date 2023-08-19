@@ -93,7 +93,7 @@
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
-						value="Today is a good day"
+						value="Empty base"
 						bevel-size="0.08"
 						bevel-thickness="0.02"
 
@@ -109,7 +109,7 @@
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
-						value="212 432 1234_"
+						value="Huge kid"
 			>
 			</a-gui-button>
 
@@ -122,7 +122,7 @@
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
-						value="212 432 1234_"
+						value="Bibelo bird"
 			>
 			</a-gui-button>
 
@@ -135,7 +135,7 @@
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
-						value="212 432 1234_"
+						value="Jar 1 "
 			>
 			</a-gui-button>
 
@@ -148,7 +148,7 @@
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
-						value="212 432 1234_"
+						value="Jar 2"
 			>
 			</a-gui-button>
 
@@ -158,7 +158,7 @@
 
 							<a-gui-icon-label-button
 								width=".5" height="0.5"
-								onclick=""
+								onclick="previousPage()"
 								icon="F2F5"
 								icon-font="assets/fonts/fa-solid-900.ttf"
 								font-family="assets/fonts/PressStart2P-Regular.ttf"
@@ -170,7 +170,7 @@
 
 							<a-gui-icon-label-button
 								width=".5" height="0.5"
-								onclick=""
+								onclick="nextPage()"
 								icon="F2F5"
 								icon-font="assets/fonts/fa-solid-900.ttf"
 								font-family="assets/fonts/PressStart2P-Regular.ttf"
@@ -242,6 +242,8 @@
 			// panel.setAttribute("panel-color","red");
 			// console.log(label.id);
 		}
+
+
 
 	// testVarFunction();
 

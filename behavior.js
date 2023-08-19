@@ -46,6 +46,7 @@ function loadExhibit()
 	let sameBase;
 	let count=4;
 	let text="";
+	let page = 1;
 
 AFRAME.registerComponent("show-gui",{
 	init:function(){
@@ -58,6 +59,7 @@ AFRAME.registerComponent("show-gui",{
 		
 		// guiPanel.setAttribute("opacity",".5");
 		el.addEventListener('click',function(){
+			displayDescriptionUpdated();
 			base=this;
 			guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
 			guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
@@ -110,6 +112,44 @@ AFRAME.registerComponent("show-gui",{
 		 })
 	},
 });
+
+	function nextPage(){
+		page=2;
+			displayDescriptionUpdated();
+	}
+	function previousPage(){
+		page=1;
+		displayDescriptionUpdated();
+	}
+
+
+	function displayDescriptionUpdated(){
+		if(!data){
+			console.log("DEN EXW ARXEIO");
+		}
+		else{
+			if(page==1){
+				console.log("page 1");
+				for (i=0; i<5; i++){
+					var text = document.getElementById(i);
+					text.setAttribute("value",data.exhibits[i].title);
+					// console.log(text);
+				}			
+			}
+			if(page==2){
+				console.log("page 2");
+				for (i=0; i<5; i++){
+					var text = document.getElementById(i);
+					text.setAttribute("value",data.exhibits[i+5].title);
+					// console.log(text);
+				}
+			}
+
+				
+		}
+
+	}
+
 
 	function displayDescription(){
 		if(text==="")
