@@ -379,7 +379,7 @@ function addBases(){
 	if(data.stands.length>count){ // Max number of stands == 6 (Apo to JSON file)
 		var stand = document.createElement('a-entity');
 		stand.setAttribute('id',data.stands[count].id); // Stand's id starts from 1 not 0 !!
-		stand.setAttribute('show-list','show-list');
+		stand.setAttribute('show-gui',"");
 		stand.setAttribute('position',data.stands[count].position);
 		stand.setAttribute('gltf-model',`url(${data.stands[count].pathfile})`);
 		stand.setAttribute('rotation',data.stands[count].rotation);
