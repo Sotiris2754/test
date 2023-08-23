@@ -79,7 +79,9 @@
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
 
-<a-box class="clickable"show-gui color="yellow" position="0 0 -5"></a-box>
+<!-- TESTING THE GUI CUSTOM COMPONENT ON A YELLOW BOX -->
+
+<!-- <a-box class="clickable"show-gui color="yellow" position="0 0 -5"></a-box> -->
 
 		<a-gui-flex-container id="mypanel" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="false">
 
