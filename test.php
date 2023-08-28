@@ -81,7 +81,7 @@
 
 <a-entity id="infoPanel" position="0 -10 0 ">
 	<a-plane width="2" height="1">
-			<a-text id="info" width="5" value="" color="black" align="center"></a-text>
+			<a-text id="info" width="2" value="" color="black" align="center"></a-text>
 	</a-plane>
 	
 </a-entity>

@@ -60,7 +60,7 @@ function displayInfo(obj){
 	var infoText = document.getElementById("info");
 	var id = obj.getAttribute("id");
 	// console.log(id)
-	infoPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 3, z:standPos.z});
+	infoPanel.setAttribute("position",{x:standPos.x-0.5, y:standPos.y + 3, z:standPos.z});
 	infoPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
 
 	var roundDown = Math.floor(id);
