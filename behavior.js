@@ -63,7 +63,7 @@ AFRAME.registerComponent("show-gui",{
 			base=this;
 			guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
 			guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
-			console.log("patisa Kitrini vasi");
+			// console.log("patisa Kitrini vasi");
 			isVisible = guiPanel.getAttribute("visible");
 
 			if(isVisible){
