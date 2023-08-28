@@ -79,6 +79,14 @@
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
 
+<a-entity id="infoPanel" position="0 -10 0 ">
+	<a-plane width="2" height="1">
+			<a-text id="info" width="5" value="" color="black" align="center"></a-text>
+	</a-plane>
+	
+</a-entity>
+
+
 <!-- TESTING THE GUI CUSTOM COMPONENT ON A YELLOW BOX -->
 
 <!-- <a-box class="clickable"show-gui color="yellow" position="0 0 -5"></a-box> -->

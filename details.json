@@ -6,7 +6,7 @@
 		"id":0,
 		"title":"Empty base",
 		"pathfile":"",
-		"description":"Άδειασε την βάση",
+		"description":"Discard exhibit",
 		"type":""
 		
 	},
@@ -15,7 +15,7 @@
 		"id":1,
 		"title":"Irthe to reuma",
 		"pathfile":"human_scan/model.gltf",
-		"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
+		"description":"A huge 3d model boy",
 		"type":"3d model",
 		"scale":"0.005 0.005 0.005",
 		"position":"1 1.3 -3",
@@ -26,7 +26,7 @@
 		"id":2,
 		"title":"Prwto potiri",
 		"pathfile":"chalice/scene.gltf",
-		"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
+		"description":"Middle-East decor, shaped as bird.\nIt looks like\naksjd askj daskjd",
 		"type":"3d model",
 		"scale":"4 4 4"
 		

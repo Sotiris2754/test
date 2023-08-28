@@ -48,6 +48,30 @@ function loadExhibit()
 	let text="";
 	let page = 1;
 
+
+
+function displayInfo(obj){
+
+	console.log(obj);
+	var standPos = obj.parentNode.getAttribute("position");
+	var standRot = obj.parentNode.getAttribute("rotation");
+
+	var infoPanel = document.getElementById("infoPanel");
+	var infoText = document.getElementById("info");
+	var id = obj.getAttribute("id");
+	// console.log(id)
+	infoPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 3, z:standPos.z});
+	infoPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
+
+	var roundDown = Math.floor(id);
+	// console.log(roundDown);
+	infoText.setAttribute("value",data.exhibits[roundDown].description);
+	// var value = infoText.getAttribute("value");
+	// console.log(value);
+				
+
+}
+
 AFRAME.registerComponent("show-gui",{
 	init:function(){
 		var guiPanel = document.querySelector("#mypanel");
@@ -67,30 +91,29 @@ AFRAME.registerComponent("show-gui",{
 			if(currentClass=="info"){
 				console.log("Exei to info class");
 				// guiPanel.setAttribute("visible",false);
-
+				displayInfo(entity);
 
 			}
 			else{
+
 				console.log("Not info Class");
 
+				displayDescriptionUpdated();
+				base=this;
+				guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
+				guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
+				// console.log("patisa Kitrini vasi");
+				isVisible = guiPanel.getAttribute("visible");
 
-
-			displayDescriptionUpdated();
-			base=this;
-			guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
-			guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
-			// console.log("patisa Kitrini vasi");
-			isVisible = guiPanel.getAttribute("visible");
-
-			if(isVisible){
-				guiPanel.setAttribute("visible",false);
-			}
-			else{
-				guiPanel.setAttribute("visible",true);
-			}
-			
-			var color = guiPanel.getAttribute("panel-color");
-			// console.log(guiPanel);
+				if(isVisible){
+					guiPanel.setAttribute("visible",false);
+				}
+				else{
+					guiPanel.setAttribute("visible",true);
+				}
+				
+				var color = guiPanel.getAttribute("panel-color");
+				// console.log(guiPanel);
 			}
 		});
 
