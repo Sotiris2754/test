@@ -67,7 +67,7 @@ AFRAME.registerComponent("show-gui",{
 			if(currentClass=="info"){
 				console.log("Exei to info class");
 				// guiPanel.setAttribute("visible",false);
-				
+
 
 			}
 			else{
