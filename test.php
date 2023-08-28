@@ -184,7 +184,6 @@
 
 				</a-gui-flex-container>
 
-
 		</a-gui-flex-container>
 
 
@@ -212,7 +211,7 @@
 
 	<a-camera wasd-controls="acceleration:500" id="camera">
 		
-			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable]" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
+			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
 
 		
@@ -245,6 +244,34 @@
 			// console.log(label.id);
 		}
 
+ // AFRAME.registerComponent('testclass', {
+ //      init: function () {
+ //        this.el.addEventListener('click', this.onClick.bind(this));
+ //      },
+ //      onClick: function () {
+ //        if (!this.el.classList.contains('processed')) {
+ //          // Handle click on the original box
+ //          console.log("Clicked the original box");
+          
+ //          // Add your code here for the first box's interaction
+          
+ //          // Mark the element as processed to prevent further clicks
+ //          this.el.classList.add('processed');
+          
+ //          // Create and append a new entity
+ //          const newEntity = document.createElement('a-box');
+ //          newEntity.setAttribute('class', 'clickable');
+ //          newEntity.setAttribute('color', 'blue');
+ //          newEntity.setAttribute('position', '1 0.5 -3');
+ //          this.el.appendChild(newEntity);
+ //        } else {
+ //          // Handle click on the new entity
+ //          console.log("Clicked the new entity");
+          
+ //          // Add your code here for the new entity's interaction
+ //        }
+ //      }
+ //    });
 
 
 	// testVarFunction();

@@ -58,7 +58,23 @@ AFRAME.registerComponent("show-gui",{
 		// console.log(standPos.x); standPos.x + standPos.y + standPos.z
 		
 		// guiPanel.setAttribute("opacity",".5");
-		el.addEventListener('click',function(){
+		el.addEventListener('click',function(el){
+
+			var entity = el.srcElement;
+			var currentClass = entity.getAttribute('class');
+			// console.log(currentClass);
+
+			if(currentClass=="info"){
+				console.log("Exei to info class");
+				// guiPanel.setAttribute("visible",false);
+				
+
+			}
+			else{
+				console.log("Not info Class");
+
+
+
 			displayDescriptionUpdated();
 			base=this;
 			guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
@@ -75,6 +91,7 @@ AFRAME.registerComponent("show-gui",{
 			
 			var color = guiPanel.getAttribute("panel-color");
 			// console.log(guiPanel);
+			}
 		});
 
 	},
@@ -236,7 +253,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
-						exhibit.setAttribute('class','clickable');
+						exhibit.setAttribute('class','info');
 
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
@@ -255,7 +272,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
-						exhibit.setAttribute('class','clickable');
+						exhibit.setAttribute('class','info');
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
@@ -274,7 +291,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
-						exhibit.setAttribute('class','clickable');
+						exhibit.setAttribute('class','info');
 
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
@@ -293,7 +310,7 @@ function placeExhibit(entity){
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',id+"."+id);
-					exhibit.setAttribute('class','clickable');
+					exhibit.setAttribute('class','info');
 					// console.log(exhibit);
 					base.appendChild(exhibit);
 					// console.log(exhibit);
@@ -357,7 +374,7 @@ function placeExhibit(entity){
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
 							exhibit.setAttribute('id',json[i]+"."+json[i]);
-							exhibit.setAttribute('class','clickable');
+							exhibit.setAttribute('class','info');
 							stand.appendChild(exhibit);
 						}
 					}					
