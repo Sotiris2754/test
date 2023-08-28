@@ -236,6 +236,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('class','clickable');
 
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
@@ -254,6 +255,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('class','clickable');
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
@@ -272,6 +274,7 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
+						exhibit.setAttribute('class','clickable');
 
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
@@ -290,9 +293,10 @@ function placeExhibit(entity){
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',id+"."+id);
-					console.log(exhibit);
+					exhibit.setAttribute('class','clickable');
+					// console.log(exhibit);
 					base.appendChild(exhibit);
-					console.log(exhibit);
+					// console.log(exhibit);
 					this.exhibit = exhibit;
 					storeData();
 			}
@@ -353,7 +357,7 @@ function placeExhibit(entity){
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
 							exhibit.setAttribute('id',json[i]+"."+json[i]);
-							exhibit.setAttribute('class','');
+							exhibit.setAttribute('class','clickable');
 							stand.appendChild(exhibit);
 						}
 					}					
