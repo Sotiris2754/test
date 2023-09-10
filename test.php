@@ -75,6 +75,9 @@
 
 <a-sky color="lightblue"></a-sky>
 
+<a-entity scale="1 1 1">
+
+
 <a-box class="clickable" onclick="addBases()" color="green" position="1 0 -2"></a-box>
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
@@ -217,6 +220,11 @@
 		 
 		 <a-box id="4" show-list class="clickable" color="blue" position="14.5 0 -2.5" rotation="0 90 0"></a-box> -->
 
+
+<a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
+
+</a-entity>
+
 	<a-camera wasd-controls="acceleration:500" id="camera">
 		
 			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
@@ -224,8 +232,6 @@
 
 		
 	</a-camera>
-<a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
-
 </a-scene> 
 
 
