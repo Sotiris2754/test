@@ -44,21 +44,16 @@ $exhibit = $_POST['exhibit'];
 $stmt = $db->prepare("UPDATE bases SET exhibit = :exhibit WHERE id = $id");
 $stmt->bindParam(':exhibit', $exhibit);
 $stmt->execute();
-}
 
-if(ISSET($_POST['action']) && $_POST['action']=="add"){
-// Define the data you want to insert
-$exhibitValue = "1"; // Replace with the actual value you want to insert
-$id = $_POST['id'];
 // Prepare the INSERT statement
-$sql = "INSERT INTO apps_collab_exh (id,exhibit) VALUES ($id,?)";
+$sql = "INSERT INTO apps_collab_exh (id,exhibit) VALUES ($id,$exhibit)";
 
 // Create a prepared statement
 $stmt = $conn->prepare($sql);
 
 if ($stmt) {
     // Bind the parameter and set its value
-    $stmt->bind_param("s", $exhibitValue);
+    // $stmt->bind_param("i", $exhibitValue);
 
     // Execute the statement
     if ($stmt->execute()) {
@@ -75,6 +70,10 @@ if ($stmt) {
 
 // Close the database connection
 $conn->close();
+
+}
+
+if(ISSET($_POST['action']) && $_POST['action']=="add"){
 
     $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 }
