@@ -456,7 +456,7 @@ function removeBases(){
 		$.ajax({
 			url: "sqlite.php",
 			method:"POST",
-			data: {action:"add"},
+			data: {id:base.id, action:"add"},
 			success: function(response) {
 		    console.log("Base added successfully.");
 		  	}

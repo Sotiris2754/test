@@ -1,5 +1,14 @@
 <?php
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "v-corfu";
+
+
+$conn = new mysqli($servername,$username,$password,$database);
+
+
 // Open a new SQLite database file or connect to an existing one
 $db = new SQLite3('test.db');
 
@@ -38,8 +47,36 @@ $stmt->execute();
 }
 
 if(ISSET($_POST['action']) && $_POST['action']=="add"){
+// Define the data you want to insert
+$exhibitValue = "1"; // Replace with the actual value you want to insert
+$id = $_POST['id'];
+// Prepare the INSERT statement
+$sql = "INSERT INTO apps_collab_exh (id,exhibit) VALUES ($id,?)";
 
- $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
+// Create a prepared statement
+$stmt = $conn->prepare($sql);
+
+if ($stmt) {
+    // Bind the parameter and set its value
+    $stmt->bind_param("s", $exhibitValue);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "Record inserted successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close the statement
+    $stmt->close();
+} else {
+    echo "Error: " . $conn->error;
+}
+
+// Close the database connection
+$conn->close();
+
+    $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 }
 
 if(ISSET($_POST['action']) && $_POST['action']=="remove"){
@@ -85,6 +122,7 @@ if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
 
     echo $inserts;
 }
+
 
 
 
