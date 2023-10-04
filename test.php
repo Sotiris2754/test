@@ -9,7 +9,9 @@
 
 	<title>Test 0.1V</title>
 	<script src="behavior.js"></script>
-	<?php require "sqlite.php" ?>
+	<?php require "sqlite.php" ?>		
+
+
 
 </head>
 
