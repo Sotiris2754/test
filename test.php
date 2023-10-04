@@ -51,7 +51,6 @@
 <script>
 	fetchContent(); // LOAD JSON FILE !!
 	retrieveData();
-	console.log();
 
 </script>
 

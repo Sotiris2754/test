@@ -265,6 +265,7 @@ function placeExhibit(entity){
 				if(this.exhibit.parentNode==base){
 					// console.log(this.exhibit.parentNode);
 
+
 					if(exhibitId!= id + "." + id){
 					removeChild(base);
 
@@ -363,12 +364,7 @@ function placeExhibit(entity){
 			method:"POST",
 			data: {action:"view"},
 			success: function(res) {
-				try{
-					console.log(res);
-				}
-				catch(e){
-					console.log(e);
-				}
+				
 	    		console.log("Success Response");
 	    		var json = JSON.parse(res);
 	    		//console.log(json.length);
