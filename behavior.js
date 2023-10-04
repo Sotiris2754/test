@@ -342,7 +342,7 @@ function placeExhibit(entity){
 			}
 	function storeData(){
 	  $.ajax({
-	  url: "sqlite.php",
+	  url: "sql.php",
 	  method: "POST",
 	  data: { id:base.id, exhibit:data.exhibits[id].id , action:"store"},
 	  success: function(response) {
@@ -359,12 +359,18 @@ function placeExhibit(entity){
 
 	function retrieveData(){
 		$.ajax({
-			url:"sqlite.php",
+			url:"sql.php",
 			method:"POST",
 			data: {action:"view"},
-			success: function(json) {
+			success: function(res) {
+				try{
+					console.log(res);
+				}
+				catch(e){
+					console.log(e);
+				}
 	    		console.log("Success Response");
-	    		var json = JSON.parse(json);
+	    		var json = JSON.parse(res);
 	    		//console.log(json.length);
 				if (data == null)
 				{
@@ -454,7 +460,7 @@ function removeBases(){
 	function addBaseToServer(){
 		console.log('Prosthese vasi');
 		$.ajax({
-			url: "sqlite.php",
+			url: "sql.php",
 			method:"POST",
 			data: {id:base.id, action:"add"},
 			success: function(response) {
@@ -465,7 +471,7 @@ function removeBases(){
 
 	function removeBaseFromServer(){
 		$.ajax({
-			url: "sqlite.php",
+			url: "sql.php",
 			method:"POST",
 			data: {action:"remove"},
 			success: function(response) {

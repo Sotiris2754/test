@@ -60,26 +60,30 @@ $conn->close();
 
 if(ISSET($_POST['action']) && $_POST['action']=="add"){
 
-    $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
+    $query = "INSERT INTO apps_collab_exh (exhibit) VALUES (null)";
+    $conn->query($query);
 }
 
 if(ISSET($_POST['action']) && $_POST['action']=="remove"){
 
 // $db->exec("DELETE FROM bases WHERE MAX(id)");
-$query = "SELECT id FROM bases ORDER BY id DESC LIMIT 1";
+
 
 // Execute the query and get the ID of the last row
-$result = $db->querySingle($query);
-if (!$result) {
-    // Handle the case where the table is empty
-    die("Table is empty");
-}
+// $result = $db->querySingle($query);
 
+// if (!$result) {
+//     // Handle the case where the table is empty
+//     die("Table is empty");
+// }
+$conn->query("DELETE FROM apps_collab_exh WHERE id in (SELECT MAX(id) as id FROM apps_collab_exh ) ");
+$conn->query("ALTER TABLE apps_collab_exh AUTO_INCREMENT = 1 ");
+// $
 // Define the SQL query to delete the last row from the table
-$query = "DELETE FROM bases WHERE id = $result";
+// $query = "DELETE FROM apps_collab_exh WHERE id = $result";
 
 // Execute the query
-$db->exec($query);
+// $db->exec($query);
 
 }
 
@@ -87,8 +91,8 @@ if(ISSET($_POST['action']) && $_POST['action'] == "view"){
         
     $data = array();
     $sql = "SELECT exhibit FROM apps_collab_exh";
-    $stmt = $conn->prepare($sql);
-    $stmt = $stmt->execute();
+    // $stmt = $conn->prepare($sql);
+    // $stmt = $stmt->execute();
     
     // $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -96,22 +100,30 @@ if(ISSET($_POST['action']) && $_POST['action'] == "view"){
     //     //echo $row['exhibit'] . "<br>";
     //     $data[] = $row['exhibit'];
     // }
-    $result = mysqli_query($conn,$sql);
-    while($row  = mysqli_fetch_array($result))
-        $data[]= $row['exhibit'];
+$res = $conn->query($sql);
+
+$resData = $res->fetch_all(MYSQLI_ASSOC);
+
+    // $result = mysqli_query($conn,$sql);
+    // while($row  = mysqli_fetch_array($result))
+    //     $data[]= $row['exhibit'];
+
+foreach ($resData as $key => $value) {
+    $data[]=$value['exhibit'];
+}
+
   
     $json = json_encode($data);
-    //var_dump($json);
     echo $json; 
 }
 
-if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
-    $result = $db->query('SELECT COUNT(*) AS numInserts FROM bases');
-    $row = $result->fetchArray(SQLITE3_ASSOC);
-    $inserts = $row['numInserts'];
+// if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
+//     $result = $db->query('SELECT COUNT(*) AS numInserts FROM bases');
+//     $row = $result->fetchArray(SQLITE3_ASSOC);
+//     $inserts = $row['numInserts'];
 
-    echo $inserts;
-}
+//     echo $inserts;
+// }
 
 
 
