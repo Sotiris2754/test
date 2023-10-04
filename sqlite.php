@@ -49,7 +49,7 @@ $stmt->execute();
 // Dokimi gia to PHPMYADMIN !!!!!
 // Prepare the INSERT statement
 $sql = "INSERT INTO apps_collab_exh (id,exhibit) VALUES ($id,$exhibit)";
-// $sql2 = "UPDATE apps_collab_exh SET id = :id,exhibit :exhibit";
+
 
 // Create a prepared statement
 $stmt = $conn->prepare($sql);
