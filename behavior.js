@@ -47,6 +47,7 @@ function loadExhibit()
 	let count=4;
 	let text="";
 	let page = 1;
+	let shown = true;
 
 
 
@@ -57,15 +58,21 @@ function displayInfo(obj){
 	var standRot = obj.parentNode.getAttribute("rotation");
 
 	var infoPanel = document.getElementById("infoPanel");
-	var infoText = document.getElementById("info");
-	var id = obj.getAttribute("id");
+	// var infoText = document.getElementById("info");
+	// var id = obj.getAttribute("id");
+	// var roundDown = Math.floor(id);
+	// infoText.setAttribute("value",data.exhibits[roundDown].description);
 	// console.log(id)
-	infoPanel.setAttribute("position",{x:standPos.x-0.5, y:standPos.y + 3, z:standPos.z});
-	infoPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
-
-	var roundDown = Math.floor(id);
+	if(!shown)
+		infoPanel.setAttribute("visible","false");
+	else{
+		infoPanel.setAttribute("visible","true");
+		infoPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 3, z:standPos.z});
+		infoPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
+	}
+	
 	// console.log(roundDown);
-	infoText.setAttribute("value",data.exhibits[roundDown].description);
+	
 	// var value = infoText.getAttribute("value");
 	// console.log(value);
 				
@@ -83,15 +90,20 @@ AFRAME.registerComponent("show-gui",{
 		
 		// guiPanel.setAttribute("opacity",".5");
 		el.addEventListener('click',function(el){
-
 			var entity = el.srcElement;
 			var currentClass = entity.getAttribute('class');
+
+			var infoText = document.getElementById("info");
+			var id = entity.getAttribute("id");
+			var roundDown = Math.floor(id);
+			infoText.setAttribute("value",data.exhibits[roundDown].description);
 			// console.log(currentClass);
 
 			if(currentClass=="info"){
 				console.log("Exei to info class");
 				// guiPanel.setAttribute("visible",false);
 				displayInfo(entity);
+				shown=!shown;
 
 			}
 			else{
