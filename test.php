@@ -70,6 +70,7 @@
 					<a-asset-item id="textfont1" src="assets/fonts/PermanentMarker-Regular.ttf"></a-asset-item>
 					<a-asset-item id="textfont2" src="assets/fonts/Plaster-Regular.ttf"></a-asset-item>
 					<a-asset-item id="nextArrow" src="assets/nextArrow.png"></a-asset-item>
+					<img id="exitButton" src="assets/exit.png"></img>
 
 				</a-assets>
 
@@ -83,12 +84,16 @@
 
 <a-box class="clickable" onclick="removeBases()" color="red" position="-1 0 -2"></a-box>
 
+
+
+<!-- To Description panel dimiourgeitai pleon dynamika meso js. 
+
 <a-entity id="infoPanel" position="0 -10 0 ">
 	<a-plane width="2" height="1">
 			<a-text id="info" width="2" value="" color="black" align="center"></a-text>
 	</a-plane>
 	
-</a-entity>
+</a-entity> -->
 
 
 <!-- TESTING THE GUI CUSTOM COMPONENT ON A YELLOW BOX -->

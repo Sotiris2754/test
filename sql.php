@@ -26,8 +26,7 @@ if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 
 $id = $_POST['id'];
 $exhibit = $_POST['exhibit'];
-
-
+$description = $_POST['description'];
 
 // Prepare the INSERT statement
 
@@ -39,7 +38,6 @@ $stmt = $conn->prepare($sql);
 if ($stmt) {
     // Bind the parameter and set its value
     // $stmt->bind_param("i", $exhibitValue);
-
     // Execute the statement
     if ($stmt->execute()) {
         echo "Record inserted successfully!";
@@ -116,6 +114,8 @@ foreach ($resData as $key => $value) {
     $json = json_encode($data);
     echo $json; 
 }
+
+
 
 // if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
 //     $result = $db->query('SELECT COUNT(*) AS numInserts FROM bases');

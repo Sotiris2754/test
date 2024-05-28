@@ -21,7 +21,7 @@ $result = $conn->query($sql);
 while($row = $result->fetch_assoc()){
 	echo "<tr>
 		<td>Id: $row[id]</td>
-		<td>Exhibit $row[exhibit]</td>,
+		<td>Exhibit: $row[exhibit]</td>,<br>
 	</tr>";
 }
 

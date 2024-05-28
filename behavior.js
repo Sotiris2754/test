@@ -47,68 +47,95 @@ function loadExhibit()
 	let count=4;
 	let text="";
 	let page = 1;
-	let shown = true;
+	let shown = false;
 
 
 
-function displayInfo(obj){
+// function displayInfo(obj){
 
-	console.log(obj);
-	var standPos = obj.parentNode.getAttribute("position");
-	var standRot = obj.parentNode.getAttribute("rotation");
+// 	console.log(obj);
+// 	var standPos = obj.parentNode.getAttribute("position");
+// 	var standRot = obj.parentNode.getAttribute("rotation");
 
-	var infoPanel = document.getElementById("infoPanel");
-	// var infoText = document.getElementById("info");
-	// var id = obj.getAttribute("id");
-	// var roundDown = Math.floor(id);
-	// infoText.setAttribute("value",data.exhibits[roundDown].description);
-	// console.log(id)
-	if(!shown)
-		infoPanel.setAttribute("visible","false");
-	else{
-		infoPanel.setAttribute("visible","true");
-		infoPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 3, z:standPos.z});
-		infoPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
-	}
+// 	var infoText = document.getElementById("info");
+// 	 var id = obj.getAttribute("id");
+// 	 var roundDown = Math.floor(id);
+// 	 infoText.setAttribute("value",data.exhibits[roundDown].description);
+// 	 // console.log(id);
 	
-	// console.log(roundDown);
+// 	// console.log(roundDown);
 	
-	// var value = infoText.getAttribute("value");
-	// console.log(value);
+// 	// var value = infoText.getAttribute("value");
+// 	// console.log(value);
 				
 
-}
+// }
+AFRAME.registerComponent("closebutton",{
+	init:function(){
+		var el = this.el;
+		el.addEventListener('click',function(){
+			var frame = el.parentNode;
+			var panel = frame.parentNode;
+			panel.setAttribute('visible','false');
+			el.classList.remove('info');
+		});
+	}
+});
+
+AFRAME.registerComponent("show-panel",{
+	init:function(){
+		var el = this.el;
+		el.addEventListener('click',function(){
+			var parent = el.parentNode;
+			var frame  = parent.childNodes[1];
+			var exitButton = frame.querySelector('.grandChild');
+			exitButton.setAttribute('class','grandChild info');
+			frame.setAttribute('visible','true');
+
+
+		})
+	}
+})
 
 AFRAME.registerComponent("show-gui",{
 	init:function(){
 		var guiPanel = document.querySelector("#mypanel");
 		var el = this.el;
-
+		// console.log(el);
 		var standPos = el.getAttribute("position");
 		var standRot = el.getAttribute("rotation");
-		// console.log(standPos.x); standPos.x + standPos.y + standPos.z
-		
+		 // console.log(standPos);
 		// guiPanel.setAttribute("opacity",".5");
 		el.addEventListener('click',function(el){
 			var entity = el.srcElement;
-			var currentClass = entity.getAttribute('class');
-
-			var infoText = document.getElementById("info");
-			var id = entity.getAttribute("id");
-			var roundDown = Math.floor(id);
-			infoText.setAttribute("value",data.exhibits[roundDown].description);
+			// console.log(entity);
+			// var currentClass = entity.getAttribute('class');
 			// console.log(currentClass);
 
-			if(currentClass=="info"){
-				console.log("Exei to info class");
-				// guiPanel.setAttribute("visible",false);
-				displayInfo(entity);
-				shown=!shown;
+			// var infoText = document.getElementById("info");
+			// var id = entity.getAttribute("id");
+			// console.log(id);
+			// var roundDown = Math.floor(id);
+			// infoText.setAttribute("value",data.exhibits[roundDown].description);
+			// console.log(currentClass);
 
-			}
-			else{
+			if(entity.classList.contains('stand')){
 
-				console.log("Not info Class");
+				// // guiPanel.setAttribute("visible",false);
+				
+				// var infoPanel = document.getElementById("infoPanel");
+				// if(shown==false){
+				// 	infoPanel.setAttribute("visible","true");
+				// 	infoPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 3, z:standPos.z});
+				// 	infoPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
+				// 	shown=!shown;
+				// }
+				// else if(shown==true){
+				// 	infoPanel.setAttribute("visible","false");
+				// 	shown=!shown;
+				// }
+
+				// console.log("Stand Class");
 
 				displayDescriptionUpdated();
 				base=this;
@@ -116,7 +143,7 @@ AFRAME.registerComponent("show-gui",{
 				guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
 				// console.log("patisa Kitrini vasi");
 				isVisible = guiPanel.getAttribute("visible");
-
+				console.log(isVisible);
 				if(isVisible){
 					guiPanel.setAttribute("visible",false);
 				}
@@ -126,6 +153,9 @@ AFRAME.registerComponent("show-gui",{
 				
 				var color = guiPanel.getAttribute("panel-color");
 				// console.log(guiPanel);
+			}
+			else{
+				//Tha doume...
 			}
 		});
 
@@ -213,9 +243,7 @@ AFRAME.registerComponent("show-gui",{
 					text.setAttribute("value",data.exhibits[i].title); // +5 sto i gia na parei to 5o ekthema prwta
 					// console.log(text);
 				}
-			}
-
-				
+			}	
 		}
 
 	}
@@ -241,16 +269,6 @@ AFRAME.registerComponent("show-gui",{
 			}
 	}
 
-	// function testVarFunction() {
-	// 	var elements = document.querySelectorAll(".rename");
-
-	// 	var labelValue = displayDescription();
-
-	// 	elements.forEach(function(element) {
-    // 	element.setAttribute("value", labelValue);
-  	// 	});
-		
-	// }
 
 	function checkBase(){
 		if (base==previousBase){		
@@ -289,11 +307,38 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
-						exhibit.setAttribute('class','info');
+						exhibit.setAttribute('class','clickable');
+						exhibit.setAttribute("show-panel","");
 
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
+
+						var frame = document.createElement('a-entity');
+							frame.setAttribute("position","0 3 0.01");
+							frame.setAttribute("rotation","0 -180 0");
+							frame.setAttribute('visible','false');
+							base.appendChild(frame);
+
+						var panel = document.createElement('a-plane');
+							panel.setAttribute('width',2);
+							panel.setAttribute('height',1);
+							frame.appendChild(panel);
+
+						var exitButton = document.createElement('a-image');
+							exitButton.setAttribute('src','#exitButton');
+							exitButton.setAttribute('scale','0.2 0.2 0.2');
+							exitButton.setAttribute('position','0.8 .35 0.01');
+							exitButton.setAttribute('class','grandChild');
+							exitButton.setAttribute('closebutton','');
+							panel.appendChild(exitButton);
+
+						var infoText = document.createElement('a-text');
+							infoText.setAttribute('width',2);
+							infoText.setAttribute('color','black');
+							infoText.setAttribute('align','center');
+							infoText.setAttribute('value',data.exhibits[id].description);
+							panel.appendChild(infoText);
 					}
 
 				}
@@ -308,10 +353,37 @@ function placeExhibit(entity){
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
-						exhibit.setAttribute('class','info');
+						exhibit.setAttribute('class','clickable');
+						exhibit.setAttribute("show-panel","");
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
+
+						var frame = document.createElement('a-entity');
+							frame.setAttribute("position","0 3 0.01");
+							frame.setAttribute("rotation","0 -180 0");
+							frame.setAttribute('visible','false');
+							base.appendChild(frame);
+
+						var panel = document.createElement('a-plane');
+							panel.setAttribute('width',2);
+							panel.setAttribute('height',1);
+							frame.appendChild(panel);
+
+						var exitButton = document.createElement('a-image');
+							exitButton.setAttribute('src','#exitButton');
+							exitButton.setAttribute('scale','0.2 0.2 0.2');
+							exitButton.setAttribute('position','0.8 .35 0.01');
+							exitButton.setAttribute('class','grandChild');
+							exitButton.setAttribute('closebutton','');
+							panel.appendChild(exitButton);
+
+						var infoText = document.createElement('a-text');
+							infoText.setAttribute('width',2);
+							infoText.setAttribute('color','black');
+							infoText.setAttribute('align','center');
+							infoText.setAttribute('value',data.exhibits[id].description);
+							panel.appendChild(infoText);
 
 					}
 					else{
@@ -328,10 +400,37 @@ function placeExhibit(entity){
 						exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 						exhibit.setAttribute('id',id+"."+id);
 						exhibit.setAttribute('class','info');
+						exhibit.setAttribute("show-panel","");
 
 						base.appendChild(exhibit);
 						this.exhibit = exhibit;
 						storeData();
+						
+						var frame = document.createElement('a-entity');
+							frame.setAttribute("position","0 3 0.01");
+							frame.setAttribute("rotation","0 -180 0");
+							frame.setAttribute('visible','false');
+							base.appendChild(frame);
+
+						var panel = document.createElement('a-plane');
+							panel.setAttribute('width',2);
+							panel.setAttribute('height',1);
+							frame.appendChild(panel);
+
+						var exitButton = document.createElement('a-image');
+							exitButton.setAttribute('src','#exitButton');
+							exitButton.setAttribute('scale','0.2 0.2 0.2');
+							exitButton.setAttribute('position','0.8 .35 0.01');
+							exitButton.setAttribute('class','grandChild');
+							exitButton.setAttribute('closebutton','');
+							panel.appendChild(exitButton);
+
+						var infoText = document.createElement('a-text');
+							infoText.setAttribute('width',2);
+							infoText.setAttribute('color','black');
+							infoText.setAttribute('align','center');
+							infoText.setAttribute('value',data.exhibits[id].description);
+							panel.appendChild(infoText);
 					}
 				}						
 			}
@@ -346,18 +445,45 @@ function placeExhibit(entity){
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',id+"."+id);
-					exhibit.setAttribute('class','info');
+					exhibit.setAttribute('class','clickable');
+					exhibit.setAttribute("show-panel","");
 					// console.log(exhibit);
 					base.appendChild(exhibit);
 					// console.log(exhibit);
 					this.exhibit = exhibit;
 					storeData();
+
+						var frame = document.createElement('a-entity');
+							frame.setAttribute("position","0 3 0.01");
+							frame.setAttribute("rotation","0 -180 0");
+							frame.setAttribute('visible','false');
+							base.appendChild(frame);
+
+						var panel = document.createElement('a-plane');
+							panel.setAttribute('width',2);
+							panel.setAttribute('height',1);
+							frame.appendChild(panel);
+
+						var exitButton = document.createElement('a-image');
+							exitButton.setAttribute('src','#exitButton');
+							exitButton.setAttribute('scale','0.2 0.2 0.2');
+							exitButton.setAttribute('position','0.8 .35 0.01');
+							exitButton.setAttribute('class','grandChild');
+							exitButton.setAttribute('closebutton','');
+							panel.appendChild(exitButton);
+
+						var infoText = document.createElement('a-text');
+							infoText.setAttribute('width',2);
+							infoText.setAttribute('color','black');
+							infoText.setAttribute('align','center');
+							infoText.setAttribute('value',data.exhibits[id].description);
+							panel.appendChild(infoText);
 			}
 	function storeData(){
 	  $.ajax({
 	  url: "sql.php",
 	  method: "POST",
-	  data: { id:base.id, exhibit:data.exhibits[id].id , action:"store"},
+	  data: { id:base.id, exhibit:data.exhibits[id].id, description:data.exhibits[id].description, action:"store"},
 	  success: function(response) {
 	    console.log("Selection stored successfully.");
 	   	//console.log(response);
@@ -411,10 +537,13 @@ function placeExhibit(entity){
 							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
 							exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
 							exhibit.setAttribute('id',json[i]+"."+json[i]);
-							exhibit.setAttribute('class','info');
+							exhibit.setAttribute('class','clickable');
+							exhibit.setAttribute("show-panel","");
 							stand.appendChild(exhibit);
 						}
-					}					
+
+					}
+
 	    		}
 	  		},
 		
