@@ -120,7 +120,7 @@ AFRAME.registerComponent("show-gui",{
 			// console.log(currentClass);
 
 			if(entity.classList.contains('stand')){
-
+				base=this;
 				// // guiPanel.setAttribute("visible",false);
 				
 				// var infoPanel = document.getElementById("infoPanel");
@@ -138,19 +138,28 @@ AFRAME.registerComponent("show-gui",{
 				// console.log("Stand Class");
 
 				displayDescriptionUpdated();
+				checkBase();
+				if(sameBase){
 
-				base=this;
-				guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
-				guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
-				// console.log("patisa Kitrini vasi");
-				isVisible = guiPanel.getAttribute("visible");
-				if(isVisible){
-					guiPanel.setAttribute("visible",false);
+					isVisible = guiPanel.getAttribute("visible");
+
+					if(isVisible){
+						guiPanel.setAttribute("visible",false);
+
+					}
+					else{
+						guiPanel.setAttribute("visible",true);
+					}
 
 				}
 				else{
-					guiPanel.setAttribute("visible",true);
+				guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
+				guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
+				guiPanel.setAttribute("visible",true);	
 				}
+
+				// console.log("patisa Kitrini vasi");
+
 			}
 			else{
 				//Tha doume...
