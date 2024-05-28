@@ -138,21 +138,19 @@ AFRAME.registerComponent("show-gui",{
 				// console.log("Stand Class");
 
 				displayDescriptionUpdated();
+
 				base=this;
 				guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
 				guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
 				// console.log("patisa Kitrini vasi");
 				isVisible = guiPanel.getAttribute("visible");
-				console.log(isVisible);
 				if(isVisible){
 					guiPanel.setAttribute("visible",false);
+
 				}
 				else{
 					guiPanel.setAttribute("visible",true);
 				}
-				
-				var color = guiPanel.getAttribute("panel-color");
-				// console.log(guiPanel);
 			}
 			else{
 				//Tha doume...
@@ -229,7 +227,7 @@ AFRAME.registerComponent("show-gui",{
 		}
 		else{
 			if(page==1){
-				console.log("page 1");
+				// console.log("page 1");
 				for (i=0; i<5; i++){
 					var text = document.getElementById(i);
 					text.setAttribute("value",data.exhibits[i].title);
@@ -237,7 +235,7 @@ AFRAME.registerComponent("show-gui",{
 				}			
 			}
 			if(page==2){
-				console.log("page 2");
+				// console.log("page 2");
 				for (i=5; i<10; i++){
 					var text = document.getElementById(i);
 					text.setAttribute("value",data.exhibits[i].title); // +5 sto i gia na parei to 5o ekthema prwta
