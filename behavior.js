@@ -540,6 +540,32 @@ function placeExhibit(entity){
 							exhibit.setAttribute('class','clickable');
 							exhibit.setAttribute("show-panel","");
 							stand.appendChild(exhibit);
+
+							var frame = document.createElement('a-entity');
+								frame.setAttribute("position","0 3 0.01");
+								frame.setAttribute("rotation","0 -180 0");
+								frame.setAttribute('visible','false');
+								stand.appendChild(frame);
+
+							var panel = document.createElement('a-plane');
+								panel.setAttribute('width',2);
+								panel.setAttribute('height',1);
+								frame.appendChild(panel);
+
+							var exitButton = document.createElement('a-image');
+								exitButton.setAttribute('src','#exitButton');
+								exitButton.setAttribute('scale','0.2 0.2 0.2');
+								exitButton.setAttribute('position','0.8 .35 0.01');
+								exitButton.setAttribute('class','grandChild');
+								exitButton.setAttribute('closebutton','');
+								panel.appendChild(exitButton);
+
+							var infoText = document.createElement('a-text');
+								infoText.setAttribute('width',2);
+								infoText.setAttribute('color','black');
+								infoText.setAttribute('align','center');
+								infoText.setAttribute('value',data.exhibits[json[i]].description);
+								panel.appendChild(infoText);
 						}
 
 					}
