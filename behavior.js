@@ -229,7 +229,7 @@ AFRAME.registerComponent("show-gui",{
 
 	}
 
-
+//Αυτή είναι η συνάρτηση για την απεικόνιση των τίτλων των έργων πάνω στα πλαίσια του GUI
 	function displayDescriptionUpdated(){
 		if(!data){
 			console.log("DEN EXW ARXEIO");
