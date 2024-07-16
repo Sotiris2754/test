@@ -2406,7 +2406,7 @@ AFRAME.registerComponent('rounded', {
     }
 
     roundedRect(roundedRectShape, -this.data.width / 2, -this.data.height / 2, this.data.width, this.data.height, corners[0], corners[1], corners[2], corners[3]);
-    return new THREE.ShapeBufferGeometry(roundedRectShape);
+    return new THREE.ShapeGeometry(roundedRectShape);
   },
   pause: function pause() {},
   play: function play() {}
@@ -8568,7 +8568,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     function getTemplateGeometry(detail) {
       var geom = templateGeometries[detail];
       if (!geom) {
-        geom = templateGeometries[detail] = new THREE.PlaneBufferGeometry(1, 1, detail, detail).translate(0.5, 0.5, 0);
+        geom = templateGeometries[detail] = new THREE.PlaneGeometry(1, 1, detail, detail).translate(0.5, 0.5, 0);
       }
       return geom;
     }
@@ -8858,7 +8858,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
       return Array.isArray(o) ? o[0] : o;
     }
 
-    var raycastMesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(1, 1).translate(0.5, 0.5, 0), defaultMaterial);
+    var raycastMesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1).translate(0.5, 0.5, 0), defaultMaterial);
 
     var syncStartEvent = { type: 'syncstart' };
     var syncCompleteEvent = { type: 'synccomplete' };
