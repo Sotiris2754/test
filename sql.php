@@ -98,6 +98,7 @@ if(ISSET($_POST['action']) && $_POST['action'] == "view"){
     //     //echo $row['exhibit'] . "<br>";
     //     $data[] = $row['exhibit'];
     // }
+
 $res = $conn->query($sql);
 
 $resData = $res->fetch_all(MYSQLI_ASSOC);
@@ -108,7 +109,7 @@ $resData = $res->fetch_all(MYSQLI_ASSOC);
 
 foreach ($resData as $key => $value) {
     $data[]=$value['exhibit'];
-}
+}   
 
   
     $json = json_encode($data);

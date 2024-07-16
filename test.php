@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	<!-- ---------------- -->
+	
+	<!-- Versions of the building. Default version 1.0.4-->
+	<!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+
+	<script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+	<!-- <script src="aframe-master.js"></script> -->
+	
+	<!-- ---------------- -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
   <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar-nft.js"></script> -->
   <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
   <script src="js/aframe-gui.js"></script>
