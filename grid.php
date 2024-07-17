@@ -85,7 +85,7 @@ AFRAME.registerComponent('grid-manager', {
             { position: { x: -4.5, y: 4, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, rows:3, columns:8 },
             { position: { x: -16.55, y: 4, z: -2 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:2 },
             { position: { x: 15.3, y: 4, z: -3.5 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:2 },
-            { position: { x: -0.5, y: 4, z: 1 }, rotation: { x: 90, y: 180, z: 0}, rows:3, columns:1 }  // Bottom wall
+            { position: { x: -0.5, y: 4, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, rows:3, columns:1 }  // Bottom wall
           ];
           
 
@@ -101,6 +101,7 @@ AFRAME.registerComponent('grid-manager', {
             }
           });
 
+          this.movablePlane = document.querySelector('#movable-plane');
 
         },
         createGrid: function (position, rotation, size, gap, rows, columns, wallIndex) {
@@ -144,6 +145,8 @@ AFRAME.registerComponent('grid-manager', {
 
 
 
+
+
 					  if (event.target.classList.contains('gridtile')) {
 
 					    // Remove highlight from previously selected tile
@@ -158,6 +161,9 @@ AFRAME.registerComponent('grid-manager', {
 					    event.target.classList.add('selected');
 
 					    console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
+
+					    // this.showGui(event.target,position,rotation,size,gap,gridContainer);
+					    this.showGui(gridContainer);
 					  }
 					});
         },
@@ -168,7 +174,30 @@ AFRAME.registerComponent('grid-manager', {
             tile.classList.toggle('disable', !this.tilesEnabled); // Toggle disabled class
             tile.classList.toggle('enable',this.tilesEnabled);
           });
-        }
+        },
+
+       showGui: function(gridContainer){
+       	const gridPosition = gridContainer.getAttribute('position');
+       	const grdiRotation = gridContainer.getAttribute('rotation');
+      	const planeOffset = 0.2;
+
+	    	this.movablePlane.setAttribute('position', 'gridPosition');
+	    	this.movablePlane.setAttribute('rotation','grdiRotation' );
+	     }
+
+       // showGui: function(tile, gridPosition, gridRotation, size, gap, gridContainer){
+       // 	const tilePosition = tile.getAttribute('position');
+      // 	const planeOffset = 0.2;
+
+		   //  const newPosition = {
+		   // 		x: gridPosition.x + tilePosition.x + planeOffset * Math.sin(THREE.Math.degToRad(gridRotation.y)),
+		   //  	y: gridPosition.y + tilePosition.y,
+		   //  	z: gridPosition.z + tilePosition.z + planeOffset * Math.cos(THREE.Math.degToRad(gridRotation.y))
+		   //  };
+	    // 	this.movablePlane.setAttribute('position', `${newPosition.x} ${newPosition.y} ${newPosition.z}`);
+	    // 	this.movablePlane.setAttribute('rotation', `${gridRotation.x} ${gridRotation.y} ${gridRotation.z}`);
+	     // }
+
       });
 
 
@@ -196,6 +225,7 @@ AFRAME.registerComponent('grid-manager', {
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
 
+<a-plane id="movable-plane" width="1" height="1" color="red" position="0 0 -5"></a-plane>
 
 <a-entity grid-manager="size: 1; gap: 0.5;" position="0 0 0"></a-entity>
 
