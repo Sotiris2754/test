@@ -70,16 +70,22 @@ AFRAME.registerComponent('grid-manager', {
           const el = this.el;
           const size = data.size;
           const gap = data.gap;
+
+          this.tilesEnabled = true;
+          this.tiles = [];
           // const rows = data.rows;
           // const columns = data.columns;
 
           const walls = [
-            { position: { x: -2.5, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4 },  // Front wall
-            { position: { x: 1.5, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4 },  // Back wall
-            { position: { x: -4, y: 2, z: 0 }, rotation: { x: 0, y: -90, z: 0 }, rows:3, columns:4 },  // Left wall
-            { position: { x: 4, y: 2, z: 0 }, rotation: { x: 0, y: 90, z: 0 }, rows:5, columns:4 },  // Right wall
-            { position: { x: 0, y: 2, z: 0 }, rotation: { x: 90, y: 0, z: 0 }, rows:3, columns:4 },  // Top wall
-            { position: { x: 0, y: 0, z: 4 }, rotation: { x: -90, y: 0, z: 0 }, rows:1, columns:4 }  // Bottom wall
+            { position: { x: -2.65, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4 },  // Front wall
+            { position: { x: 1.8, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4 },  // Back wall
+            { position: { x: 7, y: 4, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, rows:3, columns:4 },  // Left wall
+            { position: { x: 14, y: 4, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, rows:3, columns:8 },  // Right wall
+            { position: { x: -9.7, y: 4, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, rows:3, columns:2 },  // Top wall
+            { position: { x: -4.5, y: 4, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, rows:3, columns:8 },
+            { position: { x: -16.55, y: 4, z: -2 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:2 },
+            { position: { x: 15.3, y: 4, z: -3.5 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:2 },
+            { position: { x: -0.5, y: 4, z: 1 }, rotation: { x: 90, y: 180, z: 0}, rows:3, columns:1 }  // Bottom wall
           ];
           
 
@@ -87,6 +93,15 @@ AFRAME.registerComponent('grid-manager', {
           walls.forEach((wall, index) => {
             this.createGrid(wall.position, wall.rotation, size, gap, wall.rows, wall.columns, index);
           });
+
+
+          window.addEventListener('keydown', (event) => {
+            if (event.key === 't') { // Change 't' to any key you prefer
+              this.toggleTiles();
+            }
+          });
+
+
         },
         createGrid: function (position, rotation, size, gap, rows, columns, wallIndex) {
           const el = this.el;
@@ -109,11 +124,13 @@ AFRAME.registerComponent('grid-manager', {
               tile.setAttribute('height', 0.1); // Thin height for the tiles
               tile.setAttribute('depth', size);
               tile.setAttribute('color', 'lightyellow');
-              tile.setAttribute('class', 'gridtile');
+              tile.setAttribute('class', 'gridtile enable');
               tile.setAttribute('data-x', j);
               tile.setAttribute('data-y', i);
               tile.setAttribute('datawall', wallIndex);  // Store the wall index
               gridContainer.appendChild(tile);
+
+              this.tiles.push(tile);
             }
           }
 
@@ -139,6 +156,14 @@ AFRAME.registerComponent('grid-manager', {
 					    console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
 					  }
 					});
+        },
+        toggleTiles: function () {
+          this.tilesEnabled = !this.tilesEnabled; // Toggle the state
+          this.tiles.forEach(tile => {
+            tile.setAttribute('visible', this.tilesEnabled); // Toggle visibility
+            tile.classList.toggle('disable', !this.tilesEnabled); // Toggle disabled class
+            tile.classList.toggle('enable',this.tilesEnabled);
+          });
         }
       });
 
@@ -146,7 +171,7 @@ AFRAME.registerComponent('grid-manager', {
 
 </script>
 
-<body onload="loadExhibit()" ></body>
+<!-- <body onload="loadExhibit()"></body>  -->
 
 	
 	<div id="myDiv"></div> <!--ΑΝ ΜΕΤΑΚΙΝΗΣΩ ΤΟ DIV ΔΕΝ ΘΑ ΛΕΙΤΟΥΡΓΕΙ ΣΩΣΤΑ Η ΕΜΦΑΝΙΣΗ ΤΗΣ ΛΙΣΤΑΣ -->
@@ -173,7 +198,7 @@ AFRAME.registerComponent('grid-manager', {
 
 	<a-camera wasd-controls="acceleration:100" id="camera">
 		
-			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info, .gridtile" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
+			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info, .enable" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
 	</a-camera>
 

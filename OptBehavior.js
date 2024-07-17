@@ -7,6 +7,9 @@ async function fetchContent()
 	data = await response.json();	
 }
 
+
+//Function is called onload in body tag in .php file !!!!
+
 function loadExhibit()
 {
 
