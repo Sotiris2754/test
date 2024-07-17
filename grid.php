@@ -127,7 +127,8 @@ AFRAME.registerComponent('grid-manager', {
               tile.setAttribute('class', 'gridtile enable');
               tile.setAttribute('data-x', j);
               tile.setAttribute('data-y', i);
-              tile.setAttribute('datawall', wallIndex);  // Store the wall index
+              tile.setAttribute('datawall', wallIndex); // Store the wall index
+              tile.setAttribute('show-gui',"");
               gridContainer.appendChild(tile);
 
               this.tiles.push(tile);
@@ -137,17 +138,20 @@ AFRAME.registerComponent('grid-manager', {
           el.appendChild(gridContainer);
 
 					gridContainer.addEventListener('click', (event) => {
+					  const x = event.target.getAttribute('data-x');
+					  const y = event.target.getAttribute('data-y');
+					  const wallIndex = event.target.getAttribute('datawall');
+
+
+
 					  if (event.target.classList.contains('gridtile')) {
-					    const x = event.target.getAttribute('data-x');
-					    const y = event.target.getAttribute('data-y');
-					    const wallIndex = event.target.getAttribute('datawall');
 
 					    // Remove highlight from previously selected tile
-					    const previousSelectedTile = document.querySelector('.gridtile.selected');
-					    if (previousSelectedTile) {
-					      previousSelectedTile.setAttribute('color', 'lightyellow');
-					      previousSelectedTile.classList.remove('selected');
-					    }
+					    // const previousSelectedTile = document.querySelector('.gridtile.selected');
+					    // if (previousSelectedTile) {
+					    //   previousSelectedTile.setAttribute('color', 'lightyellow');
+					    //   previousSelectedTile.classList.remove('selected');
+					    // }
 
 					    // Highlight the new selected tile
 					    event.target.setAttribute('color', 'green');
@@ -194,6 +198,111 @@ AFRAME.registerComponent('grid-manager', {
 
 
 <a-entity grid-manager="size: 1; gap: 0.5;" position="0 0 0"></a-entity>
+
+
+
+<a-gui-flex-container id="mypanel" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="false">
+
+
+			<a-gui-button bevel="true"
+						onclick="placeExhibit(this)" 
+						id="0"
+						class="rename"
+						margin="0 0 .2 0"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="Empty base"
+						bevel-size="0.08"
+						bevel-thickness="0.02"
+
+			>
+			</a-gui-button>
+
+			<a-gui-button 
+						onclick="placeExhibit(this)"
+						class="rename"
+						margin="0 0 .2 0"						
+						id="1"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="Huge kid"
+			>
+			</a-gui-button>
+
+			<a-gui-button
+						onclick="placeExhibit(this)"
+						class="rename"
+						margin="0 0 .2 0"
+						id="2"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="Bibelo bird"
+			>
+			</a-gui-button>
+
+			<a-gui-button
+						onclick="placeExhibit(this)"
+						class="rename"
+						margin="0 0 .2 0"
+						id="3"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="Jar 1 "
+			>
+			</a-gui-button>
+
+			<a-gui-button
+						onclick="placeExhibit(this)"
+						class="rename"
+						margin="0 0 .2 0"
+						id="4"
+						width="2" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="Jar 2"
+			>
+			</a-gui-button>
+
+
+				<a-gui-flex-container scale="1 1 1" flex-direction="row" justify-content="center" align-items="center" component-padding="0" width="2.20" height="1" position="0 0 0" rotation="0 0 0" panel-color="#072B73" opacity="0.8" margin="0 0 -.20 0">  
+					<!-- #072B73 -->
+
+							<a-gui-icon-label-button
+								width=".5" height="0.5"
+								onclick="previousPage()"
+								icon="F2F5"
+								icon-font="assets/fonts/fa-solid-900.ttf"
+								font-family="assets/fonts/PressStart2P-Regular.ttf"
+								font-size="0.3"
+								margin="0 0 0 0"
+								rotation="0 0 180"
+							>
+							</a-gui-icon-label-button>
+
+							<a-gui-icon-label-button
+								width=".5" height="0.5"
+								onclick="nextPage()"
+								icon="F2F5"
+								icon-font="assets/fonts/fa-solid-900.ttf"
+								font-family="assets/fonts/PressStart2P-Regular.ttf"
+								font-size="0.3"
+								margin="0 0 0 0"
+								rotation="0 0 0"
+							>
+							</a-gui-icon-label-button>
+
+				</a-gui-flex-container>
+
+		</a-gui-flex-container>
 
 
 	<a-camera wasd-controls="acceleration:100" id="camera">
