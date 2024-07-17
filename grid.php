@@ -108,7 +108,7 @@ AFRAME.registerComponent('grid-manager', {
               tile.setAttribute('width', size);
               tile.setAttribute('height', 0.1); // Thin height for the tiles
               tile.setAttribute('depth', size);
-              tile.setAttribute('color', 'blue');
+              tile.setAttribute('color', 'lightyellow');
               tile.setAttribute('class', 'gridtile');
               tile.setAttribute('data-x', j);
               tile.setAttribute('data-y', i);
@@ -128,7 +128,7 @@ AFRAME.registerComponent('grid-manager', {
 					    // Remove highlight from previously selected tile
 					    const previousSelectedTile = document.querySelector('.gridtile.selected');
 					    if (previousSelectedTile) {
-					      previousSelectedTile.setAttribute('color', 'blue');
+					      previousSelectedTile.setAttribute('color', 'lightyellow');
 					      previousSelectedTile.classList.remove('selected');
 					    }
 
