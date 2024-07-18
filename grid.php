@@ -78,7 +78,7 @@ AFRAME.registerComponent('grid-manager', {
 
           const walls = [
             { position: { x: -2.65, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4 },  // Front wall
-            { position: { x: 1.8, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4 },  // Back wall
+            { position: { x: 1.8, y: 4, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:4 },  // Back wall
             { position: { x: 7, y: 4, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, rows:3, columns:4 },  // Left wall
             { position: { x: 14, y: 4, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, rows:3, columns:8 },  // Right wall
             { position: { x: -9.7, y: 4, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, rows:3, columns:2 },  // Top wall
@@ -177,27 +177,15 @@ AFRAME.registerComponent('grid-manager', {
         },
 
        showGui: function(gridContainer){
-       	const gridPosition = gridContainer.getAttribute('position');
+       	const gridPosition = gridContainer.getAttribute('position'); // pairnei tis times san Vector3 
        	const grdiRotation = gridContainer.getAttribute('rotation');
       	const planeOffset = 0.2;
 
-	    	this.movablePlane.setAttribute('position', 'gridPosition');
-	    	this.movablePlane.setAttribute('rotation','grdiRotation' );
+
+	    	this.movablePlane.setAttribute('position', gridPosition.x + ' ' + gridPosition.y + ' ' + gridPosition.z);
+	    	this.movablePlane.setAttribute('rotation', grdiRotation.x + ' ' + grdiRotation.y + ' ' + grdiRotation.z );
+	    	// console.log();
 	     }
-
-       // showGui: function(tile, gridPosition, gridRotation, size, gap, gridContainer){
-       // 	const tilePosition = tile.getAttribute('position');
-      // 	const planeOffset = 0.2;
-
-		   //  const newPosition = {
-		   // 		x: gridPosition.x + tilePosition.x + planeOffset * Math.sin(THREE.Math.degToRad(gridRotation.y)),
-		   //  	y: gridPosition.y + tilePosition.y,
-		   //  	z: gridPosition.z + tilePosition.z + planeOffset * Math.cos(THREE.Math.degToRad(gridRotation.y))
-		   //  };
-	    // 	this.movablePlane.setAttribute('position', `${newPosition.x} ${newPosition.y} ${newPosition.z}`);
-	    // 	this.movablePlane.setAttribute('rotation', `${gridRotation.x} ${gridRotation.y} ${gridRotation.z}`);
-	     // }
-
       });
 
 
