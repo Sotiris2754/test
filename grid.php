@@ -101,7 +101,7 @@ AFRAME.registerComponent('grid-manager', {
             }
           });
 
-          this.movablePlane = document.querySelector('#movable-plane');
+          movablePlane = document.querySelector('#movableplane');
 
         },
         createGrid: function (position, rotation, size, gap, rows, columns, wallIndex) {
@@ -180,10 +180,10 @@ AFRAME.registerComponent('grid-manager', {
        	const gridPosition = gridContainer.getAttribute('position'); // pairnei tis times san Vector3 
        	const grdiRotation = gridContainer.getAttribute('rotation');
       	const planeOffset = 0.2;
+      	gridContainer.appendChild(movablePlane);
 
-
-	    	this.movablePlane.setAttribute('position', gridPosition.x + ' ' + gridPosition.y + ' ' + gridPosition.z);
-	    	this.movablePlane.setAttribute('rotation', grdiRotation.x + ' ' + grdiRotation.y + ' ' + grdiRotation.z );
+	    	movablePlane.setAttribute('position', gridPosition.x + ' ' + gridPosition.y + ' ' + gridPosition.z);
+	    	movablePlane.setAttribute('rotation', grdiRotation.x + ' ' + grdiRotation.y + ' ' + grdiRotation.z );
 	    	// console.log();
 	     }
       });
@@ -213,7 +213,7 @@ AFRAME.registerComponent('grid-manager', {
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
 
-<a-plane id="movable-plane" width="1" height="1" color="red" position="0 0 -5"></a-plane>
+<a-plane id="movableplane" width="1" height="1" color="red" position="0 0 -5"></a-plane>
 
 <a-entity grid-manager="size: 1; gap: 0.5;" position="0 0 0"></a-entity>
 
