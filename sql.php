@@ -26,7 +26,6 @@ if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 
 $id = $_POST['id'];
 $exhibit = $_POST['exhibit'];
-$description = $_POST['description'];
 
 // Prepare the INSERT statement
 
