@@ -160,21 +160,32 @@ AFRAME.registerComponent('grid-manager', {
 
 					  if (event.target.classList.contains('gridtile')) {
 
+              const previousSelectedTile = document.querySelector('.gridtile.selected');
+
+              if (event.target.classList.contains('selected')) {
+                previousSelectedTile.setAttribute('color', 'lightyellow');
+                previousSelectedTile.classList.remove('selected');
+                panel.setAttribute('visible',false);
+                console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
+              }
+					    else{
+					    	if(previousSelectedTile)
+					    	{
+					    		previousSelectedTile.setAttribute('color','lightyellow');
+					    		previousSelectedTile.classList.remove('selected');
+					    	}
 					    event.target.setAttribute('color', 'green');
 					    event.target.classList.add('selected');
+					    panel.setAttribute('visible',true);
+					    console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);					    	
+					    }
 
-					    console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
-					    // event.target.appendChild(panel);
+					    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
 
-					    console.log(centerPos);
+
+
 					    panel.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
 					    panel.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
-					    // console.log(centerPos);
-
-
-
-					    // this.showGui(event.target,position,rotation,size,gap,gridContainer);
-					    // this.showGui(event.target);
 
 					  }
 					});
