@@ -53,8 +53,12 @@
 </style>
 
 <script>
-	// fetchContent(); // LOAD JSON FILE !!
+	fetchContent(); // LOAD JSON FILE !!
 	// retrieveData();
+
+	var thesi;
+	var tile;
+	const worldPosition = new THREE.Vector3();
 
 AFRAME.registerComponent('grid-manager', {
         schema: {
@@ -109,9 +113,6 @@ AFRAME.registerComponent('grid-manager', {
             }
           });
 
-          this.movablePlane = document.querySelector('#movableplane');
-
-          // box = document.querySelector('#box');
 
         },
         createGrid: function (position, rotation, size, gap, rows, columns, wallIndex, centerPos,centerRot) {
@@ -178,11 +179,18 @@ AFRAME.registerComponent('grid-manager', {
 					    event.target.setAttribute('color', 'green');
 					    event.target.classList.add('selected');
 					    panel.setAttribute('visible',true);
+					    
+					    tile = event.target;
+					    thesi = event.target.object3D;
+					    thesi.getWorldPosition(worldPosition);
+					    worldPosition.x += 0.5;
+					    console.log(worldPosition);
+
+					    
 					    console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);					    	
 					    }
 
 					    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
-
 
 
 					    panel.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
@@ -199,9 +207,29 @@ AFRAME.registerComponent('grid-manager', {
             tile.classList.toggle('enable',this.tilesEnabled);
           });
         }
+
+
       });
 
 
+function importExhibit(entity){
+	var exhibit = document.createElement('a-entity');
+	var id = entity.getAttribute('id');
+	removeChild();	
+					exhibit.setAttribute('position', "0 0.5 0" );
+					exhibit.setAttribute('rotation', "-90 0 0"); 
+					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+					if(id!=0)
+					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+					exhibit.setAttribute('id',id+"."+id);
+					exhibit.setAttribute('class','clickable');
+					exhibit.setAttribute("show-panel","");
+					console.log(this.tile);
+					tile.appendChild(exhibit);
+					// console.log(exhibit);
+					this.exhibit = exhibit;
+}
 
 
 </script>
@@ -237,7 +265,7 @@ AFRAME.registerComponent('grid-manager', {
 
 
 			<a-gui-button bevel="true"
-						onclick="placeExhibit(this)" 
+						onclick="importExhibit(this)" 
 						id="0"
 						class="rename"
 						margin="0 0 .2 0"
@@ -253,7 +281,7 @@ AFRAME.registerComponent('grid-manager', {
 			</a-gui-button>
 
 			<a-gui-button 
-						onclick="placeExhibit(this)"
+						onclick="importExhibit(this)"
 						class="rename"
 						margin="0 0 .2 0"						
 						id="1"
@@ -266,7 +294,7 @@ AFRAME.registerComponent('grid-manager', {
 			</a-gui-button>
 
 			<a-gui-button
-						onclick="placeExhibit(this)"
+						onclick="importExhibit(this)"
 						class="rename"
 						margin="0 0 .2 0"
 						id="2"
@@ -279,7 +307,7 @@ AFRAME.registerComponent('grid-manager', {
 			</a-gui-button>
 
 			<a-gui-button
-						onclick="placeExhibit(this)"
+						onclick="importExhibit(this)"
 						class="rename"
 						margin="0 0 .2 0"
 						id="3"
@@ -292,7 +320,7 @@ AFRAME.registerComponent('grid-manager', {
 			</a-gui-button>
 
 			<a-gui-button
-						onclick="placeExhibit(this)"
+						onclick="importExhibit(this)"
 						class="rename"
 						margin="0 0 .2 0"
 						id="4"
