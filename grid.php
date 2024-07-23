@@ -158,8 +158,6 @@ AFRAME.registerComponent('grid-manager', {
 
 
 
-
-
 					  if (event.target.classList.contains('gridtile')) {
 
               const previousSelectedTile = document.querySelector('.gridtile.selected');
