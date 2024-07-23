@@ -149,6 +149,7 @@ AFRAME.registerComponent('grid-manager', {
           el.appendChild(gridContainer);
 
 					gridContainer.addEventListener('click', (event) => {
+
 					  const x = event.target.getAttribute('data-x');
 					  const y = event.target.getAttribute('data-y');
 					  const wallIndex = event.target.getAttribute('datawall');
@@ -197,77 +198,9 @@ AFRAME.registerComponent('grid-manager', {
             tile.classList.toggle('disable', !this.tilesEnabled); // Toggle disabled class
             tile.classList.toggle('enable',this.tilesEnabled);
           });
-        },
-
-       // showGui: function(tile){
-       // 	const tilePos = tile.getAttribute('position'); // pairnei tis times san Vector3 
-       // 	const tileRot = tile.getAttribute('rotation');
-      // 	const planeOffset = 0.2;
-      	
-
-	    // 	// this.movablePlane.setAttribute('position', "0 1 0");
-	    // 	// this.movablePlane.setAttribute('rotation',"90 0 0" );
-	    // 	// this.movablePlane.setAttribute('scale', "1 1 1");
-	    // 	// this.movablePlane.setAttribute('visible', true);
-	    // 	// this.movablePlane.setAttribute('material', 'color', 'red');
-
-	    // 	event.target.appendChild(this.movablePlane);
-	    // 	// console.log();
-	     // }
+        }
       });
 
-
-// AFRAME.registerComponent("show-gui",{
-// 	init:function(){
-// 		var panel = document.querySelector("#mypanel");
-		
-// 		var el = this.el;
-// 		// console.log(el);
-// 		// var tilePos = el.getAttribute("position");
-// 		// var tileRot = el.getAttribute("rotation");
-// 		 // console.log(standPos);
-
-// 		el.addEventListener('click',function(el){
-
-// 			var entity = el.srcElement;
-
-// 			if(entity.classList.contains('gridtile'&&'enable')){
-
-// 				console.log(`Patisa to entity:`+ entity.classList);
-// 				panel.setAttribute('visible',true);
-// 				// console.log(panel);
-// 				entity.appendChild(panel);
-// 				// displayDescriptionUpdated();
-// 				// checkBase();
-
-// 				// if(sameBase){
-
-// 				// 	isVisible = guiPanel.getAttribute("visible");
-
-// 				// 	if(isVisible){
-// 				// 		guiPanel.setAttribute("visible",false);
-// 				// 	}
-// 				// 	else{
-// 				// 		guiPanel.setAttribute("visible",true);
-// 				// 	}
-
-// 				// }
-// 				// else{
-// 				// guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
-// 				// guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
-// 				// guiPanel.setAttribute("visible",true);	
-// 				// }
-
-// 				// console.log("patisa Kitrini vasi");
-
-// 			}
-// 			else{
-// 				//Tha doume...
-// 			}
-// 		});
-
-// 	},
-// });
 
 
 
