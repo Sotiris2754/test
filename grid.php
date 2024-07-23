@@ -77,21 +77,29 @@ AFRAME.registerComponent('grid-manager', {
           // const columns = data.columns;
 
           const walls = [
-            { position: { x: -2.65, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4 },  // Front wall
-            { position: { x: 1.8, y: 4, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:4 },  // Back wall
-            { position: { x: 7, y: 4, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, rows:3, columns:4 },  // Left wall
-            { position: { x: 14, y: 4, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, rows:3, columns:8 },  // Right wall
-            { position: { x: -9.7, y: 4, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, rows:3, columns:2 },  // Top wall
-            { position: { x: -4.5, y: 4, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, rows:3, columns:8 },
-            { position: { x: -16.55, y: 4, z: -2 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:2 },
-            { position: { x: 15.3, y: 4, z: -3.5 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:2 },
-            { position: { x: -0.5, y: 4, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, rows:3, columns:1 }  // Bottom wall
+            { position: { x: -2.65, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4, centerPos: { x:-1.5, y:1.8, z:-9 }, centerRot:{ x:0, y:90, z:0} },
+              // Front wall
+            { position: { x: 1.8, y: 4, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:4, centerPos: { x:1, y:1.8, z:-9 }, centerRot:{ x:0, y:-90, z:0} },
+              // Back wall
+            { position: { x: 7, y: 4, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, rows:3, columns:4, centerPos: { x:9, y:1.8, z:-4 }, centerRot:{ x:0, y:0, z:0} },
+             // Left wall
+            { position: { x: 14, y: 4, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, rows:3, columns:8, centerPos: { x:9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0} },
+              // Right wall
+            { position: { x: -9.7, y: 4, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, rows:3, columns:2, centerPos: { x:-9, y:1.8, z:-4.5 }, centerRot:{ x:0, y:0, z:0} },
+              // Top wall
+            { position: { x: -4.5, y: 4, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, rows:3, columns:8, centerPos: { x:-9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0} },
+
+            { position: { x: -16.55, y: 4, z: -2 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:2, centerPos: { x:-16, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0} },
+
+            { position: { x: 15.3, y: 4, z: -3.5 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:2, centerPos: { x:14.8, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0} },
+
+            { position: { x: -0.5, y: 4, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, rows:3, columns:1, centerPos: { x:-0.5, y:1.8, z:1 }, centerRot:{ x:0, y:180, z:0} }  // Bottom wall
           ];
           
 
 
           walls.forEach((wall, index) => {
-            this.createGrid(wall.position, wall.rotation, size, gap, wall.rows, wall.columns, index);
+            this.createGrid(wall.position, wall.rotation, size, gap, wall.rows, wall.columns, index, wall.centerPos, wall.centerRot);
           });
 
 
@@ -101,10 +109,12 @@ AFRAME.registerComponent('grid-manager', {
             }
           });
 
-          movablePlane = document.querySelector('#movableplane');
+          this.movablePlane = document.querySelector('#movableplane');
+
+          // box = document.querySelector('#box');
 
         },
-        createGrid: function (position, rotation, size, gap, rows, columns, wallIndex) {
+        createGrid: function (position, rotation, size, gap, rows, columns, wallIndex, centerPos,centerRot) {
           const el = this.el;
           const gridContainer = document.createElement('a-entity');
           gridContainer.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z);
@@ -142,6 +152,7 @@ AFRAME.registerComponent('grid-manager', {
 					  const x = event.target.getAttribute('data-x');
 					  const y = event.target.getAttribute('data-y');
 					  const wallIndex = event.target.getAttribute('datawall');
+					  const panel = document.querySelector("#mypanel");
 
 
 
@@ -149,21 +160,22 @@ AFRAME.registerComponent('grid-manager', {
 
 					  if (event.target.classList.contains('gridtile')) {
 
-					    // Remove highlight from previously selected tile
-					    // const previousSelectedTile = document.querySelector('.gridtile.selected');
-					    // if (previousSelectedTile) {
-					    //   previousSelectedTile.setAttribute('color', 'lightyellow');
-					    //   previousSelectedTile.classList.remove('selected');
-					    // }
-
-					    // Highlight the new selected tile
 					    event.target.setAttribute('color', 'green');
 					    event.target.classList.add('selected');
 
 					    console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
+					    // event.target.appendChild(panel);
+
+					    console.log(centerPos);
+					    panel.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
+					    panel.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
+					    // console.log(centerPos);
+
+
 
 					    // this.showGui(event.target,position,rotation,size,gap,gridContainer);
-					    this.showGui(gridContainer);
+					    // this.showGui(event.target);
+
 					  }
 					});
         },
@@ -176,17 +188,75 @@ AFRAME.registerComponent('grid-manager', {
           });
         },
 
-       showGui: function(gridContainer){
-       	const gridPosition = gridContainer.getAttribute('position'); // pairnei tis times san Vector3 
-       	const grdiRotation = gridContainer.getAttribute('rotation');
-      	const planeOffset = 0.2;
-      	gridContainer.appendChild(movablePlane);
+       // showGui: function(tile){
+       // 	const tilePos = tile.getAttribute('position'); // pairnei tis times san Vector3 
+       // 	const tileRot = tile.getAttribute('rotation');
+      // 	const planeOffset = 0.2;
+      	
 
-	    	movablePlane.setAttribute('position', gridPosition.x + ' ' + gridPosition.y + ' ' + gridPosition.z);
-	    	movablePlane.setAttribute('rotation', grdiRotation.x + ' ' + grdiRotation.y + ' ' + grdiRotation.z );
-	    	// console.log();
-	     }
+	    // 	// this.movablePlane.setAttribute('position', "0 1 0");
+	    // 	// this.movablePlane.setAttribute('rotation',"90 0 0" );
+	    // 	// this.movablePlane.setAttribute('scale', "1 1 1");
+	    // 	// this.movablePlane.setAttribute('visible', true);
+	    // 	// this.movablePlane.setAttribute('material', 'color', 'red');
+
+	    // 	event.target.appendChild(this.movablePlane);
+	    // 	// console.log();
+	     // }
       });
+
+
+// AFRAME.registerComponent("show-gui",{
+// 	init:function(){
+// 		var panel = document.querySelector("#mypanel");
+		
+// 		var el = this.el;
+// 		// console.log(el);
+// 		// var tilePos = el.getAttribute("position");
+// 		// var tileRot = el.getAttribute("rotation");
+// 		 // console.log(standPos);
+
+// 		el.addEventListener('click',function(el){
+
+// 			var entity = el.srcElement;
+
+// 			if(entity.classList.contains('gridtile'&&'enable')){
+
+// 				console.log(`Patisa to entity:`+ entity.classList);
+// 				panel.setAttribute('visible',true);
+// 				// console.log(panel);
+// 				entity.appendChild(panel);
+// 				// displayDescriptionUpdated();
+// 				// checkBase();
+
+// 				// if(sameBase){
+
+// 				// 	isVisible = guiPanel.getAttribute("visible");
+
+// 				// 	if(isVisible){
+// 				// 		guiPanel.setAttribute("visible",false);
+// 				// 	}
+// 				// 	else{
+// 				// 		guiPanel.setAttribute("visible",true);
+// 				// 	}
+
+// 				// }
+// 				// else{
+// 				// guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
+// 				// guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
+// 				// guiPanel.setAttribute("visible",true);	
+// 				// }
+
+// 				// console.log("patisa Kitrini vasi");
+
+// 			}
+// 			else{
+// 				//Tha doume...
+// 			}
+// 		});
+
+// 	},
+// });
 
 
 
@@ -212,14 +282,14 @@ AFRAME.registerComponent('grid-manager', {
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
-
-<a-plane id="movableplane" width="1" height="1" color="red" position="0 0 -5"></a-plane>
+<!-- <a-box id="box" position="0 0 -4" color="blue"></a-box> -->
+<!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 <a-entity grid-manager="size: 1; gap: 0.5;" position="0 0 0"></a-entity>
 
 
 
-<a-gui-flex-container id="mypanel" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="false">
+<a-gui-flex-container id="mypanel" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="true">
 
 
 			<a-gui-button bevel="true"

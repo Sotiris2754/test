@@ -62,53 +62,53 @@ function loadExhibit()
 // 	}
 // })
 
-AFRAME.registerComponent("show-gui",{
-	init:function(){
-		var guiPanel = document.querySelector("#mypanel");
-		var el = this.el;
-		// console.log(el);
-		var standPos = el.getAttribute("position");
-		var standRot = el.getAttribute("rotation");
-		 // console.log(standPos);
-		// guiPanel.setAttribute("opacity",".5");
-		el.addEventListener('click',function(el){
+// AFRAME.registerComponent("show-gui",{
+// 	init:function(){
+// 		var guiPanel = document.querySelector("#mypanel");
+// 		var el = this.el;
+// 		// console.log(el);
+// 		var standPos = el.getAttribute("position");
+// 		var standRot = el.getAttribute("rotation");
+// 		 // console.log(standPos);
+// 		// guiPanel.setAttribute("opacity",".5");
+// 		el.addEventListener('click',function(el){
 
-			var entity = el.srcElement;
+// 			var entity = el.srcElement;
 
-			if(entity.classList.contains('stand')){
-				base=this;
+// 			if(entity.classList.contains('stand')){
+// 				base=this;
 
-				displayDescriptionUpdated();
-				checkBase();
+// 				displayDescriptionUpdated();
+// 				checkBase();
 
-				if(sameBase){
+// 				if(sameBase){
 
-					isVisible = guiPanel.getAttribute("visible");
+// 					isVisible = guiPanel.getAttribute("visible");
 
-					if(isVisible){
-						guiPanel.setAttribute("visible",false);
-					}
-					else{
-						guiPanel.setAttribute("visible",true);
-					}
+// 					if(isVisible){
+// 						guiPanel.setAttribute("visible",false);
+// 					}
+// 					else{
+// 						guiPanel.setAttribute("visible",true);
+// 					}
 
-				}
-				else{
-				guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
-				guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
-				guiPanel.setAttribute("visible",true);	
-				}
+// 				}
+// 				else{
+// 				guiPanel.setAttribute("position",{x:standPos.x, y:standPos.y + 2, z:standPos.z - 1.2});
+// 				guiPanel.setAttribute("rotation",{x:standRot.x, y:standRot.y -180, z:standRot.z});
+// 				guiPanel.setAttribute("visible",true);	
+// 				}
 
-				// console.log("patisa Kitrini vasi");
+// 				// console.log("patisa Kitrini vasi");
 
-			}
-			else{
-				//Tha doume...
-			}
-		});
+// 			}
+// 			else{
+// 				//Tha doume...
+// 			}
+// 		});
 
-	},
-});
+// 	},
+// });
 
 
 	// function nextPage(){
