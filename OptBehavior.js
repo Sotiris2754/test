@@ -380,7 +380,7 @@ function placeExhibit(entity){
 	  $.ajax({
 	  url: "sql.php",
 	  method: "POST",
-	  data: { id:base.id, exhibit:data.exhibits[id].id, description:data.exhibits[id].description, action:"store"},
+	  data: { id:base.id, exhibit:data.exhibits[id].id, action:"store"},
 	  success: function(response) {
 	    console.log("Selection stored successfully.");
 	   	//console.log(response);
