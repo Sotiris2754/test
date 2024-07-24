@@ -136,7 +136,7 @@ AFRAME.registerComponent('grid-manager', {
               const x = j * (size + gap);
               const z = i * (size + gap);
               const tile = document.createElement('a-box');
-              tile.setAttribute('id','tile-' + counter);
+              tile.setAttribute('id', counter);
               tile.setAttribute('position', `${x} 0 ${z}`);
               tile.setAttribute('width', size);
               tile.setAttribute('height', 0.1); // Thin height for the tiles
@@ -190,10 +190,10 @@ AFRAME.registerComponent('grid-manager', {
 					    thesi = event.target.object3D;
 					    thesi.getWorldPosition(worldPosition);
 					    worldPosition.x += 0.5;
-					    // console.log(tile);
+					    console.log(tile.id);
 
 					    
-					    console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);					    	
+					    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);					    	
 					    }
 
 					    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
@@ -238,11 +238,31 @@ function importExhibit(entity){
 					exhibit.setAttribute('id',id+"."+id);
 					exhibit.setAttribute('class','clickable');
 					exhibit.setAttribute("show-panel","");
-					console.log(this.tile);
+					// console.log(tile);
 					tile.appendChild(exhibit);
+					storeData();
 					// console.log(exhibit);
-					this.exhibit = exhibit;
+					// this.exhibit = exhibit;
+
+
+	function storeData(){
+	  $.ajax({
+	  url: "sql.php",
+	  method: "POST",
+	  data: { id:tile.id, exhibit:data.exhibits[id].id, action:"store"},
+	  success: function(response) {
+	    console.log("Selection stored successfully.");
+	    console.log(id);
+	    // console.log(exhibit);
+	   	//console.log(response);
+	  },
+	  		error: function(xhr, status, error) {
+	    	console.log("An error occurred: " + error);
+	  		}
+		});
+	}
 }
+
 
 
 </script>
