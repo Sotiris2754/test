@@ -54,7 +54,7 @@
 
 <script>
 	fetchContent(); // LOAD JSON FILE !!
-	// retrieveData();
+	retrieveData();
 	
 
 	let thesi;
@@ -244,7 +244,7 @@ AFRAME.registerComponent('grid-manager', {
 // 							}
 // 						});
 // 					}
-					
+
 
 function importExhibit(entity){
 	let exhibit = document.createElement('a-entity');
@@ -283,6 +283,46 @@ function importExhibit(entity){
 		});
 	}
 }
+
+	function retrieveData(){
+		$.ajax({
+			url:"sql.php",
+			method:"POST",
+			data: {action:"retrieve"},
+			success: function(res) {
+				
+	    		console.log("Success Response");
+	    		var json = JSON.parse(res);
+	    		// console.log(json);
+				if (data == null)
+				{
+					console.log("2nd Not ready yet!");
+					setTimeout(retrieveData(),1);
+				}
+				else{
+					console.log("loop for exhibits");
+		    	for (var i=0; i<json.length; i++){
+		    		let testId = document.getElementById(json[i].id);
+		    		// console.log(testId);
+		    	// // count = json.length;
+		    	// console.log(data.exhibits[i].id +" " +data.exhibits[i].pathfile + "\n");
+
+
+					var exhibit = document.createElement('a-entity');
+					if(json[i].exhibit!=0)
+					exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
+					exhibit.setAttribute('id',data.exhibits[json[i].exhibit].id+"."+data.exhibits[json[i].exhibit].id);
+					exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
+					exhibit.setAttribute('position', "0 0.5 0" );
+					exhibit.setAttribute('rotation', "-90 0 0"); 
+					exhibit.setAttribute('class','clickable');
+					testId.appendChild(exhibit);
+	    		 }
+	  		}
+	  	}
+		
+		});
+	}
 
 
 

@@ -94,6 +94,24 @@ $conn->query("ALTER TABLE apps_collab_exh AUTO_INCREMENT = 1 ");
 
 }
 
+if(ISSET($_POST['action']) && $_POST['action'] == "retrieve"){
+$data = array();
+$sql = "SELECT * FROM apps_collab_exh";
+$res = $conn->query($sql);
+
+$resData = $res->fetch_all(MYSQLI_ASSOC);
+
+foreach($resData as $row) {
+    // code...
+     // echo "ID: " . $row['id'] . ", Exhibit: " . $row['exhibit'] . "<br>";
+    $data[] = $row;
+}
+$json = json_encode($data);
+echo $json;
+
+}
+
+
 if(ISSET($_POST['action']) && $_POST['action'] == "view"){
     
     $data = array();
