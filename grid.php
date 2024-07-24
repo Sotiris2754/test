@@ -56,9 +56,11 @@
 	fetchContent(); // LOAD JSON FILE !!
 	// retrieveData();
 
-	var thesi;
-	var tile;
+	let thesi;
+	let tile;
 	const worldPosition = new THREE.Vector3();
+	let counter=0;
+	let transparent = 100;
 
 AFRAME.registerComponent('grid-manager', {
         schema: {
@@ -74,9 +76,12 @@ AFRAME.registerComponent('grid-manager', {
           const el = this.el;
           const size = data.size;
           const gap = data.gap;
+          
 
           this.tilesEnabled = true;
           this.tiles = [];
+
+
           // const rows = data.rows;
           // const columns = data.columns;
 
@@ -131,12 +136,14 @@ AFRAME.registerComponent('grid-manager', {
               const x = j * (size + gap);
               const z = i * (size + gap);
               const tile = document.createElement('a-box');
+              tile.setAttribute('id','tile-' + counter);
               tile.setAttribute('position', `${x} 0 ${z}`);
               tile.setAttribute('width', size);
               tile.setAttribute('height', 0.1); // Thin height for the tiles
               tile.setAttribute('depth', size);
               tile.setAttribute('color', 'lightyellow');
               tile.setAttribute('class', 'gridtile enable');
+              
               tile.setAttribute('data-x', j);
               tile.setAttribute('data-y', i);
               tile.setAttribute('datawall', wallIndex); // Store the wall index
@@ -144,6 +151,7 @@ AFRAME.registerComponent('grid-manager', {
               gridContainer.appendChild(tile);
 
               this.tiles.push(tile);
+              counter++;
             }
           }
 
@@ -182,7 +190,7 @@ AFRAME.registerComponent('grid-manager', {
 					    thesi = event.target.object3D;
 					    thesi.getWorldPosition(worldPosition);
 					    worldPosition.x += 0.5;
-					    console.log(worldPosition);
+					    // console.log(tile);
 
 					    
 					    console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);					    	
@@ -199,10 +207,17 @@ AFRAME.registerComponent('grid-manager', {
         },
         toggleTiles: function () {
           this.tilesEnabled = !this.tilesEnabled; // Toggle the state
+
+            if(transparent===100)
+            	transparent = 0;
+            else
+            	transparent = 100;
+
           this.tiles.forEach(tile => {
-            tile.setAttribute('visible', this.tilesEnabled); // Toggle visibility
+            tile.setAttribute('material', {opacity:transparent}); // Toggle visibility
             tile.classList.toggle('disable', !this.tilesEnabled); // Toggle disabled class
             tile.classList.toggle('enable',this.tilesEnabled);
+
           });
         }
 
@@ -211,8 +226,8 @@ AFRAME.registerComponent('grid-manager', {
 
 
 function importExhibit(entity){
-	var exhibit = document.createElement('a-entity');
-	var id = entity.getAttribute('id');
+	let exhibit = document.createElement('a-entity');
+	let id = entity.getAttribute('id');
 	removeChild();	
 					exhibit.setAttribute('position', "0 0.5 0" );
 					exhibit.setAttribute('rotation', "-90 0 0"); 
@@ -259,7 +274,7 @@ function importExhibit(entity){
 
 
 
-<a-gui-flex-container id="mypanel" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="true">
+<a-gui-flex-container id="mypanel" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="false">
 
 
 			<a-gui-button bevel="true"
@@ -385,11 +400,11 @@ function importExhibit(entity){
   // 		});
 		
 	// }	
-		window.test = function(label) {
-			label.setAttribute("value", label.id);
-			var panel = label.parentNode;
+		// window.test = function(label) {
+		// 	label.setAttribute("value", label.id);
+		// 	let panel = label.parentNode;
 
-		}
+		// }
 
 
 </script>
