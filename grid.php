@@ -255,6 +255,8 @@ function importExhibit(entity){
 					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 					if(id!=0)
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+					else
+						exhibit.parentNode.removeChild(exhibit); //Einai to idio me to "exhibit.remove();"
 					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',id+"."+id);
 					exhibit.setAttribute('class','clickable');
@@ -310,13 +312,16 @@ function importExhibit(entity){
 
 					var exhibit = document.createElement('a-entity');
 					if(json[i].exhibit!=0)
-					exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
+						exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
+					else
+						exhibit.remove();												
 					exhibit.setAttribute('id',data.exhibits[json[i].exhibit].id+"."+data.exhibits[json[i].exhibit].id);
 					exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
 					exhibit.setAttribute('position', "0 0.5 0" );
 					exhibit.setAttribute('rotation', "-90 0 0"); 
 					exhibit.setAttribute('class','clickable');
 					testId.appendChild(exhibit);
+
 	    		 }
 	  		}
 	  	}
