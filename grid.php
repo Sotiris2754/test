@@ -55,12 +55,14 @@
 <script>
 	fetchContent(); // LOAD JSON FILE !!
 	// retrieveData();
+	
 
 	let thesi;
 	let tile;
 	const worldPosition = new THREE.Vector3();
 	let counter=0;
 	let transparent = 100;
+	// insertTilesToDatabase();
 
 AFRAME.registerComponent('grid-manager', {
         schema: {
@@ -119,6 +121,9 @@ AFRAME.registerComponent('grid-manager', {
           });
 
 
+
+          
+
         },
         createGrid: function (position, rotation, size, gap, rows, columns, wallIndex, centerPos,centerRot) {
           const el = this.el;
@@ -149,7 +154,7 @@ AFRAME.registerComponent('grid-manager', {
               tile.setAttribute('datawall', wallIndex); // Store the wall index
               tile.setAttribute('show-gui',"");
               gridContainer.appendChild(tile);
-
+              // insertTilesToDatabase();
               this.tiles.push(tile);
               counter++;
             }
@@ -221,9 +226,25 @@ AFRAME.registerComponent('grid-manager', {
           });
         }
 
-
       });
 
+
+//End of costum component Grid-Manager ----------------------------
+
+// function insertTilesToDatabase(){
+// 						$.ajax({
+// 							url:"sql.php",
+// 							method: "POST",
+// 							data: {id:counter, action:"insert"},
+// 							success: function(){
+// 								console.log("Eginan insert ta tiles stin vasi");
+// 							},
+// 							error: function(xhr, status, error){
+// 								console.log("An error occurred: " + error);
+// 							}
+// 						});
+// 					}
+					
 
 function importExhibit(entity){
 	let exhibit = document.createElement('a-entity');

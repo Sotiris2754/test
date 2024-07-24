@@ -28,6 +28,17 @@ $id = $_POST['id'];
 $exhibit = $_POST['exhibit'];
 
 // Prepare the INSERT statement
+$checkSql = "SELECT * FROM apps_collab_exh WHERE id = $id";
+$result = $conn->query($checkSql);
+
+if ($result->num_rows > 0) {
+        echo "A row with id $id already exists.";
+    }
+else{
+    $insertSql = "INSERT INTO apps_collab_exh (id) VALUES ($id)";
+    $conn->query($insertSql);
+}
+
 
 $sql = "UPDATE apps_collab_exh SET exhibit = $exhibit WHERE id = $id";
 
@@ -55,10 +66,9 @@ $conn->close();
 
 }
 
-if(ISSET($_POST['action']) && $_POST['action']=="add"){
+if(ISSET($_POST['action']) && $_POST['action']=="insert"){
 
-    $query = "INSERT INTO apps_collab_exh (exhibit) VALUES (null)";
-    $conn->query($query);
+
 }
 
 if(ISSET($_POST['action']) && $_POST['action']=="remove"){
@@ -85,9 +95,23 @@ $conn->query("ALTER TABLE apps_collab_exh AUTO_INCREMENT = 1 ");
 }
 
 if(ISSET($_POST['action']) && $_POST['action'] == "view"){
-        
+    
     $data = array();
     $sql = "SELECT exhibit FROM apps_collab_exh";
+    $res = $conn->query($sql);
+
+    $resData = $res->fetch_all(MYSQLI_ASSOC);
+
+
+
+    foreach ($resData as $key => $value) {
+        $data[]=$value['exhibit'];
+    }   
+
+  
+    $json = json_encode($data);
+    echo $json;         
+
     // $stmt = $conn->prepare($sql);
     // $stmt = $stmt->execute();
     
@@ -98,21 +122,9 @@ if(ISSET($_POST['action']) && $_POST['action'] == "view"){
     //     $data[] = $row['exhibit'];
     // }
 
-$res = $conn->query($sql);
-
-$resData = $res->fetch_all(MYSQLI_ASSOC);
-
     // $result = mysqli_query($conn,$sql);
     // while($row  = mysqli_fetch_array($result))
     //     $data[]= $row['exhibit'];
-
-foreach ($resData as $key => $value) {
-    $data[]=$value['exhibit'];
-}   
-
-  
-    $json = json_encode($data);
-    echo $json; 
 }
 
 
