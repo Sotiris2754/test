@@ -68,8 +68,6 @@ AFRAME.registerComponent('grid-manager', {
         schema: {
           size: {type: 'number', default: 5}, // number of tiles on one side
           gap: {type: 'number', default: 1}, // gap between tiles
-          // rows: {type: 'number', default: 5}, // number of rows
-          // columns: {type: 'number', default: 5}, // number of columns
           walls: { type: 'array', default: []}
           
         },
@@ -264,7 +262,7 @@ function importExhibit(entity){
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
 					else
 						exhibit.remove(); //Einai to idio me to "exhibit.remove();"
-					
+
 					storeData();
 					// console.log(exhibit);
 					// this.exhibit = exhibit;
