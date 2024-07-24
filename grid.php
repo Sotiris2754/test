@@ -68,7 +68,9 @@ AFRAME.registerComponent('grid-manager', {
         schema: {
           size: {type: 'number', default: 5}, // number of tiles on one side
           gap: {type: 'number', default: 1}, // gap between tiles
-          walls: { type: 'array', default: []}
+          walls: { type: 'array', default: []},
+          depth: {type: 'number', default: 1},
+          height: {type: 'number', default: 1}
           
         },
         init: function () {
@@ -76,6 +78,8 @@ AFRAME.registerComponent('grid-manager', {
           const el = this.el;
           const size = data.size;
           const gap = data.gap;
+          const depth = data.depth;
+          const height = data.height;
           
 
           this.tilesEnabled = true;
@@ -86,29 +90,31 @@ AFRAME.registerComponent('grid-manager', {
           // const columns = data.columns;
 
           const walls = [
-            { position: { x: -2.65, y: 4, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:4, centerPos: { x:-1.5, y:1.8, z:-9 }, centerRot:{ x:0, y:90, z:0} },
+            { position: { x: -2.65, y: 0.45, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:-1.5, y:1.8, z:-9 }, centerRot:{ x:0, y:90, z:0} },
+
+            { position: { x: -2.2, y: -0.5, z: -7 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:3, centerPos: { x:-1.5, y:1.8, z:-9 }, centerRot:{ x:0, y:90, z:0} },
               // Front wall
-            { position: { x: 1.8, y: 4, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:4, centerPos: { x:1, y:1.8, z:-9 }, centerRot:{ x:0, y:-90, z:0} },
+            { position: { x: 1.8, y: 0.45, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:1, y:1.8, z:-9 }, centerRot:{ x:0, y:-90, z:0} },
               // Back wall
-            { position: { x: 7, y: 4, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, rows:3, columns:4, centerPos: { x:9, y:1.8, z:-4 }, centerRot:{ x:0, y:0, z:0} },
+            { position: { x: 7, y: 0.45, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, depth:2, height:0.1, rows:1, columns:4, centerPos: { x:9, y:1.8, z:-4 }, centerRot:{ x:0, y:0, z:0} },
              // Left wall
-            { position: { x: 14, y: 4, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, rows:3, columns:8, centerPos: { x:9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0} },
+            { position: { x: 14, y: 0.45, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0} },
               // Right wall
-            { position: { x: -9.7, y: 4, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, rows:3, columns:2, centerPos: { x:-9, y:1.8, z:-4.5 }, centerRot:{ x:0, y:0, z:0} },
+            { position: { x: -9.7, y: 0.45, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:-9, y:1.8, z:-4.5 }, centerRot:{ x:0, y:0, z:0} },
               // Top wall
-            { position: { x: -4.5, y: 4, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, rows:3, columns:8, centerPos: { x:-9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0} },
+            { position: { x: -4.5, y: 0.45, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:-9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0} },
 
-            { position: { x: -16.55, y: 4, z: -2 }, rotation: { x: 90, y: 90, z: 0 }, rows:3, columns:2, centerPos: { x:-16, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0} },
+            { position: { x: -16.55, y: 0.45, z: -2 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:-16, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0} },
 
-            { position: { x: 15.3, y: 4, z: -3.5 }, rotation: { x: 90, y: 0, z: 90 }, rows:3, columns:2, centerPos: { x:14.8, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0} },
+            { position: { x: 15.3, y: 0.45, z: -3.5 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:14.8, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0} },
 
-            { position: { x: -0.5, y: 4, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, rows:3, columns:1, centerPos: { x:-0.5, y:1.8, z:1 }, centerRot:{ x:0, y:180, z:0} }  // Bottom wall
+            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:1 }, centerRot:{ x:0, y:180, z:0} }  // Bottom wall
           ];
           
 
 
           walls.forEach((wall, index) => {
-            this.createGrid(wall.position, wall.rotation, size, gap, wall.rows, wall.columns, index, wall.centerPos, wall.centerRot);
+            this.createGrid(wall.position, wall.rotation, size, wall.depth, wall.height, gap, wall.rows, wall.columns, index, wall.centerPos, wall.centerRot);
           });
 
 
@@ -123,7 +129,7 @@ AFRAME.registerComponent('grid-manager', {
           
 
         },
-        createGrid: function (position, rotation, size, gap, rows, columns, wallIndex, centerPos,centerRot) {
+        createGrid: function (position, rotation, size, depth, height, gap, rows, columns, wallIndex, centerPos,centerRot) {
           const el = this.el;
           const gridContainer = document.createElement('a-entity');
           gridContainer.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z);
@@ -142,8 +148,8 @@ AFRAME.registerComponent('grid-manager', {
               tile.setAttribute('id', counter);
               tile.setAttribute('position', `${x} 0 ${z}`);
               tile.setAttribute('width', size);
-              tile.setAttribute('height', 0.1); // Thin height for the tiles
-              tile.setAttribute('depth', size);
+              tile.setAttribute('height', height); // Thin height for the tiles
+              tile.setAttribute('depth', depth);
               tile.setAttribute('color', 'lightyellow');
               tile.setAttribute('class', 'gridtile enable');
               
@@ -248,7 +254,7 @@ function importExhibit(entity){
 	let exhibit = document.createElement('a-entity');
 	let id = entity.getAttribute('id');
 	removeChild();	
-					exhibit.setAttribute('position', "0 0.5 0" );
+					exhibit.setAttribute('position', "0 0.5 -0.35" );
 					exhibit.setAttribute('rotation', "-90 0 0"); 
 					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 
@@ -260,8 +266,8 @@ function importExhibit(entity){
 					tile.appendChild(exhibit);
 					if(id!=0)
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
-					else
-						exhibit.remove(); //Einai to idio me to "exhibit.remove();"
+					// else
+					// 	exhibit.remove(); //Einai to idio me to "exhibit.remove();"
 
 					storeData();
 					// console.log(exhibit);
@@ -314,14 +320,14 @@ function importExhibit(entity){
 										
 					exhibit.setAttribute('id',data.exhibits[json[i].exhibit].id+"."+data.exhibits[json[i].exhibit].id);
 					exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
-					exhibit.setAttribute('position', "0 0.5 0" );
+					exhibit.setAttribute('position', "0 0.5 -0.35" );
 					exhibit.setAttribute('rotation', "-90 0 0"); 
 					exhibit.setAttribute('class','clickable');
 					testId.appendChild(exhibit);
 					if(json[i].exhibit!=0)
 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
-					else
-						exhibit.remove();		
+					// else
+					// 	exhibit.remove();		
 
 	    		 }
 	  		}
@@ -357,7 +363,7 @@ function importExhibit(entity){
 <!-- <a-box id="box" position="0 0 -4" color="blue"></a-box> -->
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
-<a-entity grid-manager="size: 1; gap: 0.5;" position="0 0 0"></a-entity>
+<a-entity grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
 
 
 
