@@ -210,6 +210,7 @@ AFRAME.registerComponent('grid-manager', {
 					  const panel = document.querySelector("#mypanel");
 
 
+					//CLICK STA TILES --------> TOPOTHETISI PANEL GIA EISAGWGI EKTHEMATOS
 
 					  if (event.target.classList.contains('gridtile')) {
 
@@ -219,7 +220,7 @@ AFRAME.registerComponent('grid-manager', {
                 previousSelectedTile.setAttribute('color', 'lightyellow');
                 previousSelectedTile.classList.remove('selected');
                 panel.setAttribute('visible',false);
-                console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
+                // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
               }
 					    else{
 					    	if(previousSelectedTile)
@@ -234,15 +235,12 @@ AFRAME.registerComponent('grid-manager', {
 					    tile = event.target;
 					    thesi = event.target.object3D;
 					    thesi.getWorldPosition(worldPosition);
-					    worldPosition.x += 0.5;
+
 					    console.log(tile.id);
 
 					    
 					    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);					    	
 					    }
-
-					    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
-
 
 					    panel.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
 					    panel.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
@@ -387,6 +385,9 @@ function importExhibit(entity){
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
+					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
+					
+
 
 				</a-assets>
 
@@ -396,6 +397,10 @@ function importExhibit(entity){
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
+
+ <a-entity obj-model="obj: #statue;" position="0 0 -5"></a-entity>
+
+
 <!-- <a-box id="box" position="0 0 -4" color="blue"></a-box> -->
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
