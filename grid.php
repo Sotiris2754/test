@@ -386,7 +386,10 @@ function importExhibit(entity){
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
 					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
-					
+					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
+					<a-asset-items id="table2" src="table2/scene.gltf"></a-asset-items>
+					<a-asset-items id="table3" src="table3/scene.gltf"></a-asset-items>
+
 
 
 				</a-assets>
@@ -398,7 +401,12 @@ function importExhibit(entity){
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
 
- <a-entity obj-model="obj: #statue;" position="0 0 -5"></a-entity>
+ <!-- <a-entity obj-model="obj: #statue;" position="0 0 -5"></a-entity> -->
+
+ <!-- <a-entity gltf-model="#table1" scale="1 1 1" position="-1 0 -3" rotation="0 0 0"></a-entity> -->
+ <!-- <a-entity gltf-model="#table2" scale="0.01 0.01 0.01" position="0 0 -5" rotation="0 0 0"></a-entity> -->
+ <!-- <a-entity gltf-model="#table3" scale="6 6 6" position="0 0 -3" rotation="0 0 0"></a-entity> -->
+
 
 
 <!-- <a-box id="box" position="0 0 -4" color="blue"></a-box> -->
