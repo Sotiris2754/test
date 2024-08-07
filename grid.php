@@ -490,7 +490,7 @@ AFRAME.registerComponent('image-hover', {
 	<a-gui-button 
 						bevel="true"
 						onclick=""
-						class="rename"
+						class=""
 						margin="0 0.3 0 0"
 						width="1.5" 
 						height=".75"
@@ -506,7 +506,7 @@ AFRAME.registerComponent('image-hover', {
 	<a-gui-button 
 						bevel="true"
 						onclick=""
-						class="rename"
+						class=""
 						margin="0 0 0 0"
 						width="1.5" 
 						height=".75"
@@ -522,7 +522,7 @@ AFRAME.registerComponent('image-hover', {
 	<a-gui-button 
 						bevel="true"
 						onclick=""
-						class="rename"
+						class=""
 						margin="0 0 0 0.3"
 						width="1.5" 
 						height=".75"

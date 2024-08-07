@@ -119,10 +119,11 @@ function loadExhibit()
 		for(i=0; i<5; i++){
 
 		
-			button = document.querySelectorAll("a-gui-button");
+			// button = document.querySelectorAll("a-gui-button");
+			button = document.querySelectorAll(".rename");
 			button[i].setAttribute("value",data.exhibits[i+5].title);
 			// console.log("Next Page pressed");
-			// console.log(button[i]);
+			console.log(button[i]);
 		}
 
 		// displayDescriptionUpdated();
@@ -134,7 +135,8 @@ function loadExhibit()
 		page=1;
 
 		for(i=0; i<5; i++){
-			button = document.querySelectorAll("a-gui-button");
+			// button = document.querySelectorAll("a-gui-button");
+			button = document.querySelectorAll(".rename");
 			button[i].setAttribute("value",data.exhibits[i].title);
 			// console.log("Previous Page pressed");
 		}
