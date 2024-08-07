@@ -236,7 +236,7 @@ AFRAME.registerComponent('grid-manager', {
 					    thesi = event.target.object3D;
 					    thesi.getWorldPosition(worldPosition);
 
-					    console.log(tile.id);
+					    // console.log(tile.id);
 
 					    
 					    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);					    	
@@ -286,13 +286,12 @@ AFRAME.registerComponent('grid-manager', {
 
 function importExhibit(entity){
 	let exhibit = document.createElement('a-entity');
-	// let id = entity.getAttribute('id');
 	let container = document.querySelectorAll("a-gui-flex-container");
 	let kid = entity;
 	const kidArray = Array.from(container[0].children);
 	const index = kidArray.indexOf(kid);
 
-	console.log(index);
+	// console.log(kidArray);
 
 	removeChild();	
 					exhibit.setAttribute('position', "0 0.5 -0.35" );
