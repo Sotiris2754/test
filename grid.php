@@ -286,20 +286,27 @@ AFRAME.registerComponent('grid-manager', {
 
 function importExhibit(entity){
 	let exhibit = document.createElement('a-entity');
-	let id = entity.getAttribute('id');
+	// let id = entity.getAttribute('id');
+	let container = document.querySelectorAll("a-gui-flex-container");
+	let kid = entity;
+	const kidArray = Array.from(container[0].children);
+	const index = kidArray.indexOf(kid);
+
+	console.log(index);
+
 	removeChild();	
 					exhibit.setAttribute('position', "0 0.5 -0.35" );
 					exhibit.setAttribute('rotation', "-90 0 0"); 
 					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
 
-					exhibit.setAttribute('scale',data.exhibits[id].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
-					exhibit.setAttribute('id',id+"."+id);
+					exhibit.setAttribute('scale',data.exhibits[index].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+					exhibit.setAttribute('id',index+"."+index);
 					exhibit.setAttribute('class','clickable');
 					exhibit.setAttribute("show-panel","");
 					// console.log(tile);
 					tile.appendChild(exhibit);
-					if(id!=0)
-					exhibit.setAttribute('gltf-model',`url(${data.exhibits[id].pathfile})`);
+					if(index!=0)
+					exhibit.setAttribute('gltf-model',`url(${data.exhibits[index].pathfile})`);
 					// else
 					// 	exhibit.remove(); //Einai to idio me to "exhibit.remove();"
 
@@ -312,10 +319,10 @@ function importExhibit(entity){
 	  $.ajax({
 	  url: "sql.php",
 	  method: "POST",
-	  data: { id:tile.id, exhibit:data.exhibits[id].id, action:"store"},
+	  data: { id:tile.id, exhibit:data.exhibits[index].id, action:"store"},
 	  success: function(response) {
 	    console.log("Selection stored successfully.");
-	    console.log(id);
+	    // console.log(id);
 	    // console.log(exhibit);
 	   	//console.log(response);
 	  },

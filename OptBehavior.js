@@ -113,15 +113,19 @@ function loadExhibit()
 
 	function nextPage(){
 		if(page==2)
-			return;
+			return;	
 		page=2;
 
 		for(i=0; i<5; i++){
-			button  = document.getElementById(i);
-			button.setAttribute("id",i+5);
+
+		
+			button = document.querySelectorAll("a-gui-button");
+			button[i].setAttribute("value",data.exhibits[i+5].title);
+			// console.log("Next Page pressed");
+			// console.log(button[i]);
 		}
 
-		displayDescriptionUpdated();
+		// displayDescriptionUpdated();
 
 	}
 	function previousPage(){
@@ -129,40 +133,45 @@ function loadExhibit()
 			return;
 		page=1;
 
-		for(i=5; i<10; i++){
-			button  = document.getElementById(i);
-			button.setAttribute("id",i-5);
+		for(i=0; i<5; i++){
+			button = document.querySelectorAll("a-gui-button");
+			button[i].setAttribute("value",data.exhibits[i].title);
+			// console.log("Previous Page pressed");
 		}
 
-		displayDescriptionUpdated();
+		// displayDescriptionUpdated();
 
 	}
 
-//Αυτή είναι η συνάρτηση για την απεικόνιση των τίτλων των έργων πάνω στα πλαίσια του GUI
-	function displayDescriptionUpdated(){
-		if(!data){
-			console.log("DEN EXW ARXEIO");
-		}
-		else{
-			if(page==1){
-				// console.log("page 1");
-				for (i=0; i<5; i++){
-					var text = document.getElementById(i);
-					text.setAttribute("value",data.exhibits[i].title);
-					// console.log(text);
-				}			
-			}
-			if(page==2){
-				// console.log("page 2");
-				for (i=5; i<10; i++){
-					var text = document.getElementById(i);
-					text.setAttribute("value",data.exhibits[i].title); // +5 sto i gia na parei to 5o ekthema prwta
-					// console.log(text);
-				}
-			}	
-		}
+// Κατάργηση της function. Γίνεται χρήση του nextPage() / previousPage() functions.
 
-	}
+	//Αυτή είναι η συνάρτηση για την απεικόνιση των τίτλων των έργων πάνω στα πλαίσια του GUI
+
+
+	// function displayDescriptionUpdated(){
+	// 	if(!data){
+	// 		console.log("DEN EXW ARXEIO");
+	// 	}
+	// 	else{
+	// 		if(page==1){
+	// 			// console.log("page 1");
+	// 			for (i=0; i<5; i++){
+	// 				var text = document.getElementById(i);
+	// 				text.setAttribute("value",data.exhibits[i].title);
+	// 				console.log(data.exhibit[i].title);
+	// 			}			
+	// 		}
+	// 		if(page==2){
+	// 			// console.log("page 2");
+	// 			for (i=5; i<10; i++){
+	// 				var text = document.getElementById(i);
+	// 				text.setAttribute("value",data.exhibits[i].title); // +5 sto i gia na parei to 5o ekthema prwta
+	// 				// console.log(text);
+	// 			}
+	// 		}	
+	// 	}
+
+	// }
 
 
 
