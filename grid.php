@@ -289,7 +289,7 @@ function importExhibit(entity){
 	let container = document.querySelectorAll("a-gui-flex-container");
 	let kid = entity;
 	const kidArray = Array.from(container[0].children);
-	const index = kidArray.indexOf(kid);
+	let index = kidArray.indexOf(kid);
 
 	// console.log(kidArray);
 
@@ -297,7 +297,8 @@ function importExhibit(entity){
 					exhibit.setAttribute('position', "0 0.5 -0.35" );
 					exhibit.setAttribute('rotation', "-90 0 0"); 
 					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
-
+					if(page==2)
+						index+= 5;
 					exhibit.setAttribute('scale',data.exhibits[index].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',index+"."+index);
 					exhibit.setAttribute('class','clickable');
