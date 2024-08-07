@@ -58,11 +58,13 @@
 	
 
 	let thesi;
-	let tile;
 	const worldPosition = new THREE.Vector3();
+	let tile;
 	let counter=0;
 	let transparent = 100;
 	// insertTilesToDatabase();
+
+
 
 AFRAME.registerComponent('grid-manager', {
         schema: {
@@ -207,7 +209,9 @@ AFRAME.registerComponent('grid-manager', {
 					  const x = event.target.getAttribute('data-x');
 					  const y = event.target.getAttribute('data-y');
 					  const wallIndex = event.target.getAttribute('datawall');
-					  const panel = document.querySelector("#mypanel");
+
+					  const panelExhibit = document.querySelector("#panelExhibit");
+					  const panelBase = document.querySelector('#panelBase');
 
 
 					//CLICK STA TILES --------> TOPOTHETISI PANEL GIA EISAGWGI EKTHEMATOS
@@ -216,38 +220,55 @@ AFRAME.registerComponent('grid-manager', {
 
               const previousSelectedTile = document.querySelector('.gridtile.selected');
 
-              if (event.target.classList.contains('selected')) {
-                previousSelectedTile.setAttribute('color', 'lightyellow');
-                previousSelectedTile.classList.remove('selected');
-                panel.setAttribute('visible',false);
-                // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
-              }
-					    else{
-					    	if(previousSelectedTile)
-					    	{
-					    		previousSelectedTile.setAttribute('color','lightyellow');
-					    		previousSelectedTile.classList.remove('selected');
-					    	}
-					    event.target.setAttribute('color', 'green');
-					    event.target.classList.add('selected');
-					    panel.setAttribute('visible',true);
-					    
-					    tile = event.target;
-					    thesi = event.target.object3D;
-					    thesi.getWorldPosition(worldPosition);
 
-					    // console.log(tile.id);
+		          if (event.target.classList.contains('selected')) {
+		            previousSelectedTile.setAttribute('color', 'lightyellow');
+		            previousSelectedTile.classList.remove('selected');
+		            panelExhibit.setAttribute('visible',false);
+		            panelExhibit.setAttribute('position','0 100 0');
+		            panelBase.setAttribute('visible',false);
+		            panelBase.setAttribute('position','0 100 0');
 
-					    
-					    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);					    	
-					    }
+		            // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
+		          }
+							else{
+							    
+							    if(previousSelectedTile){
+							    	previousSelectedTile.setAttribute('color','lightyellow');
+							    	previousSelectedTile.classList.remove('selected');
+							    }
+							    
+							    event.target.setAttribute('color', 'green');
+							    event.target.classList.add('selected');
 
-					    panel.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
-					    panel.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
+							  	if(event.target.classList.contains('wall')){
+							  		panelBase.setAttribute('visible',false);
+							  		panelBase.setAttribute('position','0 100 0');
+							  		panelExhibit.setAttribute('visible',true);
+								    panelExhibit.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
+								    panelExhibit.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z); 
+							  	}
 
+							  	else if(event.target.classList.contains('floor')){
+							  		panelExhibit.setAttribute('visible',false);
+							  		panelExhibit.setAttribute('position','0 100 0');
+							  		panelBase.setAttribute('visible',true);
+								    panelBase.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
+								    panelBase.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
+							  	}
+
+							    
+							    
+							    tile = event.target;
+							    // thesi = event.target.object3D;
+							    // thesi.getWorldPosition(worldPosition);
+							    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
+
+							}
 					  }
 					});
         },
+
         toggleTiles: function () {
           this.tilesEnabled = !this.tilesEnabled; // Toggle the state
 
@@ -288,7 +309,7 @@ function importExhibit(entity){
 	let exhibit = document.createElement('a-entity');
 	let container = document.querySelectorAll("a-gui-flex-container");
 	let kid = entity;
-	const kidArray = Array.from(container[0].children);
+	const kidArray = Array.from(container[1].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
 	let index = kidArray.indexOf(kid);
 
 	// console.log(kidArray);
@@ -377,6 +398,44 @@ function importExhibit(entity){
 		});
 	}
 
+AFRAME.registerComponent('image-hover', {
+	init: function(){
+		var el = this.el;
+		let image = document.querySelector('#imagePreview');
+		var parent = el.parentNode;
+
+
+		el.addEventListener('mouseenter', function(){
+			image.setAttribute('visible',true);
+			var pos = parent.getAttribute('position');
+			var rot = parent.getAttribute('rotation');
+			var value = el.getAttribute('value');
+
+			image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
+			image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
+
+			if(value === "Base1"){
+				image.setAttribute('src','#image1');
+			}
+			else if(value === "Base2"){
+				image.setAttribute('src','#image2');
+			}
+			else if(value === "Base3"){
+				image.setAttribute('src','#image3');
+			}
+
+		});
+
+
+
+		el.addEventListener('mouseleave', function(){
+			console.log("Vgika apo to element");
+			image.setAttribute('position','0 100 0');
+			// parent.setAttribute('position','0 100 0');
+
+		})
+	}
+});
 
 
 </script>
@@ -396,6 +455,9 @@ function importExhibit(entity){
 					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
 					<a-asset-items id="table2" src="table2/scene.gltf"></a-asset-items>
 					<a-asset-items id="table3" src="table3/scene.gltf"></a-asset-items>
+					<img id="image1" src="galatista.jpg"></img>
+					<img id="image2" src="girl.png"></img>
+					<img id="image3" src="boy.png"></img>
 
 
 
@@ -407,6 +469,8 @@ function importExhibit(entity){
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
+
+<a-image id="imagePreview" position="0 1 -5" src="" visible="false" ></a-image>
 
  <!-- <a-entity obj-model="obj: #statue;" position="0 0 -5"></a-entity> -->
 
@@ -421,9 +485,59 @@ function importExhibit(entity){
 
 <a-entity grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
 
+<a-gui-flex-container id="panelBase" width="5.5" height="2" position="0 100 0" rotation="0 90 0" panel-color="#072B73" opacity="0.8" flex-direction="row" justify-content="center" align-items="center" scale=".5 .5 1" visible="false">
 
+	<a-gui-button 
+						bevel="true"
+						onclick=""
+						class="rename"
+						margin="0 0.3 0 0"
+						width="1.5" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="Base1"
+						image-hover
+						bevel-size="0.08"
+						bevel-thickness="0.02"
+	>
+			</a-gui-button>
 
-<a-gui-flex-container id="mypanel" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="2 2 -4" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="false">
+	<a-gui-button 
+						bevel="true"
+						onclick=""
+						class="rename"
+						margin="0 0 0 0"
+						width="1.5" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="Base2"
+						image-hover
+						bevel-size="0.08"
+						bevel-thickness="0.02"
+	>
+			</a-gui-button>
+
+	<a-gui-button 
+						bevel="true"
+						onclick=""
+						class="rename"
+						margin="0 0 0 0.3"
+						width="1.5" 
+						height=".75"
+						font-family="assets/fonts/Plaster-Regular.ttf"
+						font-size="0.2"
+						value="Base3"
+						image-hover
+						bevel-size="0.08"
+						bevel-thickness="0.02"
+	>
+			</a-gui-button>
+	
+</a-gui-flex-container>
+
+<a-gui-flex-container id="panelExhibit" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="0 100 0" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="false">
 
 
 			<a-gui-button bevel="true"

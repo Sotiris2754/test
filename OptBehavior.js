@@ -64,7 +64,7 @@ function loadExhibit()
 
 // AFRAME.registerComponent("show-gui",{
 // 	init:function(){
-// 		var guiPanel = document.querySelector("#mypanel");
+// 		var guiPanel = document.querySelector("#mypanel"); //exei allaxei to id tou panel
 // 		var el = this.el;
 // 		// console.log(el);
 // 		var standPos = el.getAttribute("position");
@@ -402,85 +402,85 @@ function placeExhibit(entity){
 }
 
 
-	function retrieveData(){
-		$.ajax({
-			url:"sql.php",
-			method:"POST",
-			data: {action:"view"},
-			success: function(res) {
+	// function retrieveData(){
+	// 	$.ajax({
+	// 		url:"sql.php",
+	// 		method:"POST",
+	// 		data: {action:"view"},
+	// 		success: function(res) {
 				
-	    		console.log("Success Response");
-	    		var json = JSON.parse(res);
-	    		//console.log(json.length);
-				if (data == null)
-				{
-					console.log("2nd Not ready yet!");
-					setTimeout(retrieveData(),1);
-				}
-				else{
-		    		for (var i=0; i<json.length; i++){
-		    		count = json.length;
+	//     		console.log("Success Response");
+	//     		var json = JSON.parse(res);
+	//     		//console.log(json.length);
+	// 			if (data == null)
+	// 			{
+	// 				console.log("2nd Not ready yet!");
+	// 				setTimeout(retrieveData(),1);
+	// 			}
+	// 			else{
+	// 	    		for (var i=0; i<json.length; i++){
+	// 	    		count = json.length;
 
-					var stand = document.createElement('a-entity');
-					stand.setAttribute('id',data.stands[i].id);
-					// stand.setAttribute('show-list',"");
-					stand.setAttribute('show-gui',"");
-					stand.setAttribute('position',data.stands[i].position);
-					stand.setAttribute('gltf-model',`url(${data.stands[i].pathfile})`);
-					stand.setAttribute('rotation',data.stands[i].rotation);
-					// stand.setAttribute('scale',data.stands[i].scale);
-					stand.setAttribute('class','clickable stand');
-					scene.appendChild(stand);
+	// 				var stand = document.createElement('a-entity');
+	// 				stand.setAttribute('id',data.stands[i].id);
+	// 				// stand.setAttribute('show-list',"");
+	// 				stand.setAttribute('show-gui',"");
+	// 				stand.setAttribute('position',data.stands[i].position);
+	// 				stand.setAttribute('gltf-model',`url(${data.stands[i].pathfile})`);
+	// 				stand.setAttribute('rotation',data.stands[i].rotation);
+	// 				// stand.setAttribute('scale',data.stands[i].scale);
+	// 				stand.setAttribute('class','clickable stand');
+	// 				scene.appendChild(stand);
 
-		    			// base = document.getElementById(i); THA XRISIMOPOIISW TIN METAVLITI "STAND"
-		    			removeChild();
-						//console.log(json);
-						if(json[i]!=null){
-		    				var exhibit = document.createElement('a-entity');
-							exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0);
-							// console.log(data.stands[i].position);
-							if(json[i]!=0)
-							exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
-							exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
-							exhibit.setAttribute('id',json[i]+"."+json[i]);
-							exhibit.setAttribute('class','clickable');
-							exhibit.setAttribute("show-panel","");
-							stand.appendChild(exhibit);
+	// 	    			// base = document.getElementById(i); THA XRISIMOPOIISW TIN METAVLITI "STAND"
+	// 	    			removeChild();
+	// 					//console.log(json);
+	// 					if(json[i]!=null){
+	// 	    				var exhibit = document.createElement('a-entity');
+	// 						exhibit.setAttribute('position',0 +" " + 1.7 +" " + 0);
+	// 						// console.log(data.stands[i].position);
+	// 						if(json[i]!=0)
+	// 						exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i]].pathfile})`);
+	// 						exhibit.setAttribute('scale',data.exhibits[json[i]].scale);
+	// 						exhibit.setAttribute('id',json[i]+"."+json[i]);
+	// 						exhibit.setAttribute('class','clickable');
+	// 						exhibit.setAttribute("show-panel","");
+	// 						stand.appendChild(exhibit);
 
-							var frame = document.createElement('a-entity');
-								frame.setAttribute("position","0 3 0.01");
-								frame.setAttribute("rotation","0 -180 0");
-								frame.setAttribute('visible','false');
-								stand.appendChild(frame);
+	// 						var frame = document.createElement('a-entity');
+	// 							frame.setAttribute("position","0 3 0.01");
+	// 							frame.setAttribute("rotation","0 -180 0");
+	// 							frame.setAttribute('visible','false');
+	// 							stand.appendChild(frame);
 
-							var panel = document.createElement('a-plane');
-								panel.setAttribute('width',2);
-								panel.setAttribute('height',1);
-								frame.appendChild(panel);
+	// 						var panel = document.createElement('a-plane');
+	// 							panel.setAttribute('width',2);
+	// 							panel.setAttribute('height',1);
+	// 							frame.appendChild(panel);
 
-							var exitButton = document.createElement('a-image');
-								exitButton.setAttribute('src','#exitButton');
-								exitButton.setAttribute('scale','0.2 0.2 0.2');
-								exitButton.setAttribute('position','0.8 .35 0.01');
-								exitButton.setAttribute('class','grandChild');
-								exitButton.setAttribute('closebutton','');
-								panel.appendChild(exitButton);
+	// 						var exitButton = document.createElement('a-image');
+	// 							exitButton.setAttribute('src','#exitButton');
+	// 							exitButton.setAttribute('scale','0.2 0.2 0.2');
+	// 							exitButton.setAttribute('position','0.8 .35 0.01');
+	// 							exitButton.setAttribute('class','grandChild');
+	// 							exitButton.setAttribute('closebutton','');
+	// 							panel.appendChild(exitButton);
 
-							var infoText = document.createElement('a-text');
-								infoText.setAttribute('width',2);
-								infoText.setAttribute('color','black');
-								infoText.setAttribute('align','center');
-								infoText.setAttribute('value',data.exhibits[json[i]].description);
-								panel.appendChild(infoText);
-						}
+	// 						var infoText = document.createElement('a-text');
+	// 							infoText.setAttribute('width',2);
+	// 							infoText.setAttribute('color','black');
+	// 							infoText.setAttribute('align','center');
+	// 							infoText.setAttribute('value',data.exhibits[json[i]].description);
+	// 							panel.appendChild(infoText);
+	// 					}
 
-					}
+	// 				}
 
-	    		}
-	  		},
+	//     		}
+	//   		},
 		
-		});
-	}
+	// 	});
+	// }
 
 function removeChild(){
 		if(tile!=null){
