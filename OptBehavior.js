@@ -123,7 +123,7 @@ function loadExhibit()
 			button = document.querySelectorAll(".rename");
 			button[i].setAttribute("value",data.exhibits[i+5].title);
 			// console.log("Next Page pressed");
-			console.log(button[i]);
+			// console.log(button[i]);
 		}
 
 		// displayDescriptionUpdated();

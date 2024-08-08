@@ -64,7 +64,7 @@
 	let transparent = 100;
 	// insertTilesToDatabase();
 
-	
+
 AFRAME.registerComponent('image-hover', {
 	init: function(){
 		var el = this.el;
@@ -351,12 +351,12 @@ function importExhibit(entity){
 	const kidArray = Array.from(container[1].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
 	let index = kidArray.indexOf(kid);
 
-	// console.log(kidArray);
+	console.log(index);
 
 	removeChild();	
 					exhibit.setAttribute('position', "0 0.5 -0.35" );
 					exhibit.setAttribute('rotation', "-90 0 0"); 
-					// exhibit.setAttribute('position', { x: base.object3D.position.x, y: base.object3D.position.y + 1, z: base.object3D.position.z });
+
 					if(page==2)
 						index+= 5;
 
@@ -437,6 +437,57 @@ function importExhibit(entity){
 		});
 	}
 
+function importBase(entity){
+	let base = document.createElement('a-entity');
+
+	let container = document.querySelectorAll("a-gui-flex-container");
+	let kid = entity;
+	const kidArray = Array.from(container[0].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
+	let index = kidArray.indexOf(kid);
+	// console.log(kid);
+	console.log(index);
+
+
+	// console.log(kidArray);
+
+	removeChild();
+
+					base.setAttribute('position', "0 0 0" );
+					base.setAttribute('rotation', "-90 0 0");
+
+					base.setAttribute('scale',data.stands[index].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+					base.setAttribute('id',"test");
+					// base.setAttribute('class','clickable');
+					
+					
+					// base.setAttribute('obj-model',`url(${data.stands[index].pathfile})`);
+					base.setAttribute('obj-model', {
+					    obj: `url(${data.stands[index].pathfile})`
+					});
+					tile.appendChild(base);
+
+
+					// storeData();
+
+
+	function storeData(){
+	  $.ajax({
+	  url: "sql.php",
+	  method: "POST",
+	  data: { id:tile.id, base:data.stands[index].name, action:"store"},
+	  success: function(response) {
+	    console.log("Selection stored successfully.");
+	    // console.log(id);
+	    // console.log(exhibit);
+	   	//console.log(response);
+	  },
+	  		error: function(xhr, status, error) {
+	    	console.log("An error occurred: " + error);
+	  		}
+		});
+	}
+}
+
 
 </script>
 
@@ -471,14 +522,14 @@ function importExhibit(entity){
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
-
+<!-- 
 <a-entity >
 	<a-entity id="testObj" obj-model="obj:#column2;" scale="0.01 0.01 0.01" position="-1 0 -3"></a-entity>
 </a-entity>
 
 <a-entity >
 	<a-entity id="testObj" obj-model="obj:#column1;" scale="0.005 0.005 0.005" position="1 0 -3"></a-entity>
-</a-entity>
+</a-entity> -->
 
 <a-image id="imagePreview" position="0 1 -5" src="" visible="false" ></a-image>
 
