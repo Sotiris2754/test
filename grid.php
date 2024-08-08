@@ -64,6 +64,45 @@
 	let transparent = 100;
 	// insertTilesToDatabase();
 
+	
+AFRAME.registerComponent('image-hover', {
+	init: function(){
+		var el = this.el;
+		let image = document.querySelector('#imagePreview');
+		var parent = el.parentNode;
+
+
+		el.addEventListener('mouseenter', function(){
+			image.setAttribute('visible',true);
+			var pos = parent.getAttribute('position');
+			var rot = parent.getAttribute('rotation');
+			var value = el.getAttribute('value');
+
+			image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
+			image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
+
+			if(value === "Base1"){
+				image.setAttribute('src','#image1');
+			}
+			else if(value === "Base2"){
+				image.setAttribute('src','#image2');
+			}
+			else if(value === "Base3"){
+				image.setAttribute('src','#image3');
+			}
+
+		});
+
+
+
+		el.addEventListener('mouseleave', function(){
+			console.log("Vgika apo to element");
+			image.setAttribute('position','0 100 0');
+			// parent.setAttribute('position','0 100 0');
+
+		})
+	}
+});
 
 
 AFRAME.registerComponent('grid-manager', {
@@ -398,45 +437,6 @@ function importExhibit(entity){
 		});
 	}
 
-AFRAME.registerComponent('image-hover', {
-	init: function(){
-		var el = this.el;
-		let image = document.querySelector('#imagePreview');
-		var parent = el.parentNode;
-
-
-		el.addEventListener('mouseenter', function(){
-			image.setAttribute('visible',true);
-			var pos = parent.getAttribute('position');
-			var rot = parent.getAttribute('rotation');
-			var value = el.getAttribute('value');
-
-			image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
-			image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
-
-			if(value === "Base1"){
-				image.setAttribute('src','#image1');
-			}
-			else if(value === "Base2"){
-				image.setAttribute('src','#image2');
-			}
-			else if(value === "Base3"){
-				image.setAttribute('src','#image3');
-			}
-
-		});
-
-
-
-		el.addEventListener('mouseleave', function(){
-			console.log("Vgika apo to element");
-			image.setAttribute('position','0 100 0');
-			// parent.setAttribute('position','0 100 0');
-
-		})
-	}
-});
-
 
 </script>
 
@@ -455,11 +455,13 @@ AFRAME.registerComponent('image-hover', {
 					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
 					<a-asset-items id="table2" src="table2/scene.gltf"></a-asset-items>
 					<a-asset-items id="table3" src="table3/scene.gltf"></a-asset-items>
+
+					<a-asset-items id="column1" src="3dbases/column1.obj"></a-asset-items>
+					<a-asset-items id="column2" src="3dbases/column2.obj"></a-asset-items>
+
 					<img id="image1" src="galatista.jpg"></img>
 					<img id="image2" src="girl.png"></img>
 					<img id="image3" src="boy.png"></img>
-
-
 
 				</a-assets>
 
@@ -468,6 +470,14 @@ AFRAME.registerComponent('image-hover', {
 
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
+</a-entity>
+
+<a-entity >
+	<a-entity id="testObj" obj-model="obj:#column2;" scale="0.01 0.01 0.01" position="-1 0 -3"></a-entity>
+</a-entity>
+
+<a-entity >
+	<a-entity id="testObj" obj-model="obj:#column1;" scale="0.005 0.005 0.005" position="1 0 -3"></a-entity>
 </a-entity>
 
 <a-image id="imagePreview" position="0 1 -5" src="" visible="false" ></a-image>
@@ -489,7 +499,7 @@ AFRAME.registerComponent('image-hover', {
 
 	<a-gui-button 
 						bevel="true"
-						onclick=""
+						onclick="importBase(this)"
 						class=""
 						margin="0 0.3 0 0"
 						width="1.5" 
@@ -505,7 +515,7 @@ AFRAME.registerComponent('image-hover', {
 
 	<a-gui-button 
 						bevel="true"
-						onclick=""
+						onclick="importBase(this)"
 						class=""
 						margin="0 0 0 0"
 						width="1.5" 
@@ -521,7 +531,7 @@ AFRAME.registerComponent('image-hover', {
 
 	<a-gui-button 
 						bevel="true"
-						onclick=""
+						onclick="importBase(this)"
 						class=""
 						margin="0 0 0 0.3"
 						width="1.5" 

@@ -200,19 +200,17 @@
 
 			"stands":[
 			{
+			"id":0,
+			"pathfile":"3dbases/column1.obj",
+			"scale":"0.005 0.005 0.005"
+			},
+			{
 			"id":1,
-			"pathfile":"museum_case/scene.gltf",
-			"position":"-16 -.5 -2.5",
-			"rotation":"0 -90 0"
+			"pathfile":"3dbases/column2.obj",
+			"scale":"0.01 0.01 0.01"
 			},
 			{
 			"id":2,
-			"pathfile":"museum_case/scene.gltf",
-			"position":"-2.05 -.5 -7",
-			"rotation":"0 -90 0"
-			},
-			{
-			"id":3,
 			"pathfile":"museum_case/scene.gltf",
 			"position":"1.2 -.5 -7",
 			"rotation":"0 90 0"
