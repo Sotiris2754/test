@@ -354,7 +354,7 @@ function importExhibit(entity){
 	console.log(index);
 
 	removeChild();	
-					exhibit.setAttribute('position', "0 0.5 -0.35" );
+					exhibit.setAttribute('position', data.exhibits[index].position);
 					exhibit.setAttribute('rotation', "-90 0 0"); 
 
 					if(page==2)
@@ -423,7 +423,7 @@ function importExhibit(entity){
 							var exhibit = document.createElement('a-entity');		
 							exhibit.setAttribute('id',data.exhibits[json[i].exhibit].id+"."+data.exhibits[json[i].exhibit].id);
 							exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
-							exhibit.setAttribute('position', "0 0.5 -0.35" );
+							exhibit.setAttribute('position', data.exhibits[json[i].exhibit].position );
 							exhibit.setAttribute('rotation', "-90 0 0"); 
 							exhibit.setAttribute('class','clickable');
 							testId.appendChild(exhibit);
@@ -438,9 +438,7 @@ function importExhibit(entity){
 							base.setAttribute('rotation', "-90 0 0");
 							base.setAttribute('scale',data.stands[json[i].base].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 							base.setAttribute('id',"test");
-							base.setAttribute('obj-model', {
-							    obj: `url(${data.stands[json[i].base].pathfile})`
-							});
+							base.setAttribute('gltf-model',`url(${data.stands[json[i].base].pathfile})`);
 							testId.appendChild(base);
 					}
 	    		 }
@@ -473,10 +471,8 @@ function importBase(entity){
 					// base.setAttribute('class','clickable');
 					
 					
-					// base.setAttribute('obj-model',`url(${data.stands[index].pathfile})`);
-					base.setAttribute('obj-model', {
-					    obj: `url(${data.stands[index].pathfile})`
-					});
+					base.setAttribute('gltf-model',`url(${data.stands[index].pathfile})`);
+
 					tile.appendChild(base);
 
 
@@ -529,12 +525,12 @@ function deleteDB(){
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
 					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
-					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
+<!-- 					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
 					<a-asset-items id="table2" src="table2/scene.gltf"></a-asset-items>
-					<a-asset-items id="table3" src="table3/scene.gltf"></a-asset-items>
+					<a-asset-items id="table3" src="table3/scene.gltf"></a-asset-items> -->
 
-					<a-asset-items id="column1" src="3dbases/column1.obj"></a-asset-items>
-					<a-asset-items id="column2" src="3dbases/column2.obj"></a-asset-items>
+					<a-asset-items id="base1" src="models/3dbases/base3/base3.gltf"></a-asset-items>
+					<a-asset-items id="base2" src="models/3dbases/base2/base2.gltf"></a-asset-items>
 
 					<img id="image1" src="galatista.jpg"></img>
 					<img id="image2" src="girl.png"></img>
@@ -548,14 +544,15 @@ function deleteDB(){
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
-<!-- 
-<a-entity >
-	<a-entity id="testObj" obj-model="obj:#column2;" scale="0.01 0.01 0.01" position="-1 0 -3"></a-entity>
+
+<!-- <a-entity>
+<a-entity gltf-model="#base1" scale="1 1 1" position="-2 1 -3" rotation="0 0 0"></a-entity>
 </a-entity>
 
 <a-entity >
-	<a-entity id="testObj" obj-model="obj:#column1;" scale="0.005 0.005 0.005" position="1 0 -3"></a-entity>
+<a-entity gltf-model="#base2" scale="1 1 1" position="1 1 -3" rotation="0 0 0"></a-entity>
 </a-entity> -->
+
 
 <a-image id="imagePreview" position="0 1 -5" src="" visible="false" ></a-image>
 

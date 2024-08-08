@@ -7,14 +7,14 @@
 					"title":"Empty base",
 					"pathfile":"",
 					"description":"Discard exhibit",
-					"type":""
+					"position":"0 0.5 -0.35"
 					
 					},
 
 					{
 					"id":1,
 					"title":"Irthe to reuma",
-					"pathfile":"human_scan/model.gltf",
+					"pathfile":"models/human_scan/model.gltf",
 					"description":"A huge 3d model boy",
 					"type":"3d model",
 					"scale":"0.005 0.005 0.005",
@@ -25,38 +25,41 @@
 					{
 					"id":2,
 					"title":"Prwto potiri",
-					"pathfile":"chalice/scene.gltf",
+					"pathfile":"models/chalice/scene.gltf",
 					"description":"Middle-East decor, shaped as bird.\nIt looks like\naksjd askj daskjd",
 					"type":"3d model",
-					"scale":"4 4 4"
-					
+					"scale":"4 4 4",
+					"position":"0 0.5 -0.35"					
 
 					},
 
 					{
 					"id":3,
 					"title":"Deutero vazaki",
-					"pathfile":"chalice2/scene.gltf",
+					"pathfile":"models/chalice2/scene.gltf",
 					"description":"Dokimastiko description: 1oiweoi qwoi\nImerominia dimiourgias: 10/30/2024",
 					"type":"3d model",
-					"scale":"4 4 4"
+					"scale":"4 4 4",
+					"position":"0 0.45 -0.45"
 					
 					},
 
 					{
 					"id":4,
 					"title":"Trito vazaki",
-					"pathfile":"chalice3/scene.gltf",
+					"pathfile":"models/chalice3/scene.gltf",
 					"description":"asdaasd.",
 					"type":"3d model",
-					"scale":"0.005 0.005 0.005"
+					"scale":"0.004 0.004 0.004",
+					"position":"0 0.45 -0.65"
 					},
 					{
 					"id":5,
 					"title":"Female head",
-					"pathfile":"female_head/scene.gltf",
+					"pathfile":"models/female_head/scene.gltf",
 					"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
-					"type":"3d model"
+					"type":"3d model",
+					"position":"0 0.5 -0.35"
 					
 
 					},
@@ -64,7 +67,7 @@
 					{
 					"id":6,
 					"title":"Megalo agalma",
-					"pathfile":"human_scan/model.gltf",
+					"pathfile":"models/human_scan/model.gltf",
 					"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
 					"type":"3d model",
 					"scale":"0.005 0.005 0.005"
@@ -73,10 +76,11 @@
 					{
 					"id":7,
 					"title":"JAR 1",
-					"pathfile":"chalice/scene.gltf",
+					"pathfile":"models/chalice/scene.gltf",
 					"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
 					"type":"3d model",
-					"scale":"4 4 4"
+					"scale":"4 4 4",
+					"position":"0 0.5 -0.35"
 					
 
 					},
@@ -84,27 +88,30 @@
 					{
 					"id":8,
 					"title":"JAR 2",
-					"pathfile":"chalice2/scene.gltf",
+					"pathfile":"models/chalice2/scene.gltf",
 					"description":"Ένα βάζω από τα βάθυ της Ρωσίας",
 					"type":"3d model",
-					"scale":"4 4 4"
+					"scale":"4 4 4",
+					"position":"0 0.5 -0.35"
 					
 					},
 
 					{
 					"id":9,
 					"title":"JAR 3",
-					"pathfile":"chalice3/scene.gltf",
+					"pathfile":"models/chalice3/scene.gltf",
 					"description":"Ένα βάζω από τα βάθυ της Ινδίας.",
 					"type":"3d model",
-					"scale":"0.005 0.005 0.005"
+					"scale":"0.005 0.005 0.005",
+					"position":"0 0.5 -0.35"
 					},
 					{
 					"id":10,
 					"title":"Female head",
-					"pathfile":"female_head/scene.gltf",
+					"pathfile":"models/female_head/scene.gltf",
 					"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
-					"type":"3d model"
+					"type":"3d model",
+					"position":"0 0.5 -0.35"
 					
 
 					},
@@ -112,16 +119,17 @@
 					{
 					"id":11,
 					"title":"Irthe to reuma",
-					"pathfile":"human_scan/model.gltf",
+					"pathfile":"models/human_scan/model.gltf",
 					"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
 					"type":"3d model",
-					"scale":"0.005 0.005 0.005"
+					"scale":"0.005 0.005 0.005",
+					"position":"0 0.5 -0.35"
 					
 					},
 					{
 					"id":12,
 					"title":"Prwto potiri",
-					"pathfile":"chalice/scene.gltf",
+					"pathfile":"models/chalice/scene.gltf",
 					"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
 					"type":"3d model",
 					"scale":"4 4 4"
@@ -131,7 +139,7 @@
 					{
 					"id":13,
 					"title":"Deutero vazaki",
-					"pathfile":"chalice2/scene.gltf",
+					"pathfile":"models/chalice2/scene.gltf",
 					"description":"Ένα βάζω από τα βάθυ της Ρωσίας",
 					"type":"3d model",
 					"scale":"4 4 4"
@@ -141,7 +149,7 @@
 					{
 					"id":14,
 					"title":"Trito vazaki",
-					"pathfile":"chalice3/scene.gltf",
+					"pathfile":"models/chalice3/scene.gltf",
 					"description":"Ένα βάζω από τα βάθυ της Ινδίας.",
 					"type":"3d model",
 					"scale":"0.005 0.005 0.005"
@@ -149,7 +157,7 @@
 					{
 					"id":15,
 					"title":"Female head",
-					"pathfile":"female_head/scene.gltf",
+					"pathfile":"models/female_head/scene.gltf",
 					"description":"Το μεταλλικό κεφάλι της θεας Αφροδίτης",
 					"type":"3d model"
 					
@@ -159,7 +167,7 @@
 					{
 					"id":16,
 					"title":"Irthe to reuma",
-					"pathfile":"human_scan/model.gltf",
+					"pathfile":"models/human_scan/model.gltf",
 					"description":"Ένα μεγάλο άσπρο άγαλμα ενός παιδιού",
 					"type":"3d model",
 					"scale":"0.005 0.005 0.005"
@@ -168,7 +176,7 @@
 					{
 					"id":17,
 					"title":"Prwto potiri",
-					"pathfile":"chalice/scene.gltf",
+					"pathfile":"models/chalice/scene.gltf",
 					"description":"Ανατολίτικο διακοσμητικό σε σχήμα πουλιού",
 					"type":"3d model",
 					"scale":"4 4 4"
@@ -179,7 +187,7 @@
 					{
 					"id":18,
 					"title":"Deutero vazaki",
-					"pathfile":"chalice2/scene.gltf",
+					"pathfile":"models/chalice2/scene.gltf",
 					"description":"Ένα βάζω από τα βάθυ της Ρωσίας",
 					"type":"3d model",
 					"scale":"4 4 4"
@@ -189,7 +197,7 @@
 					{
 					"id":19,
 					"title":"Trito vazaki",
-					"pathfile":"chalice3/scene.gltf",
+					"pathfile":"models/chalice3/scene.gltf",
 					"description":"Ένα βάζω από τα βάθυ της Ινδίας.",
 					"type":"3d model",
 					"scale":"0.005 0.005 0.005"
@@ -201,21 +209,22 @@
 	"stands":[
 					{
 					"id":0,
-					"pathfile":"3dbases/column1.obj",
-					"scale":"0.005 0.0035 0.005",
+					"pathfile":"models/3dbases/base1/base1.gltf",
+					"scale":"1 1 1",
 					"height":"2",
 					"name":"Base1"
 					},
 					{
 					"id":1,
-					"pathfile":"3dbases/column2.obj",
-					"scale":"0.01 0.01 0.01",
+					"pathfile":"models/3dbases/base2/base2.gltf",
+					"scale":"2 1.5 2",
 					"name":"Base2"
 					},
 					{
 					"id":2,
-					"pathfile":"museum_case/scene.gltf",
-					"name":"base3"
+					"pathfile":"models/3dbases/base3/base3.gltf",
+					"name":"Base3",
+					"scale":"0.75 0.85 0.75"
 					}
 
 			]
