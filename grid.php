@@ -418,8 +418,9 @@ function importExhibit(entity){
 		    	// console.log(data.exhibits[i].id +" " +data.exhibits[i].pathfile + "\n");
 
 
-					var exhibit = document.createElement('a-entity');
-					if(json[i].exhibit!= null){					
+					
+					if(json[i].exhibit!= null){
+							var exhibit = document.createElement('a-entity');		
 							exhibit.setAttribute('id',data.exhibits[json[i].exhibit].id+"."+data.exhibits[json[i].exhibit].id);
 							exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
 							exhibit.setAttribute('position', "0 0.5 -0.35" );
@@ -500,7 +501,19 @@ function importBase(entity){
 		});
 	}
 }
-
+function deleteDB(){
+	  $.ajax({
+	  url: "sql.php",
+	  method: "POST",
+	  data: {action:"delete"},
+	  success: function(response) {
+	    console.log("Database Deleted successfully.");
+	  },
+	  		error: function(xhr, status, error) {
+	    	console.log("An error occurred: " + error);
+	  		}
+		});
+}
 
 </script>
 
@@ -554,7 +567,7 @@ function importBase(entity){
 
 
 
-<!-- <a-box id="box" position="0 0 -4" color="blue"></a-box> -->
+<a-box id="box" class="clickable" onclick="deleteDB()" position="-.5 0 -14" color="blue"></a-box>
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 <a-entity grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>

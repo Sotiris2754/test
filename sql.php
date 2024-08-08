@@ -22,6 +22,18 @@ $conn = new mysqli($servername,$username,$password,$database);
 // $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 // }
 
+
+if(ISSET($_POST['action']) && $_POST['action'] == "delete"){
+
+$sql = "DELETE FROM `apps_collab_exh`";
+$stmt = $conn->query($sql);
+$stmt->close();
+$conn->close();
+
+}
+
+
+
 if(ISSET($_POST['action'])&& $_POST['action']=="storebase"){
     $id = $_POST['id'];
     $base = $_POST['base'];
