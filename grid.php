@@ -376,7 +376,7 @@ function importExhibit(entity){
 
 
 	function storeData(){
-		
+
 	  $.ajax({
 	  url: "sql.php",
 	  method: "POST",
@@ -419,18 +419,29 @@ function importExhibit(entity){
 
 
 					var exhibit = document.createElement('a-entity');
-										
-					exhibit.setAttribute('id',data.exhibits[json[i].exhibit].id+"."+data.exhibits[json[i].exhibit].id);
-					exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
-					exhibit.setAttribute('position', "0 0.5 -0.35" );
-					exhibit.setAttribute('rotation', "-90 0 0"); 
-					exhibit.setAttribute('class','clickable');
-					testId.appendChild(exhibit);
-					if(json[i].exhibit!=0)
-						exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
-					// else
-					// 	exhibit.remove();		
-
+					if(json[i].exhibit!= null){					
+							exhibit.setAttribute('id',data.exhibits[json[i].exhibit].id+"."+data.exhibits[json[i].exhibit].id);
+							exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
+							exhibit.setAttribute('position', "0 0.5 -0.35" );
+							exhibit.setAttribute('rotation', "-90 0 0"); 
+							exhibit.setAttribute('class','clickable');
+							testId.appendChild(exhibit);
+							if(json[i].exhibit!=0)
+								exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
+							// else
+							// 	exhibit.remove();	
+					}
+					if(json[i].base!=null){
+							var base = document.createElement('a-entity');
+							base.setAttribute('position', "0 0 0" );
+							base.setAttribute('rotation', "-90 0 0");
+							base.setAttribute('scale',data.stands[json[i].base].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
+							base.setAttribute('id',"test");
+							base.setAttribute('obj-model', {
+							    obj: `url(${data.stands[json[i].base].pathfile})`
+							});
+							testId.appendChild(base);
+					}
 	    		 }
 	  		}
 	  	}
@@ -476,7 +487,7 @@ function importBase(entity){
 
 	  url: "sql.php",
 	  method: "POST",
-	  data: { id:tile.id, base:data.stands[index].name, action:"storebase"},
+	  data: { id:tile.id, base:data.stands[index].id, action:"storebase"},
 	  success: function(response) {
 	    console.log("Selection stored successfully.");
 	    // console.log(id);

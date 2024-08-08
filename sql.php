@@ -42,7 +42,8 @@ if(ISSET($_POST['action'])&& $_POST['action']=="storebase"){
         // var_dump($insertSql);
     }
 
-    $sql = "UPDATE apps_collab_exh SET base = '".$base."' WHERE id = $id";
+    // $sql = "UPDATE apps_collab_exh SET base = '".$base."' WHERE id = $id";
+    $sql = "UPDATE apps_collab_exh SET base = $base WHERE id = $id";
     // var_dump($sql);
     $stmt = $conn->query($sql);
     $stmt->close();
