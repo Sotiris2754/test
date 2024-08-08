@@ -22,6 +22,34 @@ $conn = new mysqli($servername,$username,$password,$database);
 // $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
 // }
 
+if(ISSET($_POST['action'])&& $_POST['action']=="storebase"){
+    $id = $_POST['id'];
+    $base = $_POST['base'];
+    // var_dump($id);
+    // var_dump($base);
+    // exit();
+
+
+    $checkSql = "SELECT * FROM apps_collab_exh WHERE id = $id";
+    $result = $conn->query($checkSql);
+
+    if ($result->num_rows > 0) {
+            echo "A row with id $id already exists.";
+        }
+    else{
+        $insertSql = "INSERT INTO apps_collab_exh SET id = $id";
+        $conn->query($insertSql);
+        // var_dump($insertSql);
+    }
+
+    $sql = "UPDATE apps_collab_exh SET base = '".$base."' WHERE id = $id";
+    // var_dump($sql);
+    $stmt = $conn->query($sql);
+    $stmt->close();
+    $conn->close();
+}
+
+
 if(ISSET($_POST['action'])&& $_POST['action']=="store"){
 
 $id = $_POST['id'];

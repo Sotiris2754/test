@@ -376,6 +376,7 @@ function importExhibit(entity){
 
 
 	function storeData(){
+		
 	  $.ajax({
 	  url: "sql.php",
 	  method: "POST",
@@ -467,14 +468,15 @@ function importBase(entity){
 					tile.appendChild(base);
 
 
-					// storeData();
+					storeDataBase();
 
 
-	function storeData(){
+	function storeDataBase(){
 	  $.ajax({
+
 	  url: "sql.php",
 	  method: "POST",
-	  data: { id:tile.id, base:data.stands[index].name, action:"store"},
+	  data: { id:tile.id, base:data.stands[index].name, action:"storebase"},
 	  success: function(response) {
 	    console.log("Selection stored successfully.");
 	    // console.log(id);

@@ -204,13 +204,13 @@
 					"pathfile":"3dbases/column1.obj",
 					"scale":"0.005 0.0035 0.005",
 					"height":"2",
-					"name":"base1"
+					"name":"Base1"
 					},
 					{
 					"id":1,
 					"pathfile":"3dbases/column2.obj",
 					"scale":"0.01 0.01 0.01",
-					"name":"base2"
+					"name":"Base2"
 					},
 					{
 					"id":2,
