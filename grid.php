@@ -127,11 +127,13 @@ AFRAME.registerComponent('image-hover', {
 				switch(index2) {
 				  case 0:
 				     //Keno image
+				  	image.setAttribute('src','');
 				    break;
 
 				  case 1:
 				    
-				    console.log("megali 3d");
+				    // console.log("megali 3d");
+				    image.setAttribute('src','');
 				    
 				    break;
 
@@ -153,20 +155,6 @@ AFRAME.registerComponent('image-hover', {
 				}
 			}
 
-
-			// console.log();
-
-
-			
-			// if(value === "Empty"){
-			// 	image.setAttribute('src','#image1');
-			// }
-			// else if(value === "Base2"){
-			// 	image.setAttribute('src','#image2');
-			// }
-			// else if(value === "Base3"){
-			// 	image.setAttribute('src','#image3');
-			// }
 
 		});
 
