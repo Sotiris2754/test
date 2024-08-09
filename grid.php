@@ -67,35 +67,112 @@
 
 AFRAME.registerComponent('image-hover', {
 	init: function(){
-		var el = this.el;
+		var kid = this.el;
 		let image = document.querySelector('#imagePreview');
-		var parent = el.parentNode;
+		var parent = kid.parentNode;
+		let size = parent.children.length;
+
+		let container = document.querySelectorAll("a-gui-flex-container");
+
+		const kidArray1 = Array.from(container[0].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
+		let index1 = kidArray1.indexOf(kid);
+
+		const kidArray2 = Array.from(container[1].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
+		let index2 = kidArray2.indexOf(kid);
 
 
-		el.addEventListener('mouseenter', function(){
-			image.setAttribute('visible',true);
-			var pos = parent.getAttribute('position');
-			var rot = parent.getAttribute('rotation');
-			var value = el.getAttribute('value');
 
-			image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
-			image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
+		kid.addEventListener('mouseenter', function(){
 
-			if(value === "Empty"){
-				image.setAttribute('src','#image1');
+			// console.log(parent.children.length);
+			// console.log(kidArray2);
+			if(size==3){
+				image.setAttribute('visible',true);
+				var pos = parent.getAttribute('position');
+				var rot = parent.getAttribute('rotation');
+
+				// var value = kid.getAttribute('value');
+				image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
+				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
+				// console.log(index2);
+				switch(index1) {
+				  case 0:
+				    image.setAttribute('src','#image1');
+
+				    break;
+
+				  case 1:
+				    
+				    image.setAttribute('src','#image2');
+				    
+				    break;
+
+				  case 2:
+				  // Add more cases as needed
+				  	image.setAttribute('src','#image3');
+				  	break;
+				}				
 			}
-			else if(value === "Base2"){
-				image.setAttribute('src','#image2');
+			if(size>5){
+				console.log(index2);
+
+				image.setAttribute('visible',true);
+				var pos = parent.getAttribute('position');
+				var rot = parent.getAttribute('rotation');
+
+				// var value = kid.getAttribute('value');
+				image.setAttribute('position', pos.x  + ' ' + (pos.y + 0.5) + ' ' + (pos.z + 1.2));
+				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
+				// console.log(index2);
+				switch(index2) {
+				  case 0:
+				     //Keno image
+				    break;
+
+				  case 1:
+				    
+				    console.log("megali 3d");
+				    
+				    break;
+
+				  case 2:
+				  // Add more cases as needed
+				  	image.setAttribute('src','#c1');
+				  	break;
+
+				  case 3:
+				    image.setAttribute('src','#c2');
+
+				    break;
+
+				  case 4:
+				    image.setAttribute('src','#c3');
+
+				    break;
+
+				}
 			}
-			else if(value === "Base3"){
-				image.setAttribute('src','#image3');
-			}
+
+
+			// console.log();
+
+
+			
+			// if(value === "Empty"){
+			// 	image.setAttribute('src','#image1');
+			// }
+			// else if(value === "Base2"){
+			// 	image.setAttribute('src','#image2');
+			// }
+			// else if(value === "Base3"){
+			// 	image.setAttribute('src','#image3');
+			// }
 
 		});
 
 
 
-		el.addEventListener('mouseleave', function(){
+		kid.addEventListener('mouseleave', function(){
 			console.log("Vgika apo to element");
 			image.setAttribute('position','0 100 0');
 			// parent.setAttribute('position','0 100 0');
@@ -537,6 +614,10 @@ function deleteDB(){
 					<img id="image1" src="images/emptyBase.png"></img>
 					<img id="image2" src="images/base2.png"></img>
 					<img id="image3" src="images/base3.png"></img>
+					<img id="c1" src="images/c1.png"></img>
+					<img id="c2" src="images/c2.png"></img>
+					<img id="c3" src="images/c3.png"></img>
+
 
 				</a-assets>
 
@@ -550,13 +631,13 @@ function deleteDB(){
 </a-entity>
 
 <!-- <a-entity>
-<a-entity gltf-model="#base1" scale="1 1 1" position="-2 1 -3" rotation="0 0 0"></a-entity>
+<a-entity gltf-model="#c1" scale="1 1 1" position="-2 1 -3" rotation="0 0 0"></a-entity>
 </a-entity> -->
 
 <!-- <a-entity >
-	<a-entity gltf-model="#base3" scale="1 1 1" position="-10 0.2 -12" rotation="0 45 0">
-		<a-light type="directional" color="#FFF" intensity="1" position="0 0 0"></a-light>
-		<a-light type="spot" color="#FFF" intensity="1" position="2 0 5"></a-light>
+	<a-entity gltf-model="#c3" scale="0.004 0.004 0.004" position="-10 1.5 -12" rotation="0 0 0">
+		<a-light type="directional" color="#FFF" intensity="1" position="-6 0 3"></a-light>
+		<a-light type="spot" color="#FFF" intensity="1" position="-3 0 1200"></a-light>
 	</a-entity>
 </a-entity> -->
 
@@ -641,6 +722,7 @@ function deleteDB(){
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="Empty base"
+						image-hover
 						bevel-size="0.08"
 						bevel-thickness="0.02"
 
@@ -657,6 +739,7 @@ function deleteDB(){
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="Huge kid"
+						image-hover
 			>
 			</a-gui-button>
 
@@ -670,6 +753,7 @@ function deleteDB(){
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="Bibelo bird"
+						image-hover
 			>
 			</a-gui-button>
 
@@ -682,7 +766,8 @@ function deleteDB(){
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
-						value="Jar 1 "
+						value="Jar 1"
+						image-hover
 			>
 			</a-gui-button>
 
@@ -696,6 +781,7 @@ function deleteDB(){
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
 						value="Jar 2"
+						image-hover
 			>
 			</a-gui-button>
 
