@@ -209,10 +209,10 @@
 	"stands":[
 					{
 					"id":0,
-					"pathfile":"models/3dbases/base1/base1.gltf",
+					"pathfile":"",
 					"scale":"1 1 1",
 					"height":"2",
-					"name":"Base1"
+					"name":"Empty"
 					},
 					{
 					"id":1,

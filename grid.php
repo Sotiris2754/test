@@ -81,7 +81,7 @@ AFRAME.registerComponent('image-hover', {
 			image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
 			image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
 
-			if(value === "Base1"){
+			if(value === "Empty"){
 				image.setAttribute('src','#image1');
 			}
 			else if(value === "Base2"){
@@ -438,6 +438,7 @@ function importExhibit(entity){
 							base.setAttribute('rotation', "-90 0 0");
 							base.setAttribute('scale',data.stands[json[i].base].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 							base.setAttribute('id',"test");
+							if(json[i].base!=0)
 							base.setAttribute('gltf-model',`url(${data.stands[json[i].base].pathfile})`);
 							testId.appendChild(base);
 					}
@@ -470,7 +471,7 @@ function importBase(entity){
 					base.setAttribute('id',"test");
 					// base.setAttribute('class','clickable');
 					
-					
+					if(index!=0)
 					base.setAttribute('gltf-model',`url(${data.stands[index].pathfile})`);
 
 					tile.appendChild(base);
@@ -531,15 +532,18 @@ function deleteDB(){
 
 					<a-asset-items id="base1" src="models/3dbases/base3/base3.gltf"></a-asset-items>
 					<a-asset-items id="base2" src="models/3dbases/base2/base2.gltf"></a-asset-items>
+					<a-asset-items id="base3" src="models/3dbases/base3/base3.gltf"></a-asset-items>
 
-					<img id="image1" src="galatista.jpg"></img>
-					<img id="image2" src="girl.png"></img>
-					<img id="image3" src="boy.png"></img>
+					<img id="image1" src="images/emptyBase.png"></img>
+					<img id="image2" src="images/base2.png"></img>
+					<img id="image3" src="images/base3.png"></img>
 
 				</a-assets>
 
 
 <a-sky color="lightblue"></a-sky>
+<!-- <a-light type="ambient" color="#FFF" intensity="1"></a-light> -->
+<!-- <a-light type="directional" color="#FFF" intensity="0.3" position="-1 2 1"></a-light> -->
 
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
@@ -547,10 +551,13 @@ function deleteDB(){
 
 <!-- <a-entity>
 <a-entity gltf-model="#base1" scale="1 1 1" position="-2 1 -3" rotation="0 0 0"></a-entity>
-</a-entity>
+</a-entity> -->
 
-<a-entity >
-<a-entity gltf-model="#base2" scale="1 1 1" position="1 1 -3" rotation="0 0 0"></a-entity>
+<!-- <a-entity >
+	<a-entity gltf-model="#base3" scale="1 1 1" position="-10 0.2 -12" rotation="0 45 0">
+		<a-light type="directional" color="#FFF" intensity="1" position="0 0 0"></a-light>
+		<a-light type="spot" color="#FFF" intensity="1" position="2 0 5"></a-light>
+	</a-entity>
 </a-entity> -->
 
 
@@ -580,7 +587,7 @@ function deleteDB(){
 						height=".75"
 						font-family="assets/fonts/Plaster-Regular.ttf"
 						font-size="0.2"
-						value="Base1"
+						value="Empty"
 						image-hover
 						bevel-size="0.08"
 						bevel-thickness="0.02"
