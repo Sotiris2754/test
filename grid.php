@@ -265,6 +265,7 @@ AFRAME.registerComponent('grid-manager', {
           window.addEventListener('keydown', (event) => {
             if (event.key === 't') { // Change 't' to any key you prefer
               this.toggleTiles();
+
             }
           });
 
@@ -380,11 +381,17 @@ AFRAME.registerComponent('grid-manager', {
             	transparent = 0;
             else
             	transparent = 100;
+		          panelExhibit.setAttribute('visible',false);
+		          panelExhibit.setAttribute('position','0 100 0');
+		          tile.classList.remove('selected');
+		          tile.setAttribute('color', 'lightyellow');
 
           this.tiles.forEach(tile => {
             tile.setAttribute('material', {opacity:transparent}); // Toggle visibility
             tile.classList.toggle('disable', !this.tilesEnabled); // Toggle disabled class
             tile.classList.toggle('enable',this.tilesEnabled);
+            
+
 
           });
         }
