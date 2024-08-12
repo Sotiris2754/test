@@ -90,6 +90,8 @@ AFRAME.registerComponent('image-hover', {
 				image.setAttribute('visible',true);
 				var pos = parent.getAttribute('position');
 				var rot = parent.getAttribute('rotation');
+				console.log(parent);
+				// console.log(rot);
 
 				// var value = kid.getAttribute('value');
 				image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
@@ -114,11 +116,13 @@ AFRAME.registerComponent('image-hover', {
 				}				
 			}
 			if(size>5){
-				console.log(index2);
+				// console.log(index2);
 
 				image.setAttribute('visible',true);
 				var pos = parent.getAttribute('position');
 				var rot = parent.getAttribute('rotation');
+				console.log(pos);
+				console.log(rot);
 
 				// var value = kid.getAttribute('value');
 				image.setAttribute('position', pos.x  + ' ' + (pos.y + 0.5) + ' ' + (pos.z + 1.2));
@@ -161,7 +165,7 @@ AFRAME.registerComponent('image-hover', {
 
 
 		kid.addEventListener('mouseleave', function(){
-			console.log("Vgika apo to element");
+			// console.log("Vgika apo to element");
 			image.setAttribute('position','0 100 0');
 			// parent.setAttribute('position','0 100 0');
 
@@ -223,13 +227,13 @@ AFRAME.registerComponent('grid-manager', {
 
 
 
-              // Right wall
+              
             { position: { x: -9.7, y: 0.45, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:-9, y:1.8, z:-4.5 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
 
             { position: { x: -9.7, y: -0.5, z: -4.45 }, rotation: { x: 90, y:0, z: 0 }, depth:0.1, height:1, rows:1, columns:2, centerPos: { x:-9, y:1.8, z:-4.5 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
 
 
-              // Top wall
+              
             { position: { x: -4.5, y: 0.45, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:-9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
             { position: { x: -4.5, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:-9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
@@ -248,9 +252,9 @@ AFRAME.registerComponent('grid-manager', {
 
 
 
-            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:1 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:0.6 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:1 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" } // Bottom wall
+            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:1 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
 
 
           ];
