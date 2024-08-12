@@ -63,7 +63,7 @@
 	let counter=0;
 	let transparent = 100;
 	// insertTilesToDatabase();
-
+	let displayPos;
 
 AFRAME.registerComponent('image-hover', {
 	init: function(){
@@ -71,6 +71,8 @@ AFRAME.registerComponent('image-hover', {
 		let image = document.querySelector('#imagePreview');
 		var parent = kid.parentNode;
 		let size = parent.children.length;
+		let pos;
+		let rot;
 
 		let container = document.querySelectorAll("a-gui-flex-container");
 
@@ -83,19 +85,22 @@ AFRAME.registerComponent('image-hover', {
 
 
 		kid.addEventListener('mouseenter', function(){
-
 			// console.log(parent.children.length);
 			// console.log(kidArray2);
+		// console.log(parent.getAttribute('rotation'));
+		pos = parent.getAttribute('position');
+		rot = parent.getAttribute('rotation');
+		console.log(rot);
+
 			if(size==3){
 				image.setAttribute('visible',true);
-				var pos = parent.getAttribute('position');
-				var rot = parent.getAttribute('rotation');
-				console.log(parent);
+				// console.log(parent);
 				// console.log(rot);
 
-				// var value = kid.getAttribute('value');
 				image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
 				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
+				console.log(image.getAttribute('rotation'));
+
 				// console.log(index2);
 				switch(index1) {
 				  case 0:
@@ -119,15 +124,15 @@ AFRAME.registerComponent('image-hover', {
 				// console.log(index2);
 
 				image.setAttribute('visible',true);
-				var pos = parent.getAttribute('position');
-				var rot = parent.getAttribute('rotation');
-				console.log(pos);
+				pos = parent.getAttribute('position');
+				rot = parent.getAttribute('rotation');
+				console.log(parent.getAttribute('rotation'));
 				console.log(rot);
-
+				
 				// var value = kid.getAttribute('value');
-				image.setAttribute('position', pos.x  + ' ' + (pos.y + 0.5) + ' ' + (pos.z + 1.2));
+				image.setAttribute('position', pos.x  + ' ' + (pos.y + 0.5) + ' ' + pos.z );
 				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
-				// console.log(index2);
+				console.log(image.getAttribute('rotation'));
 				switch(index2) {
 				  case 0:
 				     //Keno image
