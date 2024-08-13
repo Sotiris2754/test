@@ -14,7 +14,7 @@
 					{
 					"id":1,
 					"title":"Irthe to reuma",
-					"pathfile":"models/human_scan/model.gltf",
+					"pathfile":"models/chalice/scene.gltf",
 					"description":"A huge 3d model boy",
 					"type":"3d model",
 					"scale":"0.005 0.005 0.005",
