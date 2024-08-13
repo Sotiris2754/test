@@ -669,7 +669,6 @@ function deleteDB(){
 <a-gui-flex-container id="panelBase" width="5.5" height="2" position="0 100 0" rotation="0 90 0" panel-color="#072B73" opacity="0.8" flex-direction="row" justify-content="center" align-items="center" scale=".5 .5 1" visible="false">
 
 	<a-gui-button 
-						bevel="true"
 						onclick="importBase(this)"
 						class=""
 						margin="0 0.3 0 0"
@@ -679,6 +678,7 @@ function deleteDB(){
 						font-size="0.2"
 						value="Empty"
 						image-hover
+						bevel="true"
 						bevel-size="0.08"
 						bevel-thickness="0.02"
 	>
@@ -721,13 +721,13 @@ function deleteDB(){
 
 <a-gui-flex-container id="panelExhibit" scale=" 0.5 0.5 1" flex-direction="column" width="9" height="2" position="0 100 0" panel-color="#072B73" opacity="0.8" justify-content="center" align-items="center" visible="false" >
 
-		<a-gui-flex-container flex-direction="row" position="0 0 0" rotation="0 0 0" justify-content="center" align-items="center" panel-color="#072B73" opacity="0.8" visible="true">
+		<a-gui-flex-container flex-direction="row" position="0 0 0" rotation="0 0 0" justify-content="center"  panel-color="#072B73" opacity="0.8" visible="true">
 
 
 					<a-gui-button 
 								onclick="importExhibit(this)" 
 								id="0"
-								margin="0 0 0 0.2"
+								margin="-0.3 0 0 0"
 								class="rename"
 								width="1.5" 
 								height="1"
@@ -735,6 +735,9 @@ function deleteDB(){
 								font-size="0.2"
 								value="Empty base"
 								image-hover
+								bevel="true"
+								bevel-size="0.07"
+								bevel-thickness="0.02"
 								
 
 					>
@@ -743,7 +746,7 @@ function deleteDB(){
 					<a-gui-button 
 								onclick="importExhibit(this)"
 								class="rename"
-								margin="0 0 0 0.2"					
+								margin="-0.3 0 0 0.2"					
 								id="1"
 								width="1.5" 
 								height="1"
@@ -751,6 +754,9 @@ function deleteDB(){
 								font-size="0.2"
 								value="Huge kid"
 								image-hover
+								bevel="true"
+								bevel-size="0.07"
+								bevel-thickness="0.02"
 								
 					>
 					</a-gui-button>
@@ -758,7 +764,7 @@ function deleteDB(){
 					<a-gui-button
 								onclick="importExhibit(this)"
 								class="rename"
-								margin="0 0 0 0.2"
+								margin="-0.3 0 0 0.2"	
 								id="2"
 								width="1.5" 
 								height="1"
@@ -766,6 +772,9 @@ function deleteDB(){
 								font-size="0.2"
 								value="Bibelo bird"
 								image-hover
+								bevel="true"
+								bevel-size="0.07"
+								bevel-thickness="0.02"
 								
 					>
 					</a-gui-button>
@@ -774,13 +783,16 @@ function deleteDB(){
 								onclick="importExhibit(this)"
 								class="rename"
 								id="3"
-								margin="0 0 0 0.2"
+								margin="-0.3 0 0 0.2"	
 								width="1.5"  
 								height="1"
 								font-family="assets/fonts/Plaster-Regular.ttf"
 								font-size="0.2"
 								value="Jar 1"
 								image-hover
+								bevel="true"
+								bevel-size="0.07"
+								bevel-thickness="0.02"
 								
 					>
 					</a-gui-button>
@@ -789,13 +801,16 @@ function deleteDB(){
 								onclick="importExhibit(this)"
 								class="rename"
 								id="4"
-								margin="0 0 0 0.2"
+								margin="-0.3 0 0 0.2"	
 								width="1.5"  
 								height="1"
 								font-family="assets/fonts/Plaster-Regular.ttf"
 								font-size="0.2"
 								value="Jar 2"
 								image-hover
+								bevel="true"
+								bevel-size="0.07"
+								bevel-thickness="0.02"
 					>
 					</a-gui-button>
 
