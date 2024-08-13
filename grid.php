@@ -73,13 +73,15 @@ AFRAME.registerComponent('image-hover', {
 		let size = parent.children.length;
 		let pos;
 		let rot;
+		// console.log(parent);
 
 		let container = document.querySelectorAll("a-gui-flex-container");
 
 		const kidArray1 = Array.from(container[0].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
 		let index1 = kidArray1.indexOf(kid);
 
-		const kidArray2 = Array.from(container[1].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
+		const kidArray2 = Array.from(container[2].children);
+		// console.log(kidArray2); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
 		let index2 = kidArray2.indexOf(kid);
 
 
@@ -90,7 +92,8 @@ AFRAME.registerComponent('image-hover', {
 		// console.log(parent.getAttribute('rotation'));
 		pos = parent.getAttribute('position');
 		rot = parent.getAttribute('rotation');
-		console.log(rot);
+		// console.log(rot);
+		// console.log(size);
 
 			if(size==3){
 				image.setAttribute('visible',true);
@@ -120,19 +123,20 @@ AFRAME.registerComponent('image-hover', {
 				  	break;
 				}				
 			}
-			if(size>5){
+			if(size>4){
 				// console.log(index2);
 
 				image.setAttribute('visible',true);
-				pos = parent.getAttribute('position');
-				rot = parent.getAttribute('rotation');
-				console.log(parent.getAttribute('rotation'));
+				let grandParent = parent.parentNode;
+				pos = grandParent.getAttribute('position');
+				rot = grandParent.getAttribute('rotation');
+				console.log(grandParent.getAttribute('position'));
 				console.log(rot);
-				
+
 				// var value = kid.getAttribute('value');
-				image.setAttribute('position', pos.x  + ' ' + (pos.y + 0.5) + ' ' + pos.z );
+				image.setAttribute('position', pos.x  + ' ' + (pos.y + 1.1) + ' ' + pos.z );
 				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
-				console.log(image.getAttribute('rotation'));
+				// console.log(image.getAttribute('rotation'));
 				switch(index2) {
 				  case 0:
 				     //Keno image
@@ -225,9 +229,9 @@ AFRAME.registerComponent('grid-manager', {
 
 
              // Left wall
-            { position: { x: 14, y: 0.45, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+            { position: { x: 14, y: 0.45, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:9, y:1.8, z:-1.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: 14, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
+            { position: { x: 14, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:9, y:1.8, z:-1.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
 
 
 
@@ -244,22 +248,22 @@ AFRAME.registerComponent('grid-manager', {
             { position: { x: -4.5, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:-9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
 
 
-            { position: { x: -16.55, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-16, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
+            { position: { x: -16.55, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-15.5, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
 
-            { position: { x: -16.05, y: -0.5, z: -2.65 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-16, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
-
-
+            { position: { x: -16.05, y: -0.5, z: -2.65 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-15.5, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
 
 
-            { position: { x: 15.3, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:14.8, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
 
-            { position: { x: 14.9, y: -0.5, z: -2.65 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:14.8, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
+
+            { position: { x: 15.3, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:14.3, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
+
+            { position: { x: 14.9, y: -0.5, z: -2.65 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:14.3, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
 
 
 
             { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:0.6 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:1 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
+            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:0.6 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
 
 
           ];
@@ -392,9 +396,10 @@ AFRAME.registerComponent('grid-manager', {
             	transparent = 100;
 		          panelExhibit.setAttribute('visible',false);
 		          panelExhibit.setAttribute('position','0 100 0');
-		          tile.classList.remove('selected');
-		          tile.setAttribute('color', 'lightyellow');
-
+		          if(tile){
+		          	tile.classList.remove('selected');
+		          	tile.setAttribute('color', 'lightyellow');
+		        	}
           this.tiles.forEach(tile => {
             tile.setAttribute('material', {opacity:transparent}); // Toggle visibility
             tile.classList.toggle('disable', !this.tilesEnabled); // Toggle disabled class
@@ -429,7 +434,7 @@ function importExhibit(entity){
 	let exhibit = document.createElement('a-entity');
 	let container = document.querySelectorAll("a-gui-flex-container");
 	let kid = entity;
-	const kidArray = Array.from(container[1].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
+	const kidArray = Array.from(container[2].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
 	let index = kidArray.indexOf(kid);
 
 	console.log(index);
@@ -713,114 +718,119 @@ function deleteDB(){
 	
 </a-gui-flex-container>
 
-<a-gui-flex-container id="panelExhibit" scale=".5 .5 1" flex-direction="column" justify-content="center" align-items="center" width="2.25"height="6" position="0 100 0" rotation="0 0 0" panel-color="#072B73" opacity="0.8" visible="false">
+
+<a-gui-flex-container id="panelExhibit" scale=" 0.5 0.5 1" flex-direction="column" width="9" height="2" position="0 100 0" panel-color="#072B73" opacity="0.8" justify-content="center" align-items="center" visible="false" >
+
+		<a-gui-flex-container flex-direction="row" position="0 0 0" rotation="0 0 0" justify-content="center" align-items="center" panel-color="#072B73" opacity="0.8" visible="true">
 
 
-			<a-gui-button bevel="true"
-						onclick="importExhibit(this)" 
-						id="0"
-						class="rename"
-						margin="0 0 .2 0"
-						width="2" 
-						height=".75"
-						font-family="assets/fonts/Plaster-Regular.ttf"
-						font-size="0.2"
-						value="Empty base"
-						image-hover
-						bevel-size="0.08"
-						bevel-thickness="0.02"
+					<a-gui-button 
+								onclick="importExhibit(this)" 
+								id="0"
+								margin="0 0 0 0.2"
+								class="rename"
+								width="1.5" 
+								height="1"
+								font-family="assets/fonts/Plaster-Regular.ttf"
+								font-size="0.2"
+								value="Empty base"
+								image-hover
+								
 
-			>
-			</a-gui-button>
+					>
+					</a-gui-button>
 
-			<a-gui-button 
-						onclick="importExhibit(this)"
-						class="rename"
-						margin="0 0 .2 0"						
-						id="1"
-						width="2" 
-						height=".75"
-						font-family="assets/fonts/Plaster-Regular.ttf"
-						font-size="0.2"
-						value="Huge kid"
-						image-hover
-			>
-			</a-gui-button>
+					<a-gui-button 
+								onclick="importExhibit(this)"
+								class="rename"
+								margin="0 0 0 0.2"					
+								id="1"
+								width="1.5" 
+								height="1"
+								font-family="assets/fonts/Plaster-Regular.ttf"
+								font-size="0.2"
+								value="Huge kid"
+								image-hover
+								
+					>
+					</a-gui-button>
 
-			<a-gui-button
-						onclick="importExhibit(this)"
-						class="rename"
-						margin="0 0 .2 0"
-						id="2"
-						width="2" 
-						height=".75"
-						font-family="assets/fonts/Plaster-Regular.ttf"
-						font-size="0.2"
-						value="Bibelo bird"
-						image-hover
-			>
-			</a-gui-button>
+					<a-gui-button
+								onclick="importExhibit(this)"
+								class="rename"
+								margin="0 0 0 0.2"
+								id="2"
+								width="1.5" 
+								height="1"
+								font-family="assets/fonts/Plaster-Regular.ttf"
+								font-size="0.2"
+								value="Bibelo bird"
+								image-hover
+								
+					>
+					</a-gui-button>
 
-			<a-gui-button
-						onclick="importExhibit(this)"
-						class="rename"
-						margin="0 0 .2 0"
-						id="3"
-						width="2" 
-						height=".75"
-						font-family="assets/fonts/Plaster-Regular.ttf"
-						font-size="0.2"
-						value="Jar 1"
-						image-hover
-			>
-			</a-gui-button>
+					<a-gui-button
+								onclick="importExhibit(this)"
+								class="rename"
+								id="3"
+								margin="0 0 0 0.2"
+								width="1.5"  
+								height="1"
+								font-family="assets/fonts/Plaster-Regular.ttf"
+								font-size="0.2"
+								value="Jar 1"
+								image-hover
+								
+					>
+					</a-gui-button>
 
-			<a-gui-button
-						onclick="importExhibit(this)"
-						class="rename"
-						margin="0 0 .2 0"
-						id="4"
-						width="2" 
-						height=".75"
-						font-family="assets/fonts/Plaster-Regular.ttf"
-						font-size="0.2"
-						value="Jar 2"
-						image-hover
-			>
-			</a-gui-button>
-
-
-				<a-gui-flex-container scale="1 1 1" flex-direction="row" justify-content="center" align-items="center" component-padding="0" width="2.20" height="1" position="0 0 0" rotation="0 0 0" panel-color="#072B73" opacity="0.8" margin="0 0 -.20 0">  
-					<!-- #072B73 -->
-
-							<a-gui-icon-label-button
-								width=".5" height="0.5"
-								onclick="previousPage()"
-								icon="F2F5"
-								icon-font="assets/fonts/fa-solid-900.ttf"
-								font-family="assets/fonts/PressStart2P-Regular.ttf"
-								font-size="0.3"
-								margin="0 0 0 0"
-								rotation="0 0 180"
-							>
-							</a-gui-icon-label-button>
-
-							<a-gui-icon-label-button
-								width=".5" height="0.5"
-								onclick="nextPage()"
-								icon="F2F5"
-								icon-font="assets/fonts/fa-solid-900.ttf"
-								font-family="assets/fonts/PressStart2P-Regular.ttf"
-								font-size="0.3"
-								margin="0 0 0 0"
-								rotation="0 0 0"
-							>
-							</a-gui-icon-label-button>
+					<a-gui-button
+								onclick="importExhibit(this)"
+								class="rename"
+								id="4"
+								margin="0 0 0 0.2"
+								width="1.5"  
+								height="1"
+								font-family="assets/fonts/Plaster-Regular.ttf"
+								font-size="0.2"
+								value="Jar 2"
+								image-hover
+					>
+					</a-gui-button>
 
 				</a-gui-flex-container>
 
-		</a-gui-flex-container>
+						<a-gui-flex-container flex-direction="row" justify-content="center" align-items="center" component-padding="0" width="2.20" height="1" position="0 0 0" rotation="0 0 0" panel-color="#072B73" opacity="0.8" margin="-.2 0 -.20 0">  
+							<!-- #072B73 -->
 
+									<a-gui-icon-label-button
+										width=".5" height="0.5"
+										onclick="previousPage()"
+										icon="F2F5"
+										icon-font="assets/fonts/fa-solid-900.ttf"
+										font-family="assets/fonts/PressStart2P-Regular.ttf"
+										font-size="0.3"
+										margin="0 0 0 0"
+										rotation="0 0 180"
+									>
+									</a-gui-icon-label-button>
+
+									<a-gui-icon-label-button
+										width=".5" height="0.5"
+										onclick="nextPage()"
+										icon="F2F5"
+										icon-font="assets/fonts/fa-solid-900.ttf"
+										font-family="assets/fonts/PressStart2P-Regular.ttf"
+										font-size="0.3"
+										margin="0 0 0 0"
+										rotation="0 0 0"
+									>
+									</a-gui-icon-label-button>
+
+						</a-gui-flex-container>
+
+</a-gui-flex-container>
 
 	<a-camera wasd-controls="acceleration:100" id="camera">
 		
