@@ -100,7 +100,7 @@ AFRAME.registerComponent('image-hover', {
 				// console.log(parent);
 				// console.log(rot);
 
-				image.setAttribute('position', pos.x + ' ' + (pos.y + 1.1) + ' ' + pos.z);
+				image.setAttribute('position', pos.x + ' ' + (pos.y + 0.6) + ' ' + pos.z);
 				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
 				console.log(image.getAttribute('rotation'));
 
@@ -134,7 +134,7 @@ AFRAME.registerComponent('image-hover', {
 				console.log(rot);
 
 				// var value = kid.getAttribute('value');
-				image.setAttribute('position', pos.x  + ' ' + (pos.y + 1.1) + ' ' + pos.z );
+				image.setAttribute('position', pos.x  + ' ' + (pos.y + 0.6) + ' ' + pos.z );
 				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
 				// console.log(image.getAttribute('rotation'));
 				switch(index2) {
@@ -211,59 +211,59 @@ AFRAME.registerComponent('grid-manager', {
           // const columns = data.columns;
 
           const walls = [
-            { position: { x: -2.65, y: 0.45, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:-1.5, y:1.8, z:-9 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
+            { position: { x: -2.65, y: 0.45, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:-0.9, y:1.6, z:-4.5 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
 
-            { position: { x: -2.2, y: -0.5, z: -7 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:3, centerPos: { x:-1.5, y:1.8, z:-9 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
+            { position: { x: -2.2, y: -0.5, z: -7 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:3, centerPos: { x:-0.9, y:1.6, z:-4.5 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
 
 
               // Front wall
-            { position: { x: 1.8, y: 0.45, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:1, y:1.8, z:-9 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
+            { position: { x: 1.8, y: 0.45, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:0.45, y:1.6, z:-4.5 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
 
-            { position: { x: 1.35, y: -0.5, z: -11 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:3, centerPos: { x:1, y:1.8, z:-9 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
+            { position: { x: 1.35, y: -0.5, z: -11 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:3, centerPos: { x:0.45, y:1.6, z:-4.5 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
 
 
               // Back wall
-            { position: { x: 7, y: 0.45, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, depth:2, height:0.1, rows:1, columns:4, centerPos: { x:9, y:1.8, z:-4 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
+            { position: { x: 7, y: 0.45, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, depth:2, height:0.1, rows:1, columns:4, centerPos: { x:4.5, y:1.6, z:-2 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
 
-            { position: { x: 7, y: -0.5, z: -4.4 }, rotation: { x: 90, y:90, z: 90 }, depth:0.1, height:1, rows:1, columns:4, centerPos: { x:9, y:1.8, z:-4 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
+            { position: { x: 7, y: -0.5, z: -4.4 }, rotation: { x: 90, y:90, z: 90 }, depth:0.1, height:1, rows:1, columns:4, centerPos: { x:4.5, y:1.6, z:-2 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
 
 
              // Left wall
-            { position: { x: 14, y: 0.45, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:9, y:1.8, z:-1.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+            { position: { x: 14, y: 0.45, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: 14, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:9, y:1.8, z:-1.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
+            { position: { x: 14, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
 
 
 
 
               
-            { position: { x: -9.7, y: 0.45, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:-9, y:1.8, z:-4.5 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
+            { position: { x: -9.7, y: 0.45, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:-4.5, y:1.6, z:-2.25 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
 
-            { position: { x: -9.7, y: -0.5, z: -4.45 }, rotation: { x: 90, y:0, z: 0 }, depth:0.1, height:1, rows:1, columns:2, centerPos: { x:-9, y:1.8, z:-4.5 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
+            { position: { x: -9.7, y: -0.5, z: -4.45 }, rotation: { x: 90, y:0, z: 0 }, depth:0.1, height:1, rows:1, columns:2, centerPos: { x:-4.5, y:1.6, z:-2.25 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
 
 
               
-            { position: { x: -4.5, y: 0.45, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:-9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+            { position: { x: -4.5, y: 0.45, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:-4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: -4.5, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:-9, y:1.8, z:-1 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
-
-
-            { position: { x: -16.55, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-15.5, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
-
-            { position: { x: -16.05, y: -0.5, z: -2.65 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-15.5, y:1.8, z:-2.7 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
+            { position: { x: -4.5, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:-4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
 
 
+            { position: { x: -16.55, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-7.75, y:1.6, z:-1.35 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
 
-
-            { position: { x: 15.3, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:14.3, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
-
-            { position: { x: 14.9, y: -0.5, z: -2.65 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:14.3, y:1.8, z:-2.7 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
+            { position: { x: -16.05, y: -0.5, z: -2.65 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-7.75, y:1.6, z:-1.35 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
 
 
 
-            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:0.6 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.5, y:1.8, z:0.6 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
+            { position: { x: 15.3, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:7.15, y:1.6, z:-1.35 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
+
+            { position: { x: 14.9, y: -0.5, z: -2.65 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:7.15, y:1.6, z:-1.35 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
+
+
+
+            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0.3 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+
+            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0.3 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
 
 
           ];
@@ -640,8 +640,14 @@ function deleteDB(){
 <!-- <a-light type="ambient" color="#FFF" intensity="1"></a-light> -->
 <!-- <a-light type="directional" color="#FFF" intensity="0.3" position="-1 2 1"></a-light> -->
 
+<a-entity scale="0.5 0.5 0.5" position="0 .5 0">
+
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
+</a-entity>
+
+<a-entity grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
+
 </a-entity>
 
 <!-- <a-entity >
@@ -664,7 +670,7 @@ function deleteDB(){
 </a-entity> -->
 
 
-<a-image id="imagePreview" position="0 1 -5" src="" visible="false" ></a-image>
+<a-image id="imagePreview"  scale="0.5 0.5 0.5" position="0 1 -5" src="" visible="false" ></a-image>
 
  <!-- <a-entity obj-model="obj: #statue;" position="0 0 -5"></a-entity> -->
 
@@ -674,12 +680,12 @@ function deleteDB(){
 
 
 
-<a-box id="box" class="clickable" onclick="deleteDB()" position="-.5 0 -14" color="blue"></a-box>
+<a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -9" color="blue"></a-box>
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
-<a-entity grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
 
-<a-gui-flex-container id="panelBase" width="5.5" height="2" position="0 100 0" rotation="0 90 0" panel-color="#072B73" opacity="0.8" flex-direction="row" justify-content="center" align-items="center" scale=".5 .5 1" visible="false">
+
+<a-gui-flex-container id="panelBase" width="5.5" height="2" position="0 100 0" rotation="0 90 0" panel-color="#072B73" opacity="0.8" flex-direction="row" justify-content="center" align-items="center" scale=".25 .25 0.5" visible="false">
 
 	<a-gui-button 
 						onclick="importBase(this)"
@@ -732,7 +738,7 @@ function deleteDB(){
 </a-gui-flex-container>
 
 
-<a-gui-flex-container id="panelExhibit" scale=" 0.5 0.5 1" flex-direction="column" width="9" height="2" position="0 100 0" panel-color="#072B73" opacity="0.8" justify-content="center" align-items="center" visible="false" >
+<a-gui-flex-container id="panelExhibit" scale=" 0.25 0.25 .5" flex-direction="column" width="9" height="2" position="0 100 0" panel-color="#072B73" opacity="0.8" justify-content="center" align-items="center" visible="false" >
 
 		<a-gui-flex-container flex-direction="row" position="0 0 0" rotation="0 0 0" justify-content="center"  panel-color="#072B73" opacity="0.8" visible="true">
 
@@ -862,7 +868,7 @@ function deleteDB(){
 
 	<a-camera wasd-controls="acceleration:100" id="camera">
 		
-			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info, .enable" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.03" material="color:orange;" position="0 0 -2.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
+			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info, .enable" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.008" material="color:orange;" position="0 0 -.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
 	</a-camera>
 
