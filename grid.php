@@ -307,8 +307,13 @@ AFRAME.registerComponent('grid-manager', {
               tile.setAttribute('position', `${x} 0 ${z}`);
               tile.setAttribute('width', size);
               tile.setAttribute('height', height); // Thin height for the tiles
-              tile.setAttribute('depth', depth);
-              tile.setAttribute('color', 'lightyellow');
+              tile.setAttribute('depth', depth);              	
+              tile.setAttribute('color', '#FFFFE0');
+              tile.setAttribute('material', {src:'#gradient'});
+              if(pleura=='floor'){
+              	// tile.setAttribute('material','color: #d203fc; opacity: 0.8');
+              	tile.setAttribute('material', {src:'#gradient'});
+              }
               tile.setAttribute('class', 'gridtile enable ' + `${pleura}`);
               tile.setAttribute('data-x', j);
               tile.setAttribute('data-y', i);
@@ -625,6 +630,7 @@ function deleteDB(){
 					<a-asset-items id="base2" src="models/3dbases/base2/base2.gltf"></a-asset-items>
 					<a-asset-items id="base3" src="models/3dbases/base3/base3.gltf"></a-asset-items>
 
+					<img id="gradient" src="images/lightyellow.jpg"></img>
 					<img id="image1" src="images/emptyBase.png"></img>
 					<img id="image2" src="images/base2.png"></img>
 					<img id="image3" src="images/base3.png"></img>
@@ -680,7 +686,7 @@ function deleteDB(){
 
 
 
-<a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -9" color="blue"></a-box>
+<a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -9" color="" material="src:#gradient"></a-box>
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 
