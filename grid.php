@@ -290,6 +290,7 @@ AFRAME.registerComponent('grid-manager', {
         createGrid: function (position, rotation, size, depth, height, gap, rows, columns, wallIndex, centerPos,centerRot, pleura) {
           const el = this.el;
           const gridContainer = document.createElement('a-entity');
+          // gridContainer.setAttribute('scale','0.5 0.5 0.5');
           gridContainer.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z);
           gridContainer.setAttribute('rotation', rotation.x + ' ' + rotation.y + ' ' + rotation.z);
 
@@ -611,6 +612,10 @@ function deleteDB(){
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
+					<a-asset-items id="home" src="home_test.gltf"></a-asset-items>
+					<a-asset-items id="home-obj" src="home_test.obj"></a-asset-items>
+					<a-asset-items id="home-mtl" src="home_test.mtl"></a-asset-items>
+
 					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
 <!-- 					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
 					<a-asset-items id="table2" src="table2/scene.gltf"></a-asset-items>
@@ -638,6 +643,14 @@ function deleteDB(){
 <a-entity >
 <a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
 </a-entity>
+
+<!-- <a-entity >
+<a-entity gltf-model="#home"  position="0 0 0" rotation="0 0 0"></a-entity>
+</a-entity> -->
+<!-- 
+<a-entity >
+<a-entity obj-model="obj:#home-obj; mtl:#home-mtl "  position="0 0 0" rotation="0 0 0"></a-entity>
+</a-entity> -->
 
 <!-- <a-entity>
 <a-entity gltf-model="#c1" scale="1 1 1" position="-2 1 -3" rotation="0 0 0"></a-entity>
