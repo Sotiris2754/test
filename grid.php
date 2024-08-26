@@ -411,28 +411,36 @@ AFRAME.registerComponent('grid-manager', {
 							}
 					  }
 					  else if(event.target.classList.contains('exhibit')){
+					  	
+					  	let arg = event.target.id.split('.')[0]; //keeping the first digit of the exhibits id (1.1, 2.2 etc)
+					  	let value = data.exhibits[arg].description.length;
 
+					  	// changeLabelDimension(value);
+					  	popUpValue2(arg,value);
+
+					  	// console.log(value);
 					  	const popup = document.querySelector('#popup');
+					  
+					  	// if(!popup.getAttribute("visible")){
 
-					  	if(!popup.getAttribute("visible")){
+							//   	popup.setAttribute("visible",true);
+							// 		popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
+							// 		popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
+							// 		if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
+							// 			panelBase.setAttribute("visible",false);
+							// 			panelBase.setAttribute('position','0 100 0');
+							// 			panelExhibit.setAttribute("visible",false);
+							// 			panelExhibit.setAttribute('position','0 100 0');
 
-							  	popup.setAttribute("visible",true);
-									popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
-									popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
-									if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
-										panelBase.setAttribute("visible",false);
-										panelBase.setAttribute('position','0 100 0');
-										panelExhibit.setAttribute("visible",false);
-										panelExhibit.setAttribute('position','0 100 0');
-										const previousSelectedTile = document.querySelector('.gridtile.selected');
+							// 			const previousSelectedTile = document.querySelector('.gridtile.selected');
 									  
-									  previousSelectedTile.setAttribute('color','lightyellow');
-									  previousSelectedTile.classList.remove('selected');
-									}			  		
-						  	}
-						  	else{
-						  		popup.setAttribute("visible",false);
-						  	}
+							// 		  previousSelectedTile.setAttribute('color','lightyellow');
+							// 		  previousSelectedTile.classList.remove('selected');
+							// 		}			  		
+						  // 	}
+						  // 	else{
+						  // 		popup.setAttribute("visible",false);
+						  // 	}
 
 
 					  }
@@ -480,6 +488,8 @@ AFRAME.registerComponent('grid-manager', {
 // 							}
 // 						});
 // 					}
+
+
 
 
 function importExhibit(entity){
@@ -588,6 +598,30 @@ function importExhibit(entity){
 		});
 	}
 
+function popUpValue(id,value){
+	const popup = document.querySelector('#popup');
+	// popup.setAttribute("value",data.exhibits[id].description);
+	// let charWidth = 0.1;
+	// let newWidth = value * charWidth;
+	// let rounded = Math.round(newWidth * 100) / 100;
+	
+	console.log(popup.setAttribute("scale"));
+}
+
+  // function changeLabelDimension(arg) {
+  //   let label = document.querySelector('#popup');
+    
+
+  //   let charWidth = 0.1;
+    
+  //   // Calculate new width and set it
+  //   let newWidth = arg * charWidth;
+  //   let roundedToTwoDecimals = Math.round(newWidth * 100) / 100;
+  //   console.log(roundedToTwoDecimals);
+  //   label.setAttribute("width", roundedToTwoDecimals);
+  // }
+
+
 function importBase(entity){
 	let base = document.createElement('a-entity');
 
@@ -685,6 +719,7 @@ function deleteDB(){
 					<img id="c1" src="images/c1.png"></img>
 					<img id="c2" src="images/c2.png"></img>
 					<img id="c3" src="images/c3.png"></img>
+					<img id="close" src="images/close.png"></img>
 
 
 				</a-assets>
@@ -704,33 +739,26 @@ function deleteDB(){
 
 </a-entity>
 
-<!-- <a-entity >
-<a-entity gltf-model="#home"  position="0 0 0" rotation="0 0 0"></a-entity>
-</a-entity> -->
-<!-- 
-<a-entity >
-<a-entity obj-model="obj:#home-obj; mtl:#home-mtl "  position="0 0 0" rotation="0 0 0"></a-entity>
-</a-entity> -->
-
-<!-- <a-entity>
-<a-entity gltf-model="#c1" scale="1 1 1" position="-2 1 -3" rotation="0 0 0"></a-entity>
-</a-entity> -->
-
-<!-- <a-entity >
-	<a-entity gltf-model="#c3" scale="0.004 0.004 0.004" position="-10 1.5 -12" rotation="0 0 0">
-		<a-light type="directional" color="#FFF" intensity="1" position="-6 0 3"></a-light>
-		<a-light type="spot" color="#FFF" intensity="1" position="-3 0 1200"></a-light>
-	</a-entity>
-</a-entity> -->
 
 
 <a-image id="imagePreview"  scale="0.5 0.5 0.5" position="0 1 -5" src="" visible="false" ></a-image>
 
- <!-- <a-entity obj-model="obj: #statue;" position="0 0 -5"></a-entity> -->
+<a-plane id="popup" position="0 1 -3" width="2" height="1" color="green">
+	<a-text id="info" value="asdjkaslkjasdasdas dasd asdsalk" align="center"></a-text>
+	<a-image id="closePopUp" src="#close" scale="0.15 0.15" position="0.8 0.4 0.01"></a-image>
+</a-plane>
 
- <!-- <a-entity gltf-model="#table1" scale="1 1 1" position="-1 0 -3" rotation="0 0 0"></a-entity> -->
- <!-- <a-entity gltf-model="#table2" scale="0.01 0.01 0.01" position="0 0 -5" rotation="0 0 0"></a-entity> -->
- <!-- <a-entity gltf-model="#table3" scale="6 6 6" position="0 0 -3" rotation="0 0 0"></a-entity> -->
+<script>
+	function popUpValue2(id, width){
+		const popup = document.querySelector('#popup');
+		const popupClose = document.querySelector('#popupClose');
+
+		popup.setAttribute("value",data.exhibits[id].description);
+
+
+	}
+
+</script>
 
 
 
@@ -738,31 +766,15 @@ function deleteDB(){
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 
-<script>
-// function popUp(){
-
-// 	 const popup = document.querySelector('#popup');
-
-// 	 let exhibit = event.target;
-// 	 console.log(exhibit);
-
-// 	 //  if (event.target.contains.classList("exhibit")){
-
-// 	 //  	event.target.addEventListener('click', function (e) {
-//    //  		popup.setAttribute('scale', '1 1 1');
-//   // 		});
-// 	 // }
-// }	
-
-</script>
-
-
 <a-gui-label
 	id="popup"
 	position="0 1 -4"
-	rotation=""
-	width="0.75" height="0.25"
-	value="test"
+	font-size="0.1"
+	width="0.75"
+	height="1"
+	line-Height="1"
+	visible="false"
+
 >
 	
 </a-gui-label>
@@ -960,21 +972,6 @@ function deleteDB(){
 
 <script>
 
-	// function testVarFunction() {
-	// 	var elements = document.querySelectorAll(".rename");
-
-	// 	var labelValue ="";
-
-	// 	elements.forEach(function(element) {
-  //   	element.setAttribute("value", labelValue);
-  // 		});
-		
-	// }	
-		// window.test = function(label) {
-		// 	label.setAttribute("value", label.id);
-		// 	let panel = label.parentNode;
-
-		// }
 
 
 </script>
