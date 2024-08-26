@@ -65,6 +65,23 @@
 	// insertTilesToDatabase();
 	let displayPos;
 
+// AFRAME.registerComponent('pop-up',{
+// 	init:function(){
+// 		let exhibit = this.el;
+		
+// 		exhibit.addEventListener('click', (event) => {
+
+// 			if(exhibit.classList.contains('exhibit')) {
+				
+// 				const popup = document.querySelector('#popup');
+// 				popup.setAttribute();
+
+// 			}
+// 		});
+// 	}
+// });
+
+
 AFRAME.registerComponent('image-hover', {
 	init: function(){
 		var kid = this.el;
@@ -130,8 +147,8 @@ AFRAME.registerComponent('image-hover', {
 				let grandParent = parent.parentNode;
 				pos = grandParent.getAttribute('position');
 				rot = grandParent.getAttribute('rotation');
-				console.log(grandParent.getAttribute('position'));
-				console.log(rot);
+				// console.log(grandParent.getAttribute('position'));
+				// console.log(rot);
 
 				// var value = kid.getAttribute('value');
 				image.setAttribute('position', pos.x  + ' ' + (pos.y + 0.6) + ' ' + pos.z );
@@ -343,6 +360,7 @@ AFRAME.registerComponent('grid-manager', {
 					  if (event.target.classList.contains('gridtile')) {
 
               const previousSelectedTile = document.querySelector('.gridtile.selected');
+              const popup = document.querySelector('#popup');
 
 
 		          if (event.target.classList.contains('selected')) {
@@ -369,6 +387,7 @@ AFRAME.registerComponent('grid-manager', {
 							  		panelBase.setAttribute('visible',false);
 							  		panelBase.setAttribute('position','0 100 0');
 							  		panelExhibit.setAttribute('visible',true);
+							  		popup.setAttribute("visible",false);
 								    panelExhibit.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
 								    panelExhibit.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z); 
 							  	}
@@ -377,6 +396,7 @@ AFRAME.registerComponent('grid-manager', {
 							  		panelExhibit.setAttribute('visible',false);
 							  		panelExhibit.setAttribute('position','0 100 0');
 							  		panelBase.setAttribute('visible',true);
+							  		popup.setAttribute("visible",false);
 								    panelBase.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
 								    panelBase.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
 							  	}
@@ -389,6 +409,32 @@ AFRAME.registerComponent('grid-manager', {
 							    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
 
 							}
+					  }
+					  else if(event.target.classList.contains('exhibit')){
+
+					  	const popup = document.querySelector('#popup');
+
+					  	if(!popup.getAttribute("visible")){
+
+							  	popup.setAttribute("visible",true);
+									popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
+									popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
+									if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
+										panelBase.setAttribute("visible",false);
+										panelBase.setAttribute('position','0 100 0');
+										panelExhibit.setAttribute("visible",false);
+										panelExhibit.setAttribute('position','0 100 0');
+										const previousSelectedTile = document.querySelector('.gridtile.selected');
+									  
+									  previousSelectedTile.setAttribute('color','lightyellow');
+									  previousSelectedTile.classList.remove('selected');
+									}			  		
+						  	}
+						  	else{
+						  		popup.setAttribute("visible",false);
+						  	}
+
+
 					  }
 					});
         },
@@ -454,9 +500,9 @@ function importExhibit(entity){
 
 					exhibit.setAttribute('scale',data.exhibits[index].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',index+"."+index);
-					exhibit.setAttribute('class','clickable');
+					exhibit.setAttribute('class','clickable exhibit');
 					exhibit.setAttribute("show-panel","");
-					
+					exhibit.setAttribute("pop-up","");
 					tile.appendChild(exhibit);
 					if(index!=0)
 					exhibit.setAttribute('gltf-model',`url(${data.exhibits[index].pathfile})`);
@@ -517,7 +563,8 @@ function importExhibit(entity){
 							exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
 							exhibit.setAttribute('position', data.exhibits[json[i].exhibit].position );
 							exhibit.setAttribute('rotation', "-90 0 0"); 
-							exhibit.setAttribute('class','clickable');
+							exhibit.setAttribute('class','clickable exhibit');
+							exhibit.setAttribute("pop-up","");
 							testId.appendChild(exhibit);
 							if(json[i].exhibit!=0)
 								exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
@@ -617,6 +664,7 @@ function deleteDB(){
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
+					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items>
 					<a-asset-items id="home" src="home_test.gltf"></a-asset-items>
 					<a-asset-items id="home-obj" src="home_test.obj"></a-asset-items>
 					<a-asset-items id="home-mtl" src="home_test.mtl"></a-asset-items>
@@ -690,6 +738,34 @@ function deleteDB(){
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 
+<script>
+// function popUp(){
+
+// 	 const popup = document.querySelector('#popup');
+
+// 	 let exhibit = event.target;
+// 	 console.log(exhibit);
+
+// 	 //  if (event.target.contains.classList("exhibit")){
+
+// 	 //  	event.target.addEventListener('click', function (e) {
+//    //  		popup.setAttribute('scale', '1 1 1');
+//   // 		});
+// 	 // }
+// }	
+
+</script>
+
+
+<a-gui-label
+	id="popup"
+	position="0 1 -4"
+	rotation=""
+	width="0.75" height="0.25"
+	value="test"
+>
+	
+</a-gui-label>
 
 <a-gui-flex-container id="panelBase" width="5.5" height="2" position="0 100 0" rotation="0 90 0" panel-color="#072B73" opacity="0.8" flex-direction="row" justify-content="center" align-items="center" scale=".25 .25 0.5" visible="false">
 
