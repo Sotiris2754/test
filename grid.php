@@ -360,7 +360,9 @@ AFRAME.registerComponent('grid-manager', {
 					  if (event.target.classList.contains('gridtile')) {
 
               const previousSelectedTile = document.querySelector('.gridtile.selected');
-              const popup = document.querySelector('#popup');
+              let popup = document.querySelector('#popup');
+
+              
 
 
 		          if (event.target.classList.contains('selected')) {
@@ -370,6 +372,7 @@ AFRAME.registerComponent('grid-manager', {
 		            panelExhibit.setAttribute('position','0 100 0');
 		            panelBase.setAttribute('visible',false);
 		            panelBase.setAttribute('position','0 100 0');
+		            popup.setAttribute("visible",false);
 
 		            // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
 		          }
@@ -384,19 +387,19 @@ AFRAME.registerComponent('grid-manager', {
 							    event.target.classList.add('selected');
 
 							  	if(event.target.classList.contains('wall')){
+							  		popup.setAttribute('visible',false);
 							  		panelBase.setAttribute('visible',false);
 							  		panelBase.setAttribute('position','0 100 0');
 							  		panelExhibit.setAttribute('visible',true);
-							  		popup.setAttribute("visible",false);
 								    panelExhibit.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
 								    panelExhibit.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z); 
 							  	}
 
 							  	else if(event.target.classList.contains('floor')){
+							  		popup.setAttribute("visible",false);
 							  		panelExhibit.setAttribute('visible',false);
 							  		panelExhibit.setAttribute('position','0 100 0');
 							  		panelBase.setAttribute('visible',true);
-							  		popup.setAttribute("visible",false);
 								    panelBase.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
 								    panelBase.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
 							  	}
@@ -413,13 +416,14 @@ AFRAME.registerComponent('grid-manager', {
 					  else if(event.target.classList.contains('exhibit')){
 					  	
 					  	let arg = event.target.id.split('.')[0]; //keeping the first digit of the exhibits id (1.1, 2.2 etc)
-					  	let value = data.exhibits[arg].description.length;
+					  	// let value = data.exhibits[arg].description.length;
 
 					  	// changeLabelDimension(value);
-					  	popUpValue2(arg,value);
+					  	popUpValue2(arg,centerPos,centerRot);
 
 					  	// console.log(value);
-					  	const popup = document.querySelector('#popup');
+
+					  	// const popup = document.querySelector('#popup');
 					  
 					  	// if(!popup.getAttribute("visible")){
 
@@ -598,29 +602,6 @@ function importExhibit(entity){
 		});
 	}
 
-function popUpValue(id,value){
-	const popup = document.querySelector('#popup');
-	// popup.setAttribute("value",data.exhibits[id].description);
-	// let charWidth = 0.1;
-	// let newWidth = value * charWidth;
-	// let rounded = Math.round(newWidth * 100) / 100;
-	
-	console.log(popup.setAttribute("scale"));
-}
-
-  // function changeLabelDimension(arg) {
-  //   let label = document.querySelector('#popup');
-    
-
-  //   let charWidth = 0.1;
-    
-  //   // Calculate new width and set it
-  //   let newWidth = arg * charWidth;
-  //   let roundedToTwoDecimals = Math.round(newWidth * 100) / 100;
-  //   console.log(roundedToTwoDecimals);
-  //   label.setAttribute("width", roundedToTwoDecimals);
-  // }
-
 
 function importBase(entity){
 	let base = document.createElement('a-entity');
@@ -743,17 +724,13 @@ function deleteDB(){
 
 <a-image id="imagePreview"  scale="0.5 0.5 0.5" position="0 1 -5" src="" visible="false" ></a-image>
 
-<!-- <a-plane id="popup" position="0 1 -3" width="2" height="1" color="green">
-	<a-text id="info" value="asdjkaslkjasdasdas dasd asdsalk" align="center"></a-text>
-	<a-image id="closePopUp" src="#close" scale="0.15 0.15" position="0.8 0.4 0.01"></a-image>
-</a-plane> -->
 
-<a-entity id="frame" position=" -0.2 1 -5">
+<a-entity id="frame" position=" -0.2 1 -5" visible="false">
 
-	<a-plane src="#gradient" id="panel" width="2" height="1">
+	<a-plane src="#gradient" id="panel" width="1.5" height="0.75">
 
 		<a-text  id="infoText" align="center" width="2"></a-text>
-		<a-image id="exitbutton"closebutton class="clickable" src="#close" scale="0.2 0.2 0.2" position="0.8 .35 0.01"></a-image>
+		<a-image id="exitbutton"closebutton class="clickable" src="#close" scale="0.2 0.2 0.2" position="0.6 .25 0.02"></a-image>
 	
 	</a-plane>	
 
@@ -761,15 +738,40 @@ function deleteDB(){
 
 
 <script>
-	function popUpValue2(id, width){
-		const popup = document.querySelector('#frame');
+	function popUpValue2(id,centerPos, centerRot){
+		let popup = document.querySelector('#frame');
 		let infoText = document.querySelector('#infoText');
 		const popupClose = document.querySelector('#exitbutton');
+		const panel = document.querySelector('#panel');
 
 		infoText.setAttribute("value",data.exhibits[id].description);
 		infoText.setAttribute('color','black');
+		
+
+		if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
+		 	panelExhibit.setAttribute('visible',false);
+		  panelExhibit.setAttribute('position','0 100 0');
+		  panelBase.setAttribute('visible',false);
+		  panelBase.setAttribute('position','0 100 0');
+		 }
+
+		if(!popup.getAttribute("visible")){
+			popup.setAttribute("visible",true);
+			popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
+			popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
 
 
+
+		  const previousSelectedTile = document.querySelector('.gridtile.selected');
+		  
+		  if(previousSelectedTile){
+		  	previousSelectedTile.setAttribute('color','lightyellow');
+				previousSelectedTile.classList.remove('selected');
+			}
+		}
+		else{
+			popup.setAttribute("visible",false);
+		}
 	}
 
 </script>
