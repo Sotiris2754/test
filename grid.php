@@ -360,7 +360,7 @@ AFRAME.registerComponent('grid-manager', {
 					  if (event.target.classList.contains('gridtile')) {
 
               const previousSelectedTile = document.querySelector('.gridtile.selected');
-              let popup = document.querySelector('#frame');
+              const popup = document.querySelector('#frame');
 
               
 
@@ -740,7 +740,7 @@ function deleteDB(){
 
 <script>
 	function popUpValue2(id,centerPos, centerRot){
-		let popup = document.querySelector('#frame');
+		const popup = document.querySelector('#frame');
 		let infoText = document.querySelector('#infoText');
 		const popupClose = document.querySelector('#exitbutton');
 		const panel = document.querySelector('#panel');
