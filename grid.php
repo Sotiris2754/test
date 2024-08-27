@@ -372,8 +372,7 @@ AFRAME.registerComponent('grid-manager', {
 		            panelExhibit.setAttribute('position','0 100 0');
 		            panelBase.setAttribute('visible',false);
 		            panelBase.setAttribute('position','0 100 0');
-		            popup.setAttribute("visible",false);
-		            console.log(popup.getAttribute("visible"));
+
 
 		            // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
 		          }
