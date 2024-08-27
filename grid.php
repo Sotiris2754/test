@@ -360,7 +360,7 @@ AFRAME.registerComponent('grid-manager', {
 					  if (event.target.classList.contains('gridtile')) {
 
               const previousSelectedTile = document.querySelector('.gridtile.selected');
-              let popup = document.querySelector('#popup');
+              let popup = document.querySelector('#frame');
 
               
 
@@ -373,6 +373,7 @@ AFRAME.registerComponent('grid-manager', {
 		            panelBase.setAttribute('visible',false);
 		            panelBase.setAttribute('position','0 100 0');
 		            popup.setAttribute("visible",false);
+		            console.log(popup.getAttribute("visible"));
 
 		            // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
 		          }
@@ -387,7 +388,7 @@ AFRAME.registerComponent('grid-manager', {
 							    event.target.classList.add('selected');
 
 							  	if(event.target.classList.contains('wall')){
-							  		popup.setAttribute('visible',false);
+							  		popup.setAttribute("visible",false);
 							  		panelBase.setAttribute('visible',false);
 							  		panelBase.setAttribute('position','0 100 0');
 							  		panelExhibit.setAttribute('visible',true);
@@ -767,6 +768,7 @@ function deleteDB(){
 		  if(previousSelectedTile){
 		  	previousSelectedTile.setAttribute('color','lightyellow');
 				previousSelectedTile.classList.remove('selected');
+
 			}
 		}
 		else{
