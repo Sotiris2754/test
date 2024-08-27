@@ -35,32 +35,32 @@ function loadExhibit()
 
 
 
-// AFRAME.registerComponent("closebutton",{
-// 	init:function(){
-// 		var el = this.el;
-// 		el.addEventListener('click',function(){
-// 			var frame = el.parentNode;
-// 			var panel = frame.parentNode;
-// 			panel.setAttribute('visible','false');
-// 			el.classList.remove('info');
-// 		});
-// 	}
-// });
+AFRAME.registerComponent("closebutton",{
+	init:function(){
+		var el = this.el;
+		el.addEventListener('click',function(){
+			var frame = el.parentNode;
+			var panel = frame.parentNode;
+			panel.setAttribute('visible','false');
+			el.classList.remove('info');
+		});
+	}
+});
 
-// AFRAME.registerComponent("show-panel",{
-// 	init:function(){
-// 		var el = this.el;
-// 		el.addEventListener('click',function(){
-// 			var parent = el.parentNode;
-// 			var frame  = parent.childNodes[1];
-// 			var exitButton = frame.querySelector('.grandChild');
-// 			exitButton.setAttribute('class','grandChild info');
-// 			frame.setAttribute('visible','true');
+AFRAME.registerComponent("show-panel",{
+	init:function(){
+		var el = this.el;
+		el.addEventListener('click',function(){
+			var parent = el.parentNode;
+			var frame  = parent.childNodes[1];
+			var exitButton = frame.querySelector('.grandChild');
+			exitButton.setAttribute('class','grandChild info');
+			frame.setAttribute('visible','true');
 
 
-// 		})
-// 	}
-// })
+		})
+	}
+})
 
 // AFRAME.registerComponent("show-gui",{
 // 	init:function(){

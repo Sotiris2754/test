@@ -719,7 +719,7 @@ function deleteDB(){
 					<img id="c1" src="images/c1.png"></img>
 					<img id="c2" src="images/c2.png"></img>
 					<img id="c3" src="images/c3.png"></img>
-					<img id="close" src="images/close.png"></img>
+					<img id="close" src="images/exit.png"></img>
 
 
 				</a-assets>
@@ -743,17 +743,31 @@ function deleteDB(){
 
 <a-image id="imagePreview"  scale="0.5 0.5 0.5" position="0 1 -5" src="" visible="false" ></a-image>
 
-<a-plane id="popup" position="0 1 -3" width="2" height="1" color="green">
+<!-- <a-plane id="popup" position="0 1 -3" width="2" height="1" color="green">
 	<a-text id="info" value="asdjkaslkjasdasdas dasd asdsalk" align="center"></a-text>
 	<a-image id="closePopUp" src="#close" scale="0.15 0.15" position="0.8 0.4 0.01"></a-image>
-</a-plane>
+</a-plane> -->
+
+<a-entity id="frame" position=" -0.2 1 -5">
+
+	<a-plane src="#gradient" id="panel" width="2" height="1">
+
+		<a-text  id="infoText" align="center" width="2"></a-text>
+		<a-image id="exitbutton"closebutton class="clickable" src="#close" scale="0.2 0.2 0.2" position="0.8 .35 0.01"></a-image>
+	
+	</a-plane>	
+
+</a-entity>
+
 
 <script>
 	function popUpValue2(id, width){
-		const popup = document.querySelector('#popup');
-		const popupClose = document.querySelector('#popupClose');
+		const popup = document.querySelector('#frame');
+		let infoText = document.querySelector('#infoText');
+		const popupClose = document.querySelector('#exitbutton');
 
-		popup.setAttribute("value",data.exhibits[id].description);
+		infoText.setAttribute("value",data.exhibits[id].description);
+		infoText.setAttribute('color','black');
 
 
 	}
