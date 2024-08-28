@@ -325,11 +325,12 @@ AFRAME.registerComponent('grid-manager', {
               tile.setAttribute('width', size);
               tile.setAttribute('height', height); // Thin height for the tiles
               tile.setAttribute('depth', depth);              	
-              tile.setAttribute('color', '#FFFFE0');
-              tile.setAttribute('material', {src:'#gradient'});
+              tile.setAttribute('color', '#697565');
+              // tile.setAttribute('material', {src:'#gradient'});
               if(pleura=='floor'){
               	// tile.setAttribute('material','color: #d203fc; opacity: 0.8');
-              	tile.setAttribute('material', {src:'#gradient'});
+              	// tile.setAttribute('material', {src:'#gradient'});
+              	tile.setAttribute('color', '#ECDFCC');
               }
               tile.setAttribute('class', 'gridtile enable ' + `${pleura}`);
               tile.setAttribute('data-x', j);
@@ -366,7 +367,13 @@ AFRAME.registerComponent('grid-manager', {
 
 
 		          if (event.target.classList.contains('selected')) {
-		            previousSelectedTile.setAttribute('color', 'lightyellow');
+
+		          	if(event.target.classList.contains('floor')){
+		          		previousSelectedTile.setAttribute('color', '#ECDFCC');
+		          	}
+		          	else
+		          		previousSelectedTile.setAttribute('color', '#697565');
+
 		            previousSelectedTile.classList.remove('selected');
 		            panelExhibit.setAttribute('visible',false);
 		            panelExhibit.setAttribute('position','0 100 0');
@@ -377,10 +384,21 @@ AFRAME.registerComponent('grid-manager', {
 		            // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
 		          }
 							else{
-							    
+
 							    if(previousSelectedTile){
-							    	previousSelectedTile.setAttribute('color','lightyellow');
-							    	previousSelectedTile.classList.remove('selected');
+										console.log("2: ")
+							    	console.log(previousSelectedTile)
+
+							    	// previousSelectedTile.setAttribute('color','lightyellow');
+		          		if(previousSelectedTile.classList.contains('floor')){
+		          			previousSelectedTile.setAttribute('color', '#ECDFCC');
+		          	}
+		          	else if(previousSelectedTile.classList.contains('wall')) {
+		          		previousSelectedTile.setAttribute('color', '#697565');
+		          	}
+
+							    previousSelectedTile.classList.remove('selected');
+
 							    }
 							    
 							    event.target.setAttribute('color', 'green');
@@ -404,13 +422,10 @@ AFRAME.registerComponent('grid-manager', {
 								    panelBase.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
 							  	}
 
-							    
-							    
 							    tile = event.target;
 							    // thesi = event.target.object3D;
 							    // thesi.getWorldPosition(worldPosition);
 							    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
-
 							}
 					  }
 					  else if(event.target.classList.contains('exhibit')){
