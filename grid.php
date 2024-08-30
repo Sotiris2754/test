@@ -742,7 +742,7 @@ function deleteDB(){
 
 <a-entity id="frame" position=" -0.2 1 -5" visible="false">
 
-	<a-plane src="#gradient" id="panel" width="1.5" height="0.75">
+	<a-plane color="#ECDFCC" id="panel" width="1.5" height="0.75">
 
 		<a-text  id="infoText" align="center" width="2"></a-text>
 		<a-image id="exitbutton"closebutton class="clickable" src="#close" scale="0.2 0.2 0.2" position="0.6 .25 0.02"></a-image>
@@ -780,7 +780,14 @@ function deleteDB(){
 		  const previousSelectedTile = document.querySelector('.gridtile.selected');
 		  
 		  if(previousSelectedTile){
-		  	previousSelectedTile.setAttribute('color','lightyellow');
+
+		    if(previousSelectedTile.classList.contains('floor')){
+		    	previousSelectedTile.setAttribute('color', '#ECDFCC');
+		    }
+		    else if(previousSelectedTile.classList.contains('wall')) {
+		    	previousSelectedTile.setAttribute('color', '#697565');
+		    }
+
 				previousSelectedTile.classList.remove('selected');
 
 			}
