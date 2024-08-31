@@ -12,7 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 
-	<title>3V Grid</title>
+	<title>Viewer Page</title>
 	<script src="OptBehavior.js"></script>
 
 
