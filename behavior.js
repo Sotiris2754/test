@@ -607,7 +607,7 @@ function addBases(){
 		scene.appendChild(stand);
 		count++;
 		base = stand;
-		addBaseToServer();
+		// addBaseToServer();
 		//console.log(base);
 	}
 	else
@@ -616,7 +616,7 @@ function addBases(){
 
 function removeBases(){
 	if(count>4){
-		removeBaseFromServer();
+		// removeBaseFromServer();
 		
 		var stand = document.getElementById(count);
 		console.log(stand);

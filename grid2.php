@@ -1,13 +1,3 @@
-<?php 
-session_start();
-
-
-if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
-
-?>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +61,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
 	const worldPosition = new THREE.Vector3();
 	let tile;
 	let counter=0;
-	let transparent = 100;
+	let transparent = 0;
 	// insertTilesToDatabase();
 	let displayPos;
 
@@ -302,12 +292,12 @@ AFRAME.registerComponent('grid-manager', {
           });
 
 
-          window.addEventListener('keydown', (event) => {
-            if (event.key === 't') { // Change 't' to any key you prefer
-              this.toggleTiles();
+          // window.addEventListener('keydown', (event) => {
+          //   if (event.key === 't') { // Change 't' to any key you prefer
+          //     this.toggleTiles();
 
-            }
-          });
+          //   }
+          // });
 
 
 
@@ -347,6 +337,7 @@ AFRAME.registerComponent('grid-manager', {
               tile.setAttribute('data-y', i);
               tile.setAttribute('datawall', wallIndex); // Store the wall index
               tile.setAttribute('show-gui',"");
+              tile.setAttribute('material', {opacity:transparent});
               gridContainer.appendChild(tile);
               // insertTilesToDatabase();
               this.tiles.push(tile);
@@ -368,110 +359,14 @@ AFRAME.registerComponent('grid-manager', {
 
 					//CLICK STA TILES --------> TOPOTHETISI PANEL GIA EISAGWGI EKTHEMATOS
 
-					  if (event.target.classList.contains('gridtile')) {
+						if(event.target.classList.contains('exhibit')){
 
-              const previousSelectedTile = document.querySelector('.gridtile.selected');
-              const popup = document.querySelector('#frame');
+					  	// const previousSelectedTile = document.querySelector('.gridtile.selected');
+							const popup = document.querySelector('#frame');
 
-              
-
-
-		          if (event.target.classList.contains('selected')) {
-
-		          	if(event.target.classList.contains('floor')){
-		          		previousSelectedTile.setAttribute('color', '#ECDFCC');
-		          	}
-		          	else
-		          		previousSelectedTile.setAttribute('color', '#697565');
-
-		            previousSelectedTile.classList.remove('selected');
-		            panelExhibit.setAttribute('visible',false);
-		            panelExhibit.setAttribute('position','0 100 0');
-		            panelBase.setAttribute('visible',false);
-		            panelBase.setAttribute('position','0 100 0');
-
-
-		            // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
-		          }
-							else{
-
-							    if(previousSelectedTile){
-										console.log("2: ")
-							    	console.log(previousSelectedTile)
-
-							    	// previousSelectedTile.setAttribute('color','lightyellow');
-		          		if(previousSelectedTile.classList.contains('floor')){
-		          			previousSelectedTile.setAttribute('color', '#ECDFCC');
-		          	}
-		          	else if(previousSelectedTile.classList.contains('wall')) {
-		          		previousSelectedTile.setAttribute('color', '#697565');
-		          	}
-
-							    previousSelectedTile.classList.remove('selected');
-
-							    }
-							    
-							    event.target.setAttribute('color', 'green');
-							    event.target.classList.add('selected');
-
-							  	if(event.target.classList.contains('wall')){
-							  		popup.setAttribute("visible",false);
-							  		panelBase.setAttribute('visible',false);
-							  		panelBase.setAttribute('position','0 100 0');
-							  		panelExhibit.setAttribute('visible',true);
-								    panelExhibit.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
-								    panelExhibit.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z); 
-							  	}
-
-							  	else if(event.target.classList.contains('floor')){
-							  		popup.setAttribute("visible",false);
-							  		panelExhibit.setAttribute('visible',false);
-							  		panelExhibit.setAttribute('position','0 100 0');
-							  		panelBase.setAttribute('visible',true);
-								    panelBase.setAttribute("position", centerPos.x + ' ' + centerPos.y + ' ' + centerPos.z);
-								    panelBase.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
-							  	}
-
-							    tile = event.target;
-							    // thesi = event.target.object3D;
-							    // thesi.getWorldPosition(worldPosition);
-							    // console.log(`Tile selected at (${x}, ${y}) on wall ${wallIndex}`);
-							}
-					  }
-					  else if(event.target.classList.contains('exhibit')){
-					  	
 					  	let arg = event.target.id.split('.')[0]; //keeping the first digit of the exhibits id (1.1, 2.2 etc)
-					  	// let value = data.exhibits[arg].description.length;
 
-					  	// changeLabelDimension(value);
 					  	popUpValue2(arg,centerPos,centerRot);
-
-					  	// console.log(value);
-
-					  	// const popup = document.querySelector('#popup');
-					  
-					  	// if(!popup.getAttribute("visible")){
-
-							//   	popup.setAttribute("visible",true);
-							// 		popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
-							// 		popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
-							// 		if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
-							// 			panelBase.setAttribute("visible",false);
-							// 			panelBase.setAttribute('position','0 100 0');
-							// 			panelExhibit.setAttribute("visible",false);
-							// 			panelExhibit.setAttribute('position','0 100 0');
-
-							// 			const previousSelectedTile = document.querySelector('.gridtile.selected');
-									  
-							// 		  previousSelectedTile.setAttribute('color','lightyellow');
-							// 		  previousSelectedTile.classList.remove('selected');
-							// 		}			  		
-						  // 	}
-						  // 	else{
-						  // 		popup.setAttribute("visible",false);
-						  // 	}
-
-
 					  }
 					});
         },
@@ -500,24 +395,6 @@ AFRAME.registerComponent('grid-manager', {
         }
 
       });
-
-
-//End of costum component Grid-Manager ----------------------------
-
-// function insertTilesToDatabase(){
-// 						$.ajax({
-// 							url:"sql.php",
-// 							method: "POST",
-// 							data: {id:counter, action:"insert"},
-// 							success: function(){
-// 								console.log("Eginan insert ta tiles stin vasi");
-// 							},
-// 							error: function(xhr, status, error){
-// 								console.log("An error occurred: " + error);
-// 							}
-// 						});
-// 					}
-
 
 
 
@@ -656,7 +533,7 @@ function importBase(entity){
 					tile.appendChild(base);
 
 
-					storeDataBase();
+					// storeDataBase();
 
 
 	function storeDataBase(){
@@ -691,12 +568,55 @@ function deleteDB(){
 		});
 }
 
+	function popUpValue2(id,centerPos, centerRot){
+		const popup = document.querySelector('#frame');
+		let infoText = document.querySelector('#infoText');
+		const popupClose = document.querySelector('#exitbutton');
+		const panel = document.querySelector('#panel');
+
+		infoText.setAttribute("value",data.exhibits[id].description);
+		infoText.setAttribute('color','black');
+		
+
+		if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
+		 	panelExhibit.setAttribute('visible',false);
+		  panelExhibit.setAttribute('position','0 100 0');
+		  panelBase.setAttribute('visible',false);
+		  panelBase.setAttribute('position','0 100 0');
+		 }
+
+		if(!popup.getAttribute("visible")){
+			popup.setAttribute("visible",true);
+			popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
+			popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
+
+
+
+		  const previousSelectedTile = document.querySelector('.gridtile.selected');
+		  
+		  if(previousSelectedTile){
+
+		    if(previousSelectedTile.classList.contains('floor')){
+		    	previousSelectedTile.setAttribute('color', '#ECDFCC');
+		    }
+		    else if(previousSelectedTile.classList.contains('wall')) {
+		    	previousSelectedTile.setAttribute('color', '#697565');
+		    }
+
+				previousSelectedTile.classList.remove('selected');
+
+			}
+		}
+		else{
+			popup.setAttribute("visible",false);
+		}
+	}
+
 </script>
 
 <!-- <body onload="loadExhibit()"></body>  -->
 
 	
-	<div id="myDiv"></div> <!--ΑΝ ΜΕΤΑΚΙΝΗΣΩ ΤΟ DIV ΔΕΝ ΘΑ ΛΕΙΤΟΥΡΓΕΙ ΣΩΣΤΑ Η ΕΜΦΑΝΙΣΗ ΤΗΣ ΛΙΣΤΑΣ -->
 	
 
  <a-scene id="scene">
@@ -763,55 +683,12 @@ function deleteDB(){
 
 
 <script>
-	function popUpValue2(id,centerPos, centerRot){
-		const popup = document.querySelector('#frame');
-		let infoText = document.querySelector('#infoText');
-		const popupClose = document.querySelector('#exitbutton');
-		const panel = document.querySelector('#panel');
-
-		infoText.setAttribute("value",data.exhibits[id].description);
-		infoText.setAttribute('color','black');
-		
-
-		if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
-		 	panelExhibit.setAttribute('visible',false);
-		  panelExhibit.setAttribute('position','0 100 0');
-		  panelBase.setAttribute('visible',false);
-		  panelBase.setAttribute('position','0 100 0');
-		 }
-
-		if(!popup.getAttribute("visible")){
-			popup.setAttribute("visible",true);
-			popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
-			popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
-
-
-
-		  const previousSelectedTile = document.querySelector('.gridtile.selected');
-		  
-		  if(previousSelectedTile){
-
-		    if(previousSelectedTile.classList.contains('floor')){
-		    	previousSelectedTile.setAttribute('color', '#ECDFCC');
-		    }
-		    else if(previousSelectedTile.classList.contains('wall')) {
-		    	previousSelectedTile.setAttribute('color', '#697565');
-		    }
-
-				previousSelectedTile.classList.remove('selected');
-
-			}
-		}
-		else{
-			popup.setAttribute("visible",false);
-		}
-	}
 
 </script>
 
 
 
-<a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -9" color="" material="src:#gradient"></a-box>
+<!-- <a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -9" color="" material="src:#gradient"></a-box> -->
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 
@@ -1011,7 +888,7 @@ function deleteDB(){
 
 	<a-camera wasd-controls="acceleration:30" id="camera">
 		
-			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info, .enable" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.008" material="color:orange;" position="0 0 -.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
+			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.008" material="color:orange;" position="0 0 -.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
 	</a-camera>
 
@@ -1027,14 +904,7 @@ function deleteDB(){
 </body>
 </html>
 
-<?php
 
-}else{
-	header("Location: index.php");
-	exit();
-}
-
-?>
 
 
 
