@@ -134,19 +134,19 @@ AFRAME.registerComponent('image-hover', {
 				// console.log(index2);
 				switch(index1) {
 				  case 0:
-				    image.setAttribute('src','#image1');
+				    image.setAttribute('src','#image0');
 
 				    break;
 
 				  case 1:
 				    
-				    image.setAttribute('src','#image2');
+				    image.setAttribute('src','#imagebase2');
 				    
 				    break;
 
 				  case 2:
 				  // Add more cases as needed
-				  	image.setAttribute('src','#image3');
+				  	image.setAttribute('src','#imagebase3');
 				  	break;
 				}				
 			}
@@ -166,30 +166,41 @@ AFRAME.registerComponent('image-hover', {
 				// console.log(image.getAttribute('rotation'));
 				switch(index2) {
 				  case 0:
-				     //Keno image
-				  	image.setAttribute('src','');
+				    if(page==1)
+				  		image.setAttribute('src','#image0');
+				  	else
+				  		image.setAttribute('src','#image5');
 				    break;
 
 				  case 1:
 				    
-				    // console.log("megali 3d");
-				    image.setAttribute('src','');
-				    
+				    if(page==1)
+				  		image.setAttribute('src','#image1');
+				  	else
+				  		image.setAttribute('src','#image6');
 				    break;
 
 				  case 2:
 				  // Add more cases as needed
-				  	image.setAttribute('src','#c1');
+				    if(page==1)
+				  		image.setAttribute('src','#image2');
+				  	else
+				  		image.setAttribute('src','#image7');
 				  	break;
 
 				  case 3:
-				    image.setAttribute('src','#c2');
+				    if(page==1)
+				  		image.setAttribute('src','#image3');
+				  	else
+				  		image.setAttribute('src','#image8');
 
 				    break;
 
 				  case 4:
-				    image.setAttribute('src','#c3');
-
+				    if(page==1)
+				  		image.setAttribute('src','#image4');
+				  	else
+				  		image.setAttribute('src','#image9');
 				    break;
 
 				}
@@ -753,12 +764,24 @@ function deleteDB(){
 					<a-asset-items id="base3" src="models/3dbases/base3/base3.gltf"></a-asset-items>
 
 					<img id="gradient" src="images/lightyellow.jpg"></img>
-					<img id="image1" src="images/emptyBase.png"></img>
-					<img id="image2" src="images/base2.png"></img>
-					<img id="image3" src="images/base3.png"></img>
+					<img id="imageemptybase" src="images/emptyBase.png"></img>
+					<img id="imagebase2" src="images/base2.png"></img>
+					<img id="imagebase3" src="images/base3.png"></img>
 					<img id="c1" src="images/c1.png"></img>
 					<img id="c2" src="images/c2.png"></img>
 					<img id="c3" src="images/c3.png"></img>
+
+					<img id="image0" src="images/0.png"></img>
+					<img id="image1" src="images/1.png"></img>
+					<img id="image2" src="images/2.png"></img>
+					<img id="image3" src="images/3.png"></img>
+					<img id="image4" src="images/4.png"></img>
+					<img id="image5" src="images/5.png"></img>
+					<img id="image6" src="images/6.png"></img>
+					<img id="image7" src="images/7.png"></img>
+					<img id="image8" src="images/8.png"></img>
+					<img id="image9" src="images/9.png"></img>
+
 					<img id="close" src="images/exit.png"></img>
 
 
