@@ -129,7 +129,7 @@ AFRAME.registerComponent('image-hover', {
 
 				image.setAttribute('position', pos.x + ' ' + (pos.y + 0.6) + ' ' + pos.z);
 				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
-				console.log(image.getAttribute('rotation'));
+				// console.log(image.getAttribute('rotation'));
 
 				// console.log(index2);
 				switch(index1) {
@@ -487,7 +487,14 @@ AFRAME.registerComponent('grid-manager', {
 		          panelExhibit.setAttribute('position','0 100 0');
 		          if(tile){
 		          	tile.classList.remove('selected');
-		          	tile.setAttribute('color', 'lightyellow');
+
+		          		if(tile.classList.contains('floor')){
+		          			tile.setAttribute('color', '#ECDFCC');
+		          	}
+		          	else if(tile.classList.contains('wall')) {
+		          		tile.setAttribute('color', '#697565');
+		          	}
+		          	// tile.setAttribute('color', 'lightyellow');
 		        	}
           this.tiles.forEach(tile => {
             tile.setAttribute('material', {opacity:transparent}); // Toggle visibility
@@ -530,26 +537,40 @@ function importExhibit(entity){
 
 	console.log(index);
 
-	removeChild();	
+	removeChild();
+						if(page==2)
+						index+= 5;
 					exhibit.setAttribute('position', data.exhibits[index].position);
 					exhibit.setAttribute('rotation', "-90 0 0"); 
 
-					if(page==2)
-						index+= 5;
+
+					// console.log(index);
 
 					exhibit.setAttribute('scale',data.exhibits[index].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 					exhibit.setAttribute('id',index+"."+index);
 					exhibit.setAttribute('class','clickable exhibit');
-					exhibit.setAttribute("show-panel","");
+					// exhibit.setAttribute("show-panel","");
 					exhibit.setAttribute("pop-up","");
 					tile.appendChild(exhibit);
 					if(index!=0)
-					exhibit.setAttribute('gltf-model',`url(${data.exhibits[index].pathfile})`);
+					// exhibit.setAttribute('gltf-model',`url(${data.exhibits[index].pathfile})`);
+					exhibit.setAttribute('geometry',{
+						primitive: data.exhibits[index].shape,
+						width:data.exhibits[index].width,
+						height:data.exhibits[index].height,
+						depth:data.exhibits[index].depth,
+						radius: data.exhibits[index].radius,
+						radiusBottom: data.exhibits[index].radiusBottom,
+						radiusTop: data.exhibits[index].radiusTop,
+						radiusTubular:data.exhibits[index].radiusTubular,
+						detail: data.exhibits[index].detail
+					});
+					exhibit.setAttribute('material',{color: data.exhibits[index].color});
+					console.log(exhibit);
 					// else
 					// 	exhibit.remove(); //Einai to idio me to "exhibit.remove();"
 					storeData();
-					// console.log(exhibit);
-					// this.exhibit = exhibit;
+
 
 
 	function storeData(){
@@ -606,7 +627,19 @@ function importExhibit(entity){
 							exhibit.setAttribute("pop-up","");
 							testId.appendChild(exhibit);
 							if(json[i].exhibit!=0)
-								exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
+								// 
+					exhibit.setAttribute('geometry',{
+						primitive: data.exhibits[json[i].exhibit].shape,
+						width:data.exhibits[json[i].exhibit].width,
+						height:data.exhibits[json[i].exhibit].height,
+						depth:data.exhibits[json[i].exhibit].depth,
+						radius: data.exhibits[json[i].exhibit].radius,
+						radiusBottom: data.exhibits[json[i].exhibit].radiusBottom,
+						radiusTop: data.exhibits[json[i].exhibit].radiusTop,
+						radiusTubular:data.exhibits[json[i].exhibit].radiusTubular,
+						detail: data.exhibits[json[i].exhibit].detail
+					});
+				exhibit.setAttribute('material',{color: data.exhibits[json[i].exhibit].color});
 							// else
 							// 	exhibit.remove();	
 					}
@@ -636,7 +669,7 @@ function importBase(entity){
 	const kidArray = Array.from(container[0].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
 	let index = kidArray.indexOf(kid);
 	// console.log(kid);
-	console.log(index);
+	// console.log(index);
 
 
 	// console.log(kidArray);
@@ -919,7 +952,7 @@ function deleteDB(){
 								height="1"
 								font-family="assets/fonts/Plaster-Regular.ttf"
 								font-size="0.2"
-								value="Huge kid"
+								value="A box"
 								image-hover
 								bevel="true"
 								bevel-size="0.07"
@@ -937,7 +970,7 @@ function deleteDB(){
 								height="1"
 								font-family="assets/fonts/Plaster-Regular.ttf"
 								font-size="0.2"
-								value="Bibelo bird"
+								value="A sphere"
 								image-hover
 								bevel="true"
 								bevel-size="0.07"
@@ -955,7 +988,7 @@ function deleteDB(){
 								height="1"
 								font-family="assets/fonts/Plaster-Regular.ttf"
 								font-size="0.2"
-								value="Jar 1"
+								value="A cylinder"
 								image-hover
 								bevel="true"
 								bevel-size="0.07"
@@ -973,7 +1006,7 @@ function deleteDB(){
 								height="1"
 								font-family="assets/fonts/Plaster-Regular.ttf"
 								font-size="0.2"
-								value="Jar 2"
+								value="A plane"
 								image-hover
 								bevel="true"
 								bevel-size="0.07"
