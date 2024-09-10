@@ -785,7 +785,7 @@ function deleteDB(){
 <a-entity light="color: #BBB; type: ambient"></a-entity>
 <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" ></a-entity>
 
-<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 10; color: #e8ddc9; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0"></a-entity>
+<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 10; color: #e8ddc9; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0" visible="false"></a-entity>
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
@@ -876,6 +876,7 @@ function deleteDB(){
 		let infoText = document.querySelector('#infoText');
 		const popupClose = document.querySelector('#exitbutton');
 		const panel = document.querySelector('#panel');
+		const spotLight = document.querySelector('#spotlight');
 
 		infoText.setAttribute("value",data.exhibits[id].description);
 		infoText.setAttribute('color','black');
