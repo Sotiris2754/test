@@ -38,11 +38,13 @@ function loadExhibit()
 AFRAME.registerComponent("closebutton",{
 	init:function(){
 		var el = this.el;
+		const spotLight = document.querySelector('#spotlight');
 		el.addEventListener('click',function(){
 			var frame = el.parentNode;
 			var panel = frame.parentNode;
 			panel.setAttribute('visible','false');
 			el.classList.remove('info');
+			spotLight.setAttribute("visible", false);
 		});
 	}
 });

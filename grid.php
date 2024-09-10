@@ -410,6 +410,7 @@ AFRAME.registerComponent('grid-manager', {
 
 					  const panelExhibit = document.querySelector("#panelExhibit");
 					  const panelBase = document.querySelector('#panelBase');
+					  const spotLight = document.querySelector('#spotlight');
 
 
 					//CLICK STA TILES --------> TOPOTHETISI PANEL GIA EISAGWGI EKTHEMATOS
@@ -432,6 +433,7 @@ AFRAME.registerComponent('grid-manager', {
 
 		            previousSelectedTile.classList.remove('selected');
 		            panelExhibit.setAttribute('visible',false);
+		            spotLight.setAttribute("visible", false);
 		            panelExhibit.setAttribute('position','0 100 0');
 		            panelBase.setAttribute('visible',false);
 		            panelBase.setAttribute('position','0 100 0');
@@ -462,6 +464,7 @@ AFRAME.registerComponent('grid-manager', {
 
 							  	if(event.target.classList.contains('wall')){
 							  		popup.setAttribute("visible",false);
+							  		spotLight.setAttribute("visible", false);
 							  		panelBase.setAttribute('visible',false);
 							  		panelBase.setAttribute('position','0 100 0');
 							  		panelExhibit.setAttribute('visible',true);
@@ -471,6 +474,7 @@ AFRAME.registerComponent('grid-manager', {
 
 							  	else if(event.target.classList.contains('floor')){
 							  		popup.setAttribute("visible",false);
+							  		spotLight.setAttribute("visible", false);
 							  		panelExhibit.setAttribute('visible',false);
 							  		panelExhibit.setAttribute('position','0 100 0');
 							  		panelBase.setAttribute('visible',true);
@@ -488,7 +492,14 @@ AFRAME.registerComponent('grid-manager', {
 					  	
 					  	let arg = event.target.id.split('.')[0]; //keeping the first digit of the exhibits id (1.1, 2.2 etc)
 					  	// let value = data.exhibits[arg].description.length;
+					  	let newPos = new THREE.Vector3();
+					  	event.target.object3D.getWorldPosition(newPos)
+					  	console.log(newPos.z);
+					  	spotLight.setAttribute("position", newPos.x +' '+ 3 +' '+ newPos.z );
 
+					  	// spotLight.setAttribute("visible",true);
+					  	
+					  	// console.log(spotLight.getAttribute("position"));
 					  	// changeLabelDimension(value);
 					  	popUpValue2(arg,centerPos,centerRot);
 
@@ -785,7 +796,8 @@ function deleteDB(){
 <a-entity light="color: #BBB; type: ambient"></a-entity>
 <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" ></a-entity>
 
-<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 10; color: #e8ddc9; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0" visible="false"></a-entity>
+<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0" visible="false"></a-entity>
+
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
@@ -863,7 +875,7 @@ function deleteDB(){
 	<a-plane color="#ECDFCC" id="panel" width="1.5" height="0.75">
 
 		<a-text  id="infoText" align="center" width="2"></a-text>
-		<a-image id="exitbutton"closebutton class="clickable" src="#close" scale="0.2 0.2 0.2" position="0.6 .25 0.02"></a-image>
+		<a-image id="exitbutton" closebutton class="clickable" src="#close" scale="0.2 0.2 0.2" position="0.6 .25 0.02"></a-image>
 	
 	</a-plane>	
 
@@ -894,6 +906,8 @@ function deleteDB(){
 			popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
 			popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
 
+			spotLight.setAttribute("visible", true);
+
 
 
 		  const previousSelectedTile = document.querySelector('.gridtile.selected');
@@ -913,6 +927,7 @@ function deleteDB(){
 		}
 		else{
 			popup.setAttribute("visible",false);
+			spotLight.setAttribute("visible",false);
 		}
 	}
 
