@@ -313,9 +313,9 @@ AFRAME.registerComponent('grid-manager', {
 
 
 
-            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0.3 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0.3 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
+            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
 
 
           ];
@@ -342,6 +342,7 @@ AFRAME.registerComponent('grid-manager', {
         createGrid: function (position, rotation, size, depth, height, gap, rows, columns, wallIndex, centerPos,centerRot, pleura) {
           const el = this.el;
           const gridContainer = document.createElement('a-entity');
+          const spotLight = document.querySelector('#spotlight');
           // gridContainer.setAttribute('scale','0.5 0.5 0.5');
           gridContainer.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z);
           gridContainer.setAttribute('rotation', rotation.x + ' ' + rotation.y + ' ' + rotation.z);
@@ -400,6 +401,11 @@ AFRAME.registerComponent('grid-manager', {
 							const popup = document.querySelector('#frame');
 
 					  	let arg = event.target.id.split('.')[0]; //keeping the first digit of the exhibits id (1.1, 2.2 etc)
+
+							let newPos = new THREE.Vector3();
+					  	event.target.object3D.getWorldPosition(newPos);
+					  	// console.log(newPos.z);
+					  	spotLight.setAttribute("position", newPos.x +' '+ 3 +' '+ newPos.z );
 
 					  	popUpValue2(arg,centerPos,centerRot);
 					  }
@@ -518,7 +524,19 @@ function importExhibit(entity){
 							exhibit.setAttribute("pop-up","");
 							testId.appendChild(exhibit);
 							if(json[i].exhibit!=0)
-								exhibit.setAttribute('gltf-model',`url(${data.exhibits[json[i].exhibit].pathfile})`);
+								// 
+					exhibit.setAttribute('geometry',{
+						primitive: data.exhibits[json[i].exhibit].shape,
+						width:data.exhibits[json[i].exhibit].width,
+						height:data.exhibits[json[i].exhibit].height,
+						depth:data.exhibits[json[i].exhibit].depth,
+						radius: data.exhibits[json[i].exhibit].radius,
+						radiusBottom: data.exhibits[json[i].exhibit].radiusBottom,
+						radiusTop: data.exhibits[json[i].exhibit].radiusTop,
+						radiusTubular:data.exhibits[json[i].exhibit].radiusTubular,
+						detail: data.exhibits[json[i].exhibit].detail
+					});
+				exhibit.setAttribute('material',{color: data.exhibits[json[i].exhibit].color});
 							// else
 							// 	exhibit.remove();	
 					}
@@ -608,6 +626,7 @@ function deleteDB(){
 		let infoText = document.querySelector('#infoText');
 		const popupClose = document.querySelector('#exitbutton');
 		const panel = document.querySelector('#panel');
+		const spotLight = document.querySelector('#spotlight');
 
 		infoText.setAttribute("value",data.exhibits[id].description);
 		infoText.setAttribute('color','black');
@@ -624,6 +643,8 @@ function deleteDB(){
 			popup.setAttribute("visible",true);
 			popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
 			popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
+
+			spotLight.setAttribute("visible", true);
 
 
 
@@ -644,6 +665,7 @@ function deleteDB(){
 		}
 		else{
 			popup.setAttribute("visible",false);
+			spotLight.setAttribute("visible",false);
 		}
 	}
 
@@ -656,6 +678,10 @@ function deleteDB(){
 
  <a-scene devicecheck id="scene">
 
+<a-entity light="color: #BBB; type: ambient"></a-entity>
+<a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" ></a-entity>
+
+<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0" visible="false"></a-entity>
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
@@ -663,6 +689,11 @@ function deleteDB(){
 					<a-asset-items id="home" src="home_test.gltf"></a-asset-items>
 					<a-asset-items id="home-obj" src="models/room/obj/room.obj"></a-asset-items>
 					<a-asset-items id="home-mtl" src="models/room/obj/room.mtl"></a-asset-items>
+					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
+					<img id="diffuseMap" src="Building/test01/Concrete024_1K-JPG_Color.jpg"></img>
+
+					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
+					<a-asset-items id="test01-mtl" src="Building/test01/test01.mtl"></a-asset-items>
 
 					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
 <!-- 					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
@@ -693,8 +724,10 @@ function deleteDB(){
 <a-entity scale="0.5 0.5 0.5" position="0 .5 0">
 
 <a-entity >
-<a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#test01" scale="2 2 2" position="-.9 -0.5 -8.7" rotation="0 -90 0"></a-entity>
+
 </a-entity>
+
 
 <a-entity grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
 
@@ -920,12 +953,13 @@ function deleteDB(){
 						</a-gui-flex-container>
 
 </a-gui-flex-container>
-
+<a-entity rotation="0 180 0" position="-0.3 0 -8">
 	<a-camera wasd-controls="acceleration:30" id="camera">
 		
 			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.008" material="color:orange;" position="0 0 -.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
 	</a-camera>
+</a-entity>
 
 </a-scene> 
 

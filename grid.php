@@ -493,8 +493,8 @@ AFRAME.registerComponent('grid-manager', {
 					  	let arg = event.target.id.split('.')[0]; //keeping the first digit of the exhibits id (1.1, 2.2 etc)
 					  	// let value = data.exhibits[arg].description.length;
 					  	let newPos = new THREE.Vector3();
-					  	event.target.object3D.getWorldPosition(newPos)
-					  	console.log(newPos.z);
+					  	event.target.object3D.getWorldPosition(newPos);
+					  	// console.log(newPos.z);
 					  	spotLight.setAttribute("position", newPos.x +' '+ 3 +' '+ newPos.z );
 
 					  	// spotLight.setAttribute("visible",true);
