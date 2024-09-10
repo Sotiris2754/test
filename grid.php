@@ -334,9 +334,9 @@ AFRAME.registerComponent('grid-manager', {
 
 
 
-            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0.3 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0.3 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
+            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
 
 
           ];
@@ -770,6 +770,8 @@ function deleteDB(){
 		});
 }
 
+
+
 </script>
 
 <!-- <body onload="loadExhibit()"></body>  -->
@@ -780,10 +782,21 @@ function deleteDB(){
 
  <a-scene devicecheck id="scene">
 
+<a-entity light="color: #BBB; type: ambient"></a-entity>
+<a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" ></a-entity>
+
+<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 10; color: #e8ddc9; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0"></a-entity>
 				<a-assets>
 
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
 					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items>
+					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
+					<img id="diffuseMap" src="Building/test01/Concrete024_1K-JPG_Color.jpg"></img>
+
+					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
+					<a-asset-items id="test01-mtl" src="Building/test01/test01.mtl"></a-asset-items>
+
+
 					<a-asset-items id="home" src="home_test.gltf"></a-asset-items>
 					<a-asset-items id="home-obj" src="models/room/obj/room.obj"></a-asset-items>
 					<a-asset-items id="home-mtl" src="models/room/obj/room.mtl"></a-asset-items>
@@ -824,17 +837,16 @@ function deleteDB(){
 
 
 <a-sky color="lightblue"></a-sky>
-<!-- <a-light type="ambient" color="#FFF" intensity="1"></a-light> -->
-<!-- <a-light type="directional" color="#FFF" intensity="0.3" position="-1 2 1"></a-light> -->
 
 <a-entity scale="0.5 0.5 0.5" position="0 .5 0">
 
 <a-entity >
-<a-entity gltf-model="#building" scale="2 2 2" position="-15 -0.5 17" rotation="0 90 0"></a-entity>
+<a-entity gltf-model="#test01" scale="2 2 2" position="-.9 -0.5 -8.7" rotation="0 -90 0"></a-entity>
+
 </a-entity>
 
 <!-- <a-entity>
-	<a-entity obj-model="obj: #home-obj; mtl: #home-mtl"></a-entity>
+	<a-entity obj-model="obj: #test01-obj; mtl: #test01-mtl"></a-entity>
 </a-entity> -->
 
 <a-entity grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
@@ -907,7 +919,7 @@ function deleteDB(){
 
 
 
-<a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -9" color="" material="src:#gradient"></a-box>
+<a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -11" color="" material="src:#gradient"></a-box>
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 
@@ -1104,13 +1116,14 @@ function deleteDB(){
 						</a-gui-flex-container>
 
 </a-gui-flex-container>
+<a-entity rotation="0 180 0" position="-0.3 0 -8">
+	<a-camera  wasd-controls="acceleration:30" id="camera">
 
-	<a-camera wasd-controls="acceleration:30" id="camera">
 		
 			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info, .enable" cursor="fuse:false; fuseTimeout:2000;" geometry="primitive:sphere;radius:0.008" material="color:orange;" position="0 0 -.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
 			</a-entity>
 	</a-camera>
-
+</a-entity>
 </a-scene> 
 
 
