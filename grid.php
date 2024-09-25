@@ -542,6 +542,8 @@ AFRAME.registerComponent('grid-manager', {
             	transparent = 100;
 		          panelExhibit.setAttribute('visible',false);
 		          panelExhibit.setAttribute('position','0 100 0');
+							panelBase.setAttribute('visible',false);
+		          panelBase.setAttribute('position','0 100 0');
 		          if(tile){
 		          	tile.classList.remove('selected');
 
