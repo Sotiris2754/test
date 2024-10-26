@@ -21,6 +21,8 @@ if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
+  <!-- <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script> -->
+
 
 	<title>Exhibit Panel Changed</title>
 	<script src="OptBehavior.js"></script>
