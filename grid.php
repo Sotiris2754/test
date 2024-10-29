@@ -309,15 +309,13 @@ AFRAME.registerComponent('grid-manager', {
             { position: { x: 14, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
 
 
-
-
               
             { position: { x: -9.7, y: 0.45, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:-4.5, y:1.6, z:-2.25 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
 
             { position: { x: -9.7, y: -0.5, z: -4.45 }, rotation: { x: 90, y:0, z: 0 }, depth:0.1, height:1, rows:1, columns:2, centerPos: { x:-4.5, y:1.6, z:-2.25 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
 
 
-              
+             
             { position: { x: -4.5, y: 0.45, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:-4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
             { position: { x: -4.5, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:-4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
@@ -498,38 +496,7 @@ AFRAME.registerComponent('grid-manager', {
 					  	event.target.object3D.getWorldPosition(newPos);
 					  	// console.log(newPos.z);
 					  	spotLight.setAttribute("position", newPos.x +' '+ 3 +' '+ newPos.z );
-
-					  	// spotLight.setAttribute("visible",true);
-					  	
-					  	// console.log(spotLight.getAttribute("position"));
-					  	// changeLabelDimension(value);
 					  	popUpValue2(arg,centerPos,centerRot);
-
-					  	// console.log(value);
-
-					  	// const popup = document.querySelector('#popup');
-					  
-					  	// if(!popup.getAttribute("visible")){
-
-							//   	popup.setAttribute("visible",true);
-							// 		popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
-							// 		popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
-							// 		if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
-							// 			panelBase.setAttribute("visible",false);
-							// 			panelBase.setAttribute('position','0 100 0');
-							// 			panelExhibit.setAttribute("visible",false);
-							// 			panelExhibit.setAttribute('position','0 100 0');
-
-							// 			const previousSelectedTile = document.querySelector('.gridtile.selected');
-									  
-							// 		  previousSelectedTile.setAttribute('color','lightyellow');
-							// 		  previousSelectedTile.classList.remove('selected');
-							// 		}			  		
-						  // 	}
-						  // 	else{
-						  // 		popup.setAttribute("visible",false);
-						  // 	}
-
 
 					  }
 					});
