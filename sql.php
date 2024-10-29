@@ -107,33 +107,13 @@ $conn->close();
 
 }
 
-if(ISSET($_POST['action']) && $_POST['action']=="insert"){
 
+// if(ISSET($_POST['action']) && $_POST['action']=="remove"){
 
-}
+// $conn->query("DELETE FROM apps_collab_exh WHERE id in (SELECT MAX(id) as id FROM apps_collab_exh ) ");
+// $conn->query("ALTER TABLE apps_collab_exh AUTO_INCREMENT = 1 ");
 
-if(ISSET($_POST['action']) && $_POST['action']=="remove"){
-
-// $db->exec("DELETE FROM bases WHERE MAX(id)");
-
-
-// Execute the query and get the ID of the last row
-// $result = $db->querySingle($query);
-
-// if (!$result) {
-//     // Handle the case where the table is empty
-//     die("Table is empty");
 // }
-$conn->query("DELETE FROM apps_collab_exh WHERE id in (SELECT MAX(id) as id FROM apps_collab_exh ) ");
-$conn->query("ALTER TABLE apps_collab_exh AUTO_INCREMENT = 1 ");
-// $
-// Define the SQL query to delete the last row from the table
-// $query = "DELETE FROM apps_collab_exh WHERE id = $result";
-
-// Execute the query
-// $db->exec($query);
-
-}
 
 if(ISSET($_POST['action']) && $_POST['action'] == "retrieve"){
 $data = array();
@@ -153,38 +133,24 @@ echo $json;
 }
 
 
-if(ISSET($_POST['action']) && $_POST['action'] == "view"){
+// if(ISSET($_POST['action']) && $_POST['action'] == "view"){
     
-    $data = array();
-    $sql = "SELECT exhibit FROM apps_collab_exh";
-    $res = $conn->query($sql);
+//     $data = array();
+//     $sql = "SELECT exhibit FROM apps_collab_exh";
+//     $res = $conn->query($sql);
 
-    $resData = $res->fetch_all(MYSQLI_ASSOC);
+//     $resData = $res->fetch_all(MYSQLI_ASSOC);
 
 
 
-    foreach ($resData as $key => $value) {
-        $data[]=$value['exhibit'];
-    }   
+//     foreach ($resData as $key => $value) {
+//         $data[]=$value['exhibit'];
+//     }   
 
   
-    $json = json_encode($data);
-    echo $json;         
-
-    // $stmt = $conn->prepare($sql);
-    // $stmt = $stmt->execute();
-    
-    // $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // while ($row = $result->fetchArray(SQLITE3_ASSOC)){
-    //     //echo $row['exhibit'] . "<br>";
-    //     $data[] = $row['exhibit'];
-    // }
-
-    // $result = mysqli_query($conn,$sql);
-    // while($row  = mysqli_fetch_array($result))
-    //     $data[]= $row['exhibit'];
-}
+//     $json = json_encode($data);
+//     echo $json;         
+// }
 
 
 
