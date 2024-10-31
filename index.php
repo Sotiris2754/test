@@ -7,8 +7,9 @@
 	<title>LOGIN PAGE</title>
 </head>
 <body>
-	<form action="login.php" method="post">
-		<h2>Επιμέλεια εκθέσεων στο Τμήματος Τεχνών Ήχου και Εικόνας</h2>
+
+	<form class="login-form" action="login.php" method="post">
+		<h2>Επιμέλεια Εκθέσεων στο Τμήματος Τεχνών Ήχου και Εικόνας</h2>
 		<?php if (isset($_GET['error'])) {?>
 			<p class= "error"><?php echo $_GET['error']; ?></p>
 		<?php } ?>
