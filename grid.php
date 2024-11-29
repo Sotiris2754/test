@@ -537,23 +537,6 @@ AFRAME.registerComponent('grid-manager', {
       });
 
 
-//End of costum component Grid-Manager ----------------------------
-
-// function insertTilesToDatabase(){
-// 						$.ajax({
-// 							url:"sql.php",
-// 							method: "POST",
-// 							data: {id:counter, action:"insert"},
-// 							success: function(){
-// 								console.log("Eginan insert ta tiles stin vasi");
-// 							},
-// 							error: function(xhr, status, error){
-// 								console.log("An error occurred: " + error);
-// 							}
-// 						});
-// 					}
-
-
 
 
 function importExhibit(entity){
@@ -780,13 +763,9 @@ function deleteDB(){
 					<a-asset-items id="test01-mtl" src="Building/test01/test01.mtl"></a-asset-items>
 
 
-					<a-asset-items id="home" src="home_test.gltf"></a-asset-items>
-					<a-asset-items id="home-obj" src="models/room/obj/room.obj"></a-asset-items>
-					<a-asset-items id="home-mtl" src="models/room/obj/room.mtl"></a-asset-items>
-					<a-asset-items id="home-glb" src="models/room/glb/room.glb"></a-asset-items>
 
 					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
-<!-- 					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
+<!-- 			<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
 					<a-asset-items id="table2" src="table2/scene.gltf"></a-asset-items>
 					<a-asset-items id="table3" src="table3/scene.gltf"></a-asset-items> -->
 
@@ -795,12 +774,15 @@ function deleteDB(){
 					<a-asset-items id="base3" src="models/3dbases/base3/base3.gltf"></a-asset-items>
 
 					<img id="gradient" src="images/lightyellow.jpg"></img>
-					<img id="imageemptybase" src="images/emptyBase.png"></img>
 					<img id="imagebase2" src="images/base2.png"></img>
 					<img id="imagebase3" src="images/base3.png"></img>
+					
+					<!-- Παλιότερες εικόνες εκθεμάτων 
 					<img id="c1" src="images/c1.png"></img>
 					<img id="c2" src="images/c2.png"></img>
 					<img id="c3" src="images/c3.png"></img>
+					-->
+					
 
 					<img id="image0" src="images/0.png"></img>
 					<img id="image1" src="images/1.png"></img>
