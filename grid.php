@@ -753,37 +753,40 @@ function deleteDB(){
 <a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0" visible="false"></a-entity>
 
 				<a-assets>
-
+					<!-- Υπάρχουν διαφορετικές εκδόσεις του 3d κτιρίου. Τώρα χρησιμοποιείται το id="testo01"  -->
 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
-					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items>
-					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
-					<img id="diffuseMap" src="Building/test01/Concrete024_1K-JPG_Color.jpg"></img>
 
+					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items>
+					
+					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
+
+					<!-- Δοκιμή με Obj & Mtl 3d files -->
 					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
 					<a-asset-items id="test01-mtl" src="Building/test01/test01.mtl"></a-asset-items>
-
+					<!-- ...  -->
 
 
 					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
+
 <!-- 			<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
 					<a-asset-items id="table2" src="table2/scene.gltf"></a-asset-items>
 					<a-asset-items id="table3" src="table3/scene.gltf"></a-asset-items> -->
 
-					<a-asset-items id="base1" src="models/3dbases/base3/base3.gltf"></a-asset-items>
+<!-- 			<a-asset-items id="base1" src="models/3dbases/base3/base3.gltf"></a-asset-items>
 					<a-asset-items id="base2" src="models/3dbases/base2/base2.gltf"></a-asset-items>
-					<a-asset-items id="base3" src="models/3dbases/base3/base3.gltf"></a-asset-items>
+					<a-asset-items id="base3" src="models/3dbases/base3/base3.gltf"></a-asset-items> -->
 
-					<img id="gradient" src="images/lightyellow.jpg"></img>
-					<img id="imagebase2" src="images/base2.png"></img>
-					<img id="imagebase3" src="images/base3.png"></img>
-					
+
 					<!-- Παλιότερες εικόνες εκθεμάτων 
 					<img id="c1" src="images/c1.png"></img>
 					<img id="c2" src="images/c2.png"></img>
 					<img id="c3" src="images/c3.png"></img>
 					-->
-					
 
+					<img id="gradient" src="images/lightyellow.jpg"></img>
+					<img id="imagebase2" src="images/base2.png"></img>
+					<img id="imagebase3" src="images/base3.png"></img>
+					
 					<img id="image0" src="images/0.png"></img>
 					<img id="image1" src="images/1.png"></img>
 					<img id="image2" src="images/2.png"></img>
