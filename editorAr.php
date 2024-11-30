@@ -862,14 +862,48 @@ AFRAME.registerComponent('spatial-occlusion', {
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
             material="opacity: 0; transparent: true; color:red"
-            position="2 1.2 -10" class="invisible-wall"></a-entity>
+            position="2 1.6 -10" class="invisible-wall"></a-entity>
 
-<a-box class="toggle-visibility" position="0 0 -5" color="yellow"></a-box>
-<a-box class="toggle-visibility" position="-8 0 -2.5" color="yellow"></a-box>
-<a-box class="toggle-visibility" position="8 0 -2.5" color="yellow"></a-box>
-<!-- <a-entity>
-	<a-entity obj-model="obj: #test01-obj; mtl: #test01-mtl"></a-entity>
-</a-entity> -->
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
+            material="opacity: 0; transparent: true; color:red"
+            position="-2.9 1.6 -10" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 14; depth: 0.1"
+            material="opacity: 0; transparent: true; color:red"
+            position="9 1.6 -5" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 14.2; depth: 0.1"
+            material="opacity: 0; transparent: true; color:red"
+            position="-10 1.6 -5" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 5"
+            material="opacity: 0; transparent: true; color:red"
+            position="-16.8 1.6 -2.5" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 5"
+            material="opacity: 0; transparent: true; color:red"
+            position="15.9 1.6 -2.5" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 14; depth: 0.1"
+            material="opacity: 0; transparent: true; color:red"
+            position="9 1.6 -0.2" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 14.2; depth: 0.1"
+            material="opacity: 0; transparent: true; color:red"
+            position="-10 1.6 -0.2" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 2"
+            material="opacity: 0; transparent: true; color:red"
+            position="2 1.6 0.8" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 2"
+            material="opacity: 0; transparent: true; color:red"
+            position="-2.9 1.6 0.8" class="invisible-wall"></a-entity>
+
+  <a-entity geometry="primitive: box; height: 4; width: 5; depth: 0.1"
+            material="opacity: 0; transparent: true; color:red"
+            position="-0.4 1.6 1.8" class="invisible-wall"></a-entity>
+
 
 <a-entity  grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
 
