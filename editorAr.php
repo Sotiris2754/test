@@ -862,47 +862,47 @@ AFRAME.registerComponent('spatial-occlusion', {
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
             material="opacity: 0; transparent: true; color:red"
-            position="2 1.6 -10" class="invisible-wall"></a-entity>
+            position="2 1.4 -10" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
             material="opacity: 0; transparent: true; color:red"
-            position="-2.9 1.6 -10" class="invisible-wall"></a-entity>
+            position="-2.9 1.4 -10" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 14; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="9 1.6 -5" class="invisible-wall"></a-entity>
+            position="9 1.4 -5" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 14.2; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="-10 1.6 -5" class="invisible-wall"></a-entity>
+            position="-10 1.4 -5" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 5"
             material="opacity: 0; transparent: true; color:red"
-            position="-16.8 1.6 -2.5" class="invisible-wall"></a-entity>
+            position="-16.8 1.4 -2.5" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 5"
             material="opacity: 0; transparent: true; color:red"
-            position="15.9 1.6 -2.5" class="invisible-wall"></a-entity>
+            position="15.9 1.4 -2.5" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 14; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="9 1.6 -0.2" class="invisible-wall"></a-entity>
+            position="9 1.4 -0.2" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 14.2; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="-10 1.6 -0.2" class="invisible-wall"></a-entity>
+            position="-10 1.4 -0.2" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 2"
             material="opacity: 0; transparent: true; color:red"
-            position="2 1.6 0.8" class="invisible-wall"></a-entity>
+            position="2 1.4 0.8" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 2"
             material="opacity: 0; transparent: true; color:red"
-            position="-2.9 1.6 0.8" class="invisible-wall"></a-entity>
+            position="-2.9 1.4 0.8" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 5; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="-0.4 1.6 1.8" class="invisible-wall"></a-entity>
+            position="-0.4 1.4 1.8" class="invisible-wall"></a-entity>
 
 
 <a-entity  grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
@@ -916,7 +916,7 @@ AFRAME.registerComponent('spatial-occlusion', {
 
 <a-entity id="frame" position=" -0.2 1 -5" visible="false">
 
-	<a-plane color="#ECDFCC" id="panel" width="1.5" height="0.75">
+	<a-plane class="toggle-visibility" color="#ECDFCC" id="panel" width="1.5" height="0.75">
 
 		<a-text  id="infoText" align="center" width="2"></a-text>
 		<a-image id="exitbutton" closebutton class="clickable" src="#close" scale="0.2 0.2 0.2" position="0.6 .25 0.01"></a-image>
