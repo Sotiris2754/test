@@ -736,6 +736,57 @@ function deleteDB(){
 }
 
 
+AFRAME.registerComponent('spatial-occlusion', {
+    schema: {
+      wallClass: { type: 'string', default: 'invisible-wall' } // Class for wall objects
+    },
+
+    init: function () {
+      // Find all walls in the scene
+      this.walls = Array.from(document.querySelectorAll(`.${this.data.wallClass}`));
+      this.raycaster = new THREE.Raycaster(); // Raycaster for line-of-sight checks
+    },
+
+    tick: function () {
+      const camera = this.el.sceneEl.camera.el.object3D;
+      const cameraPosition = new THREE.Vector3().setFromMatrixPosition(camera.matrixWorld);
+      const entities = Array.from(document.querySelectorAll('.toggle-visibility'));
+
+      entities.forEach(entity => {
+        const entityPosition = new THREE.Vector3().setFromMatrixPosition(entity.object3D.matrixWorld);
+
+        // Check if the entity is occluded by any walls
+        const isOccluded = this.isOccluded(cameraPosition, entityPosition);
+
+        // Update entity visibility
+        entity.setAttribute('visible', !isOccluded);
+      });
+    },
+
+    isOccluded: function (cameraPosition, entityPosition) {
+      // Set up raycaster
+      this.raycaster.set(cameraPosition, entityPosition.clone().sub(cameraPosition).normalize());
+
+      // Test intersections with walls
+      const intersections = this.raycaster.intersectObjects(
+        this.walls.map(wall => wall.object3D),
+        true
+      );
+
+      // If there are intersections, check if any are closer than the entity
+      if (intersections.length > 0) {
+        const closestIntersection = intersections[0].distance;
+        const entityDistance = cameraPosition.distanceTo(entityPosition);
+
+        // If a wall is closer than the entity, the entity is occluded
+        return closestIntersection < entityDistance;
+      }
+
+      // No intersections, entity is visible
+      return false;
+    }
+  });
+
 </script>
 
 <!-- <body onload="loadExhibit()"></body>  -->
@@ -805,11 +856,17 @@ function deleteDB(){
 
 <a-entity scale="0.5 0.5 0.5" position="0 .5 0">
 
-<a-entity >
+<!-- <a-entity >
 <a-entity gltf-model="#test01" scale="2 2 2" position="-.9 -0.5 -8.7" rotation="0 -90 0"></a-entity>
-</a-entity>
+</a-entity> -->
 
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
+            material="opacity: 0; transparent: true; color:red"
+            position="2 1.2 -10" class="invisible-wall"></a-entity>
 
+<a-box class="toggle-visibility" position="0 0 -5" color="yellow"></a-box>
+<a-box class="toggle-visibility" position="-8 0 -2.5" color="yellow"></a-box>
+<a-box class="toggle-visibility" position="8 0 -2.5" color="yellow"></a-box>
 <!-- <a-entity>
 	<a-entity obj-model="obj: #test01-obj; mtl: #test01-mtl"></a-entity>
 </a-entity> -->
