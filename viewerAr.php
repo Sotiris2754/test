@@ -768,7 +768,7 @@ AFRAME.registerComponent('spatial-occlusion', {
 				</a-assets>
 
 
-<a-sky color="lightblue"></a-sky>
+<!-- <a-sky color="lightblue"></a-sky> -->
 <!-- <a-light type="ambient" color="#FFF" intensity="1"></a-light> -->
 <!-- <a-light type="directional" color="#FFF" intensity="0.3" position="-1 2 1"></a-light> -->
 

@@ -850,7 +850,7 @@ AFRAME.registerComponent('spatial-occlusion', {
 				</a-assets>
 
 
-<a-sky color="lightblue"></a-sky>
+<!-- <a-sky color="lightblue"></a-sky> -->
 
 <a-entity scale="0.5 0.5 0.5" position="0 .5 0">
 
