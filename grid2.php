@@ -92,11 +92,11 @@ AFRAME.registerComponent('devicecheck', {
 
         if(window.mobileCheck() == true){
 
-            window.location = 'grid3.php'
+            window.location = 'viewerAr.php'
             console.log("mobile check");
         } else if(vr){
 
-            window.location = 'grid4.php'
+            // window.location = 'grid4.php'
             console.log("vr check");
         }
 
