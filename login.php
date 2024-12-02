@@ -31,9 +31,9 @@ if (isset($_POST['uname']) && isset($_POST['password'])){
 				$_SESSION['tag'] = $row['tag'];
 				$_SESSION['id'] = $row['id'];
 				if($uname==="admin")
-					header("Location: grid.php");
+					header("Location: editorPc.php");
 				else
-					header("Location:grid2.php");
+					header("Location:viewerPc.php");
 				exit();	
 			}
 			else{

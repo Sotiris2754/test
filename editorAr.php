@@ -104,7 +104,7 @@ AFRAME.registerComponent('devicecheck', {
 
         if(window.mobileCheck() == true){
 
-            // window.location = 'grid.php'
+            // window.location = 'editorPc.php'
             console.log("mobile check. FUSE function");
         } else if(vr){
 
