@@ -754,11 +754,11 @@ function deleteDB(){
 
 				<a-assets>
 					<!-- Υπάρχουν διαφορετικές εκδόσεις του 3d κτιρίου. Τώρα χρησιμοποιείται το id="testo01"  -->
-					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
+<!-- 					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
 
-					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items>
+					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items> -->
 					
-					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
+					<a-asset-items id="test01" src="test01/test01.gltf"></a-asset-items>
 
 					<!-- Δοκιμή με Obj & Mtl 3d files -->
 					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
@@ -810,9 +810,9 @@ function deleteDB(){
 </a-entity>
 
 
-<!-- <a-entity>
+<a-entity>
 	<a-entity obj-model="obj: #test01-obj; mtl: #test01-mtl"></a-entity>
-</a-entity> -->
+</a-entity>
 
 <a-entity  grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
 
