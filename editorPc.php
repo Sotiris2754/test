@@ -758,11 +758,11 @@ function deleteDB(){
 
 					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items> -->
 					
-					<a-asset-items id="test01" src="test01/test01.gltf"></a-asset-items>
+					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
 
 					<!-- Δοκιμή με Obj & Mtl 3d files -->
-					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
-					<a-asset-items id="test01-mtl" src="Building/test01/test01.mtl"></a-asset-items>
+<!-- 					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
+					<a-asset-items id="test01-mtl" src="Building/test01/test01.mtl"></a-asset-items> -->
 					<!-- ...  -->
 
 
