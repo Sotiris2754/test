@@ -19,67 +19,18 @@
 
 </head>
 
-<style>
-	#myDiv{
-
-  position: absolute;
-/*  background-color: black;*/
-  top:50px;
-  z-index: 5;
-  color: black;
-/*  text-align: center;*/
-	}
-	ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-	}
-	h4{
-	display:table;
-	padding: 5px;
-  margin: 5px 0;
-  background-color: #FA6B4F;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, .7);
-	}
-	li{
-	display:list-item;
-	padding: 2px;
-  margin: 5px 0;
-  background-color: #F3C5BC60;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, .7);
-	}
-</style>
 
 <script>
 	fetchContent(); // LOAD JSON FILE !!
 	retrieveData();
 	
 
-	let thesi;
-	const worldPosition = new THREE.Vector3();
 	let tile;
 	let counter=0;
 	let transparent = 0;
-	// insertTilesToDatabase();
-	let displayPos;
 
-// AFRAME.registerComponent('pop-up',{
-// 	init:function(){
-// 		let exhibit = this.el;
-		
-// 		exhibit.addEventListener('click', (event) => {
 
-// 			if(exhibit.classList.contains('exhibit')) {
-				
-// 				const popup = document.querySelector('#popup');
-// 				popup.setAttribute();
 
-// 			}
-// 		});
-// 	}
-// });
 
 // Detect user platform and serve the corresponding web page
 AFRAME.registerComponent('devicecheck', {
@@ -116,123 +67,6 @@ window.mobileCheck = function() {
     (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
     return check;
 };
-
-AFRAME.registerComponent('image-hover', {
-	init: function(){
-		var kid = this.el;
-		let image = document.querySelector('#imagePreview');
-		var parent = kid.parentNode;
-		let size = parent.children.length;
-		let pos;
-		let rot;
-		// console.log(parent);
-
-		let container = document.querySelectorAll("a-gui-flex-container");
-
-		const kidArray1 = Array.from(container[0].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
-		let index1 = kidArray1.indexOf(kid);
-
-		const kidArray2 = Array.from(container[2].children);
-		// console.log(kidArray2); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
-		let index2 = kidArray2.indexOf(kid);
-
-
-
-		kid.addEventListener('mouseenter', function(){
-			// console.log(parent.children.length);
-			// console.log(kidArray2);
-		// console.log(parent.getAttribute('rotation'));
-		pos = parent.getAttribute('position');
-		rot = parent.getAttribute('rotation');
-		// console.log(rot);
-		// console.log(size);
-
-			if(size==3){
-				image.setAttribute('visible',true);
-				// console.log(parent);
-				// console.log(rot);
-
-				image.setAttribute('position', pos.x + ' ' + (pos.y + 0.6) + ' ' + pos.z);
-				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
-				console.log(image.getAttribute('rotation'));
-
-				// console.log(index2);
-				switch(index1) {
-				  case 0:
-				    image.setAttribute('src','#image1');
-
-				    break;
-
-				  case 1:
-				    
-				    image.setAttribute('src','#image2');
-				    
-				    break;
-
-				  case 2:
-				  // Add more cases as needed
-				  	image.setAttribute('src','#image3');
-				  	break;
-				}				
-			}
-			if(size>4){
-				// console.log(index2);
-
-				image.setAttribute('visible',true);
-				let grandParent = parent.parentNode;
-				pos = grandParent.getAttribute('position');
-				rot = grandParent.getAttribute('rotation');
-				// console.log(grandParent.getAttribute('position'));
-				// console.log(rot);
-
-				// var value = kid.getAttribute('value');
-				image.setAttribute('position', pos.x  + ' ' + (pos.y + 0.6) + ' ' + pos.z );
-				image.setAttribute('rotation', rot.x + ' ' + rot.y + ' ' + rot.z);
-				// console.log(image.getAttribute('rotation'));
-				switch(index2) {
-				  case 0:
-				     //Keno image
-				  	image.setAttribute('src','');
-				    break;
-
-				  case 1:
-				    
-				    // console.log("megali 3d");
-				    image.setAttribute('src','');
-				    
-				    break;
-
-				  case 2:
-				  // Add more cases as needed
-				  	image.setAttribute('src','#c1');
-				  	break;
-
-				  case 3:
-				    image.setAttribute('src','#c2');
-
-				    break;
-
-				  case 4:
-				    image.setAttribute('src','#c3');
-
-				    break;
-
-				}
-			}
-
-
-		});
-
-
-
-		kid.addEventListener('mouseleave', function(){
-			// console.log("Vgika apo to element");
-			image.setAttribute('position','0 100 0');
-			// parent.setAttribute('position','0 100 0');
-
-		})
-	}
-});
 
 
 AFRAME.registerComponent('grid-manager', {
@@ -333,8 +167,6 @@ AFRAME.registerComponent('grid-manager', {
 
           //   }
           // });
-
-
 
           
 
@@ -439,56 +271,6 @@ AFRAME.registerComponent('grid-manager', {
 
 
 
-function importExhibit(entity){
-	let exhibit = document.createElement('a-entity');
-	let container = document.querySelectorAll("a-gui-flex-container");
-	let kid = entity;
-	const kidArray = Array.from(container[2].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
-	let index = kidArray.indexOf(kid);
-
-	console.log(index);
-
-	removeChild();	
-					exhibit.setAttribute('position', data.exhibits[index].position);
-					exhibit.setAttribute('rotation', "-90 0 0"); 
-
-					if(page==2)
-						index+= 5;
-
-					exhibit.setAttribute('scale',data.exhibits[index].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
-					exhibit.setAttribute('id',index+"."+index);
-					exhibit.setAttribute('class','clickable exhibit');
-					exhibit.setAttribute("show-panel","");
-					exhibit.setAttribute("pop-up","");
-					tile.appendChild(exhibit);
-					if(index!=0)
-					exhibit.setAttribute('gltf-model',`url(${data.exhibits[index].pathfile})`);
-					// else
-					// 	exhibit.remove(); //Einai to idio me to "exhibit.remove();"
-					storeData();
-					// console.log(exhibit);
-					// this.exhibit = exhibit;
-
-
-	function storeData(){
-
-	  $.ajax({
-	  url: "sql.php",
-	  method: "POST",
-	  data: { id:tile.id, exhibit:data.exhibits[index].id, action:"store"},
-	  success: function(response) {
-	    console.log("Selection stored successfully.");
-	    // console.log(id);
-	    // console.log(exhibit);
-	   	//console.log(response);
-	  },
-	  		error: function(xhr, status, error) {
-	    	console.log("An error occurred: " + error);
-	  		}
-		});
-	}
-}
-
 	function retrieveData(){
 		$.ajax({
 			url:"sql.php",
@@ -558,68 +340,6 @@ function importExhibit(entity){
 	}
 
 
-function importBase(entity){
-	let base = document.createElement('a-entity');
-
-	let container = document.querySelectorAll("a-gui-flex-container");
-	let kid = entity;
-	const kidArray = Array.from(container[0].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
-	let index = kidArray.indexOf(kid);
-	// console.log(kid);
-	console.log(index);
-
-
-	// console.log(kidArray);
-
-	removeChild();
-
-					base.setAttribute('position', "0 0 0" );
-					base.setAttribute('rotation', "-90 0 0");
-
-					base.setAttribute('scale',data.stands[index].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
-					base.setAttribute('id',"test");
-					// base.setAttribute('class','clickable');
-					
-					if(index!=0)
-					base.setAttribute('gltf-model',`url(${data.stands[index].pathfile})`);
-
-					tile.appendChild(base);
-
-
-					// storeDataBase();
-
-
-	function storeDataBase(){
-	  $.ajax({
-
-	  url: "sql.php",
-	  method: "POST",
-	  data: { id:tile.id, base:data.stands[index].id, action:"storebase"},
-	  success: function(response) {
-	    console.log("Selection stored successfully.");
-	    // console.log(id);
-	    // console.log(exhibit);
-	   	//console.log(response);
-	  },
-	  		error: function(xhr, status, error) {
-	    	console.log("An error occurred: " + error);
-	  		}
-		});
-	}
-}
-function deleteDB(){
-	  $.ajax({
-	  url: "sql.php",
-	  method: "POST",
-	  data: {action:"delete"},
-	  success: function(response) {
-	    console.log("Database Deleted successfully.");
-	  },
-	  		error: function(xhr, status, error) {
-	    	console.log("An error occurred: " + error);
-	  		}
-		});
-}
 
 	function popUpValue2(id,centerPos, centerRot){
 		const popup = document.querySelector('#frame');
@@ -671,9 +391,7 @@ function deleteDB(){
 
 </script>
 
-<!-- <body onload="loadExhibit()"></body>  -->
 
-	
 	
 
  <a-scene devicecheck id="scene">
@@ -682,33 +400,13 @@ function deleteDB(){
 <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" ></a-entity>
 
 <a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0" visible="false"></a-entity>
+				
 				<a-assets>
 
-					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
-					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items>
-					<a-asset-items id="home" src="home_test.gltf"></a-asset-items>
-					<a-asset-items id="home-obj" src="models/room/obj/room.obj"></a-asset-items>
-					<a-asset-items id="home-mtl" src="models/room/obj/room.mtl"></a-asset-items>
 					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
+					
 					<a-asset-items id="test02" src="Building/test01/test02.gltf"></a-asset-items>
-					<img id="diffuseMap" src="Building/test01/Concrete024_1K-JPG_Color.jpg"></img>
 
-					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
-<!-- 					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
-					<a-asset-items id="table2" src="table2/scene.gltf"></a-asset-items>
-					<a-asset-items id="table3" src="table3/scene.gltf"></a-asset-items> -->
-
-					<a-asset-items id="base1" src="models/3dbases/base3/base3.gltf"></a-asset-items>
-					<a-asset-items id="base2" src="models/3dbases/base2/base2.gltf"></a-asset-items>
-					<a-asset-items id="base3" src="models/3dbases/base3/base3.gltf"></a-asset-items>
-
-					<img id="gradient" src="images/lightyellow.jpg"></img>
-					<img id="image1" src="images/emptyBase.png"></img>
-					<img id="image2" src="images/base2.png"></img>
-					<img id="image3" src="images/base3.png"></img>
-					<img id="c1" src="images/c1.png"></img>
-					<img id="c2" src="images/c2.png"></img>
-					<img id="c3" src="images/c3.png"></img>
 					<img id="close" src="images/exit.png"></img>
 
 
