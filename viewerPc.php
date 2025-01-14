@@ -690,10 +690,8 @@ function deleteDB(){
 					<a-asset-items id="home-obj" src="models/room/obj/room.obj"></a-asset-items>
 					<a-asset-items id="home-mtl" src="models/room/obj/room.mtl"></a-asset-items>
 					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
+					<a-asset-items id="test02" src="Building/test01/test02.gltf"></a-asset-items>
 					<img id="diffuseMap" src="Building/test01/Concrete024_1K-JPG_Color.jpg"></img>
-
-					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
-					<a-asset-items id="test01-mtl" src="Building/test01/test01.mtl"></a-asset-items>
 
 					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
 <!-- 					<a-asset-items id="table1" src="table1/scene.gltf"></a-asset-items>
@@ -724,7 +722,7 @@ function deleteDB(){
 <a-entity scale="0.5 0.5 0.5" position="0 .5 0">
 
 <a-entity >
-<a-entity gltf-model="#test01" scale="2 2 2" position="-.9 -0.5 -8.7" rotation="0 -90 0"></a-entity>
+<a-entity gltf-model="#test02" scale="2 2 2" position="-.9 -0.5 -8.7" rotation="0 -90 0"></a-entity>
 
 </a-entity>
 

@@ -759,6 +759,7 @@ function deleteDB(){
 					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items> -->
 					
 					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
+					<a-asset-items id="test02" src="Building/test01/test02.gltf"></a-asset-items>
 
 					<!-- Δοκιμή με Obj & Mtl 3d files -->
 <!-- 					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
@@ -806,13 +807,13 @@ function deleteDB(){
 <a-entity scale="0.5 0.5 0.5" position="0 .5 0">
 
 <a-entity >
-<a-entity gltf-model="#test01" scale="2 2 2" position="-.9 -0.5 -8.7" rotation="0 -90 0"></a-entity>
+<a-entity gltf-model="#test02" scale="2 2 2" position="-.9 -0.5 -8.7" rotation="0 -90 0"></a-entity>
 </a-entity>
 
 
-<a-entity>
+<!-- <a-entity>
 	<a-entity obj-model="obj: #test01-obj; mtl: #test01-mtl"></a-entity>
-</a-entity>
+</a-entity> -->
 
 <a-entity  grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
 
