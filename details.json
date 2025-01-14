@@ -119,13 +119,13 @@
 					},
 					{
 					"id":1,
-					"pathfile":"models/3dbases/base2/base2.gltf",
+					"pathfile":"3dbases/base2/base2.gltf",
 					"scale":"2 1.5 2",
 					"name":"Base2"
 					},
 					{
 					"id":2,
-					"pathfile":"models/3dbases/base3/base3.gltf",
+					"pathfile":"3dbases/base3/base3.gltf",
 					"name":"Base3",
 					"scale":"0.75 0.85 0.75"
 					}
