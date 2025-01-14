@@ -31,67 +31,17 @@ if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
 
 </head>
 
-<style>
-	#myDiv{
-
-  position: absolute;
-/*  background-color: black;*/
-  top:50px;
-  z-index: 5;
-  color: black;
-/*  text-align: center;*/
-	}
-	ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-	}
-	h4{
-	display:table;
-	padding: 5px;
-  margin: 5px 0;
-  background-color: #FA6B4F;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, .7);
-	}
-	li{
-	display:list-item;
-	padding: 2px;
-  margin: 5px 0;
-  background-color: #F3C5BC60;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, .7);
-	}
-</style>
 
 <script>
 	fetchContent(); // LOAD JSON FILE !!
 	retrieveData();
 	
 
-	let thesi;
-	const worldPosition = new THREE.Vector3();
 	let tile;
 	let counter=0;
 	let transparent = 100;
-	// insertTilesToDatabase();
-	let displayPos;
 
-// AFRAME.registerComponent('pop-up',{
-// 	init:function(){
-// 		let exhibit = this.el;
-		
-// 		exhibit.addEventListener('click', (event) => {
 
-// 			if(exhibit.classList.contains('exhibit')) {
-				
-// 				const popup = document.querySelector('#popup');
-// 				popup.setAttribute();
-
-// 			}
-// 		});
-// 	}
-// });
 
 // Detect user platform and serve the corresponding web page
 AFRAME.registerComponent('devicecheck', {
@@ -785,12 +735,56 @@ AFRAME.registerComponent('spatial-occlusion', {
     }
   });
 
+
+function popUpValue2(id,centerPos, centerRot){
+		const popup = document.querySelector('#frame');
+		let infoText = document.querySelector('#infoText');
+		const popupClose = document.querySelector('#exitbutton');
+		const panel = document.querySelector('#panel');
+		const spotLight = document.querySelector('#spotlight');
+
+		infoText.setAttribute("value",data.exhibits[id].description);
+		infoText.setAttribute('color','black');
+		
+
+		if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
+		 	panelExhibit.setAttribute('visible',false);
+		  panelExhibit.setAttribute('position','0 100 0');
+		  panelBase.setAttribute('visible',false);
+		  panelBase.setAttribute('position','0 100 0');
+		 }
+
+		if(!popup.getAttribute("visible")){
+			popup.setAttribute("visible",true);
+			popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
+			popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
+
+			spotLight.setAttribute("visible", true);
+
+
+
+		  const previousSelectedTile = document.querySelector('.gridtile.selected');
+		  
+		  if(previousSelectedTile){
+
+		    if(previousSelectedTile.classList.contains('floor')){
+		    	previousSelectedTile.setAttribute('color', '#ECDFCC');
+		    }
+		    else if(previousSelectedTile.classList.contains('wall')) {
+		    	previousSelectedTile.setAttribute('color', '#697565');
+		    }
+
+				previousSelectedTile.classList.remove('selected');
+
+			}
+		}
+		else{
+			popup.setAttribute("visible",false);
+			spotLight.setAttribute("visible",false);
+		}
+	}
+
 </script>
-
-<!-- <body onload="loadExhibit()"></body>  -->
-
-	
-	<div id="myDiv"></div> <!--ΑΝ ΜΕΤΑΚΙΝΗΣΩ ΤΟ DIV ΔΕΝ ΘΑ ΛΕΙΤΟΥΡΓΕΙ ΣΩΣΤΑ Η ΕΜΦΑΝΙΣΗ ΤΗΣ ΛΙΣΤΑΣ -->
 	
 
  <a-scene devicecheck id="scene">
@@ -802,25 +796,11 @@ AFRAME.registerComponent('spatial-occlusion', {
 <a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0" visible="false"></a-entity>
 
 				<a-assets>
-					<!-- Υπάρχουν διαφορετικές εκδόσεις του 3d κτιρίου. Τώρα χρησιμοποιείται το id="testo01"  -->
-					<a-asset-items id="building" src="Building/building.gltf"></a-asset-items>
+					<!-- Υπάρχουν διαφορετικές εκδόσεις του 3d κτιρίου. Τώρα χρησιμοποιείται το id="test02"  -->
 
-					<a-asset-items id="newbuilding" src="Building/newBuilding.gltf"></a-asset-items>
 					
 					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
-
-					<!-- Δοκιμή με Obj & Mtl 3d files -->
-					<a-asset-items id="test01-obj" src="Building/test01/test01.obj"></a-asset-items>
-					<a-asset-items id="test01-mtl" src="Building/test01/test01.mtl"></a-asset-items>
-					<!-- ...  -->
-
-
-					<a-asset-items id="statue" src="StatueBases.obj"></a-asset-items>
-
-
-<!-- 			<a-asset-items id="base1" src="models/3dbases/base3/base3.gltf"></a-asset-items>
-					<a-asset-items id="base2" src="models/3dbases/base2/base2.gltf"></a-asset-items>
-					<a-asset-items id="base3" src="models/3dbases/base3/base3.gltf"></a-asset-items> -->
+										<a-asset-items id="test02" src="Building/test01/test02.gltf"></a-asset-items>
 
 
 					<!-- Παλιότερες εικόνες εκθεμάτων 
@@ -924,56 +904,6 @@ AFRAME.registerComponent('spatial-occlusion', {
 </a-entity>
 
 
-<script>
-	function popUpValue2(id,centerPos, centerRot){
-		const popup = document.querySelector('#frame');
-		let infoText = document.querySelector('#infoText');
-		const popupClose = document.querySelector('#exitbutton');
-		const panel = document.querySelector('#panel');
-		const spotLight = document.querySelector('#spotlight');
-
-		infoText.setAttribute("value",data.exhibits[id].description);
-		infoText.setAttribute('color','black');
-		
-
-		if(panelBase.getAttribute("visible")||panelExhibit.getAttribute("visible")){
-		 	panelExhibit.setAttribute('visible',false);
-		  panelExhibit.setAttribute('position','0 100 0');
-		  panelBase.setAttribute('visible',false);
-		  panelBase.setAttribute('position','0 100 0');
-		 }
-
-		if(!popup.getAttribute("visible")){
-			popup.setAttribute("visible",true);
-			popup.setAttribute("position", centerPos.x + ' ' + (centerPos.y + 0.2 ) + ' ' + centerPos.z);
-			popup.setAttribute("rotation", centerRot.x + ' ' + centerRot.y + ' ' + centerRot.z);
-
-			spotLight.setAttribute("visible", true);
-
-
-
-		  const previousSelectedTile = document.querySelector('.gridtile.selected');
-		  
-		  if(previousSelectedTile){
-
-		    if(previousSelectedTile.classList.contains('floor')){
-		    	previousSelectedTile.setAttribute('color', '#ECDFCC');
-		    }
-		    else if(previousSelectedTile.classList.contains('wall')) {
-		    	previousSelectedTile.setAttribute('color', '#697565');
-		    }
-
-				previousSelectedTile.classList.remove('selected');
-
-			}
-		}
-		else{
-			popup.setAttribute("visible",false);
-			spotLight.setAttribute("visible",false);
-		}
-	}
-
-</script>
 
 
 <!-- TO BOX auto kanei Delete ta dedomena apo tin Vasi Dedomenwn -->
@@ -1186,11 +1116,6 @@ AFRAME.registerComponent('spatial-occlusion', {
 
 
 
-<script>
-
-
-
-</script>
 </body>
 </html>
 
