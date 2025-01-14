@@ -976,8 +976,8 @@ AFRAME.registerComponent('spatial-occlusion', {
 </script>
 
 
-
-<a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -11" color="" material="src:#gradient"></a-box>
+<!-- TO BOX auto kanei Delete ta dedomena apo tin Vasi Dedomenwn -->
+<!-- <a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -11" color="" material="src:#gradient"></a-box> -->
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 
