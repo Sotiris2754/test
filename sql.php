@@ -9,19 +9,6 @@ $database = "v-corfu";
 $conn = new mysqli($servername,$username,$password,$database);
 
 
-// Check if bases table exists
-
-// $tableExists = $db->querySingle("SELECT name FROM sqlite_master WHERE type='table' AND name='bases'");
-
-// Create a table called "bases" with 3 columns
-// if(!$tableExists2){
-// $db->exec('CREATE TABLE apps_collab_exh (id INTEGER PRIMARY KEY, exhibit NUMBER)');
-// $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
-// $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
-// $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
-// $db->exec("INSERT INTO bases (exhibit) VALUES (null)");
-// }
-
 
 if(isset($_POST['action']) && $_POST['action'] == "delete"){
 
@@ -108,13 +95,6 @@ $conn->close();
 }
 
 
-// if(ISSET($_POST['action']) && $_POST['action']=="remove"){
-
-// $conn->query("DELETE FROM apps_collab_exh WHERE id in (SELECT MAX(id) as id FROM apps_collab_exh ) ");
-// $conn->query("ALTER TABLE apps_collab_exh AUTO_INCREMENT = 1 ");
-
-// }
-
 if(isset($_POST['action']) && $_POST['action'] == "retrieve"){
 $data = array();
 $sql = "SELECT * FROM apps_collab_exh";
@@ -132,62 +112,5 @@ echo $json;
 
 }
 
-
-// if(ISSET($_POST['action']) && $_POST['action'] == "view"){
-    
-//     $data = array();
-//     $sql = "SELECT exhibit FROM apps_collab_exh";
-//     $res = $conn->query($sql);
-
-//     $resData = $res->fetch_all(MYSQLI_ASSOC);
-
-
-
-//     foreach ($resData as $key => $value) {
-//         $data[]=$value['exhibit'];
-//     }   
-
-  
-//     $json = json_encode($data);
-//     echo $json;         
-// }
-
-
-
-// if(ISSET($_POST['action']) && $_POST['action'] == 'count'){
-//     $result = $db->query('SELECT COUNT(*) AS numInserts FROM bases');
-//     $row = $result->fetchArray(SQLITE3_ASSOC);
-//     $inserts = $row['numInserts'];
-
-//     echo $inserts;
-// }
-
-
-
-
-
-//Εμφάνιση του database
-// $results = $db->query('SELECT * FROM bases');
-// while ($row = $results->fetchArray()) {
-//     echo $row['id'] . ': ' . $row['base'] . ', Έκθεμα:(' . $row['exhibit'] . ') ';
-// }
-
-//ΔΕΝ ΞΕΡΩ ΑΝ ΧΡΕΙΑΖΕΤΑΙ ΑΥΤΟ.
-
-
-//ΠΡΟΗΓΟΥΜΕΝΗ ΜΟΡΦΗ ΚΩΔΙΚΑ ΓΙΑ ΕΙΣΑΓΩΓΗ ROW ΣΤΗΝ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ
-
-//  if(ISSET($_POST['action'])&& $_POST['action']=="store"){
-
-// $colorBase = $_POST['colorBase'];
-// $exhibit = $_POST['exhibit'];
-
-// $stmt = $db->prepare("INSERT INTO bases (base, exhibit) VALUES (:colorBase, :exhibit)");
-// $stmt->bindParam(':colorBase', $colorBase);
-// $stmt->bindParam(':exhibit', $exhibit);
-// $stmt->execute();
-// echo $colorBase;
-// echo $exhibit;
-// }
 ?>
 
