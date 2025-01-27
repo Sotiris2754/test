@@ -23,7 +23,7 @@ $conn = new mysqli($servername,$username,$password,$database);
 // }
 
 
-if(ISSET($_POST['action']) && $_POST['action'] == "delete"){
+if(isset($_POST['action']) && $_POST['action'] == "delete"){
 
 $sql = "DELETE FROM `apps_collab_exh`";
 $stmt = $conn->query($sql);
@@ -34,7 +34,7 @@ $conn->close();
 
 
 
-if(ISSET($_POST['action'])&& $_POST['action']=="storebase"){
+if(isset($_POST['action'])&& $_POST['action']=="storebase"){
     $id = $_POST['id'];
     $base = $_POST['base'];
     // var_dump($id);
@@ -42,20 +42,20 @@ if(ISSET($_POST['action'])&& $_POST['action']=="storebase"){
     // exit();
 
 
-    $checkSql = "SELECT * FROM apps_collab_exh WHERE id = $id";
+    $checkSql = "SELECT * FROM apps_collab_exh WHERE id = ".$id;
     $result = $conn->query($checkSql);
 
     if ($result->num_rows > 0) {
             echo "A row with id $id already exists.";
         }
     else{
-        $insertSql = "INSERT INTO apps_collab_exh SET id = $id";
+        $insertSql = "INSERT INTO apps_collab_exh SET id = ".$id;
         $conn->query($insertSql);
         // var_dump($insertSql);
     }
 
     // $sql = "UPDATE apps_collab_exh SET base = '".$base."' WHERE id = $id";
-    $sql = "UPDATE apps_collab_exh SET base = $base WHERE id = $id";
+    $sql = "UPDATE apps_collab_exh SET base = ".$base." WHERE id = ".$id;
     // var_dump($sql);
     $stmt = $conn->query($sql);
     $stmt->close();
@@ -63,25 +63,25 @@ if(ISSET($_POST['action'])&& $_POST['action']=="storebase"){
 }
 
 
-if(ISSET($_POST['action'])&& $_POST['action']=="store"){
+if(isset($_POST['action'])&& $_POST['action']=="store"){
 
 $id = $_POST['id'];
 $exhibit = $_POST['exhibit'];
 
 // Prepare the INSERT statement
-$checkSql = "SELECT * FROM apps_collab_exh WHERE id = $id";
+$checkSql = "SELECT * FROM apps_collab_exh WHERE id = ".$id;
 $result = $conn->query($checkSql);
 
 if ($result->num_rows > 0) {
         echo "A row with id $id already exists.";
     }
 else{
-    $insertSql = "INSERT INTO apps_collab_exh (id) VALUES ($id)";
+    $insertSql = "INSERT INTO apps_collab_exh (id) VALUES (".$id.")";
     $conn->query($insertSql);
 }
 
 
-$sql = "UPDATE apps_collab_exh SET exhibit = $exhibit WHERE id = $id";
+$sql = "UPDATE apps_collab_exh SET exhibit = ".$exhibit." WHERE id = ".$id;
 
 // Create a prepared statement
 $stmt = $conn->prepare($sql);
@@ -115,7 +115,7 @@ $conn->close();
 
 // }
 
-if(ISSET($_POST['action']) && $_POST['action'] == "retrieve"){
+if(isset($_POST['action']) && $_POST['action'] == "retrieve"){
 $data = array();
 $sql = "SELECT * FROM apps_collab_exh";
 $res = $conn->query($sql);
