@@ -28,7 +28,11 @@ if(isset($_POST['action'])&& $_POST['action']=="storebase"){
     // var_dump($base);
     // exit();
 
-
+if($base==0){
+$test = "DELETE FROM `apps_collab_exh` WHERE id=".$id;
+$stmt = $conn->query($test);
+$stmt->close();
+}
     $checkSql = "SELECT * FROM apps_collab_exh WHERE id = ".$id;
     $result = $conn->query($checkSql);
 
@@ -54,6 +58,12 @@ if(isset($_POST['action'])&& $_POST['action']=="store"){
 
 $id = $_POST['id'];
 $exhibit = $_POST['exhibit'];
+
+if($exhibit==0){
+$test = "DELETE FROM `apps_collab_exh` WHERE id=".$id;
+$stmt = $conn->query($test);
+$stmt->close();
+}
 
 // Prepare the INSERT statement
 $checkSql = "SELECT * FROM apps_collab_exh WHERE id = ".$id;

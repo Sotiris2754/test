@@ -492,6 +492,7 @@ function importExhibit(entity){
 	let exhibit = document.createElement('a-entity');
 	let container = document.querySelectorAll("a-gui-flex-container");
 	let kid = entity;
+	// console.log(kid);
 	const kidArray = Array.from(container[2].children); // PROSOXI EDW ME POIO FLEX CONTAINER FTIAXNW TO ARRAY
 	let index = kidArray.indexOf(kid);
 
@@ -500,6 +501,8 @@ function importExhibit(entity){
 	removeChild();
 						if(page==2)
 						index+= 5;
+
+					if(index!=0){
 					exhibit.setAttribute('position', data.exhibits[index].position);
 					exhibit.setAttribute('rotation', "-90 0 0"); 
 
@@ -512,7 +515,8 @@ function importExhibit(entity){
 					// exhibit.setAttribute("show-panel","");
 					exhibit.setAttribute("pop-up","");
 					tile.appendChild(exhibit);
-					if(index!=0)
+					// if(index!=0)
+					// console.log("den einai 0");
 					// exhibit.setAttribute('gltf-model',`url(${data.exhibits[index].pathfile})`);
 					exhibit.setAttribute('geometry',{
 						primitive: data.exhibits[index].shape,
@@ -526,9 +530,9 @@ function importExhibit(entity){
 						detail: data.exhibits[index].detail
 					});
 					exhibit.setAttribute('material',{color: data.exhibits[index].color});
-					console.log(exhibit);
-					// else
-					// 	exhibit.remove(); //Einai to idio me to "exhibit.remove();"
+				}
+					else
+						console.log("den exw exhibit"); 
 					storeData();
 
 
@@ -561,7 +565,7 @@ function importExhibit(entity){
 				
 	    		console.log("Success Response");
 	    		var json = JSON.parse(res);
-	    		// console.log(json);
+	    		console.log(json);
 				if (data == null)
 				{
 					console.log("2nd Not ready yet!");
@@ -578,7 +582,8 @@ function importExhibit(entity){
 
 					
 					if(json[i].exhibit!= null){
-							var exhibit = document.createElement('a-entity');		
+							var exhibit = document.createElement('a-entity');	
+							// console.log(data.exhibits[json[i].exhibit].id);	
 							exhibit.setAttribute('id',data.exhibits[json[i].exhibit].id+"."+data.exhibits[json[i].exhibit].id);
 							exhibit.setAttribute('scale',data.exhibits[json[i].exhibit].scale);
 							exhibit.setAttribute('position', data.exhibits[json[i].exhibit].position );
@@ -586,8 +591,7 @@ function importExhibit(entity){
 							exhibit.setAttribute('class','clickable exhibit');
 							exhibit.setAttribute("pop-up","");
 							testId.appendChild(exhibit);
-							if(json[i].exhibit!=0)
-								// 
+							if(json[i].exhibit!=0) 
 					exhibit.setAttribute('geometry',{
 						primitive: data.exhibits[json[i].exhibit].shape,
 						width:data.exhibits[json[i].exhibit].width,
@@ -599,11 +603,14 @@ function importExhibit(entity){
 						radiusTubular:data.exhibits[json[i].exhibit].radiusTubular,
 						detail: data.exhibits[json[i].exhibit].detail
 					});
+				// else console.log("Exei 0");
+				
 				exhibit.setAttribute('material',{color: data.exhibits[json[i].exhibit].color});
 							// else
 							// 	exhibit.remove();	
 					}
 					if(json[i].base!=null){
+						// console.log("Exw arithmo ektos tou midenos");
 							var base = document.createElement('a-entity');
 							base.setAttribute('position', "0 0 0" );
 							base.setAttribute('rotation', "-90 0 0");
@@ -636,6 +643,8 @@ function importBase(entity){
 
 	removeChild();
 
+
+				if(index!0){
 					base.setAttribute('position', "0 0 0" );
 					base.setAttribute('rotation', "-90 0 0");
 
@@ -643,10 +652,13 @@ function importBase(entity){
 					base.setAttribute('id',"test");
 					// base.setAttribute('class','clickable');
 					
-					if(index!=0)
+					// if(index!=0)
 					base.setAttribute('gltf-model',`url(${data.stands[index].pathfile})`);
 
 					tile.appendChild(base);
+				}
+				else
+					console.log("den exw base"); 
 
 
 					storeDataBase();
