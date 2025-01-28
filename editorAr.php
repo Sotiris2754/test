@@ -907,7 +907,7 @@ function popUpValue2(id,centerPos, centerRot){
 
 
 <!-- TO BOX auto kanei Delete ta dedomena apo tin Vasi Dedomenwn -->
-<a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -11" color="red" material="src:#gradient"></a-box>
+<!-- <a-box id="box" class="clickable" onclick="deleteDB()" position="-0.25 .75 -11" color="red" material="src:#gradient"></a-box> -->
 <!-- <a-sphere id="sphere" color="red" position="0 0 -5"></a-sphere> -->
 
 
