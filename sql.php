@@ -32,7 +32,9 @@ if($base==0){
 $test = "DELETE FROM `apps_collab_exh` WHERE id=".$id;
 $stmt = $conn->query($test);
 $stmt->close();
+$conn->close();
 }
+
     $checkSql = "SELECT * FROM apps_collab_exh WHERE id = ".$id;
     $result = $conn->query($checkSql);
 
@@ -63,6 +65,7 @@ if($exhibit==0){
 $test = "DELETE FROM `apps_collab_exh` WHERE id=".$id;
 $stmt = $conn->query($test);
 $stmt->close();
+$conn->close();
 }
 
 // Prepare the INSERT statement

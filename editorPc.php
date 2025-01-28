@@ -33,9 +33,11 @@ if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
 
 
 <script>
-	fetchContent(); // LOAD JSON FILE !!
-	retrieveData();
-	
+	$(window).on("load", function(){
+		fetchContent().then(()=>{retrieveData()}); // LOAD JSON FILE !!
+});
+
+
 
 	let tile;
 	let counter=0;
@@ -566,19 +568,12 @@ function importExhibit(entity){
 	    		console.log("Success Response");
 	    		var json = JSON.parse(res);
 	    		console.log(json);
-				if (data == null)
-				{
-					console.log("2nd Not ready yet!");
-					setTimeout(retrieveData(),1);
-				}
-				else{
+
 					console.log("Exhibits have been loaded successfully");
 		    	for (var i=0; i<json.length; i++){
 		    		let testId = document.getElementById(json[i].id);
-		    		// console.log(testId);
-		    	// // count = json.length;
-		    	// console.log(data.exhibits[i].id +" " +data.exhibits[i].pathfile + "\n");
 
+		    		// console.log("test",testId);
 
 					
 					if(json[i].exhibit!= null){
@@ -591,7 +586,7 @@ function importExhibit(entity){
 							exhibit.setAttribute('class','clickable exhibit');
 							exhibit.setAttribute("pop-up","");
 							testId.appendChild(exhibit);
-							if(json[i].exhibit!=0) 
+							// if(json[i].exhibit!=0) 
 					exhibit.setAttribute('geometry',{
 						primitive: data.exhibits[json[i].exhibit].shape,
 						width:data.exhibits[json[i].exhibit].width,
@@ -616,12 +611,11 @@ function importExhibit(entity){
 							base.setAttribute('rotation', "-90 0 0");
 							base.setAttribute('scale',data.stands[json[i].base].scale); // αλλαγή του scale διότι το 2ο έκθεμα ήταν τεράστιο.
 							base.setAttribute('id',"test");
-							if(json[i].base!=0)
+							// if(json[i].base!=0)
 							base.setAttribute('gltf-model',`url(${data.stands[json[i].base].pathfile})`);
 							testId.appendChild(base);
 					}
 	    		 }
-	  		}
 	  	}
 		
 		});
