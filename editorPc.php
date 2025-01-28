@@ -644,7 +644,7 @@ function importBase(entity){
 	removeChild();
 
 
-				if(index!0){
+				if(index!=0){
 					base.setAttribute('position', "0 0 0" );
 					base.setAttribute('rotation', "-90 0 0");
 
