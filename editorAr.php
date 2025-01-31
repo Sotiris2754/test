@@ -795,7 +795,7 @@ function popUpValue2(id,centerPos, centerRot){
 </script>
 	
 
- <a-scene devicecheck id="scene">
+ <a-scene  devicecheck id="scene">
 
 
 <a-entity light="color: #BBB; type: ambient"></a-entity>

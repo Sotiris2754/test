@@ -15,12 +15,12 @@
 					"id":1,
 					"title":"A box",
 					"shape":"box",
-					"width":"0.6",
-					"height":"0.6",
-					"depth":"0.6",
+					"width":"0.3",
+					"height":"0.3",
+					"depth":"0.3",
 					"color":"blue",
 					"description":"A blue box discovered in 1989\n It's size is 0.6m x 0.6m x 0.6m",
-					"position":"0 0.5 -0.45",
+					"position":"0 0.25 -0.2",
 					"rotation":"0 180 0"
 					
 					},
@@ -28,9 +28,9 @@
 					  "id": 2,
 					  "title":"A sphere",
 					  "shape": "sphere",
-					  "position":"0 0.5 -0.5",
+					  "position":"0 0.25 -0.2",
 					  "color": "#33FF57",
-					  "radius":"0.4",
+					  "radius":"0.2",
 					  "description":"A neon green sphere discovered \nin 2020. It's radius is 0.4m"
 					},
 
@@ -38,9 +38,9 @@
 				    "id": 3,
 				    "title":"A cylinder",
 				    "shape": "cylinder",
-				    "position":"0 0.5 -0.4",
+				    "position":"0 0.25 -0.2",
 				    "color": "#3357FF",
-				    "radius": "1",
+				    "radius": "0.5",
 				    "height": "1",
 				    "scale":"0.4 0.4 0.4",
 				    "description":"A blue cylinder discovered in 2015\n It's radius is 1 and scaled by\n 0.4 on every axis"
@@ -49,40 +49,40 @@
 				    "id": 4,
 				    "title":"A plane",
 				    "shape": "plane",
-				    "position":"0 0.5 -0.65",
+				    "position":"0 0.25 -0.25",
 				    "color": "#FF33A1",
-				    "width": "1",
-				    "height": "1",
+				    "width": "0.4",
+				    "height": "0.4",
 				    "description":"A simple pink plane with\n dimensions 1m by 1m  "
 				  },
 				  {
 				    "id": 5,
 				    "title":"A cone",
 				    "shape": "cone",
-				    "position":"0 0.5 -0.61",
+				    "position":"0 0.25 -0.2",
 				    "color": "#A133FF",
-				    "radiusBottom": "0.4",
+				    "radiusBottom": "0.1",
 				    "radiusTop": "0",
-				    "height": "1",
+				    "height": "0.4",
 				    "description":"A purple cone pointing on the roof.\n Its radius is 0.4 and has height of 1m"
 				  },
 				  {
 				    "id": 6,
 				    "title":"A torus",
 				    "shape": "torus",
-				    "position":"0 0.5 -0.65",
+				    "position":"0 0.25 -0.25",
 				    "color": "#33FFA1",
-				    "radius": "0.4",
-				    "radiusTubular": "0.05",
+				    "radius": "0.2",
+				    "radiusTubular": "0.02",
 				    "description":"A ciel torus that looks like a donut.\n Radius:0.4m\nTubular radius:0.05"
 				  },
 				  {
 				    "id": 7,
 				    "title":"A tetra\nhedron",
 				    "shape": "tetrahedron",
-				    "position":"0 0.5 -0.5",
+				    "position":"0 0.25 -0.2",
 				    "color": "#FF5733",
-				    "radius": "0.5",
+				    "radius": "0.2",
 				    "detail": "0",
 				    "description":"3D representation of a Tetrahedron.\nOne of the 5 basic platonic shapes."
 				  },
@@ -90,9 +90,9 @@
 				    "id": 8,
 				    "title":"A dodeca\nhedron",
 				    "shape": "dodecahedron",
-				    "position":"0 0.5 -0.5",
+				    "position":"0 0.25 -0.2",
 				    "color": "#33A1FF",
-				    "radius": "0.5",
+				    "radius": "0.2",
 				    "detail": "0",
 				    "description":"This is a Dodecahedron.\nOne of the 5 basic platonic shapes."
 				  },
@@ -100,9 +100,9 @@
 				    "id": 9,
 				    "title":"A octa\nhedronox",
 				    "shape": "octahedron",
-				    "position":"0 0.5 -0.65",
+				    "position":"0 0.25 -0.2",
 				    "color": "#FF33A1",
-				    "radius": "0.5",
+				    "radius": "0.2",
 				    "detail": "0",
 				    "description":"This is an Octahedron.\nOne of the 5 basic platonic shapes."
 				  }
@@ -120,14 +120,14 @@
 					{
 					"id":1,
 					"pathfile":"3dbases/base2/base2.gltf",
-					"scale":"2 1.5 2",
+					"scale":"1 0.85 1",
 					"name":"Base2"
 					},
 					{
 					"id":2,
 					"pathfile":"3dbases/base3/base3.gltf",
 					"name":"Base3",
-					"scale":"0.75 0.85 0.75"
+					"scale":"0.5 0.5 0.4"
 					}
 
 			]
