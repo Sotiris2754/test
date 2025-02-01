@@ -213,7 +213,10 @@ AFRAME.registerComponent('grid-manager', {
           walls: {type: 'array', default: []},
           depth: {type: 'number', default: 1},
           height: {type: 'number', default: 1},
-          pleura: {type: 'string', default: "wall"}
+          pleura: {type: 'string', default: "wall"},
+					columns: {type: 'number', default: 3},
+          centerPos: {type: 'vec3', default: {x:-0.8, y:1.6, z:0}},
+          centerRot: {type: 'vec3', default: { x:0, y:90, z:0}}
           
         },
         init: function () {
@@ -224,6 +227,9 @@ AFRAME.registerComponent('grid-manager', {
           const depth = data.depth;
           const height = data.height;
           const pleura = data.pleura;
+          const columns = data.columns;
+          const centerPos = data.centerPos;
+          const centerRot = data.centerRot;
           
 
           this.tilesEnabled = true;
@@ -234,57 +240,57 @@ AFRAME.registerComponent('grid-manager', {
           // const columns = data.columns;
 
           const walls = [
-            { position: { x: -2.65, y: 0.45, z: -7 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:-0.9, y:1.6, z:-4.5 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
+            { position: { x: 0, y: 0.6, z: 0 }, rotation: { x: 90, y: 90, z: 0 }, depth:1.2, height:0.1, rows:1, pleura: "wall" },
 
-            { position: { x: -2.2, y: -0.5, z: -7 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:3, centerPos: { x:-0.9, y:1.6, z:-4.5 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
-
-
-              // Front wall
-            { position: { x: 1.8, y: 0.45, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:0.45, y:1.6, z:-4.5 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
-
-            { position: { x: 1.35, y: -0.5, z: -11 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:3, centerPos: { x:0.45, y:1.6, z:-4.5 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
+            { position: { x: 0.25, y: 0, z: 0 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:0.5, rows:1, pleura: "floor" },
 
 
-              // Back wall
-            { position: { x: 7, y: 0.45, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, depth:2, height:0.1, rows:1, columns:4, centerPos: { x:4.5, y:1.6, z:-2 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
+            //   // Front wall
+            // { position: { x: 1.8, y: 0.45, z: -11 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:3, centerPos: { x:0.45, y:1.6, z:-4.5 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
 
-            { position: { x: 7, y: -0.5, z: -4.4 }, rotation: { x: 90, y:90, z: 90 }, depth:0.1, height:1, rows:1, columns:4, centerPos: { x:4.5, y:1.6, z:-2 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
+            // { position: { x: 1.35, y: -0.5, z: -11 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:3, centerPos: { x:0.45, y:1.6, z:-4.5 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
 
 
-             // Left wall
-            { position: { x: 14, y: 0.45, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+            //   // Back wall
+            // { position: { x: 7, y: 0.45, z: -4.86 }, rotation: { x: 90, y: 90, z: 90 }, depth:2, height:0.1, rows:1, columns:4, centerPos: { x:4.5, y:1.6, z:-2 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
 
-            { position: { x: 14, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
+            // { position: { x: 7, y: -0.5, z: -4.4 }, rotation: { x: 90, y:90, z: 90 }, depth:0.1, height:1, rows:1, columns:4, centerPos: { x:4.5, y:1.6, z:-2 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
+
+
+            //  // Left wall
+            // { position: { x: 14, y: 0.45, z: -0.45 }, rotation: { x: 90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+
+            // { position: { x: 14, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
 
 
               
-            { position: { x: -9.7, y: 0.45, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:-4.5, y:1.6, z:-2.25 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
+            // { position: { x: -9.7, y: 0.45, z: -4.9 }, rotation: { x: 90, y: 0, z: 0 }, depth:2, height:0.1, rows:1, columns:2, centerPos: { x:-4.5, y:1.6, z:-2.25 }, centerRot:{ x:0, y:0, z:0}, pleura: "wall" },
 
-            { position: { x: -9.7, y: -0.5, z: -4.45 }, rotation: { x: 90, y:0, z: 0 }, depth:0.1, height:1, rows:1, columns:2, centerPos: { x:-4.5, y:1.6, z:-2.25 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
+            // { position: { x: -9.7, y: -0.5, z: -4.45 }, rotation: { x: 90, y:0, z: 0 }, depth:0.1, height:1, rows:1, columns:2, centerPos: { x:-4.5, y:1.6, z:-2.25 }, centerRot:{ x:0, y:0, z:0}, pleura: "floor" },
 
 
              
-            { position: { x: -4.5, y: 0.45, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:-4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+            // { position: { x: -4.5, y: 0.45, z: -0.45 }, rotation: { x:90, y: 180, z: 0 }, depth:2, height:0.1, rows:1, columns:6, centerPos: { x:-4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: -4.5, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:-4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
-
-
-            { position: { x: -16.55, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-7.75, y:1.6, z:-1.35 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
-
-            { position: { x: -16.05, y: -0.5, z: -2.65 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-7.75, y:1.6, z:-1.35 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
+            // { position: { x: -4.5, y: -0.5, z: -0.9 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:6, centerPos: { x:-4.5, y:1.6, z:-0.5 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" },
 
 
+            // { position: { x: -16.55, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 90, z: 0 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-7.75, y:1.6, z:-1.35 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
 
-
-            { position: { x: 15.3, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:7.15, y:1.6, z:-1.35 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
-
-            { position: { x: 14.9, y: -0.5, z: -2.65 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:7.15, y:1.6, z:-1.35 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
+            // { position: { x: -16.05, y: -0.5, z: -2.65 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-7.75, y:1.6, z:-1.35 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
 
 
 
-            { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
 
-            { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
+            // { position: { x: 15.3, y: 0.45, z: -2.65 }, rotation: { x: 90, y: 0, z: 90 }, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:7.15, y:1.6, z:-1.35 }, centerRot:{ x:0, y:-90, z:0}, pleura: "wall" },
+
+            // { position: { x: 14.9, y: -0.5, z: -2.65 }, rotation: { x: 90, y:0, z: 90 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:7.15, y:1.6, z:-1.35 }, centerRot:{ x:0, y:-90, z:0}, pleura: "floor" },
+
+
+
+            // { position: { x: -0.5, y: 0.45, z: 1.5 }, rotation: { x: 90, y: 180, z: 0}, depth:2, height:0.1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0 }, centerRot:{ x:0, y:180, z:0}, pleura: "wall" },
+
+            // { position: { x: -0.5, y: -0.5, z: 1 }, rotation: { x: 90, y:180, z: 0 }, depth:0.1, height:1, rows:1, columns:1, centerPos: { x:-0.25, y:1.6, z:0 }, centerRot:{ x:0, y:180, z:0}, pleura: "floor" }
 
 
           ];
@@ -292,7 +298,7 @@ AFRAME.registerComponent('grid-manager', {
 
 
           walls.forEach((wall, index) => {
-            this.createGrid(wall.position, wall.rotation, size, wall.depth, wall.height, gap, wall.rows, wall.columns, index, wall.centerPos, wall.centerRot, wall.pleura);
+            this.createGrid(wall.position, wall.rotation, size, wall.depth, wall.height, gap, wall.rows, columns, index, centerPos, centerRot, wall.pleura);
           });
 
 
@@ -840,58 +846,84 @@ function popUpValue2(id,centerPos, centerRot){
 
 <!-- <a-sky color="lightblue"></a-sky> -->
 
-<a-entity scale="0.5 0.5 0.5" position="0 .5 0">
+<!-- <a-entity scale="0.5 0.5 0.5" position="0 .5 0"> -->
 
 <!-- <a-entity >
-<a-entity gltf-model="#test01" scale="2 2 2" position="-.9 -0.5 -8.7" rotation="0 -90 0"></a-entity>
-</a-entity> -->
+<a-entity gltf-model="#test02" scale="1 1 1" position="0 0 0" rotation="0 -90 0"></a-entity>
+</a-entity>
+ -->
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
+            material="opacity: 0; transparent: true; color:red"
+            position="1.45 2 -3.1" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
             material="opacity: 0; transparent: true; color:red"
-            position="2 1.4 -10" class="invisible-wall"></a-entity>
+            position="-0.95 2 -3.1" class="invisible-wall"></a-entity>
 
-  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
+  <a-entity geometry="primitive: box; height: 4; width: 6; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="-2.9 1.4 -10" class="invisible-wall"></a-entity>
+            position="4.4 2 1.85" class="invisible-wall"></a-entity>
 
-  <a-entity geometry="primitive: box; height: 4; width: 14; depth: 0.1"
+  <a-entity geometry="primitive: box; height: 4; width: 6; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="9 1.4 -5" class="invisible-wall"></a-entity>
+            position="-3.9 2 1.85" class="invisible-wall"></a-entity>
 
-  <a-entity geometry="primitive: box; height: 4; width: 14.2; depth: 0.1"
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 2.5"
             material="opacity: 0; transparent: true; color:red"
-            position="-10 1.4 -5" class="invisible-wall"></a-entity>
+            position="-7.9 2 3" class="invisible-wall"></a-entity>
 
-  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 5"
+  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 2.5"
             material="opacity: 0; transparent: true; color:red"
-            position="-16.8 1.4 -2.5" class="invisible-wall"></a-entity>
+            position="8.2 2 3" class="invisible-wall"></a-entity>
 
-  <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 5"
+  <a-entity geometry="primitive: box; height: 4; width: 6; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="15.9 1.4 -2.5" class="invisible-wall"></a-entity>
+            position="4.35 2 4.2 " class="invisible-wall"></a-entity>
 
-  <a-entity geometry="primitive: box; height: 4; width: 14; depth: 0.1"
+  <a-entity geometry="primitive: box; height: 4; width: 6; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="9 1.4 -0.2" class="invisible-wall"></a-entity>
-
-  <a-entity geometry="primitive: box; height: 4; width: 14.2; depth: 0.1"
-            material="opacity: 0; transparent: true; color:red"
-            position="-10 1.4 -0.2" class="invisible-wall"></a-entity>
+            position="-3.9 2 4.2" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 2"
             material="opacity: 0; transparent: true; color:red"
-            position="2 1.4 0.8" class="invisible-wall"></a-entity>
+            position="1.4 2 5.15" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 2"
             material="opacity: 0; transparent: true; color:red"
-            position="-2.9 1.4 0.8" class="invisible-wall"></a-entity>
+            position="-0.95 2 5.15" class="invisible-wall"></a-entity>
 
   <a-entity geometry="primitive: box; height: 4; width: 5; depth: 0.1"
             material="opacity: 0; transparent: true; color:red"
-            position="-0.4 1.4 1.8" class="invisible-wall"></a-entity>
+            position="-0.4 2 5.2" class="invisible-wall"></a-entity>
 
 
-<a-entity  grid-manager="size: 1; gap: 1;" position="0 0 0"></a-entity>
+<!-- 3 prwta dexia  -->
+<a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: -0.8 1.6 0; centerRot: 0 90 0;" position="-0.85 0 1.2"></a-entity> 
+
+
+<!-- 3 prwta aristera  -->
+<a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: 1.3 1.6 0; centerRot:0 -90 0;" rotation="0 180 0" position="1.3 0 -1"></a-entity> 
+
+<!-- 2 mesa dexia  -->
+<a-entity  grid-manager=" columns:2; size:0.6; gap: 0.5; centerPos: -4 1.6 2.1; centerRot:0 0 0;" rotation="0 -90 0" position="-4.5 0 2"></a-entity>
+
+
+<!-- 4 mesa aristera  -->
+<a-entity  grid-manager=" columns:4; size:0.6; gap: 0.5; centerPos: 5.6 1.6 2.1; centerRot:0 0 0;" rotation="0 -90 0" position="4 0 2"></a-entity>
+
+
+<!-- 5 mesa dexia  -->
+<a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: -4 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="-2 0 4.1"></a-entity>
+
+
+<!-- 5 mesa aristera  -->
+<a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: 4.55 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="6.75 0 4.1"></a-entity>
+
+
+<!-- 1 apenanti  -->
+<a-entity  grid-manager=" columns:1; size:0.6; gap: 0.5; centerPos: 0.2 1.6 5; centerRot:0 180 0;" rotation="0 90 0" position="0.2 0 5.1"></a-entity>
+
+<!-- </a-entity> -->
 
 </a-entity>
 
@@ -1112,7 +1144,7 @@ function popUpValue2(id,centerPos, centerRot){
 						</a-gui-flex-container>
 
 </a-gui-flex-container>
-<a-entity spatial-occlusion="wallClass: invisible-wall" rotation="0 180 0" position="-0.3 0 -8">
+<a-entity spatial-occlusion="wallClass: invisible-wall" rotation="0 180 0" position="0.15 0 -3">
 	<a-camera  wasd-controls="acceleration:30" id="camera">
 
 		
