@@ -242,9 +242,9 @@ AFRAME.registerComponent('grid-manager', {
           // const columns = data.columns;
 
           const walls = [
-            { position: { x: 0, y: 0.6, z: 0 }, rotation: { x: 90, y: 90, z: 0 }, depth:1.2, height:0.1, rows:1, centerPos: { x:-0.8, y:1.6, z:0 }, centerRot:{ x:0, y:90, z:0}, pleura: "wall" },
+            { position: { x: 0, y: 0.6, z: 0 }, rotation: { x: 90, y: 90, z: 0 }, depth:1.2, height:0.1, rows:1, pleura: "wall" },
 
-            { position: { x: 0.25, y: 0, z: 0 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:0.5, rows:1, centerPos: { x:-0.8, y:1.6, z:0 }, centerRot:{ x:0, y:90, z:0}, pleura: "floor" },
+            { position: { x: 0.25, y: 0, z: 0 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:0.5, rows:1, pleura: "floor" },
 
 
             //   // Front wall
