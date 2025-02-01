@@ -848,9 +848,9 @@ function popUpValue2(id,centerPos, centerRot){
 
 <!-- <a-entity scale="0.5 0.5 0.5" position="0 .5 0"> -->
 
-<a-entity >
+<!-- <a-entity >
 <a-entity gltf-model="#test02" scale="1 1 1" position="0 0 0" rotation="0 -90 0"></a-entity>
-</a-entity>
+</a-entity> -->
 
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
             material="opacity: 0; transparent: true; color:red"
