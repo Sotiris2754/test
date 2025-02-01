@@ -240,9 +240,9 @@ AFRAME.registerComponent('grid-manager', {
           // const columns = data.columns;
 
           const walls = [
-            { position: { x: 0, y: 0.6, z: 0 }, rotation: { x: 90, y: 90, z: 0 }, depth:1.2, height:0.1, rows:1, pleura: "wall" },
+            { position: { x: 0, y: 0.6, z: 0 }, rotation: { x: 90, y: 90, z: 0 }, depth:1.2, height:0.05, rows:1, pleura: "wall" },
 
-            { position: { x: 0.25, y: 0, z: 0 }, rotation: { x: 90, y:90, z: 0 }, depth:0.1, height:0.5, rows:1, pleura: "floor" },
+            { position: { x: 0.25, y: 0, z: 0 }, rotation: { x: 90, y:90, z: 0 }, depth:0.05, height:0.5, rows:1, pleura: "floor" },
 
 
             //   // Front wall
@@ -848,10 +848,10 @@ function popUpValue2(id,centerPos, centerRot){
 
 <!-- <a-entity scale="0.5 0.5 0.5" position="0 .5 0"> -->
 
-<!-- <a-entity >
+<a-entity >
 <a-entity gltf-model="#test02" scale="1 1 1" position="0 0 0" rotation="0 -90 0"></a-entity>
 </a-entity>
- -->
+
   <a-entity geometry="primitive: box; height: 4; width: 0.1; depth: 10"
             material="opacity: 0; transparent: true; color:red"
             position="1.45 2 -3.1" class="invisible-wall"></a-entity>
@@ -902,14 +902,14 @@ function popUpValue2(id,centerPos, centerRot){
 
 
 <!-- 3 prwta aristera  -->
-<a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: 1.3 1.6 0; centerRot:0 -90 0;" rotation="0 180 0" position="1.3 0 -1"></a-entity> 
+<a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: 1.3 1.6 0; centerRot:0 -90 0;" rotation="0 180 0" position="1.32 0 -1"></a-entity> 
 
 <!-- 2 mesa dexia  -->
-<a-entity  grid-manager=" columns:2; size:0.6; gap: 0.5; centerPos: -4 1.6 2.1; centerRot:0 0 0;" rotation="0 -90 0" position="-4.5 0 2"></a-entity>
+<a-entity  grid-manager=" columns:2; size:0.6; gap: 0.5; centerPos: -4 1.6 2.1; centerRot:0 0 0;" rotation="0 -90 0" position="-4.5 0 1.95"></a-entity>
 
 
 <!-- 4 mesa aristera  -->
-<a-entity  grid-manager=" columns:4; size:0.6; gap: 0.5; centerPos: 5.6 1.6 2.1; centerRot:0 0 0;" rotation="0 -90 0" position="4 0 2"></a-entity>
+<a-entity  grid-manager=" columns:4; size:0.6; gap: 0.5; centerPos: 5.6 1.6 2.1; centerRot:0 0 0;" rotation="0 -90 0" position="4 0 1.95"></a-entity>
 
 
 <!-- 5 mesa dexia  -->
