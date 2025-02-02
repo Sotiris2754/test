@@ -33,8 +33,9 @@ if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
 
 
 <script>
-	fetchContent(); // LOAD JSON FILE !!
-	retrieveData();
+	$(window).on("load", function(){
+		fetchContent().then(()=>{retrieveData()}); // LOAD JSON FILE !!
+});
 	
 
 	let tile;

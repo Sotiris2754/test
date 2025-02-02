@@ -21,9 +21,9 @@
 
 
 <script>
-	fetchContent(); // LOAD JSON FILE !!
-	retrieveData();
-	
+	$(window).on("load", function(){
+		fetchContent().then(()=>{retrieveData()}); // LOAD JSON FILE !!
+});
 
 
 	let tile;
