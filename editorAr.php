@@ -802,13 +802,13 @@ function popUpValue2(id,centerPos, centerRot){
 </script>
 	
 
- <a-scene  devicecheck id="scene">
+ <a-scene devicecheck id="scene">
 
 
 <a-entity light="color: #BBB; type: ambient"></a-entity>
 <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" ></a-entity>
 
-<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-90 0 0" visible="false"></a-entity>
+<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 1.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-90 0 0" visible="false"></a-entity>
 
 				<a-assets>
 					<!-- Υπάρχουν διαφορετικές εκδόσεις του 3d κτιρίου. Τώρα χρησιμοποιείται το id="test02"  -->
@@ -905,7 +905,7 @@ function popUpValue2(id,centerPos, centerRot){
 
 
 <!-- 3 prwta aristera  -->
-<!-- <a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: 1.3 1.6 0; centerRot:0 -90 0;" rotation="0 180 0" position="1.32 0 -1"></a-entity>  -->
+<a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: 1.3 1.6 0; centerRot:0 -90 0;" rotation="0 180 0" position="1.32 0 -1"></a-entity> 
 
 <!-- 2 mesa dexia  -->
 <a-entity  grid-manager=" columns:2; size:0.6; gap: 0.5; centerPos: -4 1.6 2.1; centerRot:0 0 0;" rotation="0 -90 0" position="-4.5 0 1.95"></a-entity>
@@ -916,11 +916,11 @@ function popUpValue2(id,centerPos, centerRot){
 
 
 <!-- 5 mesa dexia  -->
-<!-- <a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: -4 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="-2 0 4.1"></a-entity> -->
+<a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: -4 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="-2 0 4.1"></a-entity>
 
 
 <!-- 5 mesa aristera  -->
-<!-- <a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: 4.55 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="6.75 0 4.1"></a-entity> -->
+<a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: 4.55 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="6.75 0 4.1"></a-entity>
 
 
 <!-- 1 apenanti  -->
@@ -1147,7 +1147,7 @@ function popUpValue2(id,centerPos, centerRot){
 
 </a-gui-flex-container>
 <a-entity spatial-occlusion="wallClass: invisible-wall" rotation="0 180 0" position="0.15 0 -3">
-	<a-camera  wasd-controls="acceleration:30" id="camera">
+	<a-camera  wasd-controls="acceleration:30" id="camera" >
 
 		
 			<a-entity  id="cursor" raycaster="objects:.clickable, [gui-interactable], .info, .enable" cursor="fuse:true; fuseTimeout:1200;" geometry="primitive:sphere;radius:0.008" material="color:orange;" position="0 0 -.5;"  animation__color=" property:material.color; from:#FFA500 ; to: #00FF00; dur: 100; startEvents:mouseenter;" animation__coloreset=" property:material.color; from:#00FF00 ; to: #FFA500; dur: 100; startEvents:mouseleave;" animation__fusing=" property:scale; from: 1 1 1; to: .5 .5 .5; dur: 500; startEvents:mouseenter;" animation__reset="property:scale; to: 1 1 1; startEvents:mouseleave;">		
