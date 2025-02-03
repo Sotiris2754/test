@@ -808,7 +808,7 @@ function popUpValue2(id,centerPos, centerRot){
 <a-entity light="color: #BBB; type: ambient"></a-entity>
 <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" ></a-entity>
 
-<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-104.01 0 0" visible="false"></a-entity>
+<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 2.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-90 0 0" visible="false"></a-entity>
 
 				<a-assets>
 					<!-- Υπάρχουν διαφορετικές εκδόσεις του 3d κτιρίου. Τώρα χρησιμοποιείται το id="test02"  -->
