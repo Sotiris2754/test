@@ -1064,12 +1064,6 @@ function popUpValue2(id,centerPos, centerRot){
 </a-scene> 
 
 
-
-<script>
-
-
-
-</script>
 </body>
 </html>
 

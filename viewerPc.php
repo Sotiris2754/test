@@ -286,12 +286,11 @@ AFRAME.registerComponent('grid-manager', {
 	    		console.log("Success Response");
 	    		var json = JSON.parse(res);
 	    		// console.log(json);
-				if (data == null)
-				{
-					console.log("2nd Not ready yet!");
-					setTimeout(retrieveData(),1);
-				}
-				else{
+				// if (data == null)
+				// {
+				// 	console.log("2nd Not ready yet!");
+				// 	setTimeout(retrieveData(),1);
+				// }
 					console.log("Exhibits have been loaded successfully");
 		    	for (var i=0; i<json.length; i++){
 		    		let testId = document.getElementById(json[i].id);
@@ -338,7 +337,6 @@ AFRAME.registerComponent('grid-manager', {
 							testId.appendChild(base);
 					}
 	    		 }
-	  		}
 	  	}
 		
 		});

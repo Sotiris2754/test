@@ -572,12 +572,7 @@ function importExhibit(entity){
 	    		console.log("Success Response");
 	    		var json = JSON.parse(res);
 	    		// console.log(json);
-				if (data == null)
-				{
-					console.log("2nd Not ready yet!");
-					setTimeout(retrieveData(),1);
-				}
-				else{
+
 					console.log("Exhibits have been loaded successfully");
 		    	for (var i=0; i<json.length; i++){
 		    		let testId = document.getElementById(json[i].id);
@@ -624,7 +619,6 @@ function importExhibit(entity){
 							testId.appendChild(base);
 					}
 	    		 }
-	  		}
 	  	}
 		
 		});
@@ -905,7 +899,7 @@ function popUpValue2(id,centerPos, centerRot){
 
 
 <!-- 3 prwta aristera  -->
-<a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: 1.3 1.6 0; centerRot:0 -90 0;" rotation="0 180 0" position="1.32 0 -1"></a-entity> 
+<!-- <a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: 1.3 1.6 0; centerRot:0 -90 0;" rotation="0 180 0" position="1.32 0 -1"></a-entity>  -->
 
 <!-- 2 mesa dexia  -->
 <a-entity  grid-manager=" columns:2; size:0.6; gap: 0.5; centerPos: -4 1.6 2.1; centerRot:0 0 0;" rotation="0 -90 0" position="-4.5 0 1.95"></a-entity>
@@ -916,11 +910,11 @@ function popUpValue2(id,centerPos, centerRot){
 
 
 <!-- 5 mesa dexia  -->
-<a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: -4 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="-2 0 4.1"></a-entity>
+<!-- <a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: -4 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="-2 0 4.1"></a-entity> -->
 
 
 <!-- 5 mesa aristera  -->
-<a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: 4.55 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="6.75 0 4.1"></a-entity>
+<!-- <a-entity  grid-manager=" columns:5; size:0.6; gap: 0.5; centerPos: 4.55 1.6 4.1; centerRot:0 180 0;" rotation="0 90 0" position="6.75 0 4.1"></a-entity> -->
 
 
 <!-- 1 apenanti  -->
