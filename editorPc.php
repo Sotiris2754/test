@@ -809,6 +809,7 @@ function popUpValue2(id,centerPos, centerRot){
 	<a-entity obj-model="obj: #test01-obj; mtl: #test01-mtl"></a-entity>
 </a-entity> -->
 
+<a-entity position="0 -0.5 0">
 
 <!-- 3 prwta dexia  -->
 <a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: -0.8 1.6 0; centerRot: 0 90 0;" position="-0.85 0 1.2"></a-entity> 
@@ -838,7 +839,7 @@ function popUpValue2(id,centerPos, centerRot){
 
 <!-- </a-entity> -->
 
-
+</a-entity>
 
 <a-image id="imagePreview"  scale="0.5 0.5 0.5" position="0 1 -5" src="" visible="false" ></a-image>
 
