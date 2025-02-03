@@ -806,10 +806,6 @@ function popUpValue2(id,centerPos, centerRot){
 <!-- <a-plane color="blue" rotation="-90 0 0" width="20" height="20"></a-plane> -->
 
 
-<!-- <a-entity>
-	<a-entity obj-model="obj: #test01-obj; mtl: #test01-mtl"></a-entity>
-</a-entity> -->
-
 <a-entity position="0 0 0">
 
 <!-- 3 prwta dexia  -->
