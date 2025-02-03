@@ -766,6 +766,7 @@ function popUpValue2(id,centerPos, centerRot){
 					
 					<a-asset-items id="test01" src="Building/test01/test01.gltf"></a-asset-items>
 					<a-asset-items id="test02" src="Building/test01/test02.gltf"></a-asset-items>
+					<a-asset-items id="floor1" src="Building/floor/floor3d.gltf"></a-asset-items>
 
 
 					<!-- Παλιότερες εικόνες εκθεμάτων 
@@ -799,8 +800,8 @@ function popUpValue2(id,centerPos, centerRot){
 
 <!-- <a-entity scale="0.5 0.5 0.5" position="0 .5 0"> -->
 
-<a-entity >
-<a-entity gltf-model="#test02" scale="1 1 1" position="0 0 0" rotation="0 -90 0"></a-entity>
+<a-entity>
+<a-entity gltf-model="#floor1" scale="1 1 1" position="0 0 0" rotation="0 -90 0"></a-entity>
 </a-entity>
 <!-- <a-plane color="blue" rotation="-90 0 0" width="20" height="20"></a-plane> -->
 
@@ -809,7 +810,7 @@ function popUpValue2(id,centerPos, centerRot){
 	<a-entity obj-model="obj: #test01-obj; mtl: #test01-mtl"></a-entity>
 </a-entity> -->
 
-<a-entity position="0 -0.5 0">
+<a-entity position="0 0 0">
 
 <!-- 3 prwta dexia  -->
 <a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: -0.8 1.6 0; centerRot: 0 90 0;" position="-0.85 0 1.2"></a-entity> 
