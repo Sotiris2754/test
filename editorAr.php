@@ -892,7 +892,7 @@ function popUpValue2(id,centerPos, centerRot){
             position="-0.4 2 5.2" class="invisible-wall"></a-entity>
 
 
-<!-- <a-entity position="0 -.5 0"> -->
+<a-entity position="0 -.5 0">
 
 <!-- 3 prwta dexia  -->
 <a-entity  grid-manager="size:0.6; gap: 0.5; centerPos: -0.8 1.6 0; centerRot: 0 90 0;" position="-0.85 0 1.2"></a-entity> 
@@ -920,7 +920,7 @@ function popUpValue2(id,centerPos, centerRot){
 <!-- 1 apenanti  -->
 <a-entity  grid-manager=" columns:1; size:0.6; gap: 0.5; centerPos: 0.2 1.6 5; centerRot:0 180 0;" rotation="0 90 0" position="0.2 0 5.1"></a-entity>
 
-<!-- </a-entity> -->
+</a-entity>
 
 
 
