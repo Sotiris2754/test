@@ -303,12 +303,12 @@ AFRAME.registerComponent('grid-manager', {
           });
 
 
-          window.addEventListener('keydown', (event) => {
-            if (event.key === 't') { // Change 't' to any key you prefer
-              this.toggleTiles();
+          // window.addEventListener('keydown', (event) => {
+          //   if (event.key === 't') { // Change 't' to any key you prefer
+          //     this.toggleTiles();
 
-            }
-          });
+          //   }
+          // });
 
 
 
@@ -936,7 +936,7 @@ function popUpValue2(id,centerPos, centerRot){
 
 <a-entity id="frame" position=" -0.2 1 -5" visible="false">
 
-	<a-plane class="toggle-visibility" color="#ECDFCC" id="panel" width="1.5" height="0.75">
+	<a-plane class="toggle-visibility" color="#ECDFCC" id="panel" position="0 -.3 0" scale ="0.7 0.7 0.7" width="1.5" height="0.75">
 
 		<a-text  id="infoText" align="center" width="2"></a-text>
 		<a-image id="exitbutton" closebutton class="clickable" src="#close" scale="0.2 0.2 0.2" position="0.6 .25 0.01"></a-image>
