@@ -391,6 +391,25 @@ AFRAME.registerComponent('grid-manager', {
 			spotLight.setAttribute("visible",false);
 		}
 	}
+	
+AFRAME.registerComponent("custom-spotlight", {
+    init: function () {
+      let scene = this.el.sceneEl.object3D;
+
+      let spotLight = new THREE.SpotLight(0xffffff, 1);
+      spotLight.position.set(5, 10, 5);
+      spotLight.angle = Math.PI / 4;
+      spotLight.penumbra = 0.5;
+      spotLight.castShadow = true;
+
+      spotLight.shadow.mapSize.width = 1024;
+      spotLight.shadow.mapSize.height = 1024;
+      spotLight.shadow.camera.near = 0.5;
+      spotLight.shadow.camera.far = 50;
+
+      scene.add(spotLight);
+    },
+  });
 
 </script>
 
@@ -402,7 +421,7 @@ AFRAME.registerComponent('grid-manager', {
 <a-entity light="color: #BBB; type: ambient"></a-entity>
 <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" ></a-entity>
 
-<a-entity  id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 1.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-90 0 0" visible="false"></a-entity>
+<a-entity custom-spotlight id="spotlight" position="-0.2 4 -0.1" light="angle: 20; color: #fadda0; intensity: 1.0; penumbra: 1; type: spot;  shadowBias: -5; shadowCameraBottom: -6.9" rotation="-90 0 0" visible="false"></a-entity>
 				
 				<a-assets>
 
